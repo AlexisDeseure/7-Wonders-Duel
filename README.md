@@ -1,2 +1,2 @@
-# 7_Wonders_Duel
-Projet en C++ d'implétation du célèbre jeu de société 7 Wonders Duel
+# 7 Wonders Duel
+Projet en C++ d'implantation du célèbre jeu de société 7 Wonders Duel
