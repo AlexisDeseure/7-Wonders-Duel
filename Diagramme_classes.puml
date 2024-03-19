@@ -13,10 +13,11 @@ class Player{
     -victory_points
     -money_amount
 }
+Player "1..1" --- "1..1" City
 
 class City{
     ATTRIBUTS
-    -treasury_coins
+    -treasury_coins : int
     -buildings
     -ressources
     -military_token
