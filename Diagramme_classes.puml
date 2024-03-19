@@ -1,3 +1,55 @@
 @startuml
-Bob -> Alice : test
+!define MyBackgroundColor #lightblue
+!define MyBorderColor #005f87
+
+skinparam class {
+  BackgroundColor MyBackgroundColor
+  BorderColor MyBorderColor
+}
+
+class Player{
+    ATTRIBUTS
+    -city_c
+    -victory_points
+    -money_amount
+}
+
+class City{
+    ATTRIBUTS
+    -treasury_coins
+    -buildings
+    -ressources
+    -military_token
+    -cards
+    -stages
+    -number_of_shields
+    -wonder{night,
+
+    METHODES
+    -purchase_ressources
+    -selling
+    -construct_building
+    -construct_stage.
+}
+
+class Carte{
+    Attributs
+    -name
+    -age
+    -type
+    -cost
+    -owner
+    -chain_symbol.
+
+    Méthode :
+    -effect.
+}
+
+class progress_token{
+    ATTRIBUTS
+   -name
+   -symbol
+   -owner
+}
+
 @enduml
