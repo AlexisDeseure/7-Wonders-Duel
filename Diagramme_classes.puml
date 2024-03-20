@@ -13,7 +13,7 @@ class Player{
     -victory_points
     -money_amount
 }
-Player "1..1" --- "1..1" City
+Player "1..1 " --- "1..1 " City
 
 class City{
     ATTRIBUTS
@@ -40,7 +40,7 @@ class Carte{
     -type
     -cost
     -owner
-    -chain_symbol.
+    -chain_symbol
 
     Méthode :
     -effect.
