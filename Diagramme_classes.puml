@@ -6,51 +6,85 @@ skinparam class {
   BackgroundColor MyBackgroundColor
   BorderColor MyBorderColor
 }
+skinparam classAttributeIconSize 0
 
-class Player{
-    ATTRIBUTS
-    -city_c
-    -victory_points
-    -money_amount
-}
-Player "1..1 " --- "1..1 " City
 
 class City{
-    ATTRIBUTS
-    -treasury_coins : int
-    -buildings
-    -ressources
-    -military_token
-    -cards
-    -stages
-    -number_of_shields
-    -wonder{night,
+  -victory_points
+  -money
+  -treasur
+  -ressources
+  -number_of_shields
+  -scientific_symbols : struct symbol[]
 
-    METHODES
-    -purchase_ressources
-    -selling
-    -construct_building
-    -construct_stage.
+  +trade()
+  +constructBuilding()
+  +constructWonder()
+  +discardCard()
+  +checkMilitaryVictory()
+  +checkScientificVictory()
 }
 
-class Carte{
-    Attributs
-    -name
-    -age
-    -type
-    -cost
-    -owner
-    -chain_symbol
-
-    Méthode :
-    -effect.
+class Player{
+  -type
+  -isItHisTurn : bool
+  +play()
 }
 
-class progress_token{
-    ATTRIBUTS
-   -name
-   -symbol
-   -owner
+struct ScientificSymbol{
+  +name
+  +amount
+  
+  +add()
 }
 
+class Card{
+  -name
+  -cost[]
+  -owner
+  -effects[]
+  
+  +getPrice()
+}
+
+
+class Building{
+  -age
+  -visible : bool
+  -type
+  -chain_cost
+  
+  +build()
+  -useEffects()
+  -discardIt()
+  
+  
+}
+
+class Wonder{
+  -activated : bool
+  
+  +build()
+  +select()
+  -useEffects()
+}
+
+class ProgressToken{
+  -on_the_board : bool
+  +useEffects()
+}
+
+class ConflictPawn{
+  -current_position
+  
+  +move()
+}
+
+Card <|-- Building
+Card <|-- Wonder
+Card <|-- ProgressToken
+City o-- "*" Card
+City *-- "*" ScientificSymbol
+City *-- "1" Player
+City "2" --- "1" ConflictPawn
 @enduml
