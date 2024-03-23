@@ -135,7 +135,7 @@ Board o-- "5" ProgressToken
 Board *-- "1" MarketDeck
 Board *-- "1" ConflictPawn
 
-MarketDeck o-- "*" Building
+MarketDeck o-- "1" Building
 
 Effect <|--  RessourceEffect
 Effect <|--  CoinEffect
