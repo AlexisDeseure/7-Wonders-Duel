@@ -13,7 +13,6 @@ class City{
   -victory_points
   -money
   -treasur
-  -ressources
   -number_of_shields
   -scientific_symbols : struct symbol[]
 
@@ -42,7 +41,6 @@ class Card{
   -name
   -cost[]
   -owner
-  -effects[]
   
   +getPrice()
 }
@@ -55,7 +53,6 @@ class Building{
   -chain_cost
   
   +build()
-  -useEffects()
   -discardIt()
   
   
@@ -66,12 +63,10 @@ class Wonder{
   
   +build()
   +select()
-  -useEffects()
 }
 
 class ProgressToken{
   -on_the_board : bool
-  +useEffects()
 }
 
 class ConflictPawn{
@@ -80,11 +75,65 @@ class ConflictPawn{
   +move()
 }
 
+
+class Ressources{
+  -name
+  -amount
+  -price
+  
+  +add()
+  +getPrice()
+  +updatePrice()
+}
+
+class Effect{
+  
+}
+
+class IncreaseRessources{
+  -ressource_name
+  +effect()
+}
+
+class IncreaseVictoryPoint{
+  +effect()
+}
+
+class AddScientificSymbol{
+  -symbol_name
+  +effect()
+}
+
+class AddCoin{
+  +effect()
+}
+
+class AddShield{
+  +effect()
+}
+
+
+class ChangeMarketRule{
+  -ressource_name
+  +effect()
+}
+
+
+Effect --* IncreaseRessources
+Effect --* AddCoin
+Effect --* IncreaseVictoryPoint
+Effect --* AddScientificSymbol
+Effect --* AddShield
+Effect --* ChangeMarketRule
+
+Card "*" --- "*" Effect
 Card <|-- Building
 Card <|-- Wonder
 Card <|-- ProgressToken
+
 City o-- "*" Card
 City *-- "*" ScientificSymbol
 City *-- "1" Player
 City "2" --- "1" ConflictPawn
+City *-- "*" Ressources
 @enduml
