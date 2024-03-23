@@ -9,14 +9,18 @@ skinparam class {
 skinparam classAttributeIconSize 0
 
 
-class City{
-  -victory_points
-  -money
-  -treasur
-  -number_of_shields
-  -scientific_symbols : struct symbol[]
+class Board {
+  -age : int
+  +advancedAge()
+  +updateMarket()
+}
 
-  +trade()
+class City{
+  -victory_points : int
+  -treasur : int
+  -number_of_shields : int
+  -player_turn : bool
+  +play()
   +constructBuilding()
   +constructWonder()
   +discardCard()
@@ -24,15 +28,9 @@ class City{
   +checkScientificVictory()
 }
 
-class Player{
-  -type
-  -isItHisTurn : bool
-  +play()
-}
-
-struct ScientificSymbol{
-  +name
-  +amount
+class ScientificSymbol{
+  -type: SymbolType
+  -count: int 
   
   +add()
 }
@@ -43,7 +41,8 @@ class Card{
   -owner
   
   +getPrice()
-}
+} 
+
 
 
 class Building{
@@ -75,65 +74,87 @@ class ConflictPawn{
   +move()
 }
 
+class MarketDeck{
+  -right_son : MarketDeck
+  -left_son : MarketDeck
+  -is_root : bool
+  
+  +constructNewAgeMarket()
+  +getLeaves()
+  +updateTree()
+}
 
-class Ressources{
-  -name
-  -amount
-  -price
+class Ressource{
+  -type : RessourceType
+  -amount : int
+  -price : int
   
   +add()
   +getPrice()
   +updatePrice()
 }
 
-class Effect{
-  
-}
-
-class IncreaseRessources{
+class RessourceEffect{
   -ressource_name
-  +effect()
+  +apply()
 }
 
-class IncreaseVictoryPoint{
-  +effect()
+class VictoryPointEffect{
+  +apply()
 }
 
-class AddScientificSymbol{
+class ScientificSymbolEffect{
   -symbol_name
-  +effect()
+  +apply()
 }
 
-class AddCoin{
-  +effect()
+class CoinEffect{
+  +apply()
 }
 
-class AddShield{
-  +effect()
+class ShieldEffect{
+  +apply()
 }
 
 
-class ChangeMarketRule{
+class ChangeRessourceCostEffect{
   -ressource_name
-  +effect()
+  +apply()
 }
 
+enum SymbolType {
+    COMPASS, QUILL, WHEEL, TABLET, SCALE, BOWL, GLOBE
+}
 
-Effect --* IncreaseRessources
-Effect --* AddCoin
-Effect --* IncreaseVictoryPoint
-Effect --* AddScientificSymbol
-Effect --* AddShield
-Effect --* ChangeMarketRule
+enum ResourceType {
+    WOOD, STONE, CLAY, PAPER, GLASS
+}
+
+Board *-- "2" City
+Board o-- "5" ProgressToken 
+Board *-- "1" MarketDeck
+Board *-- "1" ConflictPawn
+
+MarketDeck o-- "*" Building
+
+Effect <|--  RessourceEffect
+Effect <|--  CoinEffect
+Effect <|--  VictoryPointEffect
+Effect <|--  ScientificSymbolEffect
+Effect <|--  ShieldEffect
+Effect <|--  ChangeRessourceCostEffect
 
 Card "*" --- "*" Effect
 Card <|-- Building
 Card <|-- Wonder
 Card <|-- ProgressToken
 
-City o-- "*" Card
+City o-- "*" Building
+City o-- "*" Wonder
+City o-- "*" ProgressToken
 City *-- "*" ScientificSymbol
-City *-- "1" Player
-City "2" --- "1" ConflictPawn
-City *-- "*" Ressources
+City *-- "*" Ressource
+
+Card -[hidden]> Effect
+ConflictPawn -[hidden]> Board
 @enduml
