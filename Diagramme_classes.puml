@@ -74,14 +74,16 @@ class ConflictPawn{
   +move()
 }
 
+
 class MarketDeck{
-  -right_son : MarketDeck
-  -left_son : MarketDeck
-  -is_root : bool
-  
   +constructNewAgeMarket()
   +getLeaves()
   +updateTree()
+}
+class DeckElement{
+  -right_son : DeckElement
+  -left_son : DeckElement
+  -is_root : bool
 }
 
 class Ressource{
@@ -135,7 +137,9 @@ Board o-- "5" ProgressToken
 Board *-- "1" MarketDeck
 Board *-- "1" ConflictPawn
 
-MarketDeck o-- "1" Building
+MarketDeck o-- "*" DeckElement
+
+DeckElement o-- "1" Building
 
 Effect <|--  RessourceEffect
 Effect <|--  CoinEffect
@@ -155,6 +159,6 @@ City o-- "*" ProgressToken
 City *-- "*" ScientificSymbol
 City *-- "*" Ressource
 
-Card -[hidden]> Effect
-ConflictPawn -[hidden]> Board
+
+
 @enduml
