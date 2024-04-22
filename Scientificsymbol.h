@@ -11,6 +11,8 @@ class ScientificSymbol{
 private:
     int count; //Nombre de symboles d'un seul type
     SciSymbols symbol_type;
+    const City* city;
+
 
 public:
     void add(){ //Add ne se déclenche que lorsque l'on truove un symbole scientifique identique dans la même ville

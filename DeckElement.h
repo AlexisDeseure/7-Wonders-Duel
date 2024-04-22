@@ -12,6 +12,8 @@ namespace DeckElement {
         bool is_root;
         const DeckElement* right_son;
         const DeckElement* left_son;
+        const Building* building;
+        const MarketDeck* m_deck;
     public:
         bool root_status() const{return is_root;}
 

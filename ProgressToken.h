@@ -6,9 +6,11 @@
 #define PROJET_PROGRESSTOKEN_H
 
 
-class ProgressToken {
+class ProgressToken : public Card{
 private:
     bool on_the_board;
+    const City* city;
+    const Board* board;
 public:
     ProgressToken() {
         on_the_board = false;

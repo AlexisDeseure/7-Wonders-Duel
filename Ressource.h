@@ -14,6 +14,7 @@ namespace Ressource{
         RessourceType Type;
         int amount;
         int price;
+        const City* city;
     public:
         void add(int sum) { amount += sum; }; //Rajoute sum matériaux
         int getPrice() const { return price; };

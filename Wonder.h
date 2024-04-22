@@ -5,11 +5,13 @@
 #ifndef PROJET_WONDER_H
 #define PROJET_WONDER_H
 
+class Card;
 namespace Wonder {
 
-    class Wonder {
+    class Wonder : public Card{
     private:
         bool active; //Montre si la merveille est sur le plateau
+        const City* city;
     public:
         Wonder(); //Constructeur
         void select(); //Selecteur? à voir
