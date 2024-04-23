@@ -127,19 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="city.cpp" />
-    <ClInclude Include="city.h" />
-    <ClInclude Include="conflictpawn.h" />
-    <ClInclude Include="ProgressToken.h" />
-    <ClInclude Include="Ressource.h" />
-    <ClInclude Include="ScientificSymbol.h" />
-    <ClInclude Include="Wonder.h" />
+    <ClInclude Include="src/Card.h" />
+    <ClInclude Include="src/city.cpp" />
+    <ClInclude Include="src/city.h" />
+    <ClInclude Include="src/conflictpawn.h" />
+    <ClInclude Include="src/ProgressToken.h" />
+    <ClInclude Include="src/Ressource.h" />
+    <ClInclude Include="src/ScientificSymbol.h" />
+    <ClInclude Include="src/Wonder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MarketDeck.h" />
-    <ClCompile Include="SevenWonders.cpp" />
+    <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src/MarketDeck.h" />
+    <ClCompile Include="src/SevenWonders.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
