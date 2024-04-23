@@ -1,5 +1,7 @@
 .idea/
 .vs/
 x64/
+cmake-build-debug
+CMakeLists.txt
 *.filters
 *.user
