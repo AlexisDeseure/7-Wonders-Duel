@@ -1,7 +1,7 @@
 #pragma once
-#include"wonder.h"
+#include"Wonder.h"
 #include"Ressource.h"
-#include"ScientificSymbol.h"
+#include"Scientificsymbol.h"
 #include"ProgressToken.h"
 class city {
 
