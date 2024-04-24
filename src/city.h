@@ -3,7 +3,8 @@
 #include"Ressource.h"
 #include"Scientificsymbol.h"
 #include"ProgressToken.h"
-class city {
+
+class City {
 
 	int victory_points; 
 	int treasury; 
@@ -11,17 +12,17 @@ class city {
 	bool player_turn;
 	Wonder** wonder; // 4 wonders
 	ProgressToken** PT; // max of 10  
-	Ressource** ressources; 
+	Ressource** ressources;
 	int tailleressources ; 
 	int tailless; 
 	ScientificSymbol** scientificsymbol; //avoir un tableau de 7
-	city(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false); 
+	City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false); 
 	void constructBuilding(); 
 	void constructWonder(); 
 	void discardCard(); 
 	bool checkMilitaryVictory(); 
 	bool checkScientificVictory(); 
-	~city() {
+	~City() {
 		delete wonder;
 		delete PT;
 		//A verifier le nombre de ressources pour 
