@@ -1,5 +1,5 @@
 #include<iostream>
-#include"ConflictPawn.h"
+#include"includes/ConflictPawn.h"
 
 int ConflictPawn::move(int a ){
 

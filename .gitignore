@@ -4,6 +4,5 @@ x64/
 Debug/
 SevenWonders/
 cmake-build-debug
-CMakeLists.txt
 *.filters
 *.user
