@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CARD_H
+#define CARD_H
 
 #include "Ressource.h"
 #include "City.h"
@@ -17,3 +18,4 @@ class Card {
 	//la liste des cartes
 	Card(string n, City o) : name(n) {};
 };
+#endif

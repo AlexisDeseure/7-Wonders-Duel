@@ -2,8 +2,8 @@
 // Created by mateo on 22/04/2024.
 //
 
-#ifndef PROJET_PROGRESSTOKEN_H
-#define PROJET_PROGRESSTOKEN_H
+#ifndef PROGRESSTOKEN_H
+#define PROGRESSTOKEN_H
 
 
 class ProgressToken : public Card{

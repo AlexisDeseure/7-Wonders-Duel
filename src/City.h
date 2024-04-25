@@ -1,7 +1,8 @@
-#pragma once
+#ifndef CITY_H
+#define CITY_H
 #include"Wonder.h"
 #include"Ressource.h"
-#include"Scientificsymbol.h"
+#include"ScientificSymbol.h"
 #include"ProgressToken.h"
 
 class City {
@@ -39,5 +40,5 @@ class City {
 	}
 
 };
-
+#endif
 

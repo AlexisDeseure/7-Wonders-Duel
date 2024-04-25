@@ -1,7 +1,7 @@
 // Created by mateo on 09/04/2024.
 #ifndef PROJET_SCIENTIFICSYMBOL_H
 #define PROJET_SCIENTIFICSYMBOL_H
-#include "city.h"
+#include "City.h"
 
 /*Un symbole n'a qu'un seul type, il faudra faire gaffe à la composition de la classe ScientificSymbol
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
@@ -12,7 +12,7 @@ class ScientificSymbol{
 private:
     int count; //Nombre de symboles d'un seul type
     SciSymbols symbol_type;
-    const City::city* city;
+    const City::City* city;
 
 
 public:

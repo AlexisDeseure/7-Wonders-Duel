@@ -2,8 +2,8 @@
 // Created by mateo on 22/04/2024.
 //
 
-#ifndef PROJET_DECKELEMENT_H
-#define PROJET_DECKELEMENT_H
+#ifndef DECKELEMENT_H
+#define DECKELEMENT_H
 
 namespace DeckElement {
 

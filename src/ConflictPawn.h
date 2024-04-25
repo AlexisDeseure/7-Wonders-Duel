@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONFLICTPAWN_H
+#define CONFLICTPAWN_H
 
 class ConflictPawn {
 
@@ -11,3 +12,4 @@ private :
 
 
 };
+#endif

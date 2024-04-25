@@ -4,17 +4,17 @@
 #ifndef PROJET_WONDER_H
 #define PROJET_WONDER_H
 
-#include"city.h"
+#include"City.h"
 class Card {};
 
 
 class Wonder : public Card{
     private:
         bool active; //Montre si la merveille est sur le plateau
-        const City::city* city;
+        const City::City* city;
     public:
         Wonder(); //Constructeur
-        void select(); //Selecteur? à voir
+        void select(); //Selecteur à voir
     };
 // Wonder
 
