@@ -1,0 +1,6 @@
+# ninja log v5
+30	388	7358334210917182	CMakeFiles/7_Wonders_Duel.dir/test/example_test_feature_2.cpp.obj	5aa81eb31c5b6ea
+25	390	7358334210927194	CMakeFiles/7_Wonders_Duel.dir/test/example_test_feature_1.cpp.obj	3e878055a1314c81
+36	390	7358334210927194	CMakeFiles/7_Wonders_Duel.dir/src/Effects/Effect.cpp.obj	361eb2ba4eb76ec1
+19	390	7358334210937225	CMakeFiles/7_Wonders_Duel.dir/src/BoardManager/ConflictPawn.cpp.obj	17813caa80b6b201
+6	835	7358334215385724	CMakeFiles/7_Wonders_Duel.dir/src/SevenWonders.cpp.obj	5711a594b431ca69
