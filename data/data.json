@@ -1,5 +1,5 @@
 {
-  "Cards": [
+  "Cards": 
     {
       "BuildingsList": [
         //AGE I
@@ -470,10 +470,286 @@
           "cost": [ 3, "Fer" ],
           "effects": [ "addVictoryPoint(4)" ],
           "scientific_symbol": null
-        }
+        },
+
+
 
         //AGE III
 
+        {
+          "name": "Arsenal",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": null,
+          "color": "red",
+          "cost": [ 3, "Argile", 2, "Bois" ],
+          "effects": [ "moveConflictPawn(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Prétoire",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": null,
+          "color": "red",
+          "cost": [ 8, "Money" ],
+          "effects": [ "moveConflictPawn(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Fortifications",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": "Palissade",
+          "color": "red",
+          "cost": [ 2, "Fer", 1, "Argile", 1, "Papyrus" ],
+          "effects": [ "moveConflictPawn(2)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Atelier de siège",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": "Champ de tir",
+          "color": "red",
+          "cost": [ 3, "Bois", 1, "Verre" ],
+          "effects": [ "moveConflictPawn(2)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Cirque",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": "Place d'armes",
+          "color": "red",
+          "cost": [ 2, "Argile", 2, "Fer" ],
+          "effects": [ "moveConflictPawn(2)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Académie",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": null,
+          "color": "green",
+          "cost": [ 2, "Verre", 1, "Fer", 1, "Bois" ],
+          "effects": [ "addVictoryPoint(3)" ],
+          "scientific_symbol": "Horloge solaire"
+        },
+        {
+          "name": "Etude",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": null,
+          "color": "green",
+          "cost": [ 2, "Bois", 1, "Verre", 1, "Papyrus" ],
+          "effects": [ "addVictoryPoint(3)" ],
+          "scientific_symbol": "Horloge solaire"
+        },
+        {
+          "name": "Université",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": "Ecole",
+          "color": "green",
+          "cost": [ 1, "Argile", 1, "Verre", 1, "Papyrus" ],
+          "effects": [ "addVictoryPoint(2)" ],
+          "scientific_symbol": "Globe"
+        },
+        {
+          "name": "Observatoire",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": "Ecole",
+          "color": "green",
+          "cost": [ 1, "Fer", 2, "Papyrus" ],
+          "effects": [ "addVictoryPoint(2)" ],
+          "scientific_symbol": "Globe"
+        },
+        {
+          "name": "Chambre de commerce",
+          "age": 3,
+          "chainage_send": null,
+          "chainage_receive": null,
+          "color": "gold",
+          "cost": [ 2, "Papyrus" ],
+          "effects": [ "earnXMoneyPerAtConstruct(grey,3)", "addVictoryPoint(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Port",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "gold",
+          "cost": [ 1, "Papyrus", 1, "Bois", 1, "Verre" ],
+          "effects": [ "earnXMoneyPerAtConstruct(brown,2)", "addVictoryPoint(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Armurerie",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "gold",
+          "cost": [ 2, "Fer", 1, "Verre" ],
+          "effects": [ "earnXMoneyPerAtConstruct(red,1)", "addVictoryPoint(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Phare",
+          "age": 3,
+          "chainage_receive": "Taverne",
+          "chainage_send": null,
+          "color": "gold",
+          "cost": [ 2, "Argile", 1, "Verre" ],
+          "effects": [ "earnXMoneyPerAtConstruct(gold,1)", "addVictoryPoint(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Arène",
+          "age": 3,
+          "chainage_receive": "Brasserie",
+          "chainage_send": null,
+          "color": "gold",
+          "cost": [ 1, "Argile", 1, "Fer", 1, "Bois" ],
+          "effects": [ "earnXMoneyPerWonderAtConstruct(1)", "addVictoryPoint(3)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Palace",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 2, "Verre", 1, "Argile", 1, "Fer", 1, "Bois" ],
+          "effects": [ "addVictoryPoint(7)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Hotel de Ville",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 3, "Fer", 2, "Bois" ],
+          "effects": [ "addVictoryPoint(7)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Obélisque",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 2, "Fer", 1, "Verre" ],
+          "effects": [ "addVictoryPoint(5)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Jardin",
+          "age": 3,
+          "chainage_receive": "Statue",
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 2, "Argile", 2, "Bois" ],
+          "effects": [ "addVictoryPoint(6)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Panthéon",
+          "age": 3,
+          "chainage_receive": "Temple",
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 1, "Argile", 1, "Bois", 2, "Papyrus" ],
+          "effects": [ "addVictoryPoint(6)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Sénat",
+          "age": 3,
+          "chainage_receive": "Rostres",
+          "chainage_send": null,
+          "color": "blue",
+          "cost": [ 2, "Argile", 1, "Fer", 1, "Papyrus" ],
+          "effects": [ "addVictoryPoint(5)" ],
+          "scientific_symbol": null
+        },
+
+
+
+        //CARTES GUILDES
+        {
+          "name": "Guilde des Commerçants",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 1, "Argile", 1, "Bois", 1, "Papyrus", 1, "Verre" ],
+          "effects": [ "earnXMoneyPerMostAtConstruct(gold,1)", "earnXVictoryPointPerGoldMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Armateurs",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 1, "Argile", 1, "Fer", 1, "Papyrus", 1, "Verre" ],
+          "effects": [ "earnXMoneyPerMostAtConstruct(grey,1)", "earnXMoneyPerMostAtConstruct(brown,1)", "earnXVictoryPointPerGoldAndBrownMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Bâtisseurs",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 1, "Argile", 2, "Fer", 1, "Bois", 1, "Verre" ],
+          "effects": [ "earnXVictoryPointPerMostWonderAtEndGame(2)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Magistrats",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 2, "Bois", 1, "Argile", 1, "Papyrus" ],
+          "effects": [ "earnXMoneyPerMostAtConstruct(blue,1)", "earnXVictoryPointPerBlueMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Scientifiques",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 2, "Bois", 2, "Argile" ],
+          "effects": [ "earnXMoneyPerMostAtConstruct(green,1)", "earnXVictoryPointPerGreenMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Usuriers",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 2, "Bois", 2, "Fer" ],
+          "effects": [ "earnXVictoryPointPer3LotOfMoneyMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        },
+        {
+          "name": "Guilde des Tacticiens",
+          "age": 3,
+          "chainage_receive": null,
+          "chainage_send": null,
+          "color": "purple",
+          "cost": [ 2, "Fer", 1, "Argile",1,"Papyrus" ],
+          "effects": [ "earnXMoneyPerMostAtConstruct(red,1)", "earnXVictoryPointPerRedMostAtEndGame(1)" ],
+          "scientific_symbol": null
+        }
       ],
       "ProgressTokenList": [
 
@@ -485,6 +761,4 @@
 
       ]
     }
-    
-  ]
 }
