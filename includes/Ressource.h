@@ -15,7 +15,7 @@ avec City, bien faire une liste et que la fonction de rajout vérifie correcteme
 
     class Ressource {
     private:
-        RessourceType Type;
+        RessourceType type;
         int amount;
         int price;
         const City* city;
