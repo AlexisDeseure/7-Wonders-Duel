@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClInclude Include="src/Card.h" />
     <ClInclude Include="src/city.h" />
-    <ClInclude Include="src\ConflictPawn.h" />
+    <ClInclude Include="src/ConflictPawn.h" />
     <ClInclude Include="src/ProgressToken.h" />
     <ClInclude Include="src/Ressource.h" />
     <ClInclude Include="src/Scientificsymbol.h" />
