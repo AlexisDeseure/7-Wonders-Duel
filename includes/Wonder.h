@@ -5,7 +5,6 @@
 #define PROJET_WONDER_H
 
 #include"City.h"
-class Card {};
 
 
 class Wonder : public Card{
