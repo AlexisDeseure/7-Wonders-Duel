@@ -4,6 +4,7 @@
 #include "includes/City/Ressource.h"
 #include "includes/City/City.h"
 #include <string>
+#include "../Effects/Effect.h"
 using namespace std; 
 
 //void Ressource::add() {
