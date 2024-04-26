@@ -1073,8 +1073,110 @@
                 "scientific_symbol": null
             }
         ],
-        "ProgressTokenList": [],
-        "ScientificSymbolList": [],
-        "WondersList": []
+
+        
+        "ProgressTokenList": [
+        {
+          "name": "Agriculture",
+          "effects": [ "addVictoryPoint(4)", "addRessource([Money],6)" ]
+        },
+        {
+          "name": "Architecture",
+          "effects": [ "wonderCostReducedByX(2)" ]
+        },
+        {
+          "name": "Economie",
+          "effects": [ "takeAdversaryTradeMoney()" ]
+        },
+        {
+          "name": "Maçonnerie",
+          "effects": [ "takeScientificSymbol()" ]
+        },
+        {
+          "name": "Mathématiques",
+          "effects": [ "earnThreeVictoryPointsPerProgressTokenAtEndGame()" ]
+        },
+        {
+          "name": "Philosophie",
+          "effects": [ "addVictoryPoint(7)" ]
+        },
+        {
+          "name": "Stratégie",
+          "effects": [ "moveConflictPawnOneMorePerNewRed()" ]
+        },
+        {
+          "name": "Théologie",
+          "effects": [ "newWondersHaveInstantReplaying()" ]
+        },
+        {
+          "name": "Urbanisme",
+          "effects": [ "addRessource([Money],6)","earnFourMoneyPerBuildingChaining()" ]
+        }
+      ],
+
+
+
+      "WondersList": [
+        {
+          "name": "Le Circus Maximus",
+          "cost": [ 2, "Fer", 1, "Bois", 1, "Verre" ],
+          "effects": [ "discardAdversaryGreyCard()", "moveConflictPawn(1)", "addVictoryPoint(3)" ]
+        },
+        {
+          "name": "Le Colosse",
+          "cost": [ 3, "Argile", 1, "Verre" ],
+          "effects": [ "moveConflictPawn(2)", "addVictoryPoint(3)" ]
+        },
+        {
+          "name": "Le Grand Phare",
+          "cost": [ 1, "Fer", 1, "Bois", 2, "Papyrus" ],
+          "effects": [ "addRessourceChoice(Fer,Argile,Bois)", "addVictoryPoint(4)" ]
+        },
+        {
+          "name": "Les Jardins Suspendus",
+          "cost": [ 1, "Verre", 2, "Bois", 1, "Papyrus" ],
+          "effects": [ "addRessource([Money],6)", "addVictoryPoint(3)", "instantReplaying()" ]
+        },
+        {
+          "name": "La Grande Bibliothèque",
+          "cost": [ 1, "Verre", 3, "Bois", 1, "Papyrus" ],
+          "effects": [ "chooseOneProgressTokenWithinThreeDiscarded()", "addVictoryPoint(4)" ]
+        },
+        {
+          "name": "Le Mausolée",
+          "cost": [ 2, "Verre", 2, "Argile", 1, "Papyrus" ],
+          "effects": [ "buildOneDiscardedBuilding()", "addVictoryPoint(2)" ]
+        },
+        {
+          "name": "Le Pirée",
+          "cost": [ 1, "Fer", 2, "Bois", 1, "Argile" ],
+          "effects": [ "addRessourceChoice(Verre,Papyrus)", "addVictoryPoint(2)", "instantReplaying()" ]
+        },
+        {
+          "name": "Les Pyramides",
+          "cost": [ 3, "Fer", 1, "Papyrus" ],
+          "effects": [ "addVictoryPoint(9)" ]
+        },
+        {
+          "name": "Le Sphinx",
+          "cost": [ 2, "Verre", 1, "Argile", 1, "Fer" ],
+          "effects": [ "addVictoryPoint(6)", "instantReplaying()" ]
+        },
+        {
+          "name": "La Statue de Zeus",
+          "cost": [ 2, "Papyrus", 1, "Argile", 1, "Bois", 1, "Fer" ],
+          "effects": [ "discardAdversaryBrownCard()", "moveConflictPawn(1)", "addVictoryPoint(3)" ]
+        },
+        {
+          "name": "Le Temple d'Artémis",
+          "cost": [ 1, "Papyrus", 1, "Verre", 1, "Bois", 1, "Fer" ],
+          "effects": [ "addRessource([Money],12)", "instantReplaying()" ]
+        },
+        {
+          "name": "La Via Appia",
+          "cost": [ 1, "Papyrus", 2, "Fer" ,2,"Argile"],
+          "effects": [ "addRessource([Money],3)", "instantReplaying()", "adversaryPaysMoneyToBank(3)", "addVictoryPoint(3)" ]
+        }
+      ]
     }
 }
