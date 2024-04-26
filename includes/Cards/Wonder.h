@@ -1,11 +1,8 @@
-//
-// Created by mateo on 09/04/2024.
-//
 #ifndef PROJET_WONDER_H
 #define PROJET_WONDER_H
 
-#include"City.h"
-
+#include"includes/City/City.h"
+#include "Card.h"
 
 class Wonder : public Card{
     private:

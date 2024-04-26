@@ -1,10 +1,7 @@
-//
-// Created by mateo on 22/04/2024.
-//
-
 #ifndef PROGRESSTOKEN_H
 #define PROGRESSTOKEN_H
 
+#include "Card.h"
 
 class ProgressToken : public Card{
 private:

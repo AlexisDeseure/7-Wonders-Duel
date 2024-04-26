@@ -1,9 +1,9 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include "Ressource.h"
-#include "City.h"
-#include<string>
+#include "includes/City/Ressource.h"
+#include "includes/City/City.h"
+#include <string>
 using namespace std; 
 
 //void Ressource::add() {

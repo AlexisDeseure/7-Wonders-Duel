@@ -1,10 +1,10 @@
 #ifndef CITY_H
 #define CITY_H
 #include <iostream>
-#include"Wonder.h"
+#include"includes/Cards/Wonder.h"
 #include"Ressource.h"
 #include"ScientificSymbol.h"
-#include"ProgressToken.h"
+#include"includes/Cards/ProgressToken.h"
 
 class City {
 

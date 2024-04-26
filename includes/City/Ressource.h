@@ -1,4 +1,3 @@
-// Created by mateo on 09/04/2024.
 #ifndef PROJET_RESSOURCE_H
 #define PROJET_RESSOURCE_H
 

@@ -1,7 +1,3 @@
-//
-// Created by mateo on 22/04/2024.
-//
-
 #ifndef DECKELEMENT_H
 #define DECKELEMENT_H
 
