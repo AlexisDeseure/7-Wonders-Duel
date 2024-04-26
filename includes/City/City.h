@@ -56,9 +56,9 @@ class City {
              */
         }
 
-        void constructBuilding();
-        void constructWonder();
-        void discardCard();
+        void constructBuilding(Building* building)
+        void constructWonder(Wonder* wonder)
+        void discardCard(Card* card);
         bool checkMilitaryVictory();
         bool checkScientificVictory();
 
