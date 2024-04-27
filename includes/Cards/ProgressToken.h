@@ -3,7 +3,7 @@
 #define PROGRESSTOKEN_H
 
 #include "Card.h"
-#include "../City/City.h"
+#include "City/City.h"
 
 class ProgressToken : public Card{
 private:
