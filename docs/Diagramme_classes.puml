@@ -21,9 +21,9 @@ class City{
   -number_of_shields : int
   -player_turn : bool
   +play()
-  +constructBuilding() : Building&
-  +constructWonder() : Wonder&
-  +discardCard() 
+  +constructBuilding(Building* building) : Building&
+  +constructWonder(Wonder* wonder) : Wonder&
+  +discardCard(Card* card) 
   +checkMilitaryVictory() : Bool 
   +checkScientificVictory() : Bool 
   +buy(card& c) : Bool 
