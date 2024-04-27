@@ -907,7 +907,7 @@
                     "Papyrus": 2
                 },
                 "effects": {
-                    "earnXMoneyPerAtConstruct": [
+                    "earnXMoneyPerMostAtConstruct": [
                         "grey",
                         3
                     ],
