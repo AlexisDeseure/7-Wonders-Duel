@@ -1,3 +1,4 @@
+//Crée par Mateo
 #ifndef PROJET_RESSOURCE_H
 #define PROJET_RESSOURCE_H
 
@@ -17,7 +18,7 @@ avec City, bien faire une liste et que la fonction de rajout vérifie correcteme
         RessourceType type;
         int amount;
         int price;
-        const City* city;
+        const City* city; //est-ce que la classe city est vraiment nécessaire ici ? On peut bien accéder aux ressources depuis une ville, faire le contraire n'est pas nécessaire
     public:
         void add(int sum) { amount += sum; }; //Rajoute sum matériaux
         int getPrice() const { return price; };

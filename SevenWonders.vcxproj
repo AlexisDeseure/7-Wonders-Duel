@@ -127,24 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src/Card.h" />
-    <ClInclude Include="src/city.h" />
-    <ClInclude Include="src/ConflictPawn.h" />
-    <ClInclude Include="src/ProgressToken.h" />
-    <ClInclude Include="src/Ressource.h" />
-    <ClInclude Include="src/Scientificsymbol.h" />
-    <ClInclude Include="src/Wonder.h" />
-    <CLInclude Include="src/MarketDeck.h" />
-    <ClInclude Include="src/DeckElement.h" />
-    <ClInclude Include="src/SevenWonders.h" />
+    <ClInclude Include="includes/BoardManager/ConflictPawn.h" />
+    <ClInclude Include="includes/Cards/Building.h" />
+    <ClInclude Include="includes/Cards/Card.h" />
+    <ClInclude Include="includes/Cards/ProgressToken.h" />
+    <ClInclude Include="includes/Cards/Wonder.h" />
+    <ClInclude Include="includes/City/City.h" />
+    <ClInclude Include="includes/City/Ressource.h" />
+    <CLInclude Include="includes/City/ScientificSymbol.h" />
+    <ClInclude Include="includes/DeckManager/DeckElement.h" />
+    <ClInclude Include="includes/DeckManager/MarketDeck.h" />
+	<ClInclude Include="includes/Effects/CoinEffect.h" />
+	<ClInclude Include="includes/Effects/Effect.h" />
+	<ClInclude Include="includes/Effects/ScientificSymbolEffect.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src/BoardManager/ConflictPawn.cpp" />
+    <ClCompile Include="src/Cards/Wonder.cpp" />
+    <ClCompile Include="src/City/City.cpp" />
+    <ClCompile Include="src/DeckManager/DeckElement.cpp" />
+    <ClCompile Include="src/Effects/Effect.cpp" />
     <ClCompile Include="src/SevenWonders.cpp" />
-    <ClCompile Include="src/Wonder.cpp" />
-    <ClCompile Include="src/test.cpp" />
-    <ClCompile Include="src/city.cpp" />
-    <ClCompile Include="src/DeckElement.cpp" />
+	<ClCompile Include="test/example_test_feature_1.cpp" />
+	<ClCompile Include="test/example_test_feature_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

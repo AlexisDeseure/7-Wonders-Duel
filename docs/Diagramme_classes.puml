@@ -46,8 +46,7 @@ class Card{
 
 
 class Building{
-  -age
-  -visible : bool
+  -age : int
   -type
   -chain_cost
   
@@ -94,6 +93,9 @@ class Ressource{
   +add()
   +getPrice()
   +updatePrice()
+}
+class Effect{
+    -effect_name
 }
 
 class RessourceEffect{
