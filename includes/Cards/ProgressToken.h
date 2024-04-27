@@ -1,3 +1,4 @@
+//Crée par Mateo
 #ifndef PROGRESSTOKEN_H
 #define PROGRESSTOKEN_H
 
@@ -20,4 +21,4 @@ public:
 };
 
 
-#endif //PROJET_PROGRESSTOKEN_H
+#endif //PROGRESSTOKEN_H

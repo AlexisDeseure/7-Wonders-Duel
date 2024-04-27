@@ -1,3 +1,4 @@
+//Crée par Mateo
 #ifndef PROJET_SCIENTIFICSYMBOL_H
 #define PROJET_SCIENTIFICSYMBOL_H
 #include "includes/City/City.h"
