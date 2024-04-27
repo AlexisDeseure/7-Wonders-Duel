@@ -1,25 +1,30 @@
 #ifndef DECKELEMENT_H
 #define DECKELEMENT_H
 
-namespace DeckElement {
+namespace Deck {
 
     class DeckElement {
     private:
-        bool is_root;
-        const DeckElement* right_son;
-        const DeckElement* left_son;
-        const Building* building;
-        const MarketDeck* m_deck;
-    public:
-        bool root_status() const{return is_root;}
+        const DeckElement* const right_son;
+        const DeckElement* const left_son;
+        const Building& building;
+        bool visible;
 
-        DeckElement(): is_root(false), right_son(nullptr), left_son(nullptr){};
-        DeckElement(const bool& root): is_root(root), right_son(nullptr),left_son(nullptr){};
-        DeckElement(const DeckElement& r_son): is_root(false), right_son(&r_son), left_son(nullptr){};
-        DeckElement(const DeckElement& r_son, const DeckElement& l_son): is_root(false), right_son(&r_son), left_son(&l_son){};
-        DeckElement(const bool& root, const DeckElement& r_son, const DeckElement& l_son): is_root(root), right_son(&r_son), left_son(&l_son){};
+    public:
+        DeckElement(const Building& building, const DeckElement* right_son = nullptr, const DeckElement* left_son = nullptr, const bool& visible = true): right_son(right_son), left_son(left_son), building(building), visible(visible){};
+        ~DeckElement() = default;
+        DeckElement& operator=(const DeckElement& d) = delete;
+
+        const DeckElement* getRightSon() const { return right_son; };
+        const DeckElement* getLeftSon() const { return left_son; };
+        const Building& getBuilding() const { return building; };
+        bool isVisible() const { return visible; };
+        void setVisible() { if (!visible) visible = true; };
+        DeckElement operator++(int) const { return *right_son; };
+        DeckElement operator++() const { return *left_son; };
+
     };
 
 } // DeckElement
 
-#endif //PROJET_DECKELEMENT_H
+#endif

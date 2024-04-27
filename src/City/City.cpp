@@ -1,4 +1,4 @@
-#include "includes/City/City.h"
+#include "City/City.h"
 
 //Constructeur
 City::City(int victory, int  treasury, int shields, bool turn) : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn), wonder(new Wonder* [4]),
