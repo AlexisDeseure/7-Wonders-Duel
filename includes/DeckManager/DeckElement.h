@@ -1,6 +1,6 @@
 #ifndef DECKELEMENT_H
 #define DECKELEMENT_H
-
+#include "../Cards/Building.h"
 namespace Deck {
 
     class DeckElement {
@@ -9,7 +9,7 @@ namespace Deck {
         const DeckElement* const left_son;
         const DeckElement* const right_father;
         const DeckElement* const left_father;
-        const Building& building;
+        const Building* building;
         bool visible;
 
     public:

@@ -46,8 +46,7 @@ class Card{
 
 
 class Building{
-  -age
-  -visible : bool
+  -age : int
   -type
   -chain_cost
   
