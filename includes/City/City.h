@@ -1,27 +1,28 @@
-#ifndef CITY_H
-#define CITY_H
+#pragma once
 #include <iostream>
 #include"includes/Cards/Wonder.h"
 #include"Ressource.h"
 #include"ScientificSymbol.h"
 #include"includes/Cards/ProgressToken.h"
 
-class City {
+namespace City {
+    class City {
 
-	int victory_points; 
-	int treasury; 
-	int number_of_shields; 
-	bool player_turn;
-    int taille_ressources ;
-    int taille_scientific_symbols;
-
-    Wonder** wonder; // 4 wonders
-	ProgressToken** progress_tokens; // max of 10
-	Ressource** ressources;
-	ScientificSymbol** scientific_symbols; //avoir un tableau de 7
+        int victory_points;
+        int treasury;
+        //int number_of_shields;
+        int military_position;
+        bool player_turn;
+        int taille_ressources;
+        int taille_scientific_symbols;
+        Wonder** wonder; // 4 wonders
+        ProgressToken** progress_tokens; // max of 10
+        Ressource** ressources;
+        ScientificSymbol** scientific_symbols; //avoir un tableau de 7
 
     public:
-        City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false);
+        City(int victory = 0, int  treasury = 0, bool turn = false);
+
 
         ~City() {
             delete[] wonder;
@@ -56,12 +57,18 @@ class City {
              */
         }
 
+
         void constructBuilding();
         void constructWonder();
         void discardCard();
         bool checkMilitaryVictory();
         bool checkScientificVictory();
 
-};
-#endif
+    };
+
+}
+
+
+
+
 

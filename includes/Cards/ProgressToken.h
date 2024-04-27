@@ -3,11 +3,12 @@
 
 #include "Card.h"
 #include "../City/City.h"
-
 class ProgressToken : public Card{
+    
+
 private:
     bool on_the_board;
-    const City* city;
+    const City::City* city;
     const Board* board;
 public:
     ProgressToken() {
