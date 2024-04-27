@@ -7,9 +7,14 @@
   <h3 align="center">7 Wonders Duel</h3>
   <p align="center">
   C++ implementation of 7 Wonders Duel board game using QT.
-  <br />    
+  <br />  
+    
   </p>
 </div>
+
+[![Contributors](https://img.shields.io/github/contributors/AlexisDeseure/7_Wonders_Duel.svg)](https://github.com/AlexisDeseure/7_Wonders_Duel/graphs/contributors)
+[![Stargazers](https://img.shields.io/github/stars/AlexisDeseure/7_Wonders_Duel.svg)](https://github.com/AlexisDeseure/7_Wonders_Duel/stargazers)
+[![BSD 3-Clause License](https://img.shields.io/github/license/AlexisDeseure/7_Wonders_Duel.svg)](https://github.com/AlexisDeseure/7_Wonders_Duel/blob/main/LICENSE.md)
 
 <details>
   <summary>Table of Contents</summary>
@@ -27,6 +32,8 @@
     <li><a href="#license">License</a></li>
   </ol>
 </details>
+
+
 
 ## About The Project
 This is an open-source project aimed at creating a faithful digital implementation of the acclaimed two-player board game 7 Wonders Duel. Developed in C++ for cross-platform compatibility, our goal is to recreate the engaging gameplay and strategic depth of the original tabletop experience.
@@ -63,3 +70,4 @@ Distributed under the BSD 3-Clause License. See [LICENSE.md](LICENSE.md) for mor
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
