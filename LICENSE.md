@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) 2024, Alexis Deseure, [Bastien Cuvillier](https://github.com/Voln1x), [Mateo Marcillaud](https://github.com/matmarcillo), [Ismat Aboukhachfe](https://github.com/ismataboukhachfe), [Fadi Shafo](https://github.com/FadiShafo)
+Copyright (c) 2024, [Alexis Deseure](https://github.com/AlexisDeseure), [Bastien Cuvillier](https://github.com/Voln1x), [Mateo Marcillaud](https://github.com/matmarcillo), [Ismat Aboukhachfe](https://github.com/ismataboukhachfe), [Fadi Shafo](https://github.com/FadiShafo)
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
