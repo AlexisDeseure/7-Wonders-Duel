@@ -95,6 +95,9 @@ class Ressource{
   +getPrice()
   +updatePrice()
 }
+class Effect{
+    -effect_name
+}
 
 class RessourceEffect{
   -ressource_name
