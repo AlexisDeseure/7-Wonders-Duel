@@ -9,6 +9,11 @@ skinparam class {
 skinparam classAttributeIconSize 0
 
 
+class MyException {
+    -info: string
+    +getInfo(): string
+}
+
 class Board {
   -age : int
   +advancedAge()
