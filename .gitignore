@@ -1,5 +1,6 @@
 .idea/
 .vs/
+out/
 x64/
 Debug/
 SevenWonders/
