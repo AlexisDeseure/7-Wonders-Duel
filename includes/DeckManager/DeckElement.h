@@ -26,7 +26,8 @@ namespace Deck {
         void setVisible() { if (!visible) visible = true; };
         const DeckElement* operator++(int) const { return right_son; };
         const DeckElement* operator++() const { return left_son; };
-
+        const DeckElement* operator--(int) const { return right_father; };
+        const DeckElement* operator--() const { return left_father; };
 
     };
 
