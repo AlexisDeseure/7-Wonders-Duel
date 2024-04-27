@@ -7,10 +7,12 @@
   <h3 align="center">7 Wonders Duel</h3>
   <p align="center">
   C++ implementation of 7 Wonders Duel board game using QT.
-  <br />  
-    [![Contributors][contributors-shield]][contributors-url]
-    [![Stargazers][stars-shield]][stars-url]
-    [![BSD 3-Clause License][license-shield]][license-url]
+  <br /> 
+    
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![BSD 3-Clause License][license-shield]][license-url]
+    
   </p>
 </div>
 
