@@ -24,8 +24,9 @@ namespace Deck {
         const Building& getBuilding() const { return building; };
         bool isVisible() const { return visible; };
         void setVisible() { if (!visible) visible = true; };
-        DeckElement operator>>() const { return right_son; };
-        DeckElement operator<<() const { return left_son; };
+        const DeckElement* operator++(int) const { return right_son; };
+        const DeckElement* operator++() const { return left_son; };
+
 
     };
 
