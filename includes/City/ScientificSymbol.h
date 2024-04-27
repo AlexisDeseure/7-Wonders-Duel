@@ -13,7 +13,6 @@ class ScientificSymbol{
 private:
     int count; //Nombre de symboles d'un seul type
     SciSymbols symbol_type;
-    const City::City* city;
 
 
 public:

@@ -29,7 +29,7 @@ class City{
 }
 
 class ScientificSymbol{
-  -type: SymbolType
+  -symbol_type: SymbolType
   -count: int 
   
   +add()
@@ -59,12 +59,14 @@ class Building{
 class Wonder{
   -activated : bool
   
-  +build()
-  +select()
+  +getStatus() : bool
+  +activate() : void
 }
 
 class ProgressToken{
   -on_the_board : bool
+  +onTheBoard() : bool
+  +statusSwitch() : void
 }
 
 class ConflictPawn{
@@ -80,9 +82,16 @@ class MarketDeck{
   +updateTree()
 }
 class DeckElement{
-  -right_son : DeckElement
-  -left_son : DeckElement
   -is_root : bool
+  +isvisible() : bool
+  +setvisible() : void
+  +DeckElement* getRightSon()
+  +DeckElement* getLeftSon()
+  +DeckElement* getRightFather()
+  +DeckElement* getLeftFather()
+  +Building& getBuilding()
+
+
 }
 
 class Ressource{
@@ -90,9 +99,9 @@ class Ressource{
   -amount : int
   -price : int
   
-  +add()
-  +getPrice()
-  +updatePrice()
+  +addMaterials() : void
+  +getPrice() : int
+  +updatePrice() : void
 }
 class Effect{
     -effect_name
@@ -139,9 +148,13 @@ Board o-- "5" ProgressToken
 Board *-- "1" MarketDeck
 Board *-- "1" ConflictPawn
 
-MarketDeck o-- "*" DeckElement
+MarketDeck "1" o-- "*" DeckElement
 
 DeckElement o-- "1" Building
+DeckElement "0..1" --o "0..1" DeckElement : fils droit
+DeckElement "0..1" --o "0..1" DeckElement : fils gauche
+DeckElement "0..1" --o "0..1" DeckElement : père droit
+DeckElement "0..1" --o "0..1" DeckElement : père gauche
 
 Effect <|--  RessourceEffect
 Effect <|--  CoinEffect

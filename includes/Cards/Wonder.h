@@ -7,10 +7,10 @@
 class Wonder : public Card{
     private:
         bool active; //Montre si la merveille est sur le plateau
-        const City::City* city;
     public:
-        Wonder(); //Constructeur
-        void select(); //Selecteur à voir
+        Wonder(): active(false){}; //Constructeur
+        void activate(){if(!active) active=true;}; //Selecteur de status
+        bool getStatus(){return active;};
     };
 // Wonder
 

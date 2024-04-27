@@ -8,12 +8,9 @@ class ProgressToken : public Card{
 private:
     bool on_the_board;
 public:
-    ProgressToken() {
-        on_the_board = false;
-    };
-    bool otb() const{ return on_the_board;};
-
-    void status_switch(){on_the_board= not(on_the_board);};
+    ProgressToken(): on_the_board(false) {};
+    bool onTheBoard() const{ return on_the_board;};
+    void status_switch(){if (!on_the_board) on_the_board = true;};
 };
 
 
