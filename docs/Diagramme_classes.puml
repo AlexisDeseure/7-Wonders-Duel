@@ -16,16 +16,17 @@ class Board {
 }
 
 class City{
-  -victory_points : int
-  -treasur : int
+ -military_position : int
+  -treasury : int
   -number_of_shields : int
   -player_turn : bool
   +play()
-  +constructBuilding()
-  +constructWonder()
-  +discardCard()
-  +checkMilitaryVictory()
-  +checkScientificVictory()
+  +constructBuilding(Building* building) : Building&
+  +constructWonder(Wonder* wonder) : Wonder&
+  +discardCard(Card* card)
+  +checkMilitaryVictory() : Bool
+  +checkScientificVictory() : Bool
+  +buy(card& c) : Bool
 }
 
 class ScientificSymbol{
@@ -36,20 +37,19 @@ class ScientificSymbol{
 }
 
 class Card{
-  -name
-  -cost[]
-  -owner
-  
-  +getPrice()
+  -name : string
+  -ressources : Ressource**
+  -taille_ressources : int
+  +get_price_ressources const () : Ressources**
 } 
 
 
 
 class Building{
   -age : int
-  -type
-  -chain_cost
-  
+  -visible : bool
+  -type : couleur
+  -chain_cost : int
   +build()
   -discardIt()
   
@@ -77,21 +77,29 @@ class ConflictPawn{
 
 
 class MarketDeck{
+  -age : int
+  -first_buildings : DeckElement**
+  -nb_first_buildings : int
   +constructNewAgeMarket()
-  +getLeaves()
-  +updateTree()
+  +advanceAge()
+  +class iterator()
 }
 class DeckElement{
-  -is_root : bool
-  +isvisible() : bool
-  +setvisible() : void
-  +DeckElement* getRightSon()
-  +DeckElement* getLeftSon()
-  +DeckElement* getRightFather()
-  +DeckElement* getLeftFather()
-  +Building& getBuilding()
-
-
+  -right_son : DeckElement*
+  -left_son : DeckElement*
+  -right_father : DeckElement*
+  -left_father : DeckElement*
+  -building : Building&
+  -visible : bool
+  +getRightSon() : DeckElement*
+  +getLeftSon() : DeckElement*
+  +getRightFather() : DeckElement*
+  +getLeftFather() : DeckElement*
+  +getBuilding() : Building&
+  +isVisible() : bool
+  +setVisible() : void
+  +operator++(int) : DeckElement*
+  +operator++() : DeckElement*
 }
 
 class Ressource{
@@ -101,39 +109,101 @@ class Ressource{
   
   +addMaterials() : void
   +getPrice() : int
+  +getAmount() : int
   +updatePrice() : void
 }
 class Effect{
     -effect_name
 }
 
-class RessourceEffect{
-  -ressource_name
+/'
+class InstantReplaying{
   +apply()
 }
 
-class VictoryPointEffect{
+class AdversaryPaysMoneyToBank{
+  +apply()
+}
+class AddVictoryPoint{
   +apply()
 }
 
-class ScientificSymbolEffect{
-  -symbol_name
+class MoveConflictPawn{
+  +apply()
+}
+class AddRessource{
   +apply()
 }
 
-class CoinEffect{
+class DiscardAdversaryBrownCard{
   +apply()
 }
 
-class ShieldEffect{
+class AddRessourceChoice{
+  +apply()
+}
+class BuildOneDiscardedBuilding{
+  +apply()
+}
+class ChooseOneProgressTokenWithinThreeDiscarded{
+  +apply()
+}
+
+class EarnFourMoneyPerBuildingChaining{
+  +apply()
+}
+
+class NewWondersHaveInstantReplaying{
+  +apply()
+}
+
+class MoveConflictPawnOneMorePerNewRed{
+  +apply()
+}
+
+class EarnThreeVictoryPointsPerProgressTokenAtEndGame{
+  +apply()
+}
+
+class TakeScientificSymbol{
+  +apply()
+}
+
+class TakeAdversaryTradeMoney{
+  +apply()
+}
+
+class WonderCostReducedByX{
   +apply()
 }
 
 
-class ChangeRessourceCostEffect{
-  -ressource_name
+
+class EarnXMoneyPerMostAtConstruct{
   +apply()
 }
+
+class EarnXMoneyPerWonderAtConstruct{
+  +apply()
+}
+
+class EarnXVictoryPointPerMostWonderAtEndGame{
+  +apply()
+}
+
+class EarnXVictoryPointPerGoldAndBrownMostAtEndGame{
+  +apply()
+}
+
+class EarnXVictoryPointPerThingMostAtEndGame{
+  -thing
+  +apply()
+}
+
+class ChangeMarketRule{
+  +apply()
+}'/
+
 
 enum SymbolType {
     COMPASS, QUILL, WHEEL, TABLET, SCALE, BOWL, GLOBE
@@ -151,6 +221,28 @@ Board *-- "1" ConflictPawn
 MarketDeck "1" o-- "*" DeckElement
 
 DeckElement o-- "1" Building
+/'Effect <|--  AddRessourceChoice
+Effect <|--  ChangeMarketRule
+Effect <|--  EarnXVictoryPointPerThingMostAtEndGame
+Effect <|--  EarnXVictoryPointPerGoldAndBrownMostAtEndGame
+Effect <|--  EarnXVictoryPointPerMostWonderAtEndGame
+Effect <|--  EarnXMoneyPerWonderAtConstruct
+Effect <|--  EarnXMoneyPerMostAtConstruct
+Effect <|--  WonderCostReducedByX
+Effect <|--  TakeAdversaryTradeMoney
+Effect <|--  TakeScientificSymbol
+Effect <|--  EarnThreeVictoryPointsPerProgressTokenAtEndGame
+Effect <|--  MoveConflictPawnOneMorePerNewRed
+Effect <|--  NewWondersHaveInstantReplaying
+Effect <|--  EarnFourMoneyPerBuildingChaining
+Effect <|--  ChooseOneProgressTokenWithinThreeDiscarded
+Effect <|--  BuildOneDiscardedBuilding
+Effect <|--  DiscardAdversaryBrownCard
+Effect <|--  AddRessource
+Effect <|--  MoveConflictPawn
+Effect <|--  AddVictoryPoint
+Effect <|--  AdversaryPaysMoneyToBank
+Effect <|--  InstantReplaying'/
 DeckElement "0..1" --o "0..1" DeckElement : fils droit
 DeckElement "0..1" --o "0..1" DeckElement : fils gauche
 DeckElement "0..1" --o "0..1" DeckElement : père droit
