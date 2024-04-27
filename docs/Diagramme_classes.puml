@@ -37,7 +37,7 @@ class ScientificSymbol{
 }
 
 class Card{
-  -name
+  -name : string 
   -ressources : Ressource** 
   -taille_ressources : int 
   +get_price_ressources const () : Ressources** 
@@ -106,7 +106,8 @@ class Ressource{
   -price : int
   
   +add()
-  +getPrice()
+  +getPrice() : int 
+  +getAmount() : int 
   +updatePrice()
 }
 class Effect{
