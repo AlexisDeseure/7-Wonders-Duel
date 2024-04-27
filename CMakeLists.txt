@@ -3,7 +3,8 @@ project(7_Wonders_Duel)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(.)
+include_directories(.
+        ./includes)
 
 add_executable(7_Wonders_Duel
         src/SevenWonders.cpp
