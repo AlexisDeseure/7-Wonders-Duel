@@ -16,16 +16,17 @@ class Board {
 }
 
 class City{
-  -victory_points : int
-  -treasur : int
+ -military_position : int
+  -treasury : int
   -number_of_shields : int
   -player_turn : bool
   +play()
-  +constructBuilding()
-  +constructWonder()
-  +discardCard()
-  +checkMilitaryVictory()
-  +checkScientificVictory()
+  +constructBuilding() : Building&
+  +constructWonder() : Wonder&
+  +discardCard() 
+  +checkMilitaryVictory() : Bool 
+  +checkScientificVictory() : Bool 
+  +buy(card& c) : Bool 
 }
 
 class ScientificSymbol{
@@ -37,21 +38,20 @@ class ScientificSymbol{
 
 class Card{
   -name
-  -cost[]
-  -owner
-  
-  +getPrice()
+  -ressources : Ressource** 
+  -taille_ressources : int 
+  +get_price_ressources const () : Ressources** 
 } 
 
 
 
 class Building{
-  -age : int
-  -type
-  -chain_cost
-  
+  -age : int 
+  -visible : bool
+  -type : couleur 
+  -chain_cost : int 
   +build()
-  -discardIt()
+  -discardIt() 
   
   
 }
