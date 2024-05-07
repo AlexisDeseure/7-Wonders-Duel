@@ -1,3 +1,4 @@
+//Crée par Mateo
 #ifndef PROJET_RESSOURCE_H
 #define PROJET_RESSOURCE_H
 #include<iostream>
@@ -20,8 +21,9 @@ avec City, bien faire une liste et que la fonction de rajout vérifie correcteme
         int price;
      //   const City::City* city;
         // pas besoin de mettre city
+
     public:
-        void add(int sum) { amount += sum; }; //Rajoute sum matériaux
+        void addMaterials(int sum) { amount += sum; }; //Rajoute sum matériaux
         int getPrice() const { return price; };
         
         void updatePrice(int sum) { price += sum; }; //Soustraire des ressources = donner valeur négative

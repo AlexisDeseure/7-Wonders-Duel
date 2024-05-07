@@ -1,10 +1,12 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include "includes/City/Ressource.h"
-#include "includes/City/City.h"
 #include <string>
-#include "../Effects/Effect.h"
+
+#include "City/Ressource.h"
+#include "City/City.h"
+#include "Effects/Effect.h"
+
 using namespace std; 
 
 //void Ressource::add() {
