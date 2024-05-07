@@ -21,5 +21,6 @@ add_executable(7_Wonders_Duel
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
         src/City/City.cpp
+        src/BoardManager/ConflictPawn.cpp test/example_test_feature_1.cpp test/example_test_feature_2.cpp includes/Cards/Building.h includes/Effects/Effect.h src/Effects/Effect.cpp "src/City/Ressources.cpp")
         src/BoardManager/ConflictPawn.cpp test/example_test_feature_1.cpp test/example_test_feature_2.cpp includes/Cards/Building.h includes/Effects/Effect.h src/Effects/Effect.cpp includes/Effects/CoinEffect.h includes/Effects/ScientificSymbolEffect.h)
 

@@ -7,7 +7,8 @@
 #include"ScientificSymbol.h"
 #include"Cards/ProgressToken.h"
 
-class City {
+namespace City {
+    class City {
 
     int victory_points;
     int treasury;
@@ -56,6 +57,8 @@ public:
          *
          */
     }
+
+
 
     void constructBuilding(Building* building)
     void constructWonder(Wonder* wonder)
