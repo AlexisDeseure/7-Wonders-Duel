@@ -19,6 +19,7 @@ class Board {
   +advancedAge()
   +updateMarket()
 }
+note left of Board : Board is a singleton
 
 class City{
  -military_position : int
@@ -86,7 +87,6 @@ class MarketDeck{
   -first_buildings : DeckElement**
   -nb_first_buildings : int
   +constructNewAgeMarket()
-  +advanceAge()
   +class iterator()
 }
 class DeckElement{
