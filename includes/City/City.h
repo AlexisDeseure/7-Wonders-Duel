@@ -1,8 +1,6 @@
 #ifndef CITY_H
 #define CITY_H
 
-#define RESSOURCE_LENGTH 5
-#define SCIENTIFIC_SYMBOL_LENGTH 7
 #define PROGRESS_TOKEN_LENGTH 10
 #define WONDER_LENGTH 4
 
@@ -14,6 +12,8 @@ class ProgressToken;
 class Ressource;
 class ScientificSymbol;
 class Card;
+enum class RessourceType;
+enum class SymboleType;
 
 class City {
 
@@ -28,13 +28,7 @@ class City {
     ScientificSymbol** scientific_symbols; //avoir un tableau de 7
 
 public:
-    City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false)
-        :victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn),
-        wonder(new Wonder *[WONDER_LENGTH]), progress_tokens(new ProgressToken *[PROGRESS_TOKEN_LENGTH]),
-        ressources(new Ressource*[RESSOURCE_LENGTH]),
-        scientific_symbols(new ScientificSymbol*[SCIENTIFIC_SYMBOL_LENGTH])
-    {}
-
+    City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false);
     ~City() {
         delete[] wonder;
         delete[] progress_tokens;
@@ -62,7 +56,7 @@ public:
          *
          */
     }
-
+    Ressource& getRessource(RessourceType name) const;
     int getDistinctScientificSymbols() const{return 0;};
     bool canAfford(int price) const { return treasury >= price;};
     void constructBuilding(Building* building);
@@ -70,6 +64,8 @@ public:
     void discardCard(Card* card);
     bool checkMilitaryVictory();
     bool checkScientificVictory();
+    void addMoney(int money) { treasury += money; };
+    void addVictoryPoints(int points) { victory_points += points; };
 
 };
 #endif
