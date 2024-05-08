@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include "City/Ressource.h"
-#include "City/City.h"
-#include "Effects/Effect.h"
+#include "../City/Ressource.h"
+#include "../City/City.h"
+#include "../Effects/Effect.h"
 
 using namespace std; 
 

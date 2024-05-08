@@ -1,7 +1,7 @@
 #ifndef PROJET_WONDER_H
 #define PROJET_WONDER_H
 
-#include"includes/City/City.h"
+#include"../City/City.h"
 #include "Card.h"
 
 class Wonder : public Card{

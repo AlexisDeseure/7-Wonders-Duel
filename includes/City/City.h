@@ -2,10 +2,10 @@
 #ifndef CITY_H
 #define CITY_H
 #include <iostream>
-#include"Cards/Wonder.h"
+#include"../../includes/Cards/Wonder.h"
 #include"Ressource.h"
 #include"ScientificSymbol.h"
-#include"Cards/ProgressToken.h"
+#include"../../includes/Cards/ProgressToken.h"
 
 namespace City {
     class City {
