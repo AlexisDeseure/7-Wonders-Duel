@@ -22,15 +22,16 @@ class Card {
 	//la liste des cartes
 	int taille_ressources; 
 	//cet attribut contient le nombre 
+	
+public : 
 	Card(string n) : name(n), ressources(new Ressource* [taille_ressources]) {};
 	~Card() {
 		for (int i = 0; i++; i < taille_ressources) {
 			delete ressources[i];
 		}
-		delete[] ressources; 
+		delete[] ressources;
 
-	 }
-public : 
+	}
 	string getName() const {
 		return name;
 	};
