@@ -7,7 +7,7 @@ private:
     int age;
     ~Building() = default;
 public:
-    Building(int a):age(a){};
+    Building(int a,string name):Card(name), age(a){};
 };
 
 #endif

@@ -86,7 +86,6 @@ class MarketDeck{
   -first_buildings : DeckElement**
   -nb_first_buildings : int
   +constructNewAgeMarket()
-  +advanceAge()
   +class iterator()
 }
 class DeckElement{
