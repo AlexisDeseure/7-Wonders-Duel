@@ -11,25 +11,28 @@ enum class RessourceType {
     Stone,
     Clay,
     Paper,
-    Glass
+    Glass,
+    RessourceTypeCount
 };
 
 class Ressource {
 private:
     RessourceType type;
-    int amount;
-    int price;
+    unsigned int amount;
+    unsigned int price;
 
 public:
     void addMaterials(int sum) { amount += sum; }; //Rajoute sum matériaux
-    int getPrice() const { return price; };
+    unsigned int getPrice() const { return price; };
 
     void updatePrice(int sum) { price += sum; }; //Soustraire des ressources = donner valeur négative
    //amount = quantite de ressources
   // price = prix d'une seule ressource
-    int getAmount() const {
+   unsigned int getAmount() const {
         return amount;
    }
+   void operator+=(unsigned int sum) { amount += sum; };
+   RessourceType getType() const { return type; };
 
 };
 
