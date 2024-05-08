@@ -1,8 +1,6 @@
 //Crée par Mateo
-#ifndef PROJET_SCIENTIFICSYMBOL_H
-#define PROJET_SCIENTIFICSYMBOL_H
-#include "City.h"
-
+#ifndef SCIENTIFICSYMBOL_H
+#define SCIENTIFICSYMBOL_H
 
 /*Un symbole n'a qu'un seul type, il faudra faire gaffe à la composition de la classe ScientificSymbol
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
@@ -21,4 +19,4 @@ public:
     }
 };
 
-#endif //PROJET_SCIENTIFICSYMBOL_H
+#endif

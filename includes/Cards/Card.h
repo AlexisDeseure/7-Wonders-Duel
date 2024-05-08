@@ -2,40 +2,36 @@
 #define CARD_H
 
 #include <string>
+#include <iostream>
 
-#include "../City/Ressource.h"
-#include "../City/City.h"
-#include "../Effects/Effect.h"
-
-using namespace std; 
-
-//void Ressource::add() {
-//
-//
-//}
+class Effect;
+class Ressource;
+class City;
 
 class Card {
-	string name; 
-	Ressource ** ressources; 
-	//City* owner; 
-	//pas besoin de la class city car city contient deja 
-	//la liste des cartes
-	int taille_ressources; 
-	//cet attribut contient le nombre 
-	
-public : 
-	Card(string n) : name(n), ressources(new Ressource* [taille_ressources]) {};
-	~Card() {
-		for (int i = 0; i++; i < taille_ressources) {
-			delete ressources[i];
-		}
-		delete[] ressources;
+    std::string name;
+    Ressource** ressources;
+    Effect** effects;
+    //City* owner;
+    //pas besoin de la class city car city contient deja
+    //la liste des cartes
+    int taille_ressources;
+    //cet attribut contient le nombre
 
-	}
-	string getName() const {
-		return name;
-	};
-	Ressource* get_price_ressources() const; 
+public :
+    Card(std::string name) : name(std::move(name)), ressources(new Ressource* [0]), taille_ressources(0), effects(new Effect* [0]) {};
+    ~Card() {
+        for (int i = 0; i++; i < taille_ressources) {
+            delete ressources[i];
+        }
+        delete[] ressources;
+
+    }
+    std::string getName() const {
+        return name;
+    };
+    Ressource* getPriceRessources() const;
+    int getCost(const City* city) const{return 0;};
 
 };
 

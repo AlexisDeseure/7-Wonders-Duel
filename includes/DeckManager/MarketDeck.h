@@ -1,6 +1,8 @@
 #ifndef MARKETDECK_H
 #define MARKETDECK_H
-#include "DeckElement.h"
+
+class DeckElement;
+class Building;
 
 namespace Deck {
 
@@ -14,12 +16,7 @@ namespace Deck {
     public:
         MarketDeck() :age(0), first_buildings(nullptr), nb_first_buildings(0){};
         MarketDeck(const MarketDeck& m) = delete;
-        ~MarketDeck() {
-            for (int i = 0; i < nb_first_buildings; i++) {
-                delete first_buildings[i];
-            }
-
-        };
+        ~MarketDeck();
         MarketDeck& operator=(const MarketDeck& m) = delete;
 
         void advanceAge();

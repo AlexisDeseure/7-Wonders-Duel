@@ -1,7 +1,5 @@
 #include "../../includes/DeckManager/DeckElement.h"
-
-namespace DeckElement {
-} // DeckElement
+#include "../../includes/Cards/Building.h"
 
 
 
