@@ -1,3 +1,0 @@
-C:/Users/ismat/Documents/UTC - GI02/LO21/git/7_Wonders_Duel/out/build/x64-Debug/CMakeFiles/7_Wonders_Duel.dir
-C:/Users/ismat/Documents/UTC - GI02/LO21/git/7_Wonders_Duel/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/ismat/Documents/UTC - GI02/LO21/git/7_Wonders_Duel/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
