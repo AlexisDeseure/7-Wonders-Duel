@@ -1,17 +1,16 @@
-#include "City/City.h"
-
-namespace City {
-
-    //Constructeur
-    City::City(int victory, int  treasury, bool turn) : victory_points(victory), treasury(treasury), player_turn(turn), wonder(new Wonder* [4]),
-        progress_tokens(new ProgressToken* [10]), ressources(new Ressource* [30]), scientific_symbols(new ScientificSymbol* [7]), taille_scientific_symbols(0), taille_ressources(0),military_position(0) {
-
+#include "../../includes/City/City.h"
+#include"../../includes/Cards/Wonder.h"
+#include"../../includes/Cards/Building.h"
+#include"../../includes/Cards/ProgressToken.h"
+#include"../../includes/City/Ressource.h"
+#include"../../includes/City/ScientificSymbol.h"
 
 void City::constructBuilding(Building* building) {
     // Vérifie si le joueur a les ressources nécessaires
-    if (canAfford(building->getCost())) {
+    int cost = building->getCost(this);
+    if (canAfford(cost)) {
         // Déduit les coûts des ressources
-        treasury -= building->getCost();
+        treasury -= cost;
         // Ajoute le bâtiment à la liste des bâtiments de la cité
         // A VOIR COMMENT
         std::cout << "Bâtiment construit : " << building->getName() << std::endl;
@@ -21,8 +20,9 @@ void City::constructBuilding(Building* building) {
 }
 
 void City::constructWonder(Wonder* wonder) {
-    if (canAfford(wonder->getCost()) && !wonder->isBuilt()) {
-        treasury -= wonder->getCost();
+    int cost = wonder->getCost(this);
+    if (canAfford(cost) && !wonder->isBuilt()) {
+        treasury -= cost;
         wonder->setBuilt(true);
         std::cout << "Merveille construite : " << wonder->getName() << std::endl;
         // Active l'effet de la merveille si nécessaire
@@ -35,7 +35,7 @@ void City::constructWonder(Wonder* wonder) {
 void City::discardCard(Card* card) {
     int coinsReceived = 2; // Base de pièces reçues pour défausser une carte
     // Ajoute des pièces supplémentaires si des bâtiments commerciaux spécifiques sont présents
-    coinsReceived += calculer coins from commercialBuildings();
+    coinsReceived += 0;//calculer coins from commercialBuildings();
     treasury += coinsReceived;
     std::cout << "Carte défaussée pour " << coinsReceived << " pièces." << std::endl;
     // La carte est ensuite retirée du jeu ou placée dans une pile de défausse
@@ -43,7 +43,8 @@ void City::discardCard(Card* card) {
 }
 
 
-
+/* je pense qu'il faudrait plutôt faire ça au niveau de la classe board qui gère le jeu : par exemple à chaque tour, elle interroge l'instance
+ * de la classe ConflictPawn pour savoir si un des 2 joueurs a gagné la victoire militaire
     bool City::checkMilitaryVictory() {
         if (military_position >= 9 ) {
             std::cout << "Victoire militaire obtenue !" << std::endl;
@@ -54,20 +55,20 @@ void City::discardCard(Card* card) {
             return false;
         }
     }
-
-    bool City::checkScientificVictory() {
-        //Ici il faut une fonction pour calculer
-        int unique_scientific_symbols = 6; //  Doit être calculé en fonction de la collection de symboles scientifiques.
-        if (taille_scientific_symbols >= unique_scientific_symbols) {
-            std::cout << "Victoire scientifique obtenue !" << std::endl;
-            return true;
-        }
-        else {
-            std::cout << "Victoire scientifique non atteinte." << std::endl;
-            return false;
-        }
-
-
+*/
+bool City::checkScientificVictory() {
+    //Ici il faut une fonction pour calculer
+    int unique_scientific_symbols = SCIENTIFIC_SYMBOL_LENGTH-1; //  Doit être calculé en fonction de la collection de symboles scientifiques.
+    if (getDistinctScientificSymbols() >= unique_scientific_symbols) {
+        std::cout << "Victoire scientifique obtenue !" << std::endl;
+        return true;
     }
+    else {
+        std::cout << "Victoire scientifique non atteinte." << std::endl;
+        return false;
+    }
+
+
 }
+
 

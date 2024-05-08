@@ -306,8 +306,8 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        4,
-                        "Money"
+                        "Money",
+                        4
                     ]
                 },
                 "scientific_symbol": null

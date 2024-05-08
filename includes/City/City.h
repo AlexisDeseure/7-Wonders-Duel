@@ -1,29 +1,39 @@
-//Crée par Mateo
 #ifndef CITY_H
 #define CITY_H
-#include <iostream>
-#include"Cards/Wonder.h"
-#include"Ressource.h"
-#include"ScientificSymbol.h"
-#include"Cards/ProgressToken.h"
 
-namespace City {
-    class City {
+#define RESSOURCE_LENGTH 5
+#define SCIENTIFIC_SYMBOL_LENGTH 7
+#define PROGRESS_TOKEN_LENGTH 10
+#define WONDER_LENGTH 4
+
+#include <iostream>
+
+class Building;
+class Wonder;
+class ProgressToken;
+class Ressource;
+class ScientificSymbol;
+class Card;
+
+class City {
 
     int victory_points;
     int treasury;
     int number_of_shields;
     bool player_turn;
-    int taille_ressources ;
-    int taille_scientific_symbols;
 
     Wonder** wonder; // 4 wonders
     ProgressToken** progress_tokens; // max of 10
-    Ressource** ressources;
+    Ressource** ressources; //5 ressources
     ScientificSymbol** scientific_symbols; //avoir un tableau de 7
 
 public:
-    City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false);
+    City(int victory = 0, int  treasury = 0, int shields = 0, bool turn = false)
+        :victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn),
+        wonder(new Wonder *[WONDER_LENGTH]), progress_tokens(new ProgressToken *[PROGRESS_TOKEN_LENGTH]),
+        ressources(new Ressource*[RESSOURCE_LENGTH]),
+        scientific_symbols(new ScientificSymbol*[SCIENTIFIC_SYMBOL_LENGTH])
+    {}
 
     ~City() {
         delete[] wonder;
@@ -31,13 +41,8 @@ public:
         //A verifier le nombre de ressources pour
         //Creer le destructeur et pouvoir
         //Iterer sur le nombre de ressources
-        for (int i = 0; i++; i < taille_scientific_symbols) {
-            delete scientific_symbols[i];
-        }
-        delete scientific_symbols;
-        for (int i = 0; i++; i < taille_ressources) {
-            delete ressources[i];
-        }
+
+        delete[] scientific_symbols;
         delete[] ressources;
         /*  SI ON DÉCIDE QUE CE N'EST PAS UNE AGREGATION
          *
@@ -58,10 +63,10 @@ public:
          */
     }
 
-
-
-    void constructBuilding(Building* building)
-    void constructWonder(Wonder* wonder)
+    int getDistinctScientificSymbols() const{return 0;};
+    bool canAfford(int price) const { return treasury >= price;};
+    void constructBuilding(Building* building);
+    void constructWonder(Wonder* wonder);
     void discardCard(Card* card);
     bool checkMilitaryVictory();
     bool checkScientificVictory();
