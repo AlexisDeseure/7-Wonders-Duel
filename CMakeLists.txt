@@ -43,6 +43,7 @@ add_executable(7_Wonders_Duel
         includes/Effects/List/AdversaryPaysMoneyToBank.h
         includes/Effects/List/InstantReplaying.h
         includes/Effects/List/AddMoney.h
+        includes/BoardManager/Board.h
 
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
@@ -78,5 +79,5 @@ add_executable(7_Wonders_Duel
 
         test/test_effects.cpp
         test/example_test_feature_2.cpp
-)
+        )
 
