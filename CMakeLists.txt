@@ -73,5 +73,5 @@ add_executable(7_Wonders_Duel
 
         test/test_effects.cpp
         test/example_test_feature_2.cpp
-        src/Cards/ProgressToken.cpp src/DeckManager/MarketDeck.cpp src/Cards/Building.cpp)
+        src/Cards/ProgressToken.cpp src/DeckManager/MarketDeck.cpp src/Cards/Building.cpp includes/BoardManager/Board.h)
 

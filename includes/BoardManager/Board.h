@@ -1,11 +1,7 @@
-//
-// Created by mateo on 08/05/2024.
-//
+#ifndef BOARD_H
+#define BOARD_H
 
-#ifndef INC_7_WONDERS_DUEL_BOARD_H
-#define INC_7_WONDERS_DUEL_BOARD_H
-namespace Board{
-    class Board{
+class Board{
     private:
         int age;
         static Board* instance;
@@ -35,6 +31,6 @@ namespace Board{
             }
             return *instance;
         }
-    };
-}
-#endif //INC_7_WONDERS_DUEL_BOARD_H
+};
+
+#endif
