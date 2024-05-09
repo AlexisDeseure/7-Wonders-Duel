@@ -42,6 +42,7 @@ add_executable(7_Wonders_Duel
         includes/Effects/List/AddVictoryPoint.h
         includes/Effects/List/AdversaryPaysMoneyToBank.h
         includes/Effects/List/InstantReplaying.h
+        includes/Effects/List/AddMoney.h
 
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
@@ -70,8 +71,12 @@ add_executable(7_Wonders_Duel
         src/Effects/List/AddVictoryPoint.cpp
         src/Effects/List/AdversaryPaysMoneyToBank.cpp
         src/Effects/List/InstantReplaying.cpp
+        src/Effects/List/AddMoney.cpp
+        src/Cards/ProgressToken.cpp
+        src/DeckManager/MarketDeck.cpp
+        src/Cards/Building.cpp
 
         test/test_effects.cpp
         test/example_test_feature_2.cpp
-        src/Cards/ProgressToken.cpp src/DeckManager/MarketDeck.cpp src/Cards/Building.cpp includes/BoardManager/Board.h)
+)
 

@@ -5,6 +5,13 @@
 #include"../../includes/City/Ressource.h"
 #include"../../includes/City/ScientificSymbol.h"
 
+City::City(int victory, int treasury, int shields, bool turn)
+    :victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn),
+    wonder(new Wonder *[WONDER_LENGTH]), progress_tokens(new ProgressToken *[PROGRESS_TOKEN_LENGTH]),
+    ressources(new Ressource*[static_cast<unsigned long long int>(RessourceType::RessourceTypeCount)]),
+    scientific_symbols(new ScientificSymbol*[static_cast<unsigned long long int>(SymboleType::SymbolTypeCount)])
+{}
+
 void City::constructBuilding(Building* building) {
     // Vérifie si le joueur a les ressources nécessaires
     int cost = building->getCost(this);
@@ -58,8 +65,7 @@ void City::discardCard(Card* card) {
 */
 bool City::checkScientificVictory() {
     //Ici il faut une fonction pour calculer
-    int unique_scientific_symbols = SCIENTIFIC_SYMBOL_LENGTH-1; //  Doit être calculé en fonction de la collection de symboles scientifiques.
-    if (getDistinctScientificSymbols() >= unique_scientific_symbols) {
+    if (getDistinctScientificSymbols() >= static_cast<unsigned long long int>(SymboleType::SymbolTypeCount)-1) {
         std::cout << "Victoire scientifique obtenue !" << std::endl;
         return true;
     }
@@ -69,6 +75,15 @@ bool City::checkScientificVictory() {
     }
 
 
+}
+
+Ressource& City::getRessource(RessourceType name) const {
+    for (int i = 0; i < static_cast<unsigned long long int>(RessourceType::RessourceTypeCount); ++i) {
+        if (ressources[i]->getType() == name) {
+            return *ressources[i];
+        }
+    }
+    throw std::invalid_argument("Ressource non trouvée.");
 }
 
 
