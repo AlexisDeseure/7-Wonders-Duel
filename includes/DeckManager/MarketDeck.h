@@ -4,14 +4,12 @@
 class DeckElement;
 class Building;
 
-namespace Deck {
-
-    class MarketDeck {
+class MarketDeck {
 
     private:
         const int age;
         DeckElement** first_buildings;
-        const int nb_first_buildings;
+        int nb_first_buildings;
 
     public:
         MarketDeck() :age(0), first_buildings(nullptr), nb_first_buildings(0){};
@@ -20,6 +18,7 @@ namespace Deck {
         MarketDeck& operator=(const MarketDeck& m) = delete;
 
         void advanceAge();
+        bool isEmpty() const { return nb_first_buildings == 0; };
 
         class iterator {
         private:
@@ -37,10 +36,9 @@ namespace Deck {
             DeckElement& operator*() { return **building; };
             // méthode pour accéder au building et le supprimer de l'architecture (rajoute les building fils dans la liste des choix possibles)
             Building& getBuilding();
+
         };
 
     };
-
-}
 
 #endif

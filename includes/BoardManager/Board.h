@@ -1,38 +1,27 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#define MAX_WONDERS 7
+
+#include <iostream>
+
+class ConflictPawn;
+class MarketDeck;
+
 class Board{
     private:
-//        static Board* instance;
+        int constructed_wonders;
+        ConflictPawn& conflict_pawn;
+        MarketDeck& market_deck;
 
-        Board(const Board&);
     public:
-        Board()=default;
+        Board();
         ~Board()=default;
-//        void advanceAgeInstance(){
-//            age++;
-//        };
-//        void advanceAge(){
-//            Board& instance_unique = getInstance();
-//            instance_unique.advanceAgeInstance();
-//        }
+        bool canConstructWonder() const { return constructed_wonders < MAX_WONDERS; };
+        void constructWonder() { constructed_wonders++; };
+        void advanceConflictPawn(int step);
+        bool deckIsEmpty() const;
 
-//        void updateMarketInstance(){
-//
-//        };
-//        void updateMarket(){
-//            Board& instance_unique = getInstance();
-//            instance_unique.updateMarketInstance();
-//        }
-//        Je ne pense pas qu'on ait besoin de design pattern singleton car si le jeu est destiné à tourner sur
-//        sur un serveur il faudra plusieurs instances de Board pour gérer les différentes parties
-//
-//        Board& getInstance(){
-//            if(!instance){
-//                instance = new Board;
-//            }
-//            return *instance;
-//        }
 };
 
 #endif
