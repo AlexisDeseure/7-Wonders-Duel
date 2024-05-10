@@ -57,8 +57,8 @@ public:
          */
     }
     Ressource& getRessource(RessourceType name) const;
-    int getDistinctScientificSymbols() const{return 0;};
-    bool canAfford(int price) const { return treasury >= price;};
+    int getDistinctScientificSymbols() const{ return 0; };
+    bool canAfford(int price) const { return treasury >= price; };
     void constructBuilding(Building* building);
     void constructWonder(Wonder* wonder);
     void discardCard(Card* card);

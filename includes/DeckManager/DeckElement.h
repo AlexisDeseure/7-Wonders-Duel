@@ -3,9 +3,7 @@
 
 class Building;
 
-namespace Deck {
-
-    class DeckElement {
+class DeckElement {
     private:
         const DeckElement* const right_son;
         const DeckElement* const left_son;
@@ -33,6 +31,5 @@ namespace Deck {
 
     };
 
-} // DeckElement
 
 #endif
