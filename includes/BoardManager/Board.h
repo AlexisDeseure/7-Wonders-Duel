@@ -3,28 +3,27 @@
 
 class Board{
     private:
-        int age;
 //        static Board* instance;
 
         Board(const Board&);
     public:
-        Board();
-        ~Board();
-        void advanceAgeInstance(){
-            age++;
-        };
-        void advanceAge(){
-            Board& instance_unique = getInstance();
-            instance_unique.advanceAgeInstance();
-        }
+        Board()=default;
+        ~Board()=default;
+//        void advanceAgeInstance(){
+//            age++;
+//        };
+//        void advanceAge(){
+//            Board& instance_unique = getInstance();
+//            instance_unique.advanceAgeInstance();
+//        }
 
-        void updateMarketInstance(){
-
-        };
-        void updateMarket(){
-            Board& instance_unique = getInstance();
-            instance_unique.updateMarketInstance();
-        }
+//        void updateMarketInstance(){
+//
+//        };
+//        void updateMarket(){
+//            Board& instance_unique = getInstance();
+//            instance_unique.updateMarketInstance();
+//        }
 //        Je ne pense pas qu'on ait besoin de design pattern singleton car si le jeu est destiné à tourner sur
 //        sur un serveur il faudra plusieurs instances de Board pour gérer les différentes parties
 //

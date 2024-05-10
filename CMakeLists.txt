@@ -79,5 +79,5 @@ add_executable(7_Wonders_Duel
 
         test/test_effects.cpp
         test/example_test_feature_2.cpp
-        includes/Game/Game.h src/Game/Game.cpp)
+        includes/Game/Game.h src/Game/Game.cpp includes/Game/Player.h src/Game/Player.cpp)
 
