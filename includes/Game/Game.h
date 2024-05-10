@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include <iostream>
 
 class Board;
 class City;
@@ -12,7 +13,10 @@ class Game{
         City* player_2;
 
     public:
-        Game();
+        Game(){
+            age = 0;
+            std::cout << "Game created" << std::endl;
+        };
         void advanceAge(){ age++; };
         void startGame();
 };
