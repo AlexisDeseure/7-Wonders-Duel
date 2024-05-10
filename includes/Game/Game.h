@@ -13,10 +13,7 @@ class Game{
         City* player_2;
 
     public:
-        Game(){
-            age = 0;
-            std::cout << "Game created" << std::endl;
-        };
+        Game();
         void advanceAge(){ age++; };
         void startGame();
 };

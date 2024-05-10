@@ -62,7 +62,6 @@ public:
     void constructBuilding(Building* building);
     void constructWonder(Wonder* wonder);
     void discardCard(Card* card);
-    bool checkMilitaryVictory();
     bool checkScientificVictory();
     void addMoney(int money) { treasury += money; };
     void addVictoryPoints(int points) { victory_points += points; };
