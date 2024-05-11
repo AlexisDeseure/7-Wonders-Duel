@@ -4,13 +4,16 @@
 /*Une ressource n'a qu'un seul type, il faudra faire gaffe à la composition
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
 */
-    enum class RessourceType {
-        Wood,
-        Stone,
-        Clay,
-        Paper,
-        Glass
-    };
+
+
+enum class RessourceType {
+    Wood,
+    Stone,
+    Clay,
+    Paper,
+    Glass,
+    RessourceTypeCount
+};
 
 class Ressource {
 private:

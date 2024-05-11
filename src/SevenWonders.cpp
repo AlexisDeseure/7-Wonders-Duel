@@ -1,5 +1,6 @@
 #include"C:\Users\ismat\Documents\UTC - GI02\LO21\git\7_Wonders_Duel\includes\City\Ressource.h"
 #include"C:\Users\ismat\Documents\UTC - GI02\LO21\git\7_Wonders_Duel\includes\Cards\Card.h"
+#include "../includes/Game/Game.h"
 
 using namespace std; 
     
@@ -15,6 +16,7 @@ int main() {
     Carte->ajouteRessources(*R3);
 
    Carte->getPriceRessources(); 
+    Game();
     return 0;
 }   
     

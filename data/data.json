@@ -306,8 +306,8 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        4,
-                        "Money"
+                        "Money",
+                        4
                     ]
                 },
                 "scientific_symbol": null
@@ -907,7 +907,7 @@
                     "Papyrus": 2
                 },
                 "effects": {
-                    "earnXMoneyPerAtConstruct": [
+                    "earnXMoneyPerMostAtConstruct": [
                         "grey",
                         3
                     ],
@@ -929,7 +929,7 @@
                     "Verre": 1
                 },
                 "effects": {
-                    "earnXMoneyPerAtConstruct": [
+                    "earnXMoneyPerMostAtConstruct": [
                         "brown",
                         2
                     ],
@@ -950,7 +950,7 @@
                     "Verre": 1
                 },
                 "effects": {
-                    "earnXMoneyPerAtConstruct": [
+                    "earnXMoneyPerMostAtConstruct": [
                         "red",
                         1
                     ],
@@ -971,7 +971,7 @@
                     "Verre": 1
                 },
                 "effects": {
-                    "earnXMoneyPerAtConstruct": [
+                    "earnXMoneyPerMostAtConstruct": [
                         "gold",
                         1
                     ],

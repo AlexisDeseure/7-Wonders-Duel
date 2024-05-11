@@ -19,4 +19,3 @@ Ressource* Card::ajouteRessources(Ressource& R) {
     taille_ressources++;
     return &R;
 }
-

@@ -15,13 +15,3 @@ std::ostream& operator<<(std::ostream& os, const Ressource& ressource) {
     return os;
 }
 
-/*
-enum class RessourceType {
-    Wood,
-    Stone,
-    Clay,
-    Paper,
-    Glass,
-    RessourceTypeCount
-};
-*/
