@@ -139,7 +139,14 @@
     <ClInclude Include="src/SevenWonders.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src/BoardManager/ConflictPawn.cpp" />
+    <ClCompile Include="src/Cards/Wonder.cpp" />
+	  <ClCompile Include="src/Cards/Card.cpp" />
+
+	  <ClCompile Include="src/City/City.cpp" />
+	  <ClCompile Include="src/City/Ressources.cpp" />
+	  <ClCompile Include="src/DeckManager/DeckElement.cpp" />
+    <ClCompile Include="src/Effects/Effect.cpp" />
     <ClCompile Include="src/SevenWonders.cpp" />
     <ClCompile Include="src/Wonder.cpp" />
     <ClCompile Include="src/test.cpp" />
