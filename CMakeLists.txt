@@ -8,7 +8,6 @@ include_directories(.
 
 add_executable(7_Wonders_Duel
         src/SevenWonders.cpp
-
         includes/City/Ressource.h
         includes/City/ScientificSymbol.h
         includes/Cards/ProgressToken.h
@@ -18,32 +17,6 @@ add_executable(7_Wonders_Duel
         includes/City/City.h
         includes/Cards/Card.h
         includes/BoardManager/ConflictPawn.h
-        includes/Effects/List/ChangeMarketRule.h
-        includes/Cards/Building.h
-        includes/Effects/Effect.h
-        includes/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.h
-        includes/Effects/List/EarnXVictoryPointPerGoldAndBrownMostAtEndGame.h
-        includes/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.h
-        includes/Effects/List/EarnXMoneyPerWonderAtConstruct.h
-        includes/Effects/List/EarnXMoneyPerMostAtConstruct.h
-        includes/Effects/List/WonderCostReducedByX.h
-        includes/Effects/List/TakeAdversaryTradeMoney.h
-        includes/Effects/List/TakeScientificSymbol.h
-        includes/Effects/List/EarnThreeVictoryPointsPerProgressTokenAtEndGame.h
-        includes/Effects/List/MoveConflictPawnOneMorePerNewRed.h
-        includes/Effects/List/NewWondersHaveInstantReplaying.h
-        includes/Effects/List/EarnFourMoneyPerBuildingChaining.h
-        includes/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.h
-        includes/Effects/List/BuildOneDiscardedBuilding.h
-        includes/Effects/List/AddRessourceChoice.h
-        includes/Effects/List/DiscardAdversaryBrownCard.h
-        includes/Effects/List/AddRessource.h
-        includes/Effects/List/MoveConflictPawn.h
-        includes/Effects/List/AddVictoryPoint.h
-        includes/Effects/List/AdversaryPaysMoneyToBank.h
-        includes/Effects/List/InstantReplaying.h
-        includes/Effects/List/AddMoney.h
-        includes/BoardManager/Board.h
 
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
@@ -76,8 +49,9 @@ add_executable(7_Wonders_Duel
         src/Cards/ProgressToken.cpp
         src/DeckManager/MarketDeck.cpp
         src/Cards/Building.cpp
-
+         src/Cards/Card.cpp 
+         src/City/Ressources.cpp  
         test/test_effects.cpp
         test/example_test_feature_2.cpp
-        includes/Game/Game.h src/Game/Game.cpp includes/Game/Player.h src/Game/Player.cpp src/BoardManager/Board.cpp)
+ "test/example_test_feature_1.cpp")
 
