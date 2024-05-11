@@ -1,16 +1,18 @@
 #ifndef CITY_H
 #define CITY_H
 
-// peut-on gerer les includes comme ça Alexis ?
+#define PROGRESS_TOKEN_LENGTH 10
+#define WONDER_LENGTH 4
+
 #include <iostream>
 #include <vector>
-#include "../../includes/Cards/Wonder.h"
-#include "../../includes/Cards/Building.h"
-#include "../../includes/Cards/ProgressToken.h"
-#include "../../includes/City/Ressource.h"
-#include "../../includes/City/ScientificSymbol.h"
-#include "../../includes/Cards/Card.h"
 
+class Building;
+class Wonder;
+class ProgressToken;
+class Ressource;
+class ScientificSymbol;
+class Card;
 enum class RessourceType;
 enum class SymboleType;
 

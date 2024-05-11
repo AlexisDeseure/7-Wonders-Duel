@@ -1,4 +1,10 @@
 #include "../../includes/City/City.h"
+#include"../../includes/Cards/Wonder.h"
+#include"../../includes/Cards/Building.h"
+#include"../../includes/Cards/ProgressToken.h"
+#include"../../includes/City/Ressource.h"
+#include"../../includes/City/ScientificSymbol.h"
+
 
 City::City(int victory, int treasury, int shields, bool turn)
         : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn) {}
