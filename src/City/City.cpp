@@ -75,7 +75,7 @@ void City::constructWonder(Wonder* wonder) {
 void City::discardCard(Card* card) {
     int coinsReceived = 2; // Base amount for discarding a card
 
-     // Ajoute des pièces supplémentaires si des bâtiments commerciaux spécifiques sont présents
+     // TODO Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
     coinsReceived += 0;//calculer coins from commercialBuildings();
 
     treasury += coinsReceived;
@@ -84,7 +84,7 @@ void City::discardCard(Card* card) {
 }
 
 bool City::checkScientificVictory() {
-    return getDistinctScientificSymbols() >= 6; // Il y a symboles 7 distinct dans le jeu
+    return getDistinctScientificSymbols() >= 6; // Il y a 6 symboles distinct dans le jeu
 }
 
 void City::addMoney(int money) {
