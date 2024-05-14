@@ -94,3 +94,21 @@ void City::addMoney(int money) {
 void City::addVictoryPoints(int points) {
     victory_points += points;
 }
+
+void City::addShields(int shields) {
+    number_of_shields += shields;
+}
+
+void City::addChainSymbol(const std::string& symbol) {
+    chain_symbols.push_back(symbol);
+}
+
+bool City::hasChainSymbol(const std::string& symbol) const {
+    for (const auto& s : chain_symbols) {
+        if (s == symbol) {
+            return true;
+        }
+    }
+    return false;
+}
+

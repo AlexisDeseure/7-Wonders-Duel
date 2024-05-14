@@ -16,27 +16,29 @@ enum class RessourceType {
 };
 
 class Ressource {
-private:
-    RessourceType type;
-    unsigned int amount;
-    unsigned int price;
+    private:
+        RessourceType type;
+        unsigned int amount;
+        unsigned int price;
+        //amount = quantite de ressources
+        // price = prix d'une seule ressource
 
-public:
-    friend std::ostream& operator<<(std::ostream& os, const Ressource& res);
-    Ressource(RessourceType t, unsigned int a, unsigned int p) : type(t),amount(a),price(p){}
-
-    void addMaterials(int sum) { amount += sum; }; //Rajoute sur matériaux
-    unsigned int getPrice() const { return price; }
+    public:
+        //friend std::ostream& operator<<(std::ostream& os, const Ressource& res);
+        Ressource(RessourceType t, unsigned int a, unsigned int p) : type(t),amount(a),price(p){}
 
 
-    void updatePrice(int sum) { price += sum; }; //Soustraire des ressources = donner valeur négative
-   //amount = quantite de ressources
-  // price = prix d'une seule ressource
-   unsigned int getAmount() const {
-        return amount;
-   }
-   void operator+=(unsigned int sum) { amount += sum; };
-   RessourceType getType() const { return type; };
+        unsigned int getPrice() const { return price; }
+
+
+        void updatePrice(int sum) { price += sum; }; //baisser le prix = donner valeur négative
+
+        unsigned int getAmount() const { return amount; }
+
+        void add(int sum) { amount += sum; }; // à supprimer à terme
+        void operator+=(unsigned int sum) { amount += sum; };
+
+        RessourceType getType() const { return type; };
 
 };
     

@@ -29,6 +29,7 @@ public:
     void operator++(int){ //Surcharge de l'opérateur ++ pour incrémenter le nombre de symboles
         count++;
     }
+    SymboleType getType() const { return symbol_type; }; //Renvoie le type de symbole
 };
 
 #endif

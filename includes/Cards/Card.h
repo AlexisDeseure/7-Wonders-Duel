@@ -3,34 +3,39 @@
 
 #include <string>
 #include <iostream>
-#include"C:\Users\ismat\Documents\UTC - GI02\LO21\git\7_Wonders_Duel\includes\City\Ressource.h"
-#include"C:\Users\ismat\Documents\UTC - GI02\LO21\git\7_Wonders_Duel\includes\City\City.h"
-class Effect; 
+#include <utility>
+#include <vector>
+
+class Effect;
+class Ressource;
+class City;
+
 class Card {
     std::string name;
-    Ressource** ressources;
-    Effect** effects;
-    //City* owner;
-    //pas besoin de la class city car city contient deja
-    //la liste des cartes
-    int taille_ressources;
-    //cet attribut contient le nombre de ressources
 
-public :
-    Card(std::string name) : name(std::move(name)), ressources(new Ressource* [0]), taille_ressources(0), effects(new Effect* [0]) {};
-    ~Card() {
-     //   for (int i = 0; i++; i < taille_ressources) {
-     //       delete ressources[i];
-     //   }
-        delete[] ressources;
+    std::vector<Ressource*> cost;
+    std::vector<Effect*> effects;
 
-    }
-    Ressource* ajouteRessources( Ressource& R);
-    std::string getName() const {
-        return name;
-    };
-    void getPriceRessources() const;
-    int getCost(const City* city) const{return 0;}
+    public :
+        Card(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects)
+        : name(std::move(name)), cost(cost), effects(effects){};
+
+        ~Card();
+
+    //     //   for (int i = 0; i++; i < taille_ressources) {
+    //     //       delete ressources[i];
+    //     //   }
+    //        delete[] cost;
+    //
+        void ajouteRessources(Ressource* R);
+        std::string getName() const {
+            return name;
+        };
+        // void getPriceRessources() const; en fait c'est inutile
+
+        unsigned int getCost(const City* city) const;
+        void applyEffects(City* city) const;
+        virtual bool isChainInInCity(const City* city) const = 0;
 
 
 };

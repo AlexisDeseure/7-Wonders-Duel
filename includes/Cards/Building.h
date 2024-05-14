@@ -7,10 +7,18 @@
 class Building : public Card{
 private:
     int age;
-    ~Building() = default;
+    std::vector<std::string> chainIn;
+    std::vector<std::string> chainOut;
+
 public:
-    Building(const std::string& n, int a) : Card(n), age(a) {};
+    ~Building() = default;
+    Building(const std::string& name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects,
+             int a, const std::vector<std::string>& chainIn, const std::vector<std::string>& chainOut)
+             : Card(name, cost, effects), age(a), chainIn(chainIn), chainOut(chainOut) {};
+
     int getAge() const {return age;};
+    void addChainOutToCity(City* city) const;
+    bool isChainInInCity(const City* city) const override;
 
 };
 
