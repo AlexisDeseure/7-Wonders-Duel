@@ -1,20 +1,23 @@
 #ifndef ADDRESSOURCE_H
 #define ADDRESSOURCE_H
 
-#include "../Effect.h"
+#include "../EffectFactory.h"
 
 class City; // Déclaration anticipée de City
 enum class RessourceType;
 
 class AddRessource : public Effect {
     public:
-        AddRessource(RessourceType ressource, int quantity = 1) : Effect(), ressource(ressource), quantity(quantity) {};
+        AddRessource();
         void effect(City* city) override;
-
+        void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) override;
 
     private:
         RessourceType ressource;
         int quantity;
 
 };
+
+REGISTER_CLASS(AddRessource);
+
 #endif
