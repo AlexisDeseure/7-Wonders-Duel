@@ -7,15 +7,14 @@ class City; // Déclaration anticipée de City
 enum class RessourceType;
 
 class AddRessource : public Effect {
-public:
-    AddRessource(std::string nom, RessourceType ressource, int quantity = 1) : Effect(std::move(nom)), ressource(ressource),
-                                                                     quantity(quantity) {};
-    void effect(City* city);
+    public:
+        AddRessource(RessourceType ressource, int quantity = 1) : Effect(), ressource(ressource), quantity(quantity) {};
+        void effect(City* city) override;
 
 
-private:
-    RessourceType ressource;
-    int quantity;
+    private:
+        RessourceType ressource;
+        int quantity;
 
 };
 #endif

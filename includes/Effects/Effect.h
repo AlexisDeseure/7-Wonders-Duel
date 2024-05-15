@@ -2,19 +2,22 @@
 #define EFFECT_H
 
 #include <iostream>
+#include <map>
+#include <vector>
 
 class City; // Déclaration anticipée de la classe City
 
 class Effect{
     public:
-        Effect(std::string nom): name(std::move(nom)) {};
+        Effect() = default;
         virtual ~Effect() = default;
-        std::string getName() const {return name;};
-        void apply(City* city) const;
-        virtual void effect(City* city) const = 0;
-    private:
-        std::string name;
+
+        // implementation of the template method design pattern
+        void apply(City* city);
+        virtual void effect(City* city) = 0;
+        virtual void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) = 0;
 };
+
 
 
 #endif

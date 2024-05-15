@@ -46,6 +46,7 @@ add_executable(7_Wonders_Duel
         includes/BoardManager/Board.h
         includes/Game/Game.h
         includes/Game/Player.h
+        includes/Effects/EffectFactory.h
 
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
@@ -84,6 +85,6 @@ add_executable(7_Wonders_Duel
         src/Cards/Card.cpp
 
         test/test_effects.cpp
-        test/example_test_feature_2.cpp )
+        test/example_test_feature_2.cpp)
 
 

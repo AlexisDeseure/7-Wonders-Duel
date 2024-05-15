@@ -6,13 +6,13 @@
 class City; // Déclaration anticipée de City
 
 class AddVictoryPoint : public Effect {
-public:
-    AddVictoryPoint(std::string nom, int quantity) : Effect(std::move(nom)), quantity(quantity) {};
-    void effect(City* city);
+    public:
+        AddVictoryPoint(int quantity) : Effect(), quantity(quantity) {};
+        void effect(City* city) override;
 
 
-private:
-    int quantity;
+    private:
+        int quantity;
 
 };
 
