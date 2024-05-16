@@ -1,4 +1,4 @@
-#include"../../includes/City/Ressource.h"
+#include"Ressource.h"
 
 
 //std::ostream& operator<<(std::ostream& os, const Ressource& ressource) {

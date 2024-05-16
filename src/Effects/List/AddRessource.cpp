@@ -1,6 +1,6 @@
-#include "../../../includes/Effects/List/AddRessource.h"
-#include "../../../includes/City/City.h"
-#include"../../../includes/City/Ressource.h"
+#include "AddRessource.h"
+#include "City.h"
+#include"Ressource.h"
 
 AddRessource::AddRessource() : ressource(RessourceType::RessourceTypeCount), quantity(0) {}
 

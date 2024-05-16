@@ -1,2 +1,2 @@
-#include "../../includes/Cards/ProgressToken.h"
-#include "../../includes/City/City.h"
+#include "ProgressToken.h"
+#include "City.h"

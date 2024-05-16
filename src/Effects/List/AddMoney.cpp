@@ -1,5 +1,5 @@
-#include "../../../includes/Effects/List/AddMoney.h"
-#include "../../../includes/City/City.h"
+#include "AddMoney.h"
+#include "City.h"
 
 void AddMoney::effect(City* city) {
     city->addMoney(quantity);

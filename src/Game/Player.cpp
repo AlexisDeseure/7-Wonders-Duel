@@ -1,7 +1,7 @@
 #include <utility>
 
-#include "../../includes/Game/Player.h"
-#include "../../includes/City/City.h"
+#include "Player.h"
+#include "City.h"
 
 Player::Player(bool ai, AiLevel level, std::string name) : isAI(ai), city(*new City()), aiLevel(level), name(std::move(name)){
     std::cout << "Player created" << std::endl;

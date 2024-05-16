@@ -1,9 +1,9 @@
-#include "../../includes/City/City.h"
-#include"../../includes/Cards/Wonder.h"
-#include"../../includes/Cards/Building.h"
-#include"../../includes/Cards/ProgressToken.h"
-#include"../../includes/City/Ressource.h"
-#include"../../includes/City/ScientificSymbol.h"
+#include "City.h"
+#include"Wonder.h"
+#include"Building.h"
+#include"ProgressToken.h"
+#include"Ressource.h"
+#include"ScientificSymbol.h"
 
 
 City::City(int victory, int treasury, int shields, bool turn)

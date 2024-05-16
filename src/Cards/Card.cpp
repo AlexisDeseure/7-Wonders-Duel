@@ -1,7 +1,7 @@
-#include "../../includes/Cards/Card.h"
-#include "../../includes/City/Ressource.h"
-#include "../../includes/Effects/Effect.h"
-#include "../../includes/City/City.h"
+#include "Card.h"
+#include "Ressource.h"
+#include "Effect.h"
+#include "City.h"
 
 
 using namespace std;

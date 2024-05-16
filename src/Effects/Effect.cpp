@@ -1,5 +1,5 @@
-#include "../../includes/Effects/Effect.h"
-#include "../../includes/City/City.h"
+#include "Effect.h"
+#include "City.h"
 
 void Effect::apply(City* city) {
     /*Comportement de base*/

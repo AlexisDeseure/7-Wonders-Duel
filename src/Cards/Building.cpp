@@ -1,5 +1,5 @@
-#include "../../includes/Cards/Building.h"
-#include "../../includes/City/City.h"
+#include "Building.h"
+#include "City.h"
 
 void Building::addChainOutToCity(City* city) const {
     for (const auto& chain : chainOut) {

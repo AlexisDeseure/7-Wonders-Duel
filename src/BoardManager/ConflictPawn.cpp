@@ -1,4 +1,4 @@
-#include "../../includes/BoardManager/ConflictPawn.h"
+#include "ConflictPawn.h"
 
 int ConflictPawn::move(int a ){
 

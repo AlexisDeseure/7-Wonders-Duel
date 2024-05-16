@@ -1,4 +1,4 @@
-#include "../../includes/Cards/Wonder.h"
+#include "Wonder.h"
 
 
 

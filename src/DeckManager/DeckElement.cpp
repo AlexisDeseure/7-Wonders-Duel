@@ -1,5 +1,5 @@
-#include "../../includes/DeckManager/DeckElement.h"
-#include "../../includes/Cards/Building.h"
+#include "DeckElement.h"
+#include "Building.h"
 
 
 

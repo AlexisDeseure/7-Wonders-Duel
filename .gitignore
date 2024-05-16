@@ -1,10 +1,10 @@
-.idea/
-.vs/
 out/
 x64/
 Debug/
+build/
 SevenWonders/
 cmake-build-debug
 test.exe
 *.filters
 *.user
+.*/

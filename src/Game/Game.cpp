@@ -1,6 +1,6 @@
-#include "../../includes/Game/Game.h"
-#include "../../includes/BoardManager/Board.h"
-#include "../../includes/Game/Player.h"
+#include "Game.h"
+#include "Board.h"
+#include "Player.h"
 
 
 Game::Game() : age(0), board(*new Board()){
