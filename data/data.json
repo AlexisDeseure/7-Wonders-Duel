@@ -305,8 +305,7 @@
                 "color": "gold",
                 "cost": null,
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         4
                     ]
                 },
@@ -583,8 +582,7 @@
                 "color": "gold",
                 "cost": null,
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         6
                     ]
                 },
@@ -1263,8 +1261,7 @@
                     "addVictoryPoint": [
                         4
                     ],
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         6
                     ]
                 }
@@ -1318,8 +1315,7 @@
             {
                 "name": "Urbanisme",
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         6
                     ],
                     "earnFourMoneyPerBuildingChaining": null
@@ -1385,8 +1381,7 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         6
                     ],
                     "addVictoryPoint": [
@@ -1494,8 +1489,7 @@
                     "Stone": 1
                 },
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         12
                     ],
                     "instantReplaying": null
@@ -1509,8 +1503,7 @@
                     "Clay": 2
                 },
                 "effects": {
-                    "addRessource": [
-                        "Money",
+                    "addMoney": [
                         3
                     ],
                     "instantReplaying": null,
