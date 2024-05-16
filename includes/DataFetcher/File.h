@@ -43,6 +43,8 @@ public:
     QJsonArray listeProgressToken();
     QJsonArray listeWonder();
 
+    std::vector<std::pair<QString,QString>> getNames();
+
     QJsonObject getBuildingsProperties(QString name);
     QJsonObject getProgressTokenProperties(QString name);
     QJsonObject getWonderProperties(QString name);
@@ -51,11 +53,9 @@ public:
     std::vector<File::EffectTransfer> getProgressTokenEffects(QString name);
     std::vector<File::EffectTransfer> getWonderEffects(QString name);
 
-    std::vector<std::pair<QString,QString>> getNames();
-
     std::vector<std::pair<QString,int>> getCost(QString name);
 
-
+    std::pair<QString,QString> getChaining(QString name);
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);

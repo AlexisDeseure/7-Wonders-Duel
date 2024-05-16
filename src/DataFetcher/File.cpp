@@ -217,3 +217,16 @@ std::vector<std::pair<QString,QString>> File::getNames(){
 
     return names;
 }
+
+std::pair<QString,QString> File::getChaining(QString name){
+    QJsonArray LBuilding = listeBuildings();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            std::pair<QString,QString> chaining = std::make_pair(points.toObject().value("chainage_send").toString(),points.toObject().value("chainage_receive").toString());
+            return chaining;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom!";
+}
+

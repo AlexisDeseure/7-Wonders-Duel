@@ -39,6 +39,10 @@ SevenWonderUI::SevenWonderUI(QWidget *parent)
     for (size_t i = 0; i<names.size();i++){
         std::cout << names[i].first.toStdString() << " | " << names[i].second.toStdString() << "\n";
     }
+    std::cout << "\n";
+
+    std::pair<QString,QString> chaining = json.getChaining("Port");
+    std::cout << chaining.first.toStdString() << " | " << chaining.second.toStdString() << "\n";
 }
 
 SevenWonderUI::~SevenWonderUI()
