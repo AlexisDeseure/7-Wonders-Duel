@@ -192,3 +192,28 @@ std::vector<std::pair<QString,int>> File::getCost(QString name){
     }
     return cost;
 }
+
+std::vector<std::pair<QString,QString>> File::getNames(){
+    QJsonArray Lbuilding = listeBuildings();
+    QJsonArray LWonder = listeWonder();
+    QJsonArray LPT = listeProgressToken();
+
+    std::vector<std::pair<QString,QString>> names ;
+
+    for (auto points:Lbuilding){
+        QString bname = points.toObject().value("name").toString();
+        names.insert(names.end(),1,std::make_pair("Building",bname));
+    }
+
+    for (auto points:LWonder){
+        QString Wname = points.toObject().value("name").toString();
+        names.insert(names.end(),1,std::make_pair("Wonder",Wname));
+    }
+
+    for (auto points:LPT){
+        QString PTname = points.toObject().value("name").toString();
+        names.insert(names.end(),1,std::make_pair("Progress Token",PTname));
+    }
+
+    return names;
+}

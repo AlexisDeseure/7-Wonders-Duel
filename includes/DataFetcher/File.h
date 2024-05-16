@@ -50,7 +50,12 @@ public:
     std::vector<EffectTransfer> getBuildingEffects(QString name);
     std::vector<File::EffectTransfer> getProgressTokenEffects(QString name);
     std::vector<File::EffectTransfer> getWonderEffects(QString name);
+
+    std::vector<std::pair<QString,QString>> getNames();
+
     std::vector<std::pair<QString,int>> getCost(QString name);
+
+
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);

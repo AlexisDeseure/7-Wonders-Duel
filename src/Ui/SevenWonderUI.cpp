@@ -8,7 +8,7 @@ SevenWonderUI::SevenWonderUI(QWidget *parent)
 {
     ui->setupUi(this);
     File json;
-    std::vector<File::EffectTransfer> effetB = json.getBuildingEffects("Port");
+    std::vector<File::EffectTransfer> effetB = json.getBuildingEffects("Taverne");
     std::vector<File::EffectTransfer> effetW = json.getWonderEffects("La Via Appia");
     std::vector<File::EffectTransfer> effetPT = json.getProgressTokenEffects("Agriculture");
     std::cout << "\n";
@@ -31,6 +31,13 @@ SevenWonderUI::SevenWonderUI(QWidget *parent)
     std::vector<std::pair<QString,int>> cout = json.getCost("Agriculture");
     for (size_t i = 0; i<cout.size();i++){
         std::cout << cout[i].first.toStdString() << " " << cout[i].second << "\n";
+    }
+
+    std::cout << "\n";
+
+    std::vector<std::pair<QString,QString>> names = json.getNames();
+    for (size_t i = 0; i<names.size();i++){
+        std::cout << names[i].first.toStdString() << " | " << names[i].second.toStdString() << "\n";
     }
 }
 
