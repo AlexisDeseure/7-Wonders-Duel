@@ -188,10 +188,7 @@ std::vector<std::pair<QString,int>> File::getCost(QString name){
         }
     }
     else if (!PT.empty()){
-        QJsonObject LCost = PT.value("cost").toObject();
-        for (auto points:LCost.keys()){
-            cost.insert(cost.end(),1,std::make_pair(points,LCost.value(points).toInt()));
-        }
+        qDebug() << "Un Progress Token n'a pas d'attribut 'cost'";
     }
     return cost;
 }

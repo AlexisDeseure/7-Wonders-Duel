@@ -27,9 +27,11 @@ SevenWonderUI::SevenWonderUI(QWidget *parent)
         std::cout << effetPT[i] << "\n";
     }
     std::cout << "\n";
-    // std::vector<std::pair<QString,int>> cout = json.getCost("Chantier");
-    // for (size_t i = 0; i<cout.size();i++){
-    //     std::cout << cout[i].first.toStdString() << " " << cout[i].second << "\n";
+
+    std::vector<std::pair<QString,int>> cout = json.getCost("Agriculture");
+    for (size_t i = 0; i<cout.size();i++){
+        std::cout << cout[i].first.toStdString() << " " << cout[i].second << "\n";
+    }
 }
 
 SevenWonderUI::~SevenWonderUI()
