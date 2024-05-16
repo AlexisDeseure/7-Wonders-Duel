@@ -58,7 +58,8 @@ HEADERS = \
    includes/Game/Game.h \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
-   includes/Ui/SevenWonderUI.h
+   includes/Ui/SevenWonderUI.h \
+   includes/DataFetcher/instanciator.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -69,6 +70,7 @@ SOURCES = \
    src/Cards/Wonder.cpp \
    src/City/City.cpp \
    src/City/Ressources.cpp \
+   src/DataFetcher/instanciator.cpp \
    src/DeckManager/DeckElement.cpp \
    src/DeckManager/MarketDeck.cpp \
    src/Effects/List/AddMoney.cpp \
