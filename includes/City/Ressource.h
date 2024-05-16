@@ -41,6 +41,9 @@ class Ressource {
         RessourceType getType() const { return type; };
 
 };
+
+std::string ressourceTypeToString(RessourceType type);
+RessourceType StringToRessourceType(std::string nom);
     
 
 #endif

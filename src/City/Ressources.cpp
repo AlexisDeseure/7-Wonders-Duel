@@ -1,5 +1,22 @@
 #include"Ressource.h"
 
+std::string ressourceTypeToString(RessourceType type){
+    switch (type) {
+        case RessourceType::Wood:
+            return "Wood";
+        case RessourceType::Stone:
+            return "Stone";
+        case RessourceType::Clay:
+            return "Clay";
+        case RessourceType::Paper:
+            return "Paper";
+        case RessourceType::Glass:
+            return "Glass";
+        case RessourceType::RessourceTypeCount:
+            return "RessourceTypeCount";
+    }
+    return "Unknown";
+}
 
 //std::ostream& operator<<(std::ostream& os, const Ressource& ressource) {
 //    os << "Amount: " << ressource.getAmount() << "\n" << "Price: " << ressource.getPrice();
