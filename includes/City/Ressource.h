@@ -1,6 +1,8 @@
 #ifndef RESSOURCE_H
 #define RESSOURCE_H
 #include<iostream>
+#include <array>
+
 /*Une ressource n'a qu'un seul type, il faudra faire gaffe à la composition
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
 */
@@ -12,8 +14,10 @@ enum class RessourceType {
     Clay,
     Paper,
     Glass,
-    RessourceTypeCount
+    LENGTH
 };
+
+extern const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name;
 
 class Ressource {
     private:

@@ -13,7 +13,7 @@ enum class SymboleType {
     archipendulum,
     wheel,
     quill,
-    SymbolTypeCount
+    LENGTH
 };
 
 class ScientificSymbol{

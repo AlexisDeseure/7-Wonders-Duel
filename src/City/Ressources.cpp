@@ -1,21 +1,21 @@
 #include"Ressource.h"
 
+const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name { "Wood", "Stone", "Clay", "Paper", "Glass"};
+
 std::string ressourceTypeToString(RessourceType type){
-    switch (type) {
-        case RessourceType::Wood:
-            return "Wood";
-        case RessourceType::Stone:
-            return "Stone";
-        case RessourceType::Clay:
-            return "Clay";
-        case RessourceType::Paper:
-            return "Paper";
-        case RessourceType::Glass:
-            return "Glass";
-        case RessourceType::RessourceTypeCount:
-            return "RessourceTypeCount";
+    if (type == RessourceType::LENGTH){
+        throw "RessourceType out of range";
     }
-    return "Unknown";
+    return ressource_name[static_cast<std::size_t>(type)];
+}
+
+RessourceType StringToRessourceType(std::string nom){
+    for (std::size_t i = 0; i < static_cast<int>(RessourceType::LENGTH); i++){
+        if (nom == ressource_name[i]){
+            return static_cast<RessourceType>(i);
+        }
+    }
+    throw "RessourceType not found";
 }
 
 //std::ostream& operator<<(std::ostream& os, const Ressource& ressource) {
@@ -27,7 +27,7 @@ std::string ressourceTypeToString(RessourceType type){
 //    if (static_cast<int>(ressource.getType()) == 2) os << "Clay";
 //    if (static_cast<int>(ressource.getType()) == 3) os << "Paper";
 //    if (static_cast<int>(ressource.getType()) == 4) os << "Glass";
-//    if (static_cast<int>(ressource.getType()) == 5) os << "RessourceTypeCount";
+//    if (static_cast<int>(ressource.getType()) == 5) os << "LENGTH";
 //
 //    return os;
 //}
