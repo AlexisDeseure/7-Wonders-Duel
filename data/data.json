@@ -10,7 +10,7 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        "Bois",
+                        "Wood",
                         1
                     ]
                 },
@@ -27,14 +27,14 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Bois",
+                        "Wood",
                         1
                     ]
                 },
                 "scientific_symbol": null
             },
             {
-                "name": "Bassin Argileux",
+                "name": "Bassin Clayux",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
@@ -42,7 +42,7 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        "Argile",
+                        "Clay",
                         1
                     ]
                 },
@@ -59,7 +59,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Argile",
+                        "Clay",
                         1
                     ]
                 },
@@ -74,7 +74,7 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        "Fer",
+                        "Stone",
                         1
                     ]
                 },
@@ -91,14 +91,14 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Fer",
+                        "Stone",
                         1
                     ]
                 },
                 "scientific_symbol": null
             },
             {
-                "name": "Verrerie",
+                "name": "Glassrie",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
@@ -108,7 +108,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Verre",
+                        "Glass",
                         1
                     ]
                 },
@@ -125,7 +125,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Papyrus",
+                        "Paper",
                         1
                     ]
                 },
@@ -152,7 +152,7 @@
                 "chainage_receive": null,
                 "color": "red",
                 "cost": {
-                    "Bois": 1
+                    "Wood": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -168,7 +168,7 @@
                 "chainage_receive": null,
                 "color": "red",
                 "cost": {
-                    "Argile": 1
+                    "Clay": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -200,7 +200,7 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Papyrus": 1
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -216,7 +216,7 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Verre": 1
+                    "Glass": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -260,13 +260,13 @@
                 },
                 "effects": {
                     "changeMarketRule": [
-                        "Fer"
+                        "Stone"
                     ]
                 },
                 "scientific_symbol": null
             },
             {
-                "name": "D\u00c3\u00a9pot d'argile'",
+                "name": "D\u00c3\u00a9pot d'Clay'",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
@@ -276,13 +276,13 @@
                 },
                 "effects": {
                     "changeMarketRule": [
-                        "Argile"
+                        "Clay"
                     ]
                 },
                 "scientific_symbol": null
             },
             {
-                "name": "D\u00c3\u00a9pot de Bois",
+                "name": "D\u00c3\u00a9pot de Wood",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
@@ -292,7 +292,7 @@
                 },
                 "effects": {
                     "changeMarketRule": [
-                        "Bois"
+                        "Wood"
                     ]
                 },
                 "scientific_symbol": null
@@ -347,7 +347,7 @@
                 "chainage_receive": null,
                 "color": "blue",
                 "cost": {
-                    "Fer": 1
+                    "Stone": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -367,7 +367,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Bois",
+                        "Wood",
                         2
                     ]
                 },
@@ -384,7 +384,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Argile",
+                        "Clay",
                         2
                     ]
                 },
@@ -401,7 +401,7 @@
                 },
                 "effects": {
                     "addRessource": [
-                        "Fer",
+                        "Stone",
                         2
                     ]
                 },
@@ -416,7 +416,7 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        "Verre",
+                        "Glass",
                         1
                     ]
                 },
@@ -431,7 +431,7 @@
                 "cost": null,
                 "effects": {
                     "addRessource": [
-                        "Papyrus",
+                        "Paper",
                         1
                     ]
                 },
@@ -444,7 +444,7 @@
                 "chainage_receive": null,
                 "color": "red",
                 "cost": {
-                    "Fer": 2
+                    "Stone": 2
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -460,8 +460,8 @@
                 "chainage_receive": "Ecuries",
                 "color": "red",
                 "cost": {
-                    "Argile": 1,
-                    "Bois": 1
+                    "Clay": 1,
+                    "Wood": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -493,9 +493,9 @@
                 "chainage_receive": null,
                 "color": "red",
                 "cost": {
-                    "Fer": 1,
-                    "Bois": 1,
-                    "Papyrus": 1
+                    "Stone": 1,
+                    "Wood": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -511,8 +511,8 @@
                 "chainage_receive": "Ecuries",
                 "color": "red",
                 "cost": {
-                    "Argile": 2,
-                    "Fer": 1
+                    "Clay": 2,
+                    "Stone": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -529,12 +529,12 @@
                 "color": "gold",
                 "cost": {
                     "Money": 3,
-                    "Argile": 1
+                    "Clay": 1
                 },
                 "effects": {
                     "addRessourceChoice": [
-                        "Verre",
-                        "Papyrus"
+                        "Glass",
+                        "Paper"
                     ]
                 },
                 "scientific_symbol": null
@@ -547,14 +547,14 @@
                 "color": "gold",
                 "cost": {
                     "Money": 2,
-                    "Verre": 1,
-                    "Papyrus": 1
+                    "Glass": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "addRessourceChoice": [
-                        "Bois",
-                        "Argile",
-                        "Verre"
+                        "Wood",
+                        "Clay",
+                        "Glass"
                     ]
                 },
                 "scientific_symbol": null
@@ -570,7 +570,7 @@
                 },
                 "effects": {
                     "changeMarketRule": [
-                        "Verre"
+                        "Glass"
                     ]
                 },
                 "scientific_symbol": null
@@ -597,9 +597,9 @@
                 "chainage_receive": "scriptorium",
                 "color": "green",
                 "cost": {
-                    "Fer": 1,
-                    "Bois": 1,
-                    "Verre": 1
+                    "Stone": 1,
+                    "Wood": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -615,8 +615,8 @@
                 "chainage_receive": "Officine",
                 "color": "green",
                 "cost": {
-                    "Argile": 2,
-                    "Fer": 1
+                    "Clay": 2,
+                    "Stone": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -632,8 +632,8 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Papyrus": 2,
-                    "Bois": 1
+                    "Paper": 2,
+                    "Wood": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -649,8 +649,8 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Bois": 1,
-                    "Verre": 2
+                    "Wood": 1,
+                    "Glass": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -666,8 +666,8 @@
                 "chainage_receive": null,
                 "color": "blue",
                 "cost": {
-                    "Bois": 2,
-                    "Verre": 1
+                    "Wood": 2,
+                    "Glass": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -683,7 +683,7 @@
                 "chainage_receive": "Th\u00c3\u00a9\u00c3\u00a2tre",
                 "color": "blue",
                 "cost": {
-                    "Argile": 2
+                    "Clay": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -699,8 +699,8 @@
                 "chainage_receive": "Autel",
                 "color": "blue",
                 "cost": {
-                    "Bois": 1,
-                    "Papyrus": 1
+                    "Wood": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -716,7 +716,7 @@
                 "chainage_receive": "Bains",
                 "color": "blue",
                 "cost": {
-                    "Fer": 3
+                    "Stone": 3
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -732,7 +732,7 @@
                 "chainage_receive": null,
                 "color": "blue",
                 "cost": {
-                    "Fer": 3
+                    "Stone": 3
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -748,8 +748,8 @@
                 "chainage_receive": null,
                 "color": "red",
                 "cost": {
-                    "Argile": 3,
-                    "Bois": 2
+                    "Clay": 3,
+                    "Wood": 2
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -781,9 +781,9 @@
                 "chainage_receive": "Palissade",
                 "color": "red",
                 "cost": {
-                    "Fer": 2,
-                    "Argile": 1,
-                    "Papyrus": 1
+                    "Stone": 2,
+                    "Clay": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -799,8 +799,8 @@
                 "chainage_receive": "Champ de tir",
                 "color": "red",
                 "cost": {
-                    "Bois": 3,
-                    "Verre": 1
+                    "Wood": 3,
+                    "Glass": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -816,8 +816,8 @@
                 "chainage_receive": "Place d'armes",
                 "color": "red",
                 "cost": {
-                    "Argile": 2,
-                    "Fer": 2
+                    "Clay": 2,
+                    "Stone": 2
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -833,9 +833,9 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Verre": 2,
-                    "Fer": 1,
-                    "Bois": 1
+                    "Glass": 2,
+                    "Stone": 1,
+                    "Wood": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -851,9 +851,9 @@
                 "chainage_receive": null,
                 "color": "green",
                 "cost": {
-                    "Bois": 2,
-                    "Verre": 1,
-                    "Papyrus": 1
+                    "Wood": 2,
+                    "Glass": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -869,9 +869,9 @@
                 "chainage_receive": "Ecole",
                 "color": "green",
                 "cost": {
-                    "Argile": 1,
-                    "Verre": 1,
-                    "Papyrus": 1
+                    "Clay": 1,
+                    "Glass": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -887,8 +887,8 @@
                 "chainage_receive": "Ecole",
                 "color": "green",
                 "cost": {
-                    "Fer": 1,
-                    "Papyrus": 2
+                    "Stone": 1,
+                    "Paper": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -904,7 +904,7 @@
                 "chainage_receive": null,
                 "color": "gold",
                 "cost": {
-                    "Papyrus": 2
+                    "Paper": 2
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -924,9 +924,9 @@
                 "chainage_send": null,
                 "color": "gold",
                 "cost": {
-                    "Papyrus": 1,
-                    "Bois": 1,
-                    "Verre": 1
+                    "Paper": 1,
+                    "Wood": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -946,8 +946,8 @@
                 "chainage_send": null,
                 "color": "gold",
                 "cost": {
-                    "Fer": 2,
-                    "Verre": 1
+                    "Stone": 2,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -967,8 +967,8 @@
                 "chainage_send": null,
                 "color": "gold",
                 "cost": {
-                    "Argile": 2,
-                    "Verre": 1
+                    "Clay": 2,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -988,9 +988,9 @@
                 "chainage_send": null,
                 "color": "gold",
                 "cost": {
-                    "Argile": 1,
-                    "Fer": 1,
-                    "Bois": 1
+                    "Clay": 1,
+                    "Stone": 1,
+                    "Wood": 1
                 },
                 "effects": {
                     "earnXMoneyPerWonderAtConstruct": [
@@ -1009,10 +1009,10 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Verre": 2,
-                    "Argile": 1,
-                    "Fer": 1,
-                    "Bois": 1
+                    "Glass": 2,
+                    "Clay": 1,
+                    "Stone": 1,
+                    "Wood": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1028,8 +1028,8 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Fer": 3,
-                    "Bois": 2
+                    "Stone": 3,
+                    "Wood": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1045,8 +1045,8 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Fer": 2,
-                    "Verre": 1
+                    "Stone": 2,
+                    "Glass": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1062,8 +1062,8 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Argile": 2,
-                    "Bois": 2
+                    "Clay": 2,
+                    "Wood": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1079,9 +1079,9 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Argile": 1,
-                    "Bois": 1,
-                    "Papyrus": 2
+                    "Clay": 1,
+                    "Wood": 1,
+                    "Paper": 2
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1097,9 +1097,9 @@
                 "chainage_send": null,
                 "color": "blue",
                 "cost": {
-                    "Argile": 2,
-                    "Fer": 1,
-                    "Papyrus": 1
+                    "Clay": 2,
+                    "Stone": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1115,10 +1115,10 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Argile": 1,
-                    "Bois": 1,
-                    "Papyrus": 1,
-                    "Verre": 1
+                    "Clay": 1,
+                    "Wood": 1,
+                    "Paper": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -1138,10 +1138,10 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Argile": 1,
-                    "Fer": 1,
-                    "Papyrus": 1,
-                    "Verre": 1
+                    "Clay": 1,
+                    "Stone": 1,
+                    "Paper": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -1161,10 +1161,10 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Argile": 1,
-                    "Fer": 2,
-                    "Bois": 1,
-                    "Verre": 1
+                    "Clay": 1,
+                    "Stone": 2,
+                    "Wood": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "earnXVictoryPointPerMostWonderAtEndGame": [
@@ -1180,9 +1180,9 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Bois": 2,
-                    "Argile": 1,
-                    "Papyrus": 1
+                    "Wood": 2,
+                    "Clay": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -1202,8 +1202,8 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Bois": 2,
-                    "Argile": 2
+                    "Wood": 2,
+                    "Clay": 2
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -1223,8 +1223,8 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Bois": 2,
-                    "Fer": 2
+                    "Wood": 2,
+                    "Stone": 2
                 },
                 "effects": {
                     "earnXVictoryPointPer3LotOfMoneyMostAtEndGame": [
@@ -1240,9 +1240,9 @@
                 "chainage_send": null,
                 "color": "purple",
                 "cost": {
-                    "Fer": 2,
-                    "Argile": 1,
-                    "Papyrus": 1
+                    "Stone": 2,
+                    "Clay": 1,
+                    "Paper": 1
                 },
                 "effects": {
                     "earnXMoneyPerMostAtConstruct": [
@@ -1330,9 +1330,9 @@
             {
                 "name": "Le Circus Maximus",
                 "cost": {
-                    "Fer": 2,
-                    "Bois": 1,
-                    "Verre": 1
+                    "Stone": 2,
+                    "Wood": 1,
+                    "Glass": 1
                 },
                 "effects": {
                     "discardAdversaryGreyCard": null,
@@ -1347,8 +1347,8 @@
             {
                 "name": "Le Colosse",
                 "cost": {
-                    "Argile": 3,
-                    "Verre": 1
+                    "Clay": 3,
+                    "Glass": 1
                 },
                 "effects": {
                     "moveConflictPawn": [
@@ -1362,15 +1362,15 @@
             {
                 "name": "Le Grand Phare",
                 "cost": {
-                    "Fer": 1,
-                    "Bois": 1,
-                    "Papyrus": 2
+                    "Stone": 1,
+                    "Wood": 1,
+                    "Paper": 2
                 },
                 "effects": {
                     "addRessourceChoice": [
-                        "Fer",
-                        "Argile",
-                        "Bois"
+                        "Stone",
+                        "Clay",
+                        "Wood"
                     ],
                     "addVictoryPoint": [
                         4
@@ -1380,9 +1380,9 @@
             {
                 "name": "Les Jardins Suspendus",
                 "cost": {
-                    "Verre": 1,
-                    "Bois": 2,
-                    "Papyrus": 1
+                    "Glass": 1,
+                    "Wood": 2,
+                    "Paper": 1
                 },
                 "effects": {
                     "addRessource": [
@@ -1398,9 +1398,9 @@
             {
                 "name": "La Grande Biblioth\u00c3\u00a8que",
                 "cost": {
-                    "Verre": 1,
-                    "Bois": 3,
-                    "Papyrus": 1
+                    "Glass": 1,
+                    "Wood": 3,
+                    "Paper": 1
                 },
                 "effects": {
                     "chooseOneProgressTokenWithinThreeDiscarded": null,
@@ -1412,9 +1412,9 @@
             {
                 "name": "Le Mausol\u00c3\u00a9e",
                 "cost": {
-                    "Verre": 2,
-                    "Argile": 2,
-                    "Papyrus": 1
+                    "Glass": 2,
+                    "Clay": 2,
+                    "Paper": 1
                 },
                 "effects": {
                     "buildOneDiscardedBuilding": null,
@@ -1426,14 +1426,14 @@
             {
                 "name": "Le Pir\u00c3\u00a9e",
                 "cost": {
-                    "Fer": 1,
-                    "Bois": 2,
-                    "Argile": 1
+                    "Stone": 1,
+                    "Wood": 2,
+                    "Clay": 1
                 },
                 "effects": {
                     "addRessourceChoice": [
-                        "Verre",
-                        "Papyrus"
+                        "Glass",
+                        "Paper"
                     ],
                     "addVictoryPoint": [
                         2
@@ -1444,8 +1444,8 @@
             {
                 "name": "Les Pyramides",
                 "cost": {
-                    "Fer": 3,
-                    "Papyrus": 1
+                    "Stone": 3,
+                    "Paper": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1456,9 +1456,9 @@
             {
                 "name": "Le Sphinx",
                 "cost": {
-                    "Verre": 2,
-                    "Argile": 1,
-                    "Fer": 1
+                    "Glass": 2,
+                    "Clay": 1,
+                    "Stone": 1
                 },
                 "effects": {
                     "addVictoryPoint": [
@@ -1470,10 +1470,10 @@
             {
                 "name": "La Statue de Zeus",
                 "cost": {
-                    "Papyrus": 2,
-                    "Argile": 1,
-                    "Bois": 1,
-                    "Fer": 1
+                    "Paper": 2,
+                    "Clay": 1,
+                    "Wood": 1,
+                    "Stone": 1
                 },
                 "effects": {
                     "discardAdversaryBrownCard": null,
@@ -1488,10 +1488,10 @@
             {
                 "name": "Le Temple d'Art\u00c3\u00a9mis",
                 "cost": {
-                    "Papyrus": 1,
-                    "Verre": 1,
-                    "Bois": 1,
-                    "Fer": 1
+                    "Paper": 1,
+                    "Glass": 1,
+                    "Wood": 1,
+                    "Stone": 1
                 },
                 "effects": {
                     "addRessource": [
@@ -1504,9 +1504,9 @@
             {
                 "name": "La Via Appia",
                 "cost": {
-                    "Papyrus": 1,
-                    "Fer": 2,
-                    "Argile": 2
+                    "Paper": 1,
+                    "Stone": 2,
+                    "Clay": 2
                 },
                 "effects": {
                     "addRessource": [
