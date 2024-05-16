@@ -230,3 +230,42 @@ std::pair<QString,QString> File::getChaining(QString name){
     qDebug() << "Pas de bâtiments avec ce nom!";
 }
 
+QString File::getScientificSymbol(QString name){
+    QString Symbol;
+    QJsonArray LBuilding = listeBuildings();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            Symbol = points.toObject().value("scientific_symbol").toString();
+            return Symbol;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom!";
+}
+
+QString File::getColor(QString name){
+    QString couleur;
+    QJsonArray LBuilding = listeBuildings();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            couleur = points.toObject().value("color").toString();
+            return couleur;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom!";
+}
+
+int File::getAge(QString name){
+    int age;
+    QJsonArray LBuilding = listeBuildings();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        qDebug() << Bname;
+        if (Bname==name) {
+            age = points.toObject().value("age").toInt();
+            return age;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom!";
+}

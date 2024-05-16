@@ -43,6 +43,12 @@ SevenWonderUI::SevenWonderUI(QWidget *parent)
 
     std::pair<QString,QString> chaining = json.getChaining("Port");
     std::cout << chaining.first.toStdString() << " | " << chaining.second.toStdString() << "\n";
+
+    int age = json.getAge("Port");
+    QString couleur = json.getColor("Port");
+    QString ScSy = json.getScientificSymbol("Port");
+    std::cout << "\n";
+    std::cout << "age: " << age <<" | couleur: " << couleur.toStdString() << " | Symbole Scientifique: " << ScSy.toStdString();
 }
 
 SevenWonderUI::~SevenWonderUI()

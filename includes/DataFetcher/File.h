@@ -56,6 +56,12 @@ public:
     std::vector<std::pair<QString,int>> getCost(QString name);
 
     std::pair<QString,QString> getChaining(QString name);
+
+    QString getScientificSymbol(QString name);
+
+    QString getColor(QString name);
+
+    int getAge(QString name);
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);
