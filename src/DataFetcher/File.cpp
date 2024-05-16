@@ -10,7 +10,6 @@ QJsonDocument File::readFile() {
         QJsonDocument Document = QJsonDocument::fromJson(Bytes, &JsonError);
         if (JsonError.error!=QJsonParseError::NoError) {
             qDebug() << "Error in Json Data: " << JsonError.errorString();
-            throw("Erreur dans les values JSON");
         }
         else {
             qDebug() << "No error in Json";
