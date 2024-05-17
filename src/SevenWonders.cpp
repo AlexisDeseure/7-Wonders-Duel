@@ -4,17 +4,23 @@
 #include <QMainWindow>
 #include <QPushButton>
 
-#include "Ressource.h"
+#include <QTextStream>
+#include <QString>
+#include <iostream>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
 
-
     QApplication app(argc, argv);
+    // QTextStream qin(stdin);
+    // QString line = qin.readLine();
+    // std::cout << "Vous avez entré : " << line.toStdString() << std::endl;
+    Game();
+    string test;
+    cin >> test;
 
-    //Game();
-
+    return 0;
     // // Test QT
     // QMainWindow fenetre;
     // fenetre.setWindowTitle("Ma Fenêtre Qt");
@@ -23,14 +29,14 @@ int main(int argc, char* argv[]) {
     // bouton->setGeometry(150, 80, 100, 30);
     // QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-    // // Affichage de la fenêtre
+    // Affichage de la fenêtre
     // fenetre.show();
 
-    SevenWonderUI ui;
-    ui.show();
+    // SevenWonderUI ui;
+    // ui.show();
 
-    // Exécution de la boucle d'événements
-    return app.exec();
+    // // Exécution de la boucle d'événements
+    // return app.exec();
 }   
     
 

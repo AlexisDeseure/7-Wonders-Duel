@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 #include <list>
+#include <QString>
 
 class Effect;
 class Ressource;
@@ -21,7 +22,7 @@ class Card {
         Card(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects)
         : name(std::move(name)), cost(cost), effects(effects){};
 
-        ~Card();
+        virtual ~Card();
 
     //     //   for (int i = 0; i++; i < taille_ressources) {
     //     //       delete ressources[i];

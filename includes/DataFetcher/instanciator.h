@@ -7,13 +7,16 @@
 class Instanciator
 {
 private:
-    std::vector<Card> LCartesBuildings;
+    std::vector<Card> cartes_buildings;
     File json;
-    std::vector<std::pair<QString,QString>> LNames = json.getNames();
+    std::vector<std::pair<QString,QString>> names;
 public:
-    Instanciator();
-    std::vector<Card> getLBuildings() {return LCartesBuildings;};
-    std::vector<std::pair<QString,QString>> getLNames() {return LNames;}
+    Instanciator(): cartes_buildings() {
+        names = json.getNames();
+    };
+    std::vector<Card>& getBuildings() {return cartes_buildings;};
+    std::vector<std::pair<QString,QString>> getNames() {return names;}
+
     void addBuilding(Card carte);
     Card instantCard(QString name);
 };
