@@ -8,13 +8,12 @@ enum class RessourceType;
 
 class AddRessourceChoice : public Effect {
     public:
-        AddRessourceChoice();
+        AddRessourceChoice() = default;
         void effect(City* city) override;
         void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) override;
 
     private:
-        RessourceType ressource;
-        int quantity;
+        std::vector<RessourceType> ressources;
 
 };
 

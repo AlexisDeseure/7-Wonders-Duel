@@ -6,7 +6,6 @@ const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource
 Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p), isTradeable(true){
     if (types.size() > 1) {
         isTradeable = false;
-        amount = 0; //convention pour les ressources non échangeables (ressources à choix)
         price = 0;  //convention pour les ressources non échangeables (ressources à choix)
     }
 }
@@ -68,7 +67,7 @@ RessourceType StringToRessourceType(std::string nom){
             return static_cast<RessourceType>(i);
         }
     }
-    throw std::invalid_argument(("RessourceType not found");
+    throw std::invalid_argument("RessourceType not found");
 }
 
 //std::ostream& operator<<(std::ostream& os, const Ressource& ressource) {

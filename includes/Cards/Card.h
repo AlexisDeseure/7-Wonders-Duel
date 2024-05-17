@@ -5,6 +5,7 @@
 #include <iostream>
 #include <utility>
 #include <vector>
+#include <list>
 
 class Effect;
 class Ressource;

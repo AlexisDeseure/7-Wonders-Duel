@@ -35,18 +35,31 @@ unsigned int Card::getCost(const City* city) const {
     unsigned int money_cost = 0;
     unsigned int ressource_necessaire;
     unsigned int ressource_possede;
+    std::list<RessourceType> lack_ressources;
+    RessourceType type_intermediaire;
 
     if (isChainInInCity(city)) {
         return 0;
     }
 
+    // Calculer les ressources manquantes après avoir vérifier les ressources de bases de la ville
     for (auto& ressource : cost) {
+
         ressource_necessaire = ressource->getAmount();
         ressource_possede = city->getRessource(ressource->getType()).getAmount();
 
         if (ressource_necessaire > ressource_possede) {
-            money_cost += (ressource_necessaire - ressource_possede) * ressource->getPrice();
+            //ajouter autant de ressources que nécessaire dans la liste des ressources manquantes
+            type_intermediaire = ressource->getType();
+
+            for (unsigned int i = 0; i < ressource_necessaire - ressource_possede; i++)
+                lack_ressources.push_back(type_intermediaire);
         }
+    }
+
+    // Calculer le prix des ressources manquantes
+    if (!lack_ressources.empty()){
+        money_cost += city->getPriceForRemainingRessources(lack_ressources);
     }
 
     return money_cost;

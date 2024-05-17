@@ -1,4 +1,6 @@
 #include "City.h"
+
+#include <utility>
 #include"Wonder.h"
 #include"Building.h"
 #include"ProgressToken.h"
@@ -7,7 +9,12 @@
 
 
 City::City(int victory, int treasury, int shields, bool turn)
-        : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn) {}
+        : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn) {
+    // Parcourt de la liste des ressources de bases pour instancier correctement les ressources de la ville
+    for (int i = 0; i < static_cast<int>(RessourceType::LENGTH); i++) {
+        ressources.push_back(new Ressource({static_cast<RessourceType>(i)}));
+    }
+}
 
 City::~City() {
     // City détuit les objets pour les quelle elle est responsable de la mémoire
@@ -30,11 +37,55 @@ City::~City() {
 
 Ressource& City::getRessource(RessourceType name) const {
     for (auto& ressource : ressources) {
-        if (ressource->getType() == name) {
+        if (ressource->getTradeable() and ressource->getType() == name) {
             return *ressource;
         }
     }
     throw std::invalid_argument("Ressource non trouvée.");
+}
+
+
+unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources) const {
+    // Chercher si pour chaque ressource à choix possédée, les ressources interchangeable sont dans la liste des
+    // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
+    // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide, sinon le prix des ressources
+    // restantes est calculé et retourné.
+
+    unsigned int price = 0;
+    RessourceType type_intermediaire_prix_haut = RessourceType::LENGTH;
+
+    for (auto& ressource : ressources) {
+        if (remaining_ressources.empty()) {
+            return price;
+        }
+        if (!ressource->getTradeable()) {
+            for(auto& type : ressource->getTypes()){
+                //pour chaque type du choix, on cherche si on manque de ressource de type type
+                if (std::find(remaining_ressources.begin(), remaining_ressources.end(), type) != remaining_ressources.end()) {
+                    if (type_intermediaire_prix_haut == RessourceType::LENGTH) {
+                        type_intermediaire_prix_haut = type;
+                    } else {
+                        if (getRessource(type).getPrice() > getRessource(type_intermediaire_prix_haut).getPrice()) {
+                            // on garde le type de ressource qui a le prix le plus élevé pour que le joueur paye le
+                            // moins possible
+                            type_intermediaire_prix_haut = type;
+                        }
+                    }
+                }
+            }
+            if (type_intermediaire_prix_haut != RessourceType::LENGTH) {
+                remaining_ressources.remove(type_intermediaire_prix_haut);
+                type_intermediaire_prix_haut = RessourceType::LENGTH;
+            }
+        }
+    }
+
+    // Calcul du prix des ressources restantes
+    for (auto& ressource : remaining_ressources) {
+        price += getRessource(ressource).getPrice();
+    }
+    return price;
+
 }
 
 int City::getDistinctScientificSymbols() const {
@@ -49,26 +100,30 @@ bool City::canAfford(int price) const {
     return treasury >= price;
 }
 
-void City::constructBuilding(Building* building) {
+bool City::constructBuilding(Building* building) {
     int cost = static_cast<int>(building->getCost(this));
     if (canAfford(cost)) {
         treasury -= cost;
         buildings.push_back(building);
         std::cout << "Building construit: " << building->getName() << std::endl;
+        return true;
     } else {
         std::cout << "Ressources insuffisantes." << std::endl;
+        return false;
     }
 }
 
-void City::constructWonder(Wonder* wonder) {
+bool City::constructWonder(Wonder* wonder) {
     int cost = static_cast<int>(wonder->getCost(this));
     if (canAfford(cost) && !wonder->isBuilt()) {
         treasury -= cost;
         wonder->setBuilt(true);
         wonders.push_back(wonder);
         std::cout << "Wonder consuite: " << wonder->getName() << std::endl;
+        return true;
     } else {
-        std::cout << "Conditions non accomples pour constuire la wonder." << std::endl;
+        std::cout << "Conditions non accomplies pour construire la wonder." << std::endl;
+        return false;
     }
 }
 
@@ -103,6 +158,11 @@ void City::addChainSymbol(const std::string& symbol) {
     chain_symbols.push_back(symbol);
 }
 
+void City::addRessource(std::vector<RessourceType> types) {
+    Ressource ressource(std::move(types));
+    ressources.push_back(&ressource);
+}
+
 bool City::hasChainSymbol(const std::string& symbol) const {
     for (const auto& s : chain_symbols) {
         if (s == symbol) {
@@ -111,4 +171,6 @@ bool City::hasChainSymbol(const std::string& symbol) const {
     }
     return false;
 }
+
+
 

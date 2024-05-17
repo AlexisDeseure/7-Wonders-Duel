@@ -67,7 +67,7 @@ add_executable(7_Wonders_Duel
         src/City/City.cpp
         src/BoardManager/ConflictPawn.cpp
         src/Effects/Effect.cpp
-        src/City/Ressources.cpp
+        src/City/Ressource.cpp
         src/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.cpp
         src/Effects/List/EarnXVictoryPointPerGoldAndBrownMostAtEndGame.cpp
         src/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.cpp

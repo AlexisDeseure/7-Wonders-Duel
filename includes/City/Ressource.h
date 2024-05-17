@@ -31,7 +31,7 @@ class Ressource {
 
     public:
         //friend std::ostream& operator<<(std::ostream& os, const Ressource& res);
-        explicit Ressource(std::vector<RessourceType> t, unsigned int a=1, unsigned int p=2);
+        explicit Ressource(std::vector<RessourceType> t, unsigned int a=0, unsigned int p=2);
 
         unsigned int getPrice() const;
 
@@ -41,6 +41,7 @@ class Ressource {
 
         void add(int sum); // à supprimer à terme
         void operator+=(unsigned int sum);
+        bool getTradeable() const { return isTradeable; }
 
         RessourceType getType() const;
 
