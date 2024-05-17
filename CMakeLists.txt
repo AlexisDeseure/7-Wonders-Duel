@@ -3,8 +3,18 @@ project(7_Wonders_Duel)
 
 set(CMAKE_CXX_STANDARD 17)
 
+
 include_directories(.
-        ./includes)
+        ./includes
+        includes/BoardManager
+        includes/Cards
+        includes/City
+        includes/DeckManager
+        includes/Effects
+        includes/Effects/List
+        includes/Game
+        includes/DataFetcher
+        includes/Ui)
 
 add_executable(7_Wonders_Duel
         src/SevenWonders.cpp
@@ -47,6 +57,10 @@ add_executable(7_Wonders_Duel
         includes/Game/Game.h
         includes/Game/Player.h
         includes/Effects/EffectFactory.h
+        includes/DataFetcher/File.h
+        includes/Ui/SevenWonderUI.h
+        includes/DataFetcher/instanciator.h
+
 
         src/DeckManager/DeckElement.cpp
         src/Cards/Wonder.cpp
@@ -83,6 +97,9 @@ add_executable(7_Wonders_Duel
         src/Game/Player.cpp
         src/BoardManager/Board.cpp
         src/Cards/Card.cpp
+        src/DataFetcher/File.cpp
+        src/SevenWonders.cpp
+        src/Ui/SevenWonderUI.cpp
 
         test/test_effects.cpp
         test/example_test_feature_2.cpp)

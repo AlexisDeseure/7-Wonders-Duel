@@ -1,7 +1,7 @@
 #ifndef ADDRESSOURCE_H
 #define ADDRESSOURCE_H
 
-#include "../EffectFactory.h"
+#include "EffectFactory.h"
 
 class City; // Déclaration anticipée de City
 enum class RessourceType;

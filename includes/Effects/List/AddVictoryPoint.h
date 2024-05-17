@@ -1,7 +1,7 @@
 #ifndef ADDVICTORYPOINT_H
 #define ADDVICTORYPOINT_H
 
-#include "../EffectFactory.h"
+#include "EffectFactory.h"
 
 class City; // Déclaration anticipée de City
 

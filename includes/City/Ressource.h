@@ -2,7 +2,8 @@
 #define RESSOURCE_H
 #include<iostream>
 #include <array>
-
+#include <utility>
+#include <vector>
 /*Une ressource n'a qu'un seul type, il faudra faire gaffe à la composition
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
 */
@@ -21,28 +22,29 @@ extern const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> re
 
 class Ressource {
     private:
-        RessourceType type;
+        std::vector<RessourceType> types;
         unsigned int amount;
         unsigned int price;
+        bool isTradeable;
         //amount = quantite de ressources
         // price = prix d'une seule ressource
 
     public:
         //friend std::ostream& operator<<(std::ostream& os, const Ressource& res);
-        Ressource(RessourceType t, unsigned int a, unsigned int p) : type(t),amount(a),price(p){}
+        explicit Ressource(std::vector<RessourceType> t, unsigned int a=1, unsigned int p=2);
 
+        unsigned int getPrice() const;
 
-        unsigned int getPrice() const { return price; }
+        void updatePrice(int sum); //baisser le prix = donner valeur négative
 
+        unsigned int getAmount() const;
 
-        void updatePrice(int sum) { price += sum; }; //baisser le prix = donner valeur négative
+        void add(int sum); // à supprimer à terme
+        void operator+=(unsigned int sum);
 
-        unsigned int getAmount() const { return amount; }
+        RessourceType getType() const;
 
-        void add(int sum) { amount += sum; }; // à supprimer à terme
-        void operator+=(unsigned int sum) { amount += sum; };
-
-        RessourceType getType() const { return type; };
+        std::vector<RessourceType> getTypes() const { return types; };
 
 };
 

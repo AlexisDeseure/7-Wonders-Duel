@@ -1,7 +1,7 @@
 #ifndef ADDMONEY_H
 #define ADDMONEY_H
 
-#include "../EffectFactory.h"
+#include "EffectFactory.h"
 
 class City; // Déclaration anticipée de City
 

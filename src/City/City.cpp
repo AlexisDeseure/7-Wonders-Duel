@@ -42,7 +42,7 @@ int City::getDistinctScientificSymbols() const {
     for (const auto& symbol : scientific_symbols) {
         symbols.insert(symbol->getType());
     }
-    return symbols.size();
+    return static_cast<int>(symbols.size());
 }
 
 bool City::canAfford(int price) const {
@@ -50,7 +50,7 @@ bool City::canAfford(int price) const {
 }
 
 void City::constructBuilding(Building* building) {
-    int cost = building->getCost(this);
+    int cost = static_cast<int>(building->getCost(this));
     if (canAfford(cost)) {
         treasury -= cost;
         buildings.push_back(building);
@@ -61,7 +61,7 @@ void City::constructBuilding(Building* building) {
 }
 
 void City::constructWonder(Wonder* wonder) {
-    int cost = wonder->getCost(this);
+    int cost = static_cast<int>(wonder->getCost(this));
     if (canAfford(cost) && !wonder->isBuilt()) {
         treasury -= cost;
         wonder->setBuilt(true);
