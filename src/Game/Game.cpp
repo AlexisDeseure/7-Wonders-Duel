@@ -2,6 +2,8 @@
 #include "Board.h"
 #include "Player.h"
 
+#include <random>
+#include <iostream>
 
 Game::Game() : age(0), board(*new Board()){
     players[0] = new Player();

@@ -2,10 +2,10 @@
 #define CARD_H
 
 #include <string>
-#include <iostream>
+
 #include <utility>
 #include <vector>
-#include <list>
+
 #include <QString>
 
 class Effect;

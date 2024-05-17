@@ -3,8 +3,6 @@
 
 #define MAX_WONDERS 7
 
-#include <iostream>
-
 class ConflictPawn;
 class MarketDeck;
 

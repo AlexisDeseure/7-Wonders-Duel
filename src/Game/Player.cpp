@@ -1,9 +1,10 @@
-#include <utility>
-
 #include "Player.h"
 #include "City.h"
 
-Player::Player(bool ai, AiLevel level, std::string name) : isAI(ai), city(*new City()), aiLevel(level), name(std::move(name)){
+#include <utility>
+#include <iostream>
+
+Player::Player(bool ai, AiLevel level, std::string name) : city(*new City()), isAI(ai), aiLevel(level), name(std::move(name)){
     std::cout << "Player created" << std::endl;
 }
 

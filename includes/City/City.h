@@ -4,11 +4,10 @@
 #define PROGRESS_TOKEN_LENGTH 10
 #define WONDER_LENGTH 4
 
-#include <iostream>
+#include <string>
 #include <vector>
 #include <list>
-#include <set>
-#include <algorithm>
+
 
 class Building;
 class Wonder;

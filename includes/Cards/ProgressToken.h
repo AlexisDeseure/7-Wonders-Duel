@@ -2,8 +2,6 @@
 #ifndef PROGRESSTOKEN_H
 #define PROGRESSTOKEN_H
 
-#include <iostream>
-
 #include "Card.h"
 
 class City; // Déclaration anticipée de City

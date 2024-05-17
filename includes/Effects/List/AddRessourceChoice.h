@@ -17,4 +17,6 @@ class AddRessourceChoice : public Effect {
 
 };
 
+REGISTER_CLASS(AddRessourceChoice);
+
 #endif

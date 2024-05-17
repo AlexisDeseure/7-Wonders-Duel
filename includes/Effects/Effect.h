@@ -1,8 +1,7 @@
 #ifndef EFFECT_H
 #define EFFECT_H
 
-#include <iostream>
-#include <map>
+#include <string>
 #include <vector>
 
 class City; // Déclaration anticipée de la classe City

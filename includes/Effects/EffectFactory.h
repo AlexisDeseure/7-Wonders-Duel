@@ -1,7 +1,7 @@
 #ifndef EFFECTFACTORY_H
 #define EFFECTFACTORY_H
 
-#include <iostream>
+#include <string>
 #include <map>
 #include <functional>
 #include <utility>

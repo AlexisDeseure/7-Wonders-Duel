@@ -1,12 +1,14 @@
-#include "City.h"
-
-#include <utility>
+#include"City.h"
 #include"Wonder.h"
 #include"Building.h"
 #include"ProgressToken.h"
 #include"Ressource.h"
 #include"ScientificSymbol.h"
 
+#include <set>
+#include <algorithm>
+#include <utility>
+#include <iostream>
 
 City::City(int victory, int treasury, int shields, bool turn)
         : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn) {

@@ -1,8 +1,6 @@
 #ifndef WONDER_H
 #define WONDER_H
 
-#include <iostream>
-
 #include "Card.h"
 
 class Wonder : public Card{

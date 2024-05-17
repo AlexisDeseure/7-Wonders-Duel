@@ -5,8 +5,7 @@
 #define NB_PLAYERS 2
 #define AGE_MAX 3
 
-#include <iostream>
-#include <random>
+#include <string>
 
 class Board;
 class Player;

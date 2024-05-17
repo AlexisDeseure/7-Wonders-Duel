@@ -2,6 +2,8 @@
 #include "ConflictPawn.h"
 #include "MarketDeck.h"
 
+#include <iostream>
+
 Board::Board() : constructed_wonders(0), conflict_pawn(*new ConflictPawn()), market_deck(*new MarketDeck()){
     std::cout << "Board created" << std::endl;
 

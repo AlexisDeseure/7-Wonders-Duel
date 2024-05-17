@@ -1,9 +1,10 @@
 #ifndef RESSOURCE_H
 #define RESSOURCE_H
-#include<iostream>
+
+#include <string>
 #include <array>
-#include <utility>
 #include <vector>
+
 /*Une ressource n'a qu'un seul type, il faudra faire gaffe à la composition
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
 */

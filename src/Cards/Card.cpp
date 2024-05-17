@@ -3,6 +3,8 @@
 #include "Effect.h"
 #include "City.h"
 
+#include <list>
+
 
 using namespace std;
 
