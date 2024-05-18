@@ -5,35 +5,33 @@
 const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name { "Wood", "Stone", "Clay", "Paper", "Glass"};
 
 
-Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p), isTradeable(true){
-    if (types.size() > 1) {
-        isTradeable = false;
-        price = 0;  //convention pour les ressources non échangeables (ressources à choix)
-    }
-}
+Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p),isTradable((types.size() <= 1)){}
 
 void Ressource::updatePrice(int sum) {
-    if (isTradeable) {
+    if (isTradable) {
         price += sum;
+        return;
     }
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de prix");
 }
 
 void Ressource::add(int sum) {
-    if (isTradeable) {
+    if (isTradable) {
         amount += sum;
+        return;
     }
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de quantité");
 }
 void Ressource::operator+=(unsigned int sum) {
-    if (isTradeable) {
+    if (isTradable) {
         amount += sum;
+        return;
     }
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de quantité");
 }
 
 unsigned int Ressource::getAmount() const {
-    if(isTradeable){
+    if(isTradable){
         return amount;
     }
     throw std::invalid_argument("error : ressource à choix n'a pas de quantité");
@@ -47,7 +45,7 @@ RessourceType Ressource::getType() const {
 }
 
 unsigned int Ressource::getPrice() const {
-    if (isTradeable) {
+    if (isTradable) {
         return price;
     }
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de prix");

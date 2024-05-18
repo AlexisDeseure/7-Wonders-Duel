@@ -26,7 +26,7 @@ class Ressource {
         std::vector<RessourceType> types;
         unsigned int amount;
         unsigned int price;
-        bool isTradeable;
+        bool isTradable;
         //amount = quantite de ressources
         // price = prix d'une seule ressource
 
@@ -42,7 +42,7 @@ class Ressource {
 
         void add(int sum); // à supprimer à terme
         void operator+=(unsigned int sum);
-        bool getTradeable() const { return isTradeable; }
+        bool getTradable() const { return isTradable; }
 
         RessourceType getType() const;
 

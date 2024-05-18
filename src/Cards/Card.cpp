@@ -4,7 +4,7 @@
 #include "City.h"
 
 #include <list>
-
+#include <iostream>
 
 using namespace std;
 
@@ -15,25 +15,16 @@ using namespace std;
 // gratuitement si c'est le cas alors le cout est de 0 (cf getCost)
 
 
-//void Card::getPriceRessources() const {
-//    for (int i = 0; i < taille_ressources; i++) {
-//        if (cost[i] != nullptr) { // Check if the pointer is not null
-//            std::cout << *cost[i]; // Dereference the pointer to access the object
-//        }
-//
-//    }
-//    //return ressources
-//}
 Card::~Card() {
-    for (auto &c: cost) {
-        delete c;
-    }
-    for (auto &e: effects) {
-        delete e;
-    }
+    // for (auto &c: cost) {
+    //     delete c;
+    // }
+    // for (auto &e: effects) {
+    //     delete e;
+    // }
 }
 
-unsigned int Card::getCost(const City* city) const {
+unsigned int Card::getCost(City* city) const {
     unsigned int money_cost = 0;
     unsigned int ressource_necessaire;
     unsigned int ressource_possede;
@@ -49,7 +40,6 @@ unsigned int Card::getCost(const City* city) const {
 
         ressource_necessaire = ressource->getAmount();
         ressource_possede = city->getRessource(ressource->getType()).getAmount();
-
         if (ressource_necessaire > ressource_possede) {
             //ajouter autant de ressources que nécessaire dans la liste des ressources manquantes
             type_intermediaire = ressource->getType();
@@ -67,7 +57,7 @@ unsigned int Card::getCost(const City* city) const {
     return money_cost;
 }
 
-void Card::applyEffects(City* city) const {
+void Card::applyEffects(City* city) {
     for (auto& effect : effects) {
         effect->apply(city);
     }

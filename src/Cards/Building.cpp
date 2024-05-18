@@ -9,9 +9,9 @@ void Building::addChainOutToCity(City* city) const {
 
 bool Building::isChainInInCity(const City* city) const {
     for (const auto& chain : chainIn) {
-        if (!city->hasChainSymbol(chain)) {
-            return false;
+        if (city->hasChainSymbol(chain)) {
+            return true;
         }
     }
-    return true;
+    return false;
 }

@@ -7,11 +7,10 @@
 
 #include <set>
 #include <algorithm>
-#include <utility>
 #include <iostream>
 
-City::City(int victory, int treasury, int shields, bool turn)
-        : victory_points(victory), treasury(treasury), number_of_shields(shields), player_turn(turn) {
+City::City(int victory, int treasury, int shields)
+        : victory_points(victory), treasury(treasury), number_of_shields(shields){
     // Parcourt de la liste des ressources de bases pour instancier correctement les ressources de la ville
     for (int i = 0; i < static_cast<int>(RessourceType::LENGTH); i++) {
         ressources.push_back(new Ressource({static_cast<RessourceType>(i)}));
@@ -26,8 +25,8 @@ City::~City() {
     for (auto& p : progress_tokens) {
         delete p;
     }
-    for (auto& r : ressources) {
-        delete r;
+    for (auto& r : ressources){
+            delete r;
     }
     for (auto& s : scientific_symbols) {
         delete s;
@@ -37,17 +36,20 @@ City::~City() {
     }
 }
 
-Ressource& City::getRessource(RessourceType name) const {
+Ressource& City::getRessource(RessourceType name) {
     for (auto& ressource : ressources) {
-        if (ressource->getTradeable() and ressource->getType() == name) {
+        if (ressource->getTradable() and ressource->getType() == name) {
             return *ressource;
         }
     }
     throw std::invalid_argument("Ressource non trouvée.");
 }
 
+std::vector<Ressource*>& City::getRessources() {
+    return ressources;
+}
 
-unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources) const {
+unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources) {
     // Chercher si pour chaque ressource à choix possédée, les ressources interchangeable sont dans la liste des
     // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
     // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide, sinon le prix des ressources
@@ -60,7 +62,7 @@ unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& rema
         if (remaining_ressources.empty()) {
             return price;
         }
-        if (!ressource->getTradeable()) {
+        if (!ressource->getTradable()) {
             for(auto& type : ressource->getTypes()){
                 //pour chaque type du choix, on cherche si on manque de ressource de type type
                 if (std::find(remaining_ressources.begin(), remaining_ressources.end(), type) != remaining_ressources.end()) {
@@ -76,7 +78,7 @@ unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& rema
                 }
             }
             if (type_intermediaire_prix_haut != RessourceType::LENGTH) {
-                remaining_ressources.remove(type_intermediaire_prix_haut);
+                removeFirstElement(remaining_ressources,type_intermediaire_prix_haut);
                 type_intermediaire_prix_haut = RessourceType::LENGTH;
             }
         }
@@ -161,8 +163,9 @@ void City::addChainSymbol(const std::string& symbol) {
 }
 
 void City::addRessource(std::vector<RessourceType> types) {
-    Ressource ressource(std::move(types));
-    ressources.push_back(&ressource);
+    Ressource* r = new Ressource(std::move(types));
+    ressources.push_back(r);
+    //ressources.emplace_back(types);
 }
 
 bool City::hasChainSymbol(const std::string& symbol) const {
@@ -174,5 +177,11 @@ bool City::hasChainSymbol(const std::string& symbol) const {
     return false;
 }
 
-
+template <typename T>
+void removeFirstElement(std::list<T>& vec, const T& element) {
+    auto it = std::find(vec.begin(), vec.end(), element);
+    if (it != vec.end()) {
+        vec.erase(it);
+    }
+}
 
