@@ -8,3 +8,9 @@ test.exe
 *.filters
 *.user
 .*/
+src/debug
+src/release
+src/*.Release
+src/*.Debug
+src/Makefile
+src/*.stash
