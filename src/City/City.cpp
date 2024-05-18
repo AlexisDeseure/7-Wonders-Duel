@@ -36,6 +36,14 @@ City::~City() {
     }
 }
 
+int City::getNumberOfBuildingType(CardType type) const{
+    int number = 0;
+    for (auto& building : buildings){
+        if (building->getType() == type) number++;
+    }
+    return number;
+}
+
 Ressource& City::getRessource(RessourceType name) {
     for (auto& ressource : ressources) {
         if (ressource->getTradable() and ressource->getType() == name) {

@@ -27,6 +27,7 @@ class Ressource {
         unsigned int amount;
         unsigned int price;
         bool isTradable;
+        bool isMarketRuleHasChanged;
         //amount = quantite de ressources
         // price = prix d'une seule ressource
 
@@ -44,6 +45,7 @@ class Ressource {
         void operator+=(unsigned int sum);
         bool getTradable() const { return isTradable; }
 
+        void changeMarketRule(){isMarketRuleHasChanged=true;};
         RessourceType getType() const;
 
         std::vector<RessourceType> getTypes() const { return types; };

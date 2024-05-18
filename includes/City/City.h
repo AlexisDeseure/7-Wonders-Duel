@@ -17,6 +17,7 @@ class ScientificSymbol;
 class Card;
 enum class RessourceType;
 enum class SymboleType;
+enum class CardType;
 
 class City {
     private:
@@ -51,6 +52,7 @@ class City {
         void addShields(int shields);
         void addChainSymbol(const std::string& symbol); //permet d'ajouter le nom d'un symbole de chainage à la ville
         bool hasChainSymbol(const std::string& symbol) const; //permet de vérifier si un symbole de chainage est présent dans la ville
+        int getNumberOfBuildingType(CardType type) const; //obtenir le nombre du building possédés d'une même couleur
 };
 
 template <typename T>

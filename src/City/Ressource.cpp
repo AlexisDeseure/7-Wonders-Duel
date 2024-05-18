@@ -5,7 +5,7 @@
 const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name { "Wood", "Stone", "Clay", "Paper", "Glass"};
 
 
-Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p),isTradable((types.size() <= 1)){}
+Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p),isTradable((types.size() <= 1)),isMarketRuleHasChanged(false){}
 
 void Ressource::updatePrice(int sum) {
     if (isTradable) {
@@ -46,7 +46,8 @@ RessourceType Ressource::getType() const {
 
 unsigned int Ressource::getPrice() const {
     if (isTradable) {
-        return price;
+        if (isMarketRuleHasChanged) return 1;
+        else return price;
     }
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de prix");
 }
