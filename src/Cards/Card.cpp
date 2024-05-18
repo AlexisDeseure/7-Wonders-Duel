@@ -24,8 +24,13 @@ Card::~Card() {
     // }
 }
 
+unsigned int Card::getMoneyCost() const{
+    return money_cost;
+}
+
+
 unsigned int Card::getCost(City* city) const {
-    unsigned int money_cost = 0;
+    unsigned int money_cost = getMoneyCost();
     unsigned int ressource_necessaire;
     unsigned int ressource_possede;
     std::list<RessourceType> lack_ressources;
@@ -56,6 +61,7 @@ unsigned int Card::getCost(City* city) const {
 
     return money_cost;
 }
+
 
 void Card::applyEffects(City* city) {
     for (auto& effect : effects) {

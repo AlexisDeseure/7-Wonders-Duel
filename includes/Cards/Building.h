@@ -11,9 +11,9 @@ private:
 
 public:
     ~Building() = default;
-    Building(const std::string& name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects,
+    Building(const std::string& name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost,
              int a, const std::vector<std::string>& chainIn = {}, const std::vector<std::string>& chainOut = {})
-             : Card(name, cost, effects), age(a), chainIn(chainIn), chainOut(chainOut) {};
+             : Card(name, cost, effects, direct_cost), age(a), chainIn(chainIn), chainOut(chainOut) {};
 
     int getAge() const {return age;};
     void addChainOutToCity(City* city) const;

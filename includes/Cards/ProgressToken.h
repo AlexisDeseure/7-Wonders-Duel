@@ -13,8 +13,8 @@ class ProgressToken : public Card{
         //const Board* board;
 
     public:
-        ProgressToken(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects)
-        : Card(std::move(name), cost, effects), on_the_board(false) {};
+        ProgressToken(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
+        : Card(std::move(name), cost, effects, direct_cost), on_the_board(false) {};
         bool onTheBoard() const{ return on_the_board;};
         void status_switch(){if (!on_the_board) on_the_board = true;};
 };
