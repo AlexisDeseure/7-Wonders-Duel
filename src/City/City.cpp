@@ -142,8 +142,8 @@ bool City::constructWonder(Wonder* wonder) {
 void City::discardCard(Card* card) {
     int coinsReceived = 2; // Base amount for discarding a card
 
-     // TODO Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
-    coinsReceived += 0;//calculer coins from commercialBuildings();
+     //  Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
+    coinsReceived += getNumberOfBuildingType(CardType::Yellow);
 
     treasury += coinsReceived;
     std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
