@@ -4,6 +4,7 @@
 #include"ProgressToken.h"
 #include"Ressource.h"
 #include"ScientificSymbol.h"
+#include"Game.h"
 
 #include <set>
 #include <algorithm>
@@ -112,11 +113,12 @@ bool City::canAfford(int price) const {
     return treasury >= price;
 }
 
-bool City::constructBuilding(Building* building) {
+bool City::constructBuilding(Building* building, Game& game) {
     int cost = static_cast<int>(building->getCost(this));
     if (canAfford(cost)) {
         treasury -= cost;
         buildings.push_back(building);
+        building->applyEffects(game);
         std::cout << "Building construit: " << building->getName() << std::endl;
         return true;
     } else {
@@ -125,12 +127,13 @@ bool City::constructBuilding(Building* building) {
     }
 }
 
-bool City::constructWonder(Wonder* wonder) {
+bool City::constructWonder(Wonder* wonder, Game& game) {
     int cost = static_cast<int>(wonder->getCost(this));
     if (canAfford(cost) && !wonder->isBuilt()) {
         treasury -= cost;
         wonder->setBuilt(true);
         wonders.push_back(wonder);
+        wonder->applyEffects(game);
         std::cout << "Wonder consuite: " << wonder->getName() << std::endl;
         return true;
     } else {

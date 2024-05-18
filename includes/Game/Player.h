@@ -5,6 +5,7 @@
 #include <utility>
 
 class City;
+class Game;
 
 enum class AiLevel{
     NONE,
@@ -34,6 +35,6 @@ class Player{
         void setAiLevel(AiLevel level){aiLevel = level;};
         void setName(std::string n){this->name = std::move(n);};
 
-        void play();
+        void play(Game& game); //permet de permettre au joueur de jouer son tour
 };
 #endif

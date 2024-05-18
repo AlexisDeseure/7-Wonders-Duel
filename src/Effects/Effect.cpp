@@ -1,11 +1,11 @@
 #include "Effect.h"
-#include "City.h"
+#include "Game.h"
 
-void Effect::apply(City* city) {
+void Effect::apply(Game& game) {
     /*Comportement de base*/
     //std::cout << "Effet : " << getName() << "appliqué à la ville." << std::endl;
 
     /*Application de l'effet*/
-    effect(city);
+    effect(game);
 }
 

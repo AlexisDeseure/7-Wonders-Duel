@@ -3,12 +3,10 @@
 
 #include "EffectFactory.h"
 
-class City; // Déclaration anticipée de City
-
 class AddVictoryPoint : public Effect {
     public:
         AddVictoryPoint() : quantity(0) {};
-        void effect(City* city) override;
+        void effect(Game& game) override;
         void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) override;
 
 

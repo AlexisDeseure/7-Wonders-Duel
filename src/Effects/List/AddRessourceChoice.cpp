@@ -1,9 +1,11 @@
 #include "AddRessourceChoice.h"
-#include "City.h"
 #include"Ressource.h"
+#include "Game.h"
+#include "Player.h"
+#include "City.h"
 
-void AddRessourceChoice::effect(City* city) {
-    city->addRessource(ressources);
+void AddRessourceChoice::effect(Game& game) {
+    game.getTurnPlayer().getCity().addRessource(ressources);
 }
 
 

@@ -2,7 +2,7 @@
 #include "Ressource.h"
 #include "Effect.h"
 #include "City.h"
-
+#include "Game.h";
 #include <list>
 #include <iostream>
 
@@ -63,9 +63,9 @@ unsigned int Card::getCost(City* city) const {
 }
 
 
-void Card::applyEffects(City* city) {
+void Card::applyEffects(Game& game) {
     for (auto& effect : effects) {
-        effect->apply(city);
+        effect->apply(game);
     }
 }
 

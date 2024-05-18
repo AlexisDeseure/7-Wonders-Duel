@@ -4,6 +4,7 @@
 
 #include <random>
 #include <iostream>
+#include <algorithm>
 
 Game::Game() : age(0), board(*new Board()){
     players[0] = new Player();
@@ -134,7 +135,6 @@ void Game::startGame(){
     std::cout << "Game started" << std::endl;
     startMenu();
     std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
-    randomPlayerStart();
     selectWondersPhase();
     while (age < AGE_MAX){
         playAge();
@@ -154,7 +154,13 @@ void Game::playAge(){
 //    }
 }
 
+void Game::playTurn(){
+    invertTurnPlayer();
+    getTurnPlayer().play(*this);
+}
+
 void Game::selectWondersPhase(){
+    randomPlayerStart();
     std::cout << "Phase de selection des merveilles" << std::endl;
 }
 
@@ -169,9 +175,10 @@ void Game::endGame(){
 }
 
 void Game::invertTurnPlayer(){
-    Player &player = getTurnPlayer();
-    players[0] = &getOtherPlayer();
-    players[1] = &player;
+    // Player &player = getTurnPlayer();
+    // players[0] = &getOtherPlayer();
+    // players[1] = &player;
+    std::swap(players[0], players[1]);
 }
 
 void Game::randomPlayerStart() {

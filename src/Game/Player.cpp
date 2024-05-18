@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "City.h"
+#include "Game.h"
 
 #include <utility>
 #include <iostream>
@@ -30,4 +31,8 @@ std::string AiLeveltoString(AiLevel level){
             break;
     };
     return str;
+}
+
+void Player::play(Game& game){
+    std::cout << "joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
 }

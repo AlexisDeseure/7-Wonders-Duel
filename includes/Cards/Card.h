@@ -12,6 +12,7 @@
 
 class Effect;
 class City;
+class Game;
 
 enum class CardType {
     Yellow,
@@ -45,7 +46,7 @@ class Card {
         CardType getType() const {return type;}
         unsigned int getMoneyCost() const; //permet simplment d'accéder au potentiel coût imposé en or
         unsigned int getCost(City* city) const; //permet d'obtenir le coût minimal réel que devra payer une ville pour se procurer la carte (à utiliser avant chaque achat)
-        void applyEffects(City* city);
+        void applyEffects(Game& game);
         virtual bool isChainInInCity(const City* city) const = 0;
 
 

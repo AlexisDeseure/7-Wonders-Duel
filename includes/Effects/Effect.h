@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-class City; // Déclaration anticipée de la classe City
+class Game;
 
 class Effect{
     public:
@@ -12,8 +12,8 @@ class Effect{
         virtual ~Effect() = default;
 
         // implementation of the template method design pattern
-        void apply(City* city);
-        virtual void effect(City* city) = 0;
+        void apply(Game& game);
+        virtual void effect(Game& game) = 0;
         virtual void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) = 0;
 };
 

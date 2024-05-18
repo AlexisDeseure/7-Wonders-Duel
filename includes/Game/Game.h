@@ -29,7 +29,7 @@ class Game{
         Player& getTurnPlayer() const { return *players[0]; };
         Player& getOtherPlayer() const { return *players[1]; };
         void playAge();
-
+        void playTurn();
         void startMenu();
         void displayplayerChoice(int nb_joueur);
         void displayAiLevelChoice();

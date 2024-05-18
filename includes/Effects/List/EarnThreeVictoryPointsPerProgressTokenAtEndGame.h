@@ -4,4 +4,4 @@
 class City; // Déclaration anticipée de City
 class Effect; // Déclaration anticipée de Effect
 
-#endif EARNTHREEVICTORYPOINTSPERPROGRESSTOKENATENDGAME_H
+#endif
