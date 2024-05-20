@@ -172,6 +172,7 @@ bool City::checkScientificVictory() {
 
 void City::addMoney(int money) {
     treasury += money;
+    treasury = std::max(treasury, 0);
 }
 
 void City::addVictoryPoints(int points) {
