@@ -2,15 +2,15 @@
 #define DECKELEMENT_H
 
 #include"Building.h"
-#include"Card.h"
+
 //class Building  ;
 
 class DeckElement: public Building {
     private:
-         DeckElement*  right_son;
-         DeckElement*  left_son;
-         DeckElement*  right_father;
-         DeckElement*  left_father;
+        DeckElement*  right_son;
+        DeckElement*  left_son;
+        DeckElement*  right_father;
+        DeckElement*  left_father;
         bool visible;
 
     public:

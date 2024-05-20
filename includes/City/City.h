@@ -37,6 +37,7 @@ class City {
         City(int victory = 0, int treasury = 0, int shields = 0);
         ~City();
         Ressource& getRessource(RessourceType name);
+        ScientificSymbol& getScientificSymbol(SymboleType name);
         std::vector<Ressource*>& getRessources();
         unsigned int getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources); //permet de calculer le
         // prix pour les ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"

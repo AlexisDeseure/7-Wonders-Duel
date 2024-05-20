@@ -72,6 +72,7 @@ SOURCES = \
    src/Cards/Wonder.cpp \
    src/City/City.cpp \
    src/City/Ressource.cpp \
+   src/City/ScientificSymbol.cpp \
    src/DataFetcher/Instanciator.cpp \
    src/DeckManager/DeckElement.cpp \
    src/DeckManager/MarketDeck.cpp \

@@ -16,6 +16,9 @@ City::City(int victory, int treasury, int shields)
     for (int i = 0; i < static_cast<int>(RessourceType::LENGTH); i++) {
         ressources.push_back(new Ressource({static_cast<RessourceType>(i)}));
     }
+    for (int i = 0; i < static_cast<int>(SymboleType::LENGTH); i++) {
+        scientific_symbols.push_back(new ScientificSymbol(static_cast<SymboleType>(i)));
+    }
 }
 
 City::~City() {
@@ -52,6 +55,15 @@ Ressource& City::getRessource(RessourceType name) {
         }
     }
     throw std::invalid_argument("Ressource non trouvée.");
+}
+
+ScientificSymbol& City::getScientificSymbol(SymboleType name){
+    for (auto& symbol : scientific_symbols) {
+        if (symbol->getType() == name) {
+            return *symbol;
+        }
+    }
+    throw std::invalid_argument("Symbole Scientifique non trouvé.");
 }
 
 std::vector<Ressource*>& City::getRessources() {
@@ -151,6 +163,7 @@ void City::discardCard(Card* card) {
     treasury += coinsReceived;
     std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
     // Handle card removal or placement into a discard pile if necessary
+    // TODO
 }
 
 bool City::checkScientificVictory() {
