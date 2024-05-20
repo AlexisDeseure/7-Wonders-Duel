@@ -25,7 +25,7 @@ void Game::startMenu(){
     AiLevel level;
     int choice;
 
-    for (int i = 0; i < NB_PLAYERS; i++) {
+    for (int i = 0; i < 2; i++) {
         choice = 0;
         do{
             displayplayerChoice(i+1);

@@ -44,6 +44,7 @@ class City {
         // prix pour les ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"
         // de la ville) à partir des ressource à choix
         int getDistinctScientificSymbols() const;
+        int getTreasury() const;
         bool canAfford(int price) const;
         bool constructBuilding(Building* building, Game& game);
         bool constructWonder(Wonder* wonder, Game& game);
@@ -58,7 +59,9 @@ class City {
         int getNumberOfBuildingType(BuildingType type) const; //obtenir le nombre du building possédés d'une même couleur
         void addEachTurnEffects(Effect* effect);
         void addEndGameEffects(Effect* effect);
-        std::vector<Wonder*> getWonders();
+        void applyEndEffects(Game& game);
+        std::vector<Wonder*>& getWonders();
+        std::vector<ProgressToken*>& getProgressTokens();
 };
 
 template <typename T>

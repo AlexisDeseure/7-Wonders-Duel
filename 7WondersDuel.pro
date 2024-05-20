@@ -42,12 +42,12 @@ HEADERS = \
    includes/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.h \
    includes/Effects/List/DiscardAdversaryBrownCard.h \
    includes/Effects/List/EarnFourMoneyPerBuildingChaining.h \
-   includes/Effects/List/EarnThreeVictoryPointsPerProgressTokenAtEndGame.h \
    includes/Effects/List/EarnXMoneyPerMostAtConstruct.h \
    includes/Effects/List/EarnXMoneyPerWonderAtConstruct.h \
-   includes/Effects/List/EarnXVictoryPointPerGoldAndBrownMostAtEndGame.h \
+   includes/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.h \
    includes/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.h \
    includes/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.h \
+   includes/Effects/List/EarnXVictoryPointsPerProgressTokenAtEndGame.h \
    includes/Effects/List/InstantReplaying.h \
    includes/Effects/List/MoveConflictPawn.h \
    includes/Effects/List/MoveConflictPawnOneMorePerNewRed.h \
@@ -86,12 +86,12 @@ SOURCES = \
    src/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.cpp \
    src/Effects/List/DiscardAdversaryBrownCard.cpp \
    src/Effects/List/EarnFourMoneyPerBuildingChaining.cpp \
-   src/Effects/List/EarnThreeVictoryPointsPerProgressTokenAtEndGame.cpp \
    src/Effects/List/EarnXMoneyPerMostAtConstruct.cpp \
    src/Effects/List/EarnXMoneyPerWonderAtConstruct.cpp \
-   src/Effects/List/EarnXVictoryPointPerGoldAndBrownMostAtEndGame.cpp \
+   src/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.cpp \
    src/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.cpp \
    src/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.cpp \
+   src/Effects/List/EarnXVictoryPointsPerProgressTokenAtEndGame.cpp \
    src/Effects/List/InstantReplaying.cpp \
    src/Effects/List/MoveConflictPawn.cpp \
    src/Effects/List/MoveConflictPawnOneMorePerNewRed.cpp \

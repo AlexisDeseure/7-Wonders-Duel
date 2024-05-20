@@ -5,6 +5,7 @@
 #include"Ressource.h"
 #include"ScientificSymbol.h"
 #include"Game.h"
+#include"Effect.h"
 
 #include <set>
 #include <algorithm>
@@ -38,6 +39,10 @@ City::~City() {
     for (auto& b : buildings) {
         delete b;
     }
+}
+
+int City::getTreasury() const{
+    return treasury;
 }
 
 int City::getNumberOfBuildingType(BuildingType type) const{
@@ -210,9 +215,21 @@ void City::addEndGameEffects(Effect* effect){
     endGameEffects.push_back(effect);
 }
 
-std::vector<Wonder*> City::getWonders(){
+std::vector<Wonder*>& City::getWonders(){
     return wonders;
 }
+
+std::vector<ProgressToken*>& City::getProgressTokens(){
+    return progress_tokens;
+}
+
+void City::applyEndEffects(Game& game){
+    for (auto& effect : endGameEffects) {
+        effect->endEffect(game);
+    }
+}
+
+
 template <typename T>
 void removeFirstElement(std::list<T>& vec, const T& element) {
     auto it = std::find(vec.begin(), vec.end(), element);

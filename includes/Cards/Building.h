@@ -14,7 +14,7 @@ enum class BuildingType {
     LENGTH
 };
 
-const std::array<std::string, static_cast<int>(BuildingType::LENGTH)> building_type_name { "Yellow", "Brown", "Grey", "Purple", "Green", "Red", "Blue"};
+const std::array<std::string, static_cast<int>(BuildingType::LENGTH)> building_type_name { "Yellow", "Brown", "Gray", "Purple", "Green", "Red", "Blue"};
 
 class Building : public Card{
     private:
