@@ -1,16 +1,19 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#define MAX_WONDERS 7
+#include "Game.h"
+#include <vector>
 
 class ConflictPawn;
 class MarketDeck;
+class ProgressToken;
 
 class Board{
     private:
         int constructed_wonders;
         ConflictPawn& conflict_pawn;
         MarketDeck& market_deck;
+        std::vector<ProgressToken*> progressToken; //jetons sélectionnés en début de partie
 
     public:
         Board();

@@ -1,9 +1,6 @@
 #ifndef CITY_H
 #define CITY_H
 
-#define PROGRESS_TOKEN_LENGTH 10
-#define WONDER_LENGTH 4
-
 #include <string>
 #include <vector>
 #include <list>
@@ -19,7 +16,7 @@ class Game;
 class Effect;
 enum class RessourceType;
 enum class SymboleType;
-enum class CardType;
+enum class BuildingType;
 
 class City {
     private:
@@ -58,7 +55,10 @@ class City {
         void addShields(int shields);
         void addChainSymbol(const std::string& symbol); //permet d'ajouter le nom d'un symbole de chainage à la ville
         bool hasChainSymbol(const std::string& symbol) const; //permet de vérifier si un symbole de chainage est présent dans la ville
-        int getNumberOfBuildingType(CardType type) const; //obtenir le nombre du building possédés d'une même couleur
+        int getNumberOfBuildingType(BuildingType type) const; //obtenir le nombre du building possédés d'une même couleur
+        void addEachTurnEffects(Effect* effect);
+        void addEndGameEffects(Effect* effect);
+        std::vector<Wonder*> getWonders();
 };
 
 template <typename T>

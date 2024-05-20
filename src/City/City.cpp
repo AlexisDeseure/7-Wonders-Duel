@@ -40,7 +40,7 @@ City::~City() {
     }
 }
 
-int City::getNumberOfBuildingType(CardType type) const{
+int City::getNumberOfBuildingType(BuildingType type) const{
     int number = 0;
     for (auto& building : buildings){
         if (building->getType() == type) number++;
@@ -158,7 +158,7 @@ void City::discardCard(Card* card) {
     int coinsReceived = 2; // Base amount for discarding a card
 
      //  Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
-    coinsReceived += getNumberOfBuildingType(CardType::Yellow);
+    coinsReceived += getNumberOfBuildingType(BuildingType::Yellow);
 
     treasury += coinsReceived;
     std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
@@ -202,6 +202,17 @@ bool City::hasChainSymbol(const std::string& symbol) const {
     return false;
 }
 
+void City::addEachTurnEffects(Effect* effect){
+    eachTurnEffects.push_back(effect);
+}
+
+void City::addEndGameEffects(Effect* effect){
+    endGameEffects.push_back(effect);
+}
+
+std::vector<Wonder*> City::getWonders(){
+    return wonders;
+}
 template <typename T>
 void removeFirstElement(std::list<T>& vec, const T& element) {
     auto it = std::find(vec.begin(), vec.end(), element);

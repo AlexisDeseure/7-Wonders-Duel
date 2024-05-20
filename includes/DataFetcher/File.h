@@ -1,8 +1,6 @@
 #ifndef FILE_H
 #define FILE_H
 
-#define FILE_PATH "../../data/data.json"
-
 #include <iostream>
 #include <QtCore>
 #include <QtWidgets>
@@ -10,6 +8,7 @@
 #include <QMainWindow>
 #include <vector>
 
+#include "Game.h"
 
 class File
 {

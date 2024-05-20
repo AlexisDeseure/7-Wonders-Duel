@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "ConflictPawn.h"
 #include "MarketDeck.h"
+#include "ProgressToken.h"
 
 #include <iostream>
 

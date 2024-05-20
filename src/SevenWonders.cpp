@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
     std::vector<Ressource*> vecre = {re, re2};
     Effect* effect = EffectFactory::instance().create("AddMoney");
     cout << "re : " << c.getRessource(RessourceType::Glass).getPrice()<<endl;
-    Building b("test", vecre, {effect}, 2, CardType::Blue,3);
+    Building b("test", vecre, {effect}, 2, BuildingType::Blue,3);
     cout << "cost : " << b.getCost(&c)<<endl;
 
     Game();

@@ -4,6 +4,9 @@
 #define COIN_START 7
 #define NB_PLAYERS 2
 #define AGE_MAX 3
+#define MAX_WONDERS 7
+#define WONDER_LENGTH 4
+#define FILE_PATH "../../data/data.json"
 
 #include <string>
 
