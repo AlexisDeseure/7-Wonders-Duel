@@ -16,12 +16,13 @@ class Game{
         int age;
         Board& board;
         Player* players[NB_PLAYERS];
+        bool isReplaying;
 
     public:
 
         void advanceAge();
         void startGame();
-
+        void replay();
         void selectWondersPhase();
         void endGame();
         void invertTurnPlayer();

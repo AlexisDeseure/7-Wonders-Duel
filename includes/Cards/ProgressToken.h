@@ -1,4 +1,3 @@
-//Crée par Mateo
 #ifndef PROGRESSTOKEN_H
 #define PROGRESSTOKEN_H
 

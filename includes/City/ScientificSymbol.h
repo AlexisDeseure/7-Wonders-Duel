@@ -1,4 +1,3 @@
-//Crée par Mateo
 #ifndef SCIENTIFICSYMBOL_H
 #define SCIENTIFICSYMBOL_H
 

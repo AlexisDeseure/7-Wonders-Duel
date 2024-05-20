@@ -6,7 +6,7 @@
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), board(*new Board()){
+Game::Game() : age(0), board(*new Board()), isReplaying(false){
     players[0] = new Player();
     players[1] = new Player();
 
@@ -154,8 +154,13 @@ void Game::playAge(){
 //    }
 }
 
+void Game::replay(){
+    if (!isReplaying) isReplaying=true;
+}
+
 void Game::playTurn(){
-    invertTurnPlayer();
+    if (!isReplaying) invertTurnPlayer();
+    isReplaying=false;
     getTurnPlayer().play(*this);
 }
 

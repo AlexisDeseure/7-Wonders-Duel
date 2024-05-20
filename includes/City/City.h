@@ -16,6 +16,7 @@ class Ressource;
 class ScientificSymbol;
 class Card;
 class Game;
+class Effect;
 enum class RessourceType;
 enum class SymboleType;
 enum class CardType;
@@ -32,6 +33,9 @@ class City {
         std::vector<ScientificSymbol*> scientific_symbols;
         std::vector<Building*> buildings;
         std::vector<std::string> chain_symbols;
+
+        std::list<Effect*> eachTurnEffects;
+        std::list<Effect*> endGameEffects;
 
     public:
         City(int victory = 0, int treasury = 0, int shields = 0);
