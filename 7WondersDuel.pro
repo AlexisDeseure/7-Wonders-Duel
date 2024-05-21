@@ -35,28 +35,29 @@ HEADERS = \
    includes/Effects/List/AddMoney.h \
    includes/Effects/List/AddRessource.h \
    includes/Effects/List/AddRessourceChoice.h \
+   includes/Effects/List/AddScientificSymbol.h \
    includes/Effects/List/AddVictoryPoint.h \
    includes/Effects/List/AdversaryPaysMoneyToBank.h \
    includes/Effects/List/BuildOneDiscardedBuilding.h \
    includes/Effects/List/ChangeMarketRule.h \
    includes/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.h \
-   includes/Effects/List/DiscardAdversaryBrownCard.h \
+   includes/Effects/List/DiscardAdversaryCard.h \
    includes/Effects/List/EarnMoneyPerBuildingChaining.h \
-   includes/Effects/List/EarnXMoneyPerMostAtConstruct.h \
-   includes/Effects/List/EarnXMoneyPerWonderAtConstruct.h \
-   includes/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.h \
-   includes/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.h \
-   includes/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.h \
-   includes/Effects/List/EarnXVictoryPointsPerProgressTokenAtEndGame.h \
+   includes/Effects/List/EarnMoneyPerMostAtConstruct.h \
+   includes/Effects/List/EarnMoneyPerWonderAtConstruct.h \
+   includes/Effects/List/EarnVictoryPointPerLotOfMoneyMostAtEndGame.h \
+   includes/Effects/List/EarnVictoryPointPerMostWonderAtEndGame.h \
+   includes/Effects/List/EarnVictoryPointPerThingMostAtEndGame.h \
+   includes/Effects/List/EarnVictoryPointsPerProgressTokenAtEndGame.h \
    includes/Effects/List/InstantReplaying.h \
    includes/Effects/List/MoveConflictPawn.h \
-   includes/Effects/List/MoveConflictPawnOneMorePerNewRed.h \
+   includes/Effects/List/MoveConflictPawnMorePerNew.h \
    includes/Effects/List/NewWondersHaveInstantReplaying.h \
    includes/Effects/List/TakeAdversaryTradeMoney.h \
-   includes/Effects/List/TakeScientificSymbol.h \
    includes/Effects/List/WonderCostReducedByX.h \
    includes/Effects/Effect.h \
    includes/Effects/EffectFactory.h \
+   includes/Effects/List/BuildingCostReducedByX.h \
    includes/Game/Game.h \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
@@ -77,25 +78,26 @@ SOURCES = \
    src/Effects/List/AddMoney.cpp \
    src/Effects/List/AddRessource.cpp \
    src/Effects/List/AddRessourceChoice.cpp \
+   src/Effects/List/AddScientificSymbol.cpp \
    src/Effects/List/AddVictoryPoint.cpp \
    src/Effects/List/AdversaryPaysMoneyToBank.cpp \
    src/Effects/List/BuildOneDiscardedBuilding.cpp \
+   src/Effects/List/BuildingCostReducedByX.cpp \
    src/Effects/List/ChangeMarketRule.cpp \
    src/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.cpp \
-   src/Effects/List/DiscardAdversaryBrownCard.cpp \
+   src/Effects/List/DiscardAdversaryCard.cpp \
    src/Effects/List/EarnMoneyPerBuildingChaining.cpp \
-   src/Effects/List/EarnXMoneyPerMostAtConstruct.cpp \
-   src/Effects/List/EarnXMoneyPerWonderAtConstruct.cpp \
-   src/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.cpp \
-   src/Effects/List/EarnXVictoryPointPerMostWonderAtEndGame.cpp \
-   src/Effects/List/EarnXVictoryPointPerThingMostAtEndGame.cpp \
-   src/Effects/List/EarnXVictoryPointsPerProgressTokenAtEndGame.cpp \
+   src/Effects/List/EarnMoneyPerMostAtConstruct.cpp \
+   src/Effects/List/EarnMoneyPerWonderAtConstruct.cpp \
+   src/Effects/List/EarnVictoryPointPerLotOfMoneyMostAtEndGame.cpp \
+   src/Effects/List/EarnVictoryPointPerMostWonderAtEndGame.cpp \
+   src/Effects/List/EarnVictoryPointPerThingMostAtEndGame.cpp \
+   src/Effects/List/EarnVictoryPointsPerProgressTokenAtEndGame.cpp \
    src/Effects/List/InstantReplaying.cpp \
    src/Effects/List/MoveConflictPawn.cpp \
-   src/Effects/List/MoveConflictPawnOneMorePerNewRed.cpp \
+   src/Effects/List/MoveConflictPawnMorePerNew.cpp \
    src/Effects/List/NewWondersHaveInstantReplaying.cpp \
    src/Effects/List/TakeAdversaryTradeMoney.cpp \
-   src/Effects/List/TakeScientificSymbol.cpp \
    src/Effects/List/WonderCostReducedByX.cpp \
    src/Effects/Effect.cpp \
    src/Game/Game.cpp \

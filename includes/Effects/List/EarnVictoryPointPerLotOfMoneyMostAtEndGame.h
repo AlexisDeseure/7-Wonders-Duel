@@ -1,14 +1,14 @@
-#ifndef EARNXVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H
-#define EARNXVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H
+#ifndef EARNVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H
+#define EARNVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H
 
 #include "EffectFactory.h"
 #include <vector>
 
 class City;
 
-class EarnXVictoryPointPerLotOfMoneyMostAtEndGame : public Effect {
+class EarnVictoryPointPerLotOfMoneyMostAtEndGame : public Effect {
     public:
-        EarnXVictoryPointPerLotOfMoneyMostAtEndGame() = default;
+        EarnVictoryPointPerLotOfMoneyMostAtEndGame() = default;
 
         void effect(Game& game) override;
         void endEffect(Game& game) override;
@@ -21,7 +21,7 @@ class EarnXVictoryPointPerLotOfMoneyMostAtEndGame : public Effect {
 };
 
 
-REGISTER_CLASS(EarnXVictoryPointPerLotOfMoneyMostAtEndGame);
+REGISTER_CLASS(EarnVictoryPointPerLotOfMoneyMostAtEndGame);
 
 
-#endif // EARNXVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H
+#endif // EARNVICTORYPOINTPERLOTOFMONEYMOSTATENDGAME_H

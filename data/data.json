@@ -205,6 +205,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         1
+                    ],
+                    "AddScientificSymbol": [
+                        "archipendulum"
                     ]
                 },
                 "scientific_symbol": "Pendule"
@@ -221,6 +224,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         1
+                    ],
+                    "AddScientificSymbol": [
+                        "wheel"
                     ]
                 },
                 "scientific_symbol": "Roue"
@@ -234,7 +240,11 @@
                 "cost": {
                     "Money": 2
                 },
-                "effects": null,
+                "effects": {
+                    "AddScientificSymbol": [
+                        "quill"
+                    ]
+                },
                 "scientific_symbol": "Plume"
             },
             {
@@ -246,7 +256,11 @@
                 "cost": {
                     "Money": 2
                 },
-                "effects": null,
+                "effects": {
+                    "AddScientificSymbol": [
+                        "pestle"
+                    ]
+                },
                 "scientific_symbol": "Bol"
             },
             {
@@ -602,6 +616,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         2
+                    ],
+                    "AddScientificSymbol": [
+                        "quill"
                     ]
                 },
                 "scientific_symbol": "Plume"
@@ -619,6 +636,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         2
+                    ],
+                    "AddScientificSymbol": [
+                        "pestle"
                     ]
                 },
                 "scientific_symbol": "Bol"
@@ -636,6 +656,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         1
+                    ],
+                    "AddScientificSymbol": [
+                        "wheel"
                     ]
                 },
                 "scientific_symbol": "Roue"
@@ -653,6 +676,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         1
+                    ],
+                    "AddScientificSymbol": [
+                        "archipendulum"
                     ]
                 },
                 "scientific_symbol": "Pendule"
@@ -838,6 +864,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         3
+                    ],
+                    "AddScientificSymbol": [
+                        "sundial"
                     ]
                 },
                 "scientific_symbol": "Horloge solaire"
@@ -856,6 +885,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         3
+                    ],
+                    "AddScientificSymbol": [
+                        "sundial"
                     ]
                 },
                 "scientific_symbol": "Horloge solaire"
@@ -874,6 +906,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         2
+                    ],
+                    "AddScientificSymbol": [
+                        "armillary_sphere"
                     ]
                 },
                 "scientific_symbol": "Globe"
@@ -891,6 +926,9 @@
                 "effects": {
                     "addVictoryPoint": [
                         2
+                    ],
+                    "AddScientificSymbol": [
+                        "armillary_sphere"
                     ]
                 },
                 "scientific_symbol": "Globe"
@@ -1288,15 +1326,28 @@
                 }
             },
             {
+                "name": "Loi",
+                "effects": {
+                    "AddScientificSymbol": [
+                        "scale"
+                    ]
+                }
+            },
+            {
                 "name": "Ma\u00c3\u00a7onnerie",
                 "effects": {
-                    "takeScientificSymbol": null
+                    "BuildingCostReducedByX": [
+                        2,
+                        "Blue"
+                    ]
                 }
             },
             {
                 "name": "Math\u00c3\u00a9matiques",
                 "effects": {
-                    "earnVictoryPointsPerProgressTokenAtEndGame": null
+                    "earnVictoryPointsPerProgressTokenAtEndGame": [
+                        3
+                    ]
                 }
             },
             {
@@ -1310,7 +1361,10 @@
             {
                 "name": "Strat\u00c3\u00a9gie",
                 "effects": {
-                    "moveConflictPawnOneMorePerNewRed": null
+                    "MoveConflictPawnMorePerNew": [
+                        1,
+                        "Red"
+                    ]
                 }
             },
             {
@@ -1340,7 +1394,9 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "discardAdversaryGreyCard": null,
+                    "discardAdversaryCard": [
+                        "Gray"
+                    ],
                     "moveConflictPawn": [
                         1
                     ],
@@ -1480,7 +1536,9 @@
                     "Stone": 1
                 },
                 "effects": {
-                    "discardAdversaryBrownCard": null,
+                    "discardAdversaryCard": [
+                        "Brown"
+                    ],
                     "moveConflictPawn": [
                         1
                     ],
