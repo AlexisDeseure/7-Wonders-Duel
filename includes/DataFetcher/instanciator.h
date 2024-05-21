@@ -49,7 +49,6 @@ public:
 
     //Extraction de X Cartes parmis un vecteur de cartes:
 
-
 };
 
 #endif // INSTANCIATOR_H
