@@ -68,8 +68,6 @@ SOURCES = \
    src/BoardManager/ConflictPawn.cpp \
    src/Cards/Building.cpp \
    src/Cards/Card.cpp \
-   src/Cards/ProgressToken.cpp \
-   src/Cards/Wonder.cpp \
    src/City/City.cpp \
    src/City/Ressource.cpp \
    src/City/ScientificSymbol.cpp \

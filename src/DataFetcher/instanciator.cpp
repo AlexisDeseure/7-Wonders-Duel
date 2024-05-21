@@ -1,5 +1,8 @@
 #include "../../includes/DataFetcher/Instanciator.h"
-
+#include "Building.h"
+#include"Wonder.h"
+#include"Card.h"
+#include "ProgressToken.h"
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : this->getNames()) {
         if (noms.first == "Building"){
