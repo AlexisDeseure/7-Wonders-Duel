@@ -6,6 +6,7 @@
 
 class City;
 class Game;
+class Card;
 
 enum class AiLevel{
     NONE,
@@ -35,6 +36,7 @@ class Player{
         void setAiLevel(AiLevel level){aiLevel = level;};
         void setName(std::string n){this->name = std::move(n);};
 
+        bool buyCard(Game& game, Card& card); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
 };
 #endif

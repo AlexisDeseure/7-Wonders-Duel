@@ -41,7 +41,7 @@ HEADERS = \
    includes/Effects/List/ChangeMarketRule.h \
    includes/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.h \
    includes/Effects/List/DiscardAdversaryBrownCard.h \
-   includes/Effects/List/EarnFourMoneyPerBuildingChaining.h \
+   includes/Effects/List/EarnMoneyPerBuildingChaining.h \
    includes/Effects/List/EarnXMoneyPerMostAtConstruct.h \
    includes/Effects/List/EarnXMoneyPerWonderAtConstruct.h \
    includes/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.h \
@@ -83,7 +83,7 @@ SOURCES = \
    src/Effects/List/ChangeMarketRule.cpp \
    src/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.cpp \
    src/Effects/List/DiscardAdversaryBrownCard.cpp \
-   src/Effects/List/EarnFourMoneyPerBuildingChaining.cpp \
+   src/Effects/List/EarnMoneyPerBuildingChaining.cpp \
    src/Effects/List/EarnXMoneyPerMostAtConstruct.cpp \
    src/Effects/List/EarnXMoneyPerWonderAtConstruct.cpp \
    src/Effects/List/EarnXVictoryPointPerLotOfMoneyMostAtEndGame.cpp \

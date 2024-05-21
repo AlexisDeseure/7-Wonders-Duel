@@ -40,8 +40,7 @@ class City {
         Ressource& getRessource(RessourceType name);
         ScientificSymbol& getScientificSymbol(SymboleType name);
         std::vector<Ressource*>& getRessources();
-        unsigned int getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources); //permet de calculer le
-        // prix pour les ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"
+        void updateRemainingRessources(std::list<RessourceType>& remaining_ressources); //permet de modifier la liste des ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"
         // de la ville) à partir des ressource à choix
         int getDistinctScientificSymbols() const;
         int getTreasury() const;
@@ -60,6 +59,8 @@ class City {
         void addEachTurnEffects(Effect* effect);
         void addEndGameEffects(Effect* effect);
         void applyEndEffects(Game& game);
+        void applyEachTurnEffects(Game& game, Card& card);
+        void addCard(Card& card); //permet d'ajouter une carte à la ville (fonctionne pour tous les types)
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();
 };

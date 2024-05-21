@@ -5,6 +5,7 @@
 
 #include <utility>
 #include <vector>
+#include <list>
 
 #include <QString>
 
@@ -34,6 +35,7 @@ class Card {
         };
 
         unsigned int getMoneyCost() const; //permet simplment d'accéder au potentiel coût imposé en or
+        std::list<RessourceType> getLackingRessources(City* city) const;
         unsigned int getCost(City* city) const; //permet d'obtenir le coût minimal réel que devra payer une ville pour se procurer la carte (à utiliser avant chaque achat)
         void applyEffects(Game& game);
         virtual bool isChainInInCity(const City* city) const = 0;

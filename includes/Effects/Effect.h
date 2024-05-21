@@ -6,6 +6,7 @@
 #include <iostream>
 
 class Game;
+class Card;
 
 class Effect{
     public:
@@ -16,6 +17,7 @@ class Effect{
         void apply(Game& game);
         virtual void effect(Game& game) = 0;
         virtual void endEffect(Game& game) {};
+        virtual void eachTurnEffect(Game& game, Card& card) {};
         virtual void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) = 0;
 };
 

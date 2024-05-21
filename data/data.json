@@ -1325,7 +1325,9 @@
                     "addMoney": [
                         6
                     ],
-                    "earnFourMoneyPerBuildingChaining": null
+                    "earnMoneyPerBuildingChaining": [
+                        4
+                    ]
                 }
             }
         ],

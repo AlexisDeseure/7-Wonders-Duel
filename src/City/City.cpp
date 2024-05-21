@@ -6,6 +6,7 @@
 #include"ScientificSymbol.h"
 #include"Game.h"
 #include"Effect.h"
+#include"Card.h"
 
 #include <set>
 #include <algorithm>
@@ -75,18 +76,17 @@ std::vector<Ressource*>& City::getRessources() {
     return ressources;
 }
 
-unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources) {
+void City::updateRemainingRessources(std::list<RessourceType>& remaining_ressources) {
     // Chercher si pour chaque ressource à choix possédée, les ressources interchangeable sont dans la liste des
     // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
-    // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide, sinon le prix des ressources
-    // restantes est calculé et retourné.
+    // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide
 
     unsigned int price = 0;
     RessourceType type_intermediaire_prix_haut = RessourceType::LENGTH;
 
     for (auto& ressource : ressources) {
         if (remaining_ressources.empty()) {
-            return price;
+            return;
         }
         if (!ressource->getTradable()) {
             for(auto& type : ressource->getTypes()){
@@ -109,12 +109,6 @@ unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& rema
             }
         }
     }
-
-    // Calcul du prix des ressources restantes
-    for (auto& ressource : remaining_ressources) {
-        price += getRessource(ressource).getPrice();
-    }
-    return price;
 
 }
 
@@ -226,6 +220,24 @@ std::vector<ProgressToken*>& City::getProgressTokens(){
 void City::applyEndEffects(Game& game){
     for (auto& effect : endGameEffects) {
         effect->endEffect(game);
+    }
+}
+
+void City::applyEachTurnEffects(Game& game, Card& card){
+    for (auto& effect : eachTurnEffects) {
+        effect->eachTurnEffect(game, card);
+    }
+}
+
+void City::addCard(Card& card){
+    if (dynamic_cast<Wonder*>(&card)){
+        wonders.push_back(dynamic_cast<Wonder*>(&card));
+    }
+    else if (dynamic_cast<Building*>(&card)){
+        buildings.push_back(dynamic_cast<Building*>(&card));
+    }
+    else if (dynamic_cast<ProgressToken*>(&card)){
+        progress_tokens.push_back(dynamic_cast<ProgressToken*>(&card));
     }
 }
 

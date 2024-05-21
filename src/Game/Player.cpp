@@ -1,7 +1,9 @@
 #include "Player.h"
 #include "City.h"
 #include "Game.h"
-
+#include "Card.h"
+#include "Wonder.h"
+#include "Building.h"
 #include <utility>
 #include <iostream>
 
@@ -35,4 +37,15 @@ std::string AiLeveltoString(AiLevel level){
 
 void Player::play(Game& game){
     std::cout << "joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
+    //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
+}
+
+bool Player::buyCard(Game& game, Card& card){
+    if (city.canAfford(card.getCost(&city))){
+        city.applyEachTurnEffects(game, card);
+        card.applyEffects(game);
+        city.addCard(card);
+        return true;
+    }
+    return false;
 }

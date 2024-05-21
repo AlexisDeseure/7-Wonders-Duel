@@ -2,6 +2,7 @@
 #include "Building.h"
 #include "ProgressToken.h"
 #include "City.h"
+#include "Card.h"
 
 #include "EffectFactory.h"
 #include <QApplication>
@@ -44,7 +45,10 @@ int main(int argc, char* argv[]) {
     cout << "re : " << c.getRessource(RessourceType::Glass).getPrice()<<endl;
     Building b("test", vecre, {effect}, 2, BuildingType::Blue,3);
     cout << "cost : " << b.getCost(&c)<<endl;
-
+    for (auto& t : b.getLackingRessources(&c)){
+        cout << ressourceTypeToString(t);
+    }
+    cout<<endl;
     Game();
 
     string test;

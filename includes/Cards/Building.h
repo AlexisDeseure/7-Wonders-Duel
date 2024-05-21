@@ -32,7 +32,7 @@ class Building : public Card{
         BuildingType getType() const {return type;}
         int getAge() const {return age;};
         void addChainOutToCity(City* city) const;
-    bool isChainInInCity(const City* city) const override;
+        bool isChainInInCity(const City* city) const override;
 };
 
 std::string buildingTypeToString(BuildingType type);

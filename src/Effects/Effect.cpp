@@ -1,5 +1,6 @@
 #include "Effect.h"
 #include "Game.h"
+#include "Card.h"
 
 void Effect::apply(Game& game) {
     /*Comportement de base*/

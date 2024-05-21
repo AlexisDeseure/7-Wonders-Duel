@@ -13,6 +13,7 @@ class Wonder : public Card{
         void activate(){if(!active) active=true;}; //Selecteur de status
         bool isBuilt() const {return active;};
         void setBuilt(bool b){active = b;};
+        bool isChainInInCity(const City* city) const override {};
 };
 // Wonder
 

@@ -28,17 +28,11 @@ unsigned int Card::getMoneyCost() const{
     return money_cost;
 }
 
-
-unsigned int Card::getCost(City* city) const {
-    unsigned int money_cost = getMoneyCost();
+std::list<RessourceType> Card::getLackingRessources(City* city) const{
     unsigned int ressource_necessaire;
     unsigned int ressource_possede;
     std::list<RessourceType> lack_ressources;
     RessourceType type_intermediaire;
-
-    if (isChainInInCity(city)) {
-        return 0;
-    }
 
     // Calculer les ressources manquantes après avoir vérifier les ressources de bases de la ville
     for (auto& ressource : cost) {
@@ -54,9 +48,22 @@ unsigned int Card::getCost(City* city) const {
         }
     }
 
+    city->updateRemainingRessources(lack_ressources);
+    return lack_ressources;
+}
+
+unsigned int Card::getCost(City* city) const {
+    unsigned int money_cost = getMoneyCost();
+
+    std::list<RessourceType> lack_ressources = getLackingRessources(city);
+
+    if (isChainInInCity(city)) {
+        return 0;
+    }
+
     // Calculer le prix des ressources manquantes
-    if (!lack_ressources.empty()){
-        money_cost += city->getPriceForRemainingRessources(lack_ressources);
+    for (auto& ressource : lack_ressources) {
+        money_cost += city->getRessource(ressource).getPrice();
     }
 
     return money_cost;
@@ -72,3 +79,4 @@ void Card::applyEffects(Game& game) {
 void Card::ajouteRessources(Ressource* R) {
     cost.push_back(R);
 }
+
