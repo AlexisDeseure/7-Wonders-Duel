@@ -27,7 +27,6 @@ private:
     void constructPT();
 
 public:
-
     //Instanciation directement dans le constructeur.
     Instanciator(): buildings_instanciator(),wonders_instanciator(),progress_tokens_instanciator() {
         names = json.getNames();
@@ -43,9 +42,14 @@ public:
     std::vector<Building>& getBuildings() {return buildings_instanciator;};
     std::vector<Wonder>& getWonders() {return wonders_instanciator;};
     std::vector<ProgressToken> progress_token_instanciator() {return progress_tokens_instanciator;};
-
     //On peut laisser la possibilité de donner la liste des cartes si besoin.
     std::vector<std::pair<QString,QString>>& getNames() {return names;}
+
+    //Pioche
+
+    //Extraction de X Cartes parmis un vecteur de cartes:
+
+
 };
 
 #endif // INSTANCIATOR_H
