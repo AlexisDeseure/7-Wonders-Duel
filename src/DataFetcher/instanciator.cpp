@@ -8,8 +8,10 @@ void Instanciator::constructBuilding(){
             this->addBuildingToInstanciator(currBuild);
         }
     }
-
 }
+
+//LA FONCTION CI-DESSUS EST INCOMPLETE, LE CONSTRUCTEUR EST MAL APPELE, JE SUIS AU COURANT, IL FAUT DISCUTER DES COMPATIBILITES DE TYPES;
+
 // Constructeur de Building:
 // Building(const std::string& name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t, int a, const std::vector<std::string>& chainIn = {}, const std::vector<std::string>& chainOut = {})
 
