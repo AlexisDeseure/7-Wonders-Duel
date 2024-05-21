@@ -17,4 +17,5 @@ class AddMoney : public Effect {
 // Enregistrement de la classe AddMoney dans la factory pour pouvoir l'instancier à partir de son nom
 REGISTER_CLASS(AddMoney);
 
+
 #endif

@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "SevenWonderUI.h"
 #include "Building.h"
+#include "ProgressToken.h"
 #include "City.h"
 
 #include "EffectFactory.h"

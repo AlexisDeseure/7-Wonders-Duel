@@ -2,7 +2,7 @@
 #include "Ressource.h"
 #include "Effect.h"
 #include "City.h"
-#include "Game.h";
+#include "Game.h"
 #include <list>
 #include <iostream>
 

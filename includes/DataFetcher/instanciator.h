@@ -47,9 +47,8 @@ public:
 
     //Pioche
 
-    //Extraction de X Cartes parmis un vecteur de cartes:
-
-
+    //Extraction des cartes d'un âge:
+    std::vector<Building> getCardFromXAge(int age);
 };
 
 #endif // INSTANCIATOR_H
