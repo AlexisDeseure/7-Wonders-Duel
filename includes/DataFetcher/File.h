@@ -41,7 +41,6 @@ public:
     QJsonArray listeBuildings();
     QJsonArray listeProgressToken();
     QJsonArray listeWonder();
-
     std::vector<std::pair<QString,QString>> getNames();
 
     QJsonObject getBuildingsProperties(QString name);
@@ -61,6 +60,9 @@ public:
     QString getColor(QString name);
 
     int getAge(QString name);
+
+    //Fonction qui suit : à faire dans le cpp et à changer dans le JSON.
+    int getDirectCost(QString name);
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);

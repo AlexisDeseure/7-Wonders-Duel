@@ -41,7 +41,7 @@ public:
     //L'Utilisateur pourra seulement avoir accès aux vecteurs des cartes plus haut.
     std::vector<Building>& getBuildings() {return buildings_instanciator;};
     std::vector<Wonder>& getWonders() {return wonders_instanciator;};
-    std::vector<ProgressToken> progress_token_instanciator() {return progress_tokens_instanciator;};
+    std::vector<ProgressToken>& getPTInstanciator() {return progress_tokens_instanciator;};
     //On peut laisser la possibilité de donner la liste des cartes si besoin.
     std::vector<std::pair<QString,QString>>& getNames() {return names;}
 

@@ -3,6 +3,7 @@
 
 #include "Card.h"
 
+
 enum class BuildingType {
     Yellow,
     Brown,
@@ -32,7 +33,6 @@ class Building : public Card{
         int getAge() const {return age;};
         void addChainOutToCity(City* city) const;
     bool isChainInInCity(const City* city) const override;
-
 };
 
 std::string buildingTypeToString(BuildingType type);
