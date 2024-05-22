@@ -1,0 +1,28 @@
+#####
+INIT
+#####
+Starting state:
+Conflict pawn at slot 0
+Place the 4 Military tokens face up, on their spaces.
+Shuffle the Progress tokens and place 5 of them randomly, face up, on
+the board. Return the rest to the box.
+Each player takes 7 coins from the Bank
+
+• Place 4 random Wonders, face up, between the two players
+• The first player chooses 1 Wonder
+• The second player chooses 2 Wonders
+• The first player takes the remaining Wonder
+• Place 4 more Wonders and repeat the selection, but this time, start with
+the second player
+
+For each Deck:
+remove 3 random cards from list of cards (maybe by not initialising 3 random cards in the deck)
+endfor
+
+Add 3 random guild cards to the age 3 deck
+
+#####
+GAME
+#####
+
+
