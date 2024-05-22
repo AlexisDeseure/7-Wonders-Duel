@@ -1,19 +1,17 @@
 #include "../../includes/DataFetcher/Instanciator.h"
 #include "Building.h"
 #include "Wonder.h"
-#include"Card.h"
+#include "Card.h"
 #include "ProgressToken.h"
 
-const std::vector<Ressource*> Instanciator::jsonToRessource(std::vector<std::pair<QString,int>> jsonRes){
-    std::vector<Ressource*> cost;
+RessourceCost Instanciator::jsonToRessource(std::vector<std::pair<QString,int>> jsonRes){
+    RessourceCost cost;
     for (std::pair<QString,int> res: jsonRes){
-        std::vector<RessourceType> RT;
-        unsigned int amount = 0;
-
-        Ressource resCurr= Ressource(RT,amount);
-
+        std::pair<RessourceType,int> UniqueRes;
+        UniqueRes.first = StringToRessourceType(res.first.toStdString());
+        UniqueRes.second = res.second;
+        cost.addResType(UniqueRes);
     }
-
     return cost;
 }
 
@@ -23,11 +21,13 @@ const std::vector<Ressource*> Instanciator::jsonToRessource(std::vector<std::pai
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : this->getNames()) {
         if (noms.first == "Building"){
-            Building currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), json.getBuildingEffects(noms.second), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second)), json.getAge(noms.second), json.getChaining(noms.second).first, json.getChaining(noms.second).second);
+            Building currBuild = new Building(noms.second.toStdString(),jsonToRessource(json.getCost(noms.second)), json.getBuildingEffects(noms.second), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second)), json.getAge(noms.second), json.getChaining(noms.second).first, json.getChaining(noms.second).second);
             this->addBuildingToInstanciator(currBuild);
         }
     }
 }
+
+
 
 //LA FONCTION CI-DESSUS EST INCOMPLETE, LE CONSTRUCTEUR EST MAL APPELE, JE SUIS AU COURANT, IL FAUT DISCUTER DES COMPATIBILITES DE TYPES;
 
@@ -37,7 +37,7 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : this->getNames()) {
         if (noms.first == "Wonder"){
-            Wonder currWonder = new Wonder(noms.second.toStdString(),json.getCost(noms.second),json.getWonderEffects(noms.second),json.getDirectCost(noms.second));
+            Wonder currWonder = new Wonder(noms.second.toStdString(),jsonToRessource(json.getCost(noms.second)),json.getWonderEffects(noms.second),json.getDirectCost(noms.second));
             this->addWonderToInstanciator(currWonder);
         }
     }
@@ -49,7 +49,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : this->getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken currPT = new ProgressToken(noms.second.toStdString(),json.getCost(noms.second),json.getProgressTokenEffects(noms.second),json.getDirectCost(noms.second));
+            ProgressToken currPT = new ProgressToken(noms.second.toStdString(),jsonToRessource(json.getCost(noms.second)),json.getProgressTokenEffects(noms.second),json.getDirectCost(noms.second));
             this->addPTtoInstanciator(currPT);
         }
     }
