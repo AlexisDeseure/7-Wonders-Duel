@@ -8,7 +8,7 @@ const std::vector<Ressource*> Instanciator::jsonToRessource(std::vector<std::pai
     std::vector<Ressource*> cost;
     for (std::pair<QString,int> res: jsonRes){
         std::vector<RessourceType> RT;
-        unsigned int amount;
+        unsigned int amount = 0;
 
         Ressource resCurr= Ressource(RT,amount);
 

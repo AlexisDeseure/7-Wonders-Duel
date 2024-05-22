@@ -26,6 +26,7 @@ HEADERS = \
    includes/Cards/Building.h \
    includes/Cards/Card.h \
    includes/Cards/ProgressToken.h \
+   includes/Cards/RessourceCost.h \
    includes/Cards/Wonder.h \
    includes/City/City.h \
    includes/City/Ressource.h \
@@ -69,6 +70,7 @@ SOURCES = \
    src/BoardManager/ConflictPawn.cpp \
    src/Cards/Building.cpp \
    src/Cards/Card.cpp \
+   src/Cards/RessourceCost.cpp \
    src/City/City.cpp \
    src/City/Ressource.cpp \
    src/City/ScientificSymbol.cpp \
