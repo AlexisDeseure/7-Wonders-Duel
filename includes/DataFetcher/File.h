@@ -61,7 +61,6 @@ public:
 
     int getAge(QString name);
 
-    //Fonction qui suit : à faire dans le cpp et à changer dans le JSON.
     int getDirectCost(QString name);
 };
 

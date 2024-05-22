@@ -5,10 +5,20 @@
 #include "ProgressToken.h"
 
 const std::vector<Ressource*> Instanciator::jsonToRessource(std::vector<std::pair<QString,int>> jsonRes){
+    std::vector<Ressource*> cost;
+    for (std::pair<QString,int> res: jsonRes){
+        std::vector<RessourceType> RT;
+        unsigned int amount;
 
+        Ressource resCurr= Ressource(RT,amount);
 
+    }
 
+    return cost;
 }
+
+//Constructeur de Ressource.
+//explicit Ressource(std::vector<RessourceType> t, unsigned int a=0, unsigned int p=2);
 
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : this->getNames()) {
