@@ -13,7 +13,7 @@ class DeckElement: public Building {
         bool visible;
 
     public:
-        DeckElement(const std::string& name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t,
+        DeckElement(const std::string& name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t,
                     int a, const std::vector<std::string>& chainIn = {}, const std::vector<std::string>& chainOut = {},
                     DeckElement* right_son = nullptr, DeckElement* left_son = nullptr, DeckElement* right_father = nullptr, DeckElement* left_father = nullptr,
                     const bool& visible = true)

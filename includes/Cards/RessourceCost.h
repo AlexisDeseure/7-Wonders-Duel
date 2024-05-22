@@ -6,13 +6,16 @@
 #include <QtGui>
 #include <QMainWindow>
 #include "Ressource.h"
+enum class RessourceType;
 
 class RessourceCost {
 private:
-    std::vector<std::pair<RessourceType,int>> cost;
+    unsigned int amount;
+    RessourceType type;
 public:
-    std::vector<std::pair<RessourceType,int>> getCost(){return cost;};
-    void addResType(std::pair<RessourceType,int> Res);
+    RessourceCost(int number, RessourceType t) : amount(static_cast<unsigned int>(number)), type(t){};
+    unsigned int getAmount() const;
+    RessourceType getType() const;
 };
 
 

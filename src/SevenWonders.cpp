@@ -33,14 +33,12 @@ int main(int argc, char* argv[]) {
         cout << "Tradable : " << r->getTradable()<<endl<<endl;
     }
     //c.addChainSymbol("test");
-    std::vector<RessourceType> vere = {RessourceType::Glass};
-    std::vector<RessourceType> pap = {RessourceType::Paper};
-    Ressource* re = new Ressource(vere);
-    *re+=3;
+    RessourceType vere = RessourceType::Glass;
+    RessourceType pap = RessourceType::Paper;
+    RessourceCost re(3,vere);
     c.getRessource(RessourceType::Glass).updatePrice(-1);
-    Ressource* re2 = new Ressource(pap);
-    *re2+=4;
-    std::vector<Ressource*> vecre = {re, re2};
+    RessourceCost re2(4,pap);
+    std::vector<RessourceCost> vecre = {re, re2};
     Effect* effect = EffectFactory::instance().create("AddMoney");
     cout << "re : " << c.getRessource(RessourceType::Glass).getPrice()<<endl;
     Building b("test", vecre, {effect}, 2, BuildingType::Blue,3);

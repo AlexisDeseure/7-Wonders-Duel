@@ -1,5 +1,11 @@
 #include "RessourceCost.h"
+#include "Ressource.h"
 
-void RessourceCost::addResType(std::pair<RessourceType,int> Res){
-    cost.insert(cost.end(),1,Res);
+unsigned int RessourceCost::getAmount() const {
+    return amount;
+}
+
+
+RessourceType RessourceCost::getType() const {
+    return type;
 }

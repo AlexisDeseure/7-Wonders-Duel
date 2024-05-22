@@ -1,5 +1,6 @@
 #include "Card.h"
 #include "Ressource.h"
+#include "RessourceCost.h"
 #include "Effect.h"
 #include "City.h"
 #include "Game.h"
@@ -37,11 +38,11 @@ std::list<RessourceType> Card::getLackingRessources(City* city) const{
     // Calculer les ressources manquantes après avoir vérifier les ressources de bases de la ville
     for (auto& ressource : cost) {
 
-        ressource_necessaire = ressource->getAmount();
-        ressource_possede = city->getRessource(ressource->getType()).getAmount();
+        ressource_necessaire = ressource.getAmount();
+        ressource_possede = city->getRessource(ressource.getType()).getAmount();
         if (ressource_necessaire > ressource_possede) {
             //ajouter autant de ressources que nécessaire dans la liste des ressources manquantes
-            type_intermediaire = ressource->getType();
+            type_intermediaire = ressource.getType();
 
             for (unsigned int i = 0; i < ressource_necessaire - ressource_possede; i++)
                 lack_ressources.push_back(type_intermediaire);
@@ -76,7 +77,7 @@ void Card::applyEffects(Game& game) {
     }
 }
 
-void Card::ajouteRessources(Ressource* R) {
+void Card::addRessources(RessourceCost R) {
     cost.push_back(R);
 }
 
