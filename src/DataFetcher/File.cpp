@@ -261,11 +261,32 @@ int File::getAge(QString name){
     QJsonArray LBuilding = listeBuildings();
     for (auto points: LBuilding) {
         QString Bname = points.toObject().value("name").toString();
-        qDebug() << Bname;
         if (Bname==name) {
             age = points.toObject().value("age").toInt();
             return age;
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+}
+
+int File::getDirectCost(QString name){
+    int dc;
+    QJsonArray LBuilding = listeBuildings();
+    QJsonArray LWonder = listeWonder();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            dc = points.toObject().value("direct_cost").toInt();
+            return dc;
+        }
+    }
+    for (auto points: LWonder) {
+        QString Wname = points.toObject().value("name").toString();
+        if (Wname==name) {
+            dc = points.toObject().value("direct_cost").toInt();
+            return dc;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom";
+    return 0;
 }

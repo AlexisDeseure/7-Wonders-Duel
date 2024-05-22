@@ -1,5 +1,6 @@
 #include "Building.h"
 #include "City.h"
+#include <stdexcept>
 
 void Building::addChainOutToCity(City* city) const {
     for (const auto& chain : chainOut) {

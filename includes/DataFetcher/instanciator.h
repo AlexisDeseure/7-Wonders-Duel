@@ -5,6 +5,8 @@
 #include "../../Cards/Wonder.h"
 #include "../../Cards/ProgressToken.h"
 #include "../../DataFetcher/File.h"
+#include "Ressource.h"
+#include "RessourceCost.h"
 
 class Instanciator
 {
@@ -25,6 +27,8 @@ private:
     void constructBuilding();
     void constructWonder();
     void constructPT();
+
+    RessourceCost jsonToRessource(std::vector<std::pair<QString,int>> jsonRes);
 
 public:
     //Instanciation directement dans le constructeur.

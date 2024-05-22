@@ -10,6 +10,7 @@
 #include <QString>
 
 #include "Ressource.h"
+#include "RessourceCost.h"
 
 class Effect;
 class City;
@@ -18,13 +19,13 @@ class Game;
 class Card {
     private:
         std::string name;
-        std::vector<Ressource*> cost;
+        RessourceCost cost;
         std::vector<Effect*> effects;
         const unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
 
 
     public :
-        Card(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
+        Card(std::string name, RessourceCost cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
             : name(std::move(name)), cost(cost), effects(effects), money_cost(direct_cost){};
 
         virtual ~Card();
