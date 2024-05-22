@@ -3,6 +3,7 @@
 
 #include <string>
 #include <utility>
+#include "MarketDeck.h"
 
 class City;
 class Game;
@@ -36,7 +37,8 @@ class Player{
         void setAiLevel(AiLevel level){aiLevel = level;};
         void setName(std::string n){this->name = std::move(n);};
 
-        bool buyCard(Game& game, Card& card); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
+        const DeckElement* selectCard(Game& game, MarketDeck& marketDeck); //permet au joueur de sélectionner une carte à jouer
+        bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
 };
 #endif

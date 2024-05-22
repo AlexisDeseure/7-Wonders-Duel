@@ -22,7 +22,7 @@ class DeckElement: public Building {
         ~DeckElement() = default ;
         DeckElement& operator=(const DeckElement& d) = delete;
         const DeckElement* getRightSon() const { return right_son; };
-        void deleteDeckFromMarket() ;
+        void deleteDeckFromMarket() const ;
         const DeckElement* getLeftSon() const { return left_son; };
         const DeckElement* getRightFather() const { return right_father; };
         const DeckElement* getLeftFather() const { return left_father; };

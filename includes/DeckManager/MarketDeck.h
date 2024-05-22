@@ -1,8 +1,7 @@
 #ifndef MARKETDECK_H
 #define MARKETDECK_H
 
-class DeckElement;
-
+#include "DeckElement.h"
 class MarketDeck {
 
     private:
@@ -21,6 +20,7 @@ class MarketDeck {
         void advanceAge();
         bool isEmpty() const { return nb_first_buildings == 0; };
         void addFirstBuilding(const DeckElement* building) ;
+        const DeckElement** getFirstBuildings() const{return first_buildings;};
         class iterator {
             private:
                 DeckElement** building;

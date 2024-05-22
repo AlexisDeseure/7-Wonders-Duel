@@ -40,7 +40,7 @@ void MarketDeck::addFirstBuilding(const DeckElement* building) {
 DeckElement& MarketDeck::iterator::getBuilding(MarketDeck& M) {
     DeckElement& currentElement = **building;
 
-    if (currentElement.getLeftFather() == nullptr && currentElement.getRightFather() == nullptr) {
+    if (currentElement.getLeftFather() == nullptr && currentElement.getRightFather() == nullptr) { //pas de père, noed origine
 
         // Ajout des fis a la liste des buildings possibles, en les mettant a visible s'ils  existent
         currentElement.deleteDeckFromMarket();
