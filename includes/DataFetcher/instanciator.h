@@ -25,6 +25,7 @@ private:
     void constructBuilding();
     void constructWonder();
     void constructPT();
+    const std::vector<Ressource*> jsonToRessource(std::vector<std::pair<QString,int>> jsonRes);
 
 public:
     //Instanciation directement dans le constructeur.

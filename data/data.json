@@ -8,6 +8,7 @@
                 "chainage_receive": null,
                 "color": "brown",
                 "cost": null,
+                "direct_cost": null,
                 "effects": {
                     "addRessource": [
                         "Wood",
@@ -22,9 +23,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 1
-                },
+                "direct_cost": 1,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Wood",
@@ -39,6 +39,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addRessource": [
@@ -54,9 +55,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 1
-                },
+                "direct_cost": 1,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Clay",
@@ -71,6 +71,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addRessource": [
@@ -86,9 +87,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 1
-                },
+                "direct_cost": 1,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Stone",
@@ -103,9 +103,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "grey",
-                "cost": {
-                    "Money": 1
-                },
+                "direct_cost": 1,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Glass",
@@ -120,9 +119,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "grey",
-                "cost": {
-                    "Money": 1
-                },
+                "direct_cost": 1,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Paper",
@@ -137,6 +135,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "moveConflictPawn": [
@@ -151,6 +150,7 @@
                 "chainage_send": "Haras",
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 1
                 },
@@ -167,6 +167,7 @@
                 "chainage_send": "Baraquements",
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1
                 },
@@ -183,9 +184,8 @@
                 "chainage_send": "Fortifications",
                 "chainage_receive": null,
                 "color": "red",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "moveConflictPawn": [
                         1
@@ -199,6 +199,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 1
                 },
@@ -218,6 +219,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 1
                 },
@@ -237,9 +239,8 @@
                 "chainage_send": "Biblioth\u00c3\u00a8que",
                 "chainage_receive": null,
                 "color": "green",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
                         "quill"
@@ -253,9 +254,8 @@
                 "chainage_send": "Dispensaire",
                 "chainage_receive": null,
                 "color": "green",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
                         "pestle"
@@ -269,9 +269,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
-                "cost": {
-                    "Money": 3
-                },
+                "direct_cost": 3,
+                "cost": null,
                 "effects": {
                     "changeMarketRule": [
                         "Stone"
@@ -285,9 +284,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
-                "cost": {
-                    "Money": 3
-                },
+                "direct_cost": 3,
+                "cost": null,
                 "effects": {
                     "changeMarketRule": [
                         "Clay"
@@ -301,9 +299,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
-                "cost": {
-                    "Money": 3
-                },
+                "direct_cost": 3,
+                "cost": null,
                 "effects": {
                     "changeMarketRule": [
                         "Wood"
@@ -317,6 +314,7 @@
                 "chainage_send": "Phare",
                 "chainage_receive": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addMoney": [
@@ -331,6 +329,7 @@
                 "chainage_send": "Statue",
                 "chainage_receive": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addVictoryPoint": [
@@ -345,6 +344,7 @@
                 "chainage_send": "Temple",
                 "chainage_receive": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addVictoryPoint": [
@@ -359,6 +359,7 @@
                 "chainage_send": "Aqueduc",
                 "chainage_receive": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1
                 },
@@ -375,9 +376,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Wood",
@@ -392,9 +392,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Clay",
@@ -409,9 +408,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "brown",
-                "cost": {
-                    "Money": 2
-                },
+                "direct_cost": 2,
+                "cost": null,
                 "effects": {
                     "addRessource": [
                         "Stone",
@@ -426,6 +424,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "grey",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addRessource": [
@@ -441,6 +440,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "grey",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addRessource": [
@@ -456,6 +456,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2
                 },
@@ -472,6 +473,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Ecuries",
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Wood": 1
@@ -489,9 +491,8 @@
                 "chainage_send": null,
                 "chainage_receive": "Caserne",
                 "color": "red",
-                "cost": {
-                    "Money": 3
-                },
+                "direct_cost": 3,
+                "cost": null,
                 "effects": {
                     "moveConflictPawn": [
                         1
@@ -505,6 +506,7 @@
                 "chainage_send": "Atelier de si\u00c3\u00a8ge",
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Wood": 1,
@@ -523,6 +525,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Ecuries",
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 1
@@ -540,8 +543,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
+                "direct_cost": 3,
                 "cost": {
-                    "Money": 3,
                     "Clay": 1
                 },
                 "effects": {
@@ -558,8 +561,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
+                "direct_cost": 2,
                 "cost": {
-                    "Money": 2,
                     "Glass": 1,
                     "Paper": 1
                 },
@@ -578,9 +581,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
-                "cost": {
-                    "Money": 4
-                },
+                "direct_cost": 4,
+                "cost": null,
                 "effects": {
                     "changeMarketRule": [
                         "Glass"
@@ -594,6 +596,7 @@
                 "chainage_send": "Ar\u00c3\u00a8ne",
                 "chainage_receive": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": null,
                 "effects": {
                     "addMoney": [
@@ -608,6 +611,7 @@
                 "chainage_send": null,
                 "chainage_receive": "scriptorium",
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Wood": 1,
@@ -629,6 +633,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Officine",
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 1
@@ -649,6 +654,7 @@
                 "chainage_send": "Universit\u00c3\u00a9",
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 2,
                     "Wood": 1
@@ -669,6 +675,7 @@
                 "chainage_send": "Observatoire",
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 1,
                     "Glass": 2
@@ -689,6 +696,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Glass": 1
@@ -706,6 +714,7 @@
                 "chainage_send": "Jardins",
                 "chainage_receive": "Th\u00c3\u00a9\u00c3\u00a2tre",
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2
                 },
@@ -722,6 +731,7 @@
                 "chainage_send": "Panth\u00c3\u00a9on",
                 "chainage_receive": "Autel",
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 1,
                     "Paper": 1
@@ -739,6 +749,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Bains",
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 3
                 },
@@ -755,6 +766,7 @@
                 "chainage_send": "S\u00c3\u00a9nat",
                 "chainage_receive": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 3
                 },
@@ -771,6 +783,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 3,
                     "Wood": 2
@@ -788,9 +801,8 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "red",
-                "cost": {
-                    "Money": 8
-                },
+                "direct_cost": 8,
+                "cost": null,
                 "effects": {
                     "moveConflictPawn": [
                         3
@@ -804,6 +816,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Palissade",
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Clay": 1,
@@ -822,6 +835,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Champ de tir",
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 3,
                     "Glass": 1
@@ -839,6 +853,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Place d'armes",
                 "color": "red",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 2
@@ -856,6 +871,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 2,
                     "Stone": 1,
@@ -877,6 +893,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Glass": 1,
@@ -898,6 +915,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Ecole",
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Glass": 1,
@@ -919,6 +937,7 @@
                 "chainage_send": null,
                 "chainage_receive": "Ecole",
                 "color": "green",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Paper": 2
@@ -939,6 +958,7 @@
                 "chainage_send": null,
                 "chainage_receive": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 2
                 },
@@ -959,6 +979,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 1,
                     "Wood": 1,
@@ -981,6 +1002,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Glass": 1
@@ -1002,6 +1024,7 @@
                 "chainage_receive": "Taverne",
                 "chainage_send": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Glass": 1
@@ -1023,6 +1046,7 @@
                 "chainage_receive": "Brasserie",
                 "chainage_send": null,
                 "color": "gold",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Stone": 1,
@@ -1044,6 +1068,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 2,
                     "Clay": 1,
@@ -1063,6 +1088,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 3,
                     "Wood": 2
@@ -1080,6 +1106,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Glass": 1
@@ -1097,6 +1124,7 @@
                 "chainage_receive": "Statue",
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Wood": 2
@@ -1114,6 +1142,7 @@
                 "chainage_receive": "Temple",
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Wood": 1,
@@ -1132,6 +1161,7 @@
                 "chainage_receive": "Rostres",
                 "chainage_send": null,
                 "color": "blue",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 1,
@@ -1150,6 +1180,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Wood": 1,
@@ -1174,6 +1205,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Stone": 1,
@@ -1199,6 +1231,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Stone": 2,
@@ -1218,6 +1251,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Clay": 1,
@@ -1241,6 +1275,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Clay": 2
@@ -1263,6 +1298,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Stone": 2
@@ -1281,6 +1317,7 @@
                 "chainage_receive": null,
                 "chainage_send": null,
                 "color": "purple",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Clay": 1,
@@ -1388,6 +1425,7 @@
         "WondersList": [
             {
                 "name": "Le Circus Maximus",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Wood": 1,
@@ -1407,6 +1445,7 @@
             },
             {
                 "name": "Le Colosse",
+                "direct_cost": null,
                 "cost": {
                     "Clay": 3,
                     "Glass": 1
@@ -1422,6 +1461,7 @@
             },
             {
                 "name": "Le Grand Phare",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Wood": 1,
@@ -1440,6 +1480,7 @@
             },
             {
                 "name": "Les Jardins Suspendus",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 1,
                     "Wood": 2,
@@ -1457,6 +1498,7 @@
             },
             {
                 "name": "La Grande Biblioth\u00c3\u00a8que",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 1,
                     "Wood": 3,
@@ -1471,6 +1513,7 @@
             },
             {
                 "name": "Le Mausol\u00c3\u00a9e",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 2,
                     "Clay": 2,
@@ -1485,6 +1528,7 @@
             },
             {
                 "name": "Le Pir\u00c3\u00a9e",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Wood": 2,
@@ -1503,6 +1547,7 @@
             },
             {
                 "name": "Les Pyramides",
+                "direct_cost": null,
                 "cost": {
                     "Stone": 3,
                     "Paper": 1
@@ -1515,6 +1560,7 @@
             },
             {
                 "name": "Le Sphinx",
+                "direct_cost": null,
                 "cost": {
                     "Glass": 2,
                     "Clay": 1,
@@ -1529,6 +1575,7 @@
             },
             {
                 "name": "La Statue de Zeus",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 2,
                     "Clay": 1,
@@ -1549,6 +1596,7 @@
             },
             {
                 "name": "Le Temple d'Art\u00c3\u00a9mis",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 1,
                     "Glass": 1,
@@ -1564,6 +1612,7 @@
             },
             {
                 "name": "La Via Appia",
+                "direct_cost": null,
                 "cost": {
                     "Paper": 1,
                     "Stone": 2,
