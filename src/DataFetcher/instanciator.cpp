@@ -1,5 +1,7 @@
 #include "Instanciator.h"
 
+Instanciator *Instanciator::instance = nullptr;
+
 std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTransfer> vecTransfer){
     std::vector<Effect*> effets;
     for (File::EffectTransfer transfer:vecTransfer){

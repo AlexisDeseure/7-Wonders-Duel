@@ -32,8 +32,8 @@ private:
 
     std::vector<Effect*> effTransToEffect(std::vector<File::EffectTransfer> vecTransfer);
 
-public:
-    //Instanciation directement dans le constructeur.
+    static Instanciator* instance;
+
     Instanciator(): buildings_instanciator(),wonders_instanciator(),progress_tokens_instanciator() {
         names = json.getNames();
         constructBuilding();
@@ -41,17 +41,28 @@ public:
         constructPT();
     };
 
-    //Interdiction de la recopie à défaut de faire un singleton pour l'instant.
+public:
+
+    static Instanciator* getInstanciator(){
+        if (!instance)
+            instance = new Instanciator;
+        return instance;
+    }
+
+    //Interdiction de la recopie.
     Instanciator& operator=(const Instanciator& x) = delete;
+    Instanciator(const Instanciator&)= delete;
 
     //L'Utilisateur pourra seulement avoir accès aux vecteurs des cartes plus haut.
     std::vector<Building> getBuildings() {return buildings_instanciator;};
     std::vector<Wonder> getWonders() {return wonders_instanciator;};
     std::vector<ProgressToken> getPTInstanciator() {return progress_tokens_instanciator;};
+
     //On peut laisser la possibilité de donner la liste des cartes si besoin.
     std::vector<std::pair<QString,QString>>& getNames() {return names;}
 
-    //Pioche
+    //Extraction de X cartes aléatoires depuis un certain paquet de cartes.
+
 
     //Extraction des cartes d'un âge:
     std::vector<Building> getCardFromXAge(int age);

@@ -48,7 +48,8 @@ int main(int argc, char* argv[]) {
         cout << ressourceTypeToString(t);
     }
     cout<<endl;
-    Game();
+    //Game();
+
     string test;
     cin >> test;
 
