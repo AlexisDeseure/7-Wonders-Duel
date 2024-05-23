@@ -4,19 +4,37 @@
 #include "City.h"
 #include "Card.h"
 #include "Instanciator.h"
-
 #include "EffectFactory.h"
 #include <QApplication>
 #include <QMainWindow>
 #include <QPushButton>
 #include <QTextStream>
 #include <QString>
-
 #include <iostream>
-
+#include <vector>
+#include"Ressource.h"
+#include<Building.h>
+#include"Effect.h"
+#include"AddMoney.h"
+#include"DeckElement.h"
+#include"AddRessource.h"
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    std::vector<RessourceCost> ressourceVector;
+    RessourceCost R1(5, RessourceType::Wood);
+    RessourceCost R2(5, RessourceType::Wood);
+    RessourceCost R3(3, RessourceType::Wood);
+    ressourceVector.push_back(R1);
+    ressourceVector.push_back(R2);
+    ressourceVector.push_back(R3);
+    AddMoney addMoney;
+    AddRessource addRessource ;
+    std::vector<Effect*> Effets;
+    Effets.push_back(&addMoney);
+    Effets.push_back(&addRessource);
+
+    DeckElement D( "Deck1", ressourceVector, Effets, 2,BuildingType::Yellow,10) ;
 
     QApplication app(argc, argv);
     // QTextStream qin(stdin);
@@ -25,6 +43,7 @@ int main(int argc, char* argv[]) {
 
     City c;
     std::vector<RessourceType> vect_ress = {RessourceType::Glass,RessourceType::Paper,RessourceType::Wood};
+
     c.addRessource(vect_ress);
     c.getRessource(RessourceType::Paper)+=2;
     for (auto& r : c.getRessources()){
@@ -70,7 +89,10 @@ int main(int argc, char* argv[]) {
 
     // // Exécution de la boucle d'événements
     // return app.exec();
-}   
+
+
+
+}
     
 
 

@@ -26,8 +26,8 @@ class DeckElement: public Building {
         const DeckElement* getLeftSon() const { return left_son; };
         const DeckElement* getRightFather() const { return right_father; };
         const DeckElement* getLeftFather() const { return left_father; };
-        // getBuilding ne sert plus a rien apres l'heritage
-      //  const Building* getBuilding() const { return this; };
+        //getBuilding ne sert plus a rien apres l'heritage
+       //const Building* getBuilding() const { return this; };
         bool isVisible() const { return visible; };
         void setVisible() { if (!visible) visible = true; };
         const DeckElement* operator++(int) const { return right_son; };
@@ -36,6 +36,5 @@ class DeckElement: public Building {
         const DeckElement* operator--() const { return left_father; }
 
     };
-
 
 #endif

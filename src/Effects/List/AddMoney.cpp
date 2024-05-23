@@ -13,3 +13,31 @@ void AddMoney::setParameters(std::vector<int> int_parameters, std::vector<std::s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

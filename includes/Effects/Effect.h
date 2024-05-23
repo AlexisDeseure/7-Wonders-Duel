@@ -19,7 +19,9 @@ class Effect{
         virtual void endEffect(Game& game) {};
         virtual void eachTurnEffect(Game& game, Card& card) {};
         virtual void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) = 0;
+
 };
+
 
 
 
