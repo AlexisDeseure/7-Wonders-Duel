@@ -23,9 +23,9 @@ public:
     class EffectTransfer
     {
     private:
-        QString effect_name = "";
-        std::vector<std::string> string_param = {};
-        std::vector<int> int_param = {};
+        QString effect_name;
+        std::vector<std::string> string_param;
+        std::vector<int> int_param;
     public:
         QString getEffect(){return effect_name;}
         std::vector<std::string> getResType(){return string_param;}
@@ -65,7 +65,7 @@ public:
 
     int getAge(QString name);
 
-    const int getDirectCost(QString name);
+    int getDirectCost(QString name);
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);

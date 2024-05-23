@@ -18,6 +18,6 @@ void EarnVictoryPointPerMostWonderAtEndGame::endEffect(Game& game) {
     current.addVictoryPoints(max*number);
 }
 
-void EarnVictoryPointPerMostWonderAtEndGame::setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
+void EarnVictoryPointPerMostWonderAtEndGame::setParameters(std::vector<int> int_parameters, [[maybe_unused]] std::vector<std::string> string_parameters) {
     number = int_parameters[0];
 }

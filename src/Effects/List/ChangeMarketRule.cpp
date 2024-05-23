@@ -10,6 +10,6 @@ void ChangeMarketRule::effect(Game& game) {
     game.getTurnPlayer().getCity().getRessource(ressource).changeMarketRule();
 }
 
-void ChangeMarketRule::setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
+void ChangeMarketRule::setParameters([[maybe_unused]] std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
     ressource = StringToRessourceType(string_parameters[0]);
 }

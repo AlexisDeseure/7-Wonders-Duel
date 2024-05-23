@@ -12,7 +12,7 @@
     static bool dummy_##NAME = []() { \
         EffectFactory::instance().registerClass(#NAME, []() -> Effect* { return new NAME(); }); \
         return true; \
-    }() // macro pour enregistrer une classe dans la factory
+}(); // macro pour enregistrer une classe dans la factory
 
 /* Exemple d'instanciation d'une classe à partir de son nom :
  * Effect* effect = EffectFactory::instance().create("AddMoney");
@@ -40,7 +40,6 @@ class EffectFactory {
             return nullptr;
         }
 
-    private:
         std::map<std::string, CreatorFunc> creators;
 };
 
