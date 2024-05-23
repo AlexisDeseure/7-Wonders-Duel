@@ -33,6 +33,7 @@ HEADERS = \
    includes/City/ScientificSymbol.h \
    includes/DeckManager/DeckElement.h \
    includes/DeckManager/MarketDeck.h \
+   includes/Effects/IncludeEffects.h \
    includes/Effects/List/AddMoney.h \
    includes/Effects/List/AddRessource.h \
    includes/Effects/List/AddRessourceChoice.h \
