@@ -3,6 +3,7 @@
 #include "ProgressToken.h"
 #include "City.h"
 #include "Card.h"
+#include "Instanciator.h"
 
 #include "EffectFactory.h"
 #include <QApplication>
@@ -48,7 +49,6 @@ int main(int argc, char* argv[]) {
     }
     cout<<endl;
     Game();
-
     string test;
     cin >> test;
 
