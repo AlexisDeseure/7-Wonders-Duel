@@ -77,3 +77,60 @@ std::vector<Building> Instanciator::getCardFromXAge(int age){
     }
     return Bage;
 }
+
+std::vector<Building> Instanciator::extractXRandomBuildingsFrom(std::vector<Building> cartes,unsigned int X){
+    std::vector<Building> randRes;
+    srand((unsigned int)time(0));
+    std::vector<unsigned int> val;
+    for (unsigned int i = 0; i<cartes.size()-X; i++){
+        unsigned int currVal = rand()%cartes.size()+1;
+        if (find(val.begin(),val.end(),currVal) != val.end()) {
+            val.push_back(currVal);
+        }
+        else i--;
+    }
+    for (unsigned int i = 0; i<cartes.size();i++){
+        if (find(val.begin(),val.end(),i)!=val.end()){
+            randRes.push_back(cartes[i]);
+        }
+    }
+    return randRes;
+}
+
+std::vector<ProgressToken> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken> cartes,unsigned int X){
+    std::vector<ProgressToken> randRes;
+    srand((unsigned int)time(0));
+    std::vector<unsigned int> val;
+    for (unsigned int i = 0; i<cartes.size()-X; i++){
+        unsigned int currVal = rand()%cartes.size()+1;
+        if (find(val.begin(),val.end(),currVal) !=val.end()) {
+            val.push_back(currVal);
+        }
+        else i--;
+    }
+    for (unsigned int i = 0; i<cartes.size();i++){
+        if (find(val.begin(),val.end(),i)!=val.end()){
+            randRes.push_back(cartes[i]);
+        }
+    }
+    return randRes;
+}
+
+std::vector<Wonder> Instanciator::extractXRandomWondersFrom(std::vector<Wonder> cartes,unsigned int X){
+    std::vector<Wonder> randRes;
+    srand((unsigned int)time(0));
+    std::vector<unsigned int> val;
+    for (unsigned int i = 0; i<cartes.size()-X; i++){
+        unsigned int currVal = rand()%cartes.size()+1;
+        if (find(val.begin(),val.end(),currVal) !=val.end()) {
+            val.push_back(currVal);
+        }
+        else i--;
+    }
+    for (unsigned int i = 0; i<cartes.size();i++){
+        if (find(val.begin(),val.end(),i)!=val.end()){
+            randRes.push_back(cartes[i]);
+        }
+    }
+    return randRes;
+}
