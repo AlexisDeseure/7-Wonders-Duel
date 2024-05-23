@@ -8,6 +8,6 @@ void NewWondersHaveInstantReplaying::effect(Game& game) {
     game.getTurnPlayer().getCity().addEachTurnEffects(this);
 }
 
-void NewWondersHaveInstantReplaying::eachTurnEffect(Game& game, Card& card){
+void NewWondersHaveInstantReplaying::eachTurnEffect(Game& game, [[maybe_unused]] Card& card){
     game.replay();
 }

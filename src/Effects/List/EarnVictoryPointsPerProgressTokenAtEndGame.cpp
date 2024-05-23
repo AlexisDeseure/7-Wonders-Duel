@@ -17,6 +17,6 @@ void EarnVictoryPointsPerProgressTokenAtEndGame::endEffect(Game& game) {
     current.addVictoryPoints(max*number);
 }
 
-void EarnVictoryPointsPerProgressTokenAtEndGame::setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
+void EarnVictoryPointsPerProgressTokenAtEndGame::setParameters(std::vector<int> int_parameters, [[maybe_unused]] std::vector<std::string> string_parameters) {
     number = int_parameters[0];
 }

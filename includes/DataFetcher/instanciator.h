@@ -11,6 +11,7 @@
 #include "Ressource.h"
 #include "RessourceCost.h"
 #include "EffectFactory.h"
+#include "IncludeEffects.h"
 
 class Instanciator
 {

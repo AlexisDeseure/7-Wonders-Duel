@@ -40,7 +40,11 @@ int main(int argc, char* argv[]) {
     // QTextStream qin(stdin);
     // QString line = qin.readLine();
     // std::cout << "Vous avez entré : " << line.toStdString() << std::endl;
-
+    cout << "Liste des classes enregistrées" <<endl;
+    for (auto& testtest : EffectFactory::instance().creators){
+        cout << testtest.first << endl;
+    }
+    cout << "FIN" <<endl;
     City c;
     std::vector<RessourceType> vect_ress = {RessourceType::Glass,RessourceType::Paper,RessourceType::Wood};
 

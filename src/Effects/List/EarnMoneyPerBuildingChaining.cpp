@@ -8,7 +8,7 @@ void EarnMoneyPerBuildingChaining::effect(Game& game) {
     game.getTurnPlayer().getCity().addEachTurnEffects(this);
 }
 
-void EarnMoneyPerBuildingChaining::setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
+void EarnMoneyPerBuildingChaining::setParameters(std::vector<int> int_parameters, [[maybe_unused]] std::vector<std::string> string_parameters) {
     money = int_parameters[0];
 }
 

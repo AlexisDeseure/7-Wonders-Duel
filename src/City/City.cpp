@@ -81,7 +81,6 @@ void City::updateRemainingRessources(std::list<RessourceType>& remaining_ressour
     // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
     // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide
 
-    unsigned int price = 0;
     RessourceType type_intermediaire_prix_haut = RessourceType::LENGTH;
 
     for (auto& ressource : ressources) {

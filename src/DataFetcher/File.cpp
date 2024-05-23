@@ -17,6 +17,7 @@ QJsonDocument File::readFile() {
         }
     }
     qDebug() << "Lecture Impossible";
+    return QJsonDocument();
 }
 
 QJsonArray File::listeBuildings() {
@@ -28,6 +29,7 @@ QJsonArray File::listeBuildings() {
             return LBuildings;
         }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 
@@ -40,6 +42,7 @@ QJsonArray File::listeProgressToken() {
         return LProgressToken;
     }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 QJsonArray File::listeWonder(){
@@ -51,6 +54,7 @@ QJsonArray File::listeWonder(){
         return LWonder;
     }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 QJsonObject File::getBuildingsProperties(QString name){
@@ -225,11 +229,15 @@ std::pair<QString,QString> File::getChaining(QString name){
     for (auto points: LBuilding) {
         QString Bname = points.toObject().value("name").toString();
         if (Bname==name) {
-            std::pair<QString,QString> chaining = std::make_pair(points.toObject().value("chainage_send").toString(),points.toObject().value("chainage_receive").toString());
+            std::pair<QString,QString> chaining = std::make_pair(
+                points.toObject().value("chainage_send").toString(),
+                points.toObject().value("chainage_receive").toString()
+            );
             return chaining;
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return std::make_pair(QString(), QString());
 }
 
 QString File::getScientificSymbol(QString name){
@@ -243,6 +251,7 @@ QString File::getScientificSymbol(QString name){
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return QString();
 }
 
 QString File::getColor(QString name){
@@ -256,6 +265,7 @@ QString File::getColor(QString name){
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return QString();
 }
 
 int File::getAge(QString name){
@@ -269,9 +279,10 @@ int File::getAge(QString name){
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return 0;
 }
 
-const int File::getDirectCost(QString name){
+int File::getDirectCost(QString name){
     int dc;
     QJsonArray LBuilding = listeBuildings();
     QJsonArray LWonder = listeWonder();

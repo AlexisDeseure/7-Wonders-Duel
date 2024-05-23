@@ -42,7 +42,7 @@ void Player::play(Game& game){
 
 const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
     const DeckElement** building_list = marketDeck.getFirstBuildings();
-    for(int i = 0; i<(sizeof(DeckElement)/sizeof(building_list));i++){
+    for(size_t i = 0; i<(sizeof(DeckElement)/sizeof(building_list));i++){
         if (building_list[i]->isVisible()){
             std::cout<<"Building "<<"n°"<<i<<"\n";
         }
