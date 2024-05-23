@@ -21,7 +21,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building currBuild = Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
+            Building currBuild(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -34,7 +34,7 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Wonder"){
-            Wonder currWonder = Wonder(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getWonderEffects(noms.second)),json.getDirectCost(noms.second));
+            Wonder currWonder(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getWonderEffects(noms.second)),json.getDirectCost(noms.second));
             addWonderToInstanciator(currWonder);
         }
     }
@@ -46,7 +46,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken currPT = ProgressToken(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getProgressTokenEffects(noms.second)),json.getDirectCost(noms.second));
+            ProgressToken currPT(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getProgressTokenEffects(noms.second)),json.getDirectCost(noms.second));
             addPTtoInstanciator(currPT);
         }
     }
