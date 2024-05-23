@@ -13,3 +13,31 @@ void AddMoney::setParameters(std::vector<int> int_parameters, [[maybe_unused]] s
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

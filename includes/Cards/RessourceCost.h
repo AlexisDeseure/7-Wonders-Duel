@@ -16,6 +16,7 @@ public:
     RessourceCost(int number, RessourceType t) : amount(static_cast<unsigned int>(number)), type(t){};
     unsigned int getAmount() const;
     RessourceType getType() const;
+
 };
 
 
