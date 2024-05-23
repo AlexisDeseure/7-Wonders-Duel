@@ -1,34 +1,36 @@
 #ifndef INSTANCIATOR_H
 #define INSTANCIATOR_H
 
-#include "../../Cards/Building.h"
-#include "../../Cards/Wonder.h"
-#include "../../Cards/ProgressToken.h"
-#include "../../DataFetcher/File.h"
+#include "Building.h"
+#include "Wonder.h"
+#include "Card.h"
+#include "ProgressToken.h"
+#include "File.h"
 #include "Ressource.h"
 #include "RessourceCost.h"
+#include "EffectFactory.h"
 
 class Instanciator
 {
 private:
     // structure de données à revoir en fonction de votre implémentation.
-    std::vector<Building> buildings_instanciator;
-    std::vector<Wonder> wonders_instanciator;
-    std::vector<ProgressToken> progress_tokens_instanciator;
+    std::vector<Building*> buildings_instanciator;
+    std::vector<Wonder*> wonders_instanciator;
+    std::vector<ProgressToken*> progress_tokens_instanciator;
     File json;
     std::vector<std::pair<QString,QString>> names;
 
     // On souhaite instancier une seule fois, on met en privé les méthodes qui permettent de créer les instances.
-    void addBuildingToInstanciator(Building building);
-    void addPTtoInstanciator(ProgressToken PT);
-    void addWonderToInstanciator(Wonder wonder);
+    void addBuildingToInstanciator(Building* building);
+    void addPTtoInstanciator(ProgressToken* PT);
+    void addWonderToInstanciator(Wonder* wonder);
 
     // Créateur des instances en privé pour la même raison.
     void constructBuilding();
     void constructWonder();
     void constructPT();
 
-    RessourceCost jsonToRessource(std::vector<std::pair<QString,int>> jsonRes);
+    std::vector<Effect*> effTransToEffect(std::vector<File::EffectTransfer> vecTransfer);
 
 public:
     //Instanciation directement dans le constructeur.
@@ -43,9 +45,9 @@ public:
     Instanciator& operator=(const Instanciator& x) = delete;
 
     //L'Utilisateur pourra seulement avoir accès aux vecteurs des cartes plus haut.
-    std::vector<Building>& getBuildings() {return buildings_instanciator;};
-    std::vector<Wonder>& getWonders() {return wonders_instanciator;};
-    std::vector<ProgressToken>& getPTInstanciator() {return progress_tokens_instanciator;};
+    std::vector<Building*> getBuildings() {return buildings_instanciator;};
+    std::vector<Wonder*> getWonders() {return wonders_instanciator;};
+    std::vector<ProgressToken*> getPTInstanciator() {return progress_tokens_instanciator;};
     //On peut laisser la possibilité de donner la liste des cartes si besoin.
     std::vector<std::pair<QString,QString>>& getNames() {return names;}
 

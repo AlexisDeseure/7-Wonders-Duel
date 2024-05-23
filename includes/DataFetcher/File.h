@@ -8,7 +8,9 @@
 #include <QMainWindow>
 #include <vector>
 
+#include "RessourceCost.h"
 #include "Game.h"
+#include "Ressource.h"
 
 class File
 {
@@ -22,15 +24,17 @@ public:
     {
     private:
         QString effect_name = "";
-        std::vector<QString> string_param = {};
+        std::vector<std::string> string_param = {};
         std::vector<int> int_param = {};
     public:
         QString getEffect(){return effect_name;}
-        std::vector<QString> getResType(){return string_param;}
+        std::vector<std::string> getResType(){return string_param;}
         std::vector<int> getAmount() {return int_param;}
-        void addResType(QString resType){string_param.insert(string_param.end(),1,resType);}
+
+        void addResType(QString resType){string_param.insert(string_param.end(),1,resType.toStdString());}
         void addAmount(int amount){int_param.insert(int_param.end(),1,amount);}
         void setEffectName(QString name){effect_name = name;}
+
         EffectTransfer() = default;
     };
 
@@ -51,7 +55,7 @@ public:
     std::vector<File::EffectTransfer> getProgressTokenEffects(QString name);
     std::vector<File::EffectTransfer> getWonderEffects(QString name);
 
-    std::vector<std::pair<QString,int>> getCost(QString name);
+    std::vector<RessourceCost> getCost(QString name);
 
     std::pair<QString,QString> getChaining(QString name);
 
@@ -61,7 +65,7 @@ public:
 
     int getAge(QString name);
 
-    int getDirectCost(QString name);
+    const int getDirectCost(QString name);
 };
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet);

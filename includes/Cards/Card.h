@@ -22,7 +22,7 @@ class Card {
         std::string name;
         std::vector<Effect*> effects;
         std::vector<RessourceCost> cost;
-        const unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
+        unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
 
 
     public :

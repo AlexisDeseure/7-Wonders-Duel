@@ -156,9 +156,9 @@ std::vector<File::EffectTransfer> File::getWonderEffects(QString name){
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet){
     os << "Effet: " << effet.getEffect().toStdString() << "| Parametres: ";
-    for(QString element : effet.getResType())
+    for(std::string& element : effet.getResType())
     {
-        os<<" "<<element.toStdString()<<" ";
+        os<<" "<<element<<" ";
     }
     for(int element : effet.getAmount())
     {
@@ -167,24 +167,26 @@ std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet){
     return os;
 }
 
-std::vector<std::pair<QString,int>> File::getCost(QString name){
+std::vector<RessourceCost> File::getCost(QString name){
 
     QJsonObject building = getBuildingsProperties(name);
     QJsonObject Wonder = getWonderProperties(name);
     QJsonObject PT = getProgressTokenProperties(name);
 
-    std::vector<std::pair<QString,int>> cost;
+    std::vector<RessourceCost> cost;
 
     if (!building.empty()) {
         QJsonObject LCost = building.value("cost").toObject();
-        for (auto points:LCost.keys()){
-            cost.insert(cost.end(),1,std::make_pair(points,LCost.value(points).toInt()));
+        for (auto& points:LCost.keys()){
+            cost.insert(cost.end(),1,RessourceCost(LCost.value(points).toInt(),StringToRessourceType(points.toStdString())));
         }
+        //RessourceCost(int number, RessourceType t) : amount(static_cast<unsigned int>(number)), type(t){};
+        //RessourceType StringToRessourceType(std::string nom);
     }
     else if (!Wonder.empty()){
         QJsonObject LCost = Wonder.value("cost").toObject();
-        for (auto points:LCost.keys()){
-            cost.insert(cost.end(),1,std::make_pair(points,LCost.value(points).toInt()));
+        for (auto& points:LCost.keys()){
+            cost.insert(cost.end(),1,RessourceCost(LCost.value(points).toInt(),StringToRessourceType(points.toStdString())));
         }
     }
     else if (!PT.empty()){
@@ -269,7 +271,7 @@ int File::getAge(QString name){
     qDebug() << "Pas de bâtiments avec ce nom!";
 }
 
-int File::getDirectCost(QString name){
+const int File::getDirectCost(QString name){
     int dc;
     QJsonArray LBuilding = listeBuildings();
     QJsonArray LWonder = listeWonder();
