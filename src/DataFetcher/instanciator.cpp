@@ -75,10 +75,30 @@ std::vector<Building*> Instanciator::getCardFromXAge(int age){
     if (age < 1 || age > 3){
         qDebug() << "Renvoie d'un vecteur vide, il n'y a pas d'âge" << age << "!";
     }
+    else if (age == 3) {
+        std::vector<Building*> guildes;
+        std::vector<Building*> buildings;
+        for (Building* bats: Bage) {
+            if (bats->getType() == BuildingType::Purple) {
+                guildes.push_back(bats);
+            }
+            else {
+                buildings.push_back(bats);
+            }
+        }
+        std::vector<Building*> ret = extractXRandomBuildingsFrom(buildings,buildings.size()-NB_CARD_GUILDS).first;
+        std::vector<Building*> choseGuilds = extractXRandomBuildingsFrom(guildes,NB_CARD_GUILDS).first;
+        for (Building* guild:choseGuilds){
+            ret.push_back(guild);
+        }
+        auto rng = std::default_random_engine {};
+        std::shuffle(ret.begin(),ret.end(),rng);
+        return ret;
+    }
     return Bage;
 }
 
-std::vector<Building*> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
+std::pair<std::vector<Building*>,std::vector<Building*,Building*>> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
     std::vector<Building*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
@@ -96,10 +116,10 @@ std::vector<Building*> Instanciator::extractXRandomBuildingsFrom(std::vector<Bui
     }
     auto rng = std::default_random_engine {};
     std::shuffle(randRes.begin(),randRes.end(),rng);
-    return randRes;
+    return make_pair(randRes,);
 }
 
-std::vector<ProgressToken*> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X){
+std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X){
     std::vector<ProgressToken*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
@@ -117,7 +137,7 @@ std::vector<ProgressToken*> Instanciator::extractXRandomProgressTokensFrom(std::
     }
     auto rng = std::default_random_engine {};
     std::shuffle(randRes.begin(),randRes.end(),rng);
-    return randRes;
+    return make_pair(randRes,);
 }
 
 std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes,unsigned int X){

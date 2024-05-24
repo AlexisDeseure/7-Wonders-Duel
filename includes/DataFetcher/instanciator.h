@@ -1,6 +1,7 @@
 #ifndef INSTANCIATOR_H
 #define INSTANCIATOR_H
 
+#define NB_CARD_GUILDS 3
 #include <ctime>
 #include <cstdlib>
 #include "Building.h"
