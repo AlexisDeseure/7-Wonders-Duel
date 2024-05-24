@@ -98,8 +98,9 @@ std::vector<Building*> Instanciator::getCardFromXAge(int age){
     return Bage;
 }
 
-std::pair<std::vector<Building*>,std::vector<Building*,Building*>> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
+std::pair<std::vector<Building*>,std::vector<Building*>> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
     std::vector<Building*> randRes;
+    std::vector<Building*> randRest;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
     for (unsigned int i = 0; i<X; i++){
@@ -113,14 +114,18 @@ std::pair<std::vector<Building*>,std::vector<Building*,Building*>> Instanciator:
         if (find(val.begin(),val.end(),i)!=val.end()){
             randRes.push_back(cartes[i]);
         }
+        else {
+            randRest.push_back(cartes[i]);
+        }
     }
     auto rng = std::default_random_engine {};
     std::shuffle(randRes.begin(),randRes.end(),rng);
-    return make_pair(randRes,);
+    return make_pair(randRes,randRest);
 }
 
 std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X){
     std::vector<ProgressToken*> randRes;
+    std::vector<ProgressToken*> randRest;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
     for (unsigned int i = 0; i<X; i++){
@@ -134,10 +139,13 @@ std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator:
         if (find(val.begin(),val.end(),i)!=val.end()){
             randRes.push_back(cartes[i]);
         }
+        else {
+            randRest.push_back(cartes[i]);
+        }
     }
     auto rng = std::default_random_engine {};
     std::shuffle(randRes.begin(),randRes.end(),rng);
-    return make_pair(randRes,);
+    return make_pair(randRes,randRest);
 }
 
 std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes,unsigned int X){

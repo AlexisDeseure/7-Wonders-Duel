@@ -66,9 +66,9 @@ public:
     std::vector<std::pair<QString,QString>>& getNames() {return names;}
 
     //Extraction de X cartes aléatoires depuis un certain paquet de cartes.
-    std::vector<Building*> extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X);
+    std::pair<std::vector<Building*>,std::vector<Building*>> extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X);
     std::vector<Wonder*> extractXRandomWondersFrom(std::vector<Wonder*> cartes,unsigned int X);
-    std::vector<ProgressToken*> extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X);
+    std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X);
 
     //Extraction des cartes d'un âge:
     std::vector<Building*> getCardFromXAge(int age);
