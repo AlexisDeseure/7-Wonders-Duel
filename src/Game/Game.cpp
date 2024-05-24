@@ -177,6 +177,10 @@ void Game::updateConflictPawn() {
     conflictPawn.move(totalShields);
 }
 
+bool Game::checkMilitaryVictory() const {
+    return conflictPawn.isMilitaryVictory();
+}
+
 void Game::selectWondersPhase(){
     randomPlayerStart();
     std::cout << "Phase de selection des merveilles" << std::endl;
