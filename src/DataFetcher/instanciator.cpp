@@ -95,6 +95,8 @@ std::vector<Building*> Instanciator::getCardFromXAge(int age){
         std::shuffle(ret.begin(),ret.end(),rng);
         return ret;
     }
+    auto rng = std::default_random_engine {};
+    std::shuffle(Bage.begin(),Bage.end(),rng);
     return Bage;
 }
 
