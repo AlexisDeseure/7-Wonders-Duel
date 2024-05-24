@@ -8,8 +8,8 @@
 #include <algorithm>
 
 Game::Game() : age(0), board(*new Board()), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
-    players[0] = new Player();
-    players[1] = new Player();
+    players[0] = new Player(COIN_START);
+    players[1] = new Player(COIN_START);
     std::cout << "Game created" << std::endl;
     startGame();
 }
@@ -173,6 +173,7 @@ void Game::selectWondersPhase(){
 
 void Game::advanceAge(){
     age++;
+    deck.advanceAge(age);
     std::cout << "Age avance" << std::endl;
 }
 

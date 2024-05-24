@@ -38,10 +38,14 @@ private:
 
     static Instanciator* instance;
 
-    Instanciator(): buildings_instanciator(),wonders_instanciator(),progress_tokens_instanciator() {
+    Instanciator() {
+        std::cout << "test";
         names = json.getNames();
+        std::cout << "tost";
         constructBuilding();
+        std::cout << "tist";
         constructWonder();
+        std::cout << "tast";
         constructPT();
     };
 

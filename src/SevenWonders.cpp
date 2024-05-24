@@ -71,6 +71,7 @@ int main(int argc, char* argv[]) {
         cout << ressourceTypeToString(t);
     }
     cout<<endl;
+
     Game();
 
 

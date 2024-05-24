@@ -7,7 +7,7 @@
 #include <utility>
 #include <iostream>
 
-Player::Player(bool ai, AiLevel level, std::string name) : city(*new City()), isAI(ai), aiLevel(level), name(std::move(name)){
+Player::Player(int treasury) : city(*new City(treasury)), isAI(false), aiLevel(AiLevel::NONE), name("Player"){
     std::cout << "Player created" << std::endl;
 }
 

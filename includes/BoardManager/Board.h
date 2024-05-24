@@ -18,7 +18,7 @@ class Board{
     public:
         Board();
         ~Board()=default;
-        bool canConstructWonder() const { return constructed_wonders < MAX_WONDERS; };
+        bool canConstructWonder() const { return constructed_wonders < WONDERS_MAX; };
         void constructWonder() { constructed_wonders++; };
         void advanceConflictPawn(int step);
         bool deckIsEmpty() const;

@@ -35,7 +35,7 @@ class City {
         std::list<Effect*> endGameEffects;
 
     public:
-        City(int victory = 0, int treasury = 0, int shields = 0);
+        City(int treasury = 0);
         ~City();
         Ressource& getRessource(RessourceType name);
         ScientificSymbol& getScientificSymbol(SymboleType name);

@@ -25,7 +25,7 @@ class Player{
         std::string name;
 
     public:
-        Player(bool ai=false, AiLevel level=AiLevel::NONE, std::string name="Player");
+        Player(int treasury = 0);
         ~Player();
 
         bool isAIPlayer() const {return isAI;};

@@ -21,7 +21,9 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
+            std::cout << "ah " <<noms.second.toStdString()<<" "<<(noms.first == "Building");
             Building* currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
+            std::cout << "oh";
             addBuildingToInstanciator(currBuild);
         }
     }

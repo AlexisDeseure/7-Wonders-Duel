@@ -12,8 +12,8 @@
 #include <algorithm>
 #include <iostream>
 
-City::City(int victory, int treasury, int shields)
-        : victory_points(victory), treasury(treasury), number_of_shields(shields){
+City::City(int treasury)
+        : victory_points(0), treasury(treasury), number_of_shields(0){
     // Parcourt de la liste des ressources de bases pour instancier correctement les ressources de la ville
     for (int i = 0; i < static_cast<int>(RessourceType::LENGTH); i++) {
         ressources.push_back(new Ressource({static_cast<RessourceType>(i)}));
