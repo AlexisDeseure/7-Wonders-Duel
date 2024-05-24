@@ -172,6 +172,11 @@ void Game::endTurn() {
     player[1].resetShields();
 }
 
+void Game::updateConflictPawn() {
+    int totalShields = player1.getShields() - player2.getShields();
+    conflictPawn.move(totalShields);
+}
+
 void Game::selectWondersPhase(){
     randomPlayerStart();
     std::cout << "Phase de selection des merveilles" << std::endl;
