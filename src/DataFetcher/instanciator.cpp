@@ -21,7 +21,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building currBuild(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
+            Building* currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -34,7 +34,7 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Wonder"){
-            Wonder currWonder(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getWonderEffects(noms.second)),json.getDirectCost(noms.second));
+            Wonder* currWonder = new Wonder(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getWonderEffects(noms.second)),json.getDirectCost(noms.second));
             addWonderToInstanciator(currWonder);
         }
     }
@@ -46,7 +46,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken currPT(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getProgressTokenEffects(noms.second)),json.getDirectCost(noms.second));
+            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getProgressTokenEffects(noms.second)),json.getDirectCost(noms.second));
             addPTtoInstanciator(currPT);
         }
     }
@@ -54,21 +54,21 @@ void Instanciator::constructPT(){
 //Constructeur de ProgressToken:
 //ProgressToken(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
 
-void Instanciator::addBuildingToInstanciator(Building building){
+void Instanciator::addBuildingToInstanciator(Building* building){
     getBuildings().insert(getBuildings().end(),1,building);
 }
 
-void Instanciator::addPTtoInstanciator(ProgressToken PT){
+void Instanciator::addPTtoInstanciator(ProgressToken* PT){
     getPTInstanciator().insert(getPTInstanciator().end(),1,PT);
 }
-void Instanciator::addWonderToInstanciator(Wonder wonder){
+void Instanciator::addWonderToInstanciator(Wonder* wonder){
     getWonders().insert(getWonders().end(),1,wonder);
 }
 
-std::vector<Building> Instanciator::getCardFromXAge(int age){
-    std::vector<Building> Bage;
-    for (Building buildings : getBuildings()){
-        if (buildings.getAge() == age){
+std::vector<Building*> Instanciator::getCardFromXAge(int age){
+    std::vector<Building*> Bage;
+    for (Building* buildings : getBuildings()){
+        if (buildings->getAge() == age){
             Bage.insert(Bage.end(),1,buildings);
         }
     }
@@ -78,8 +78,8 @@ std::vector<Building> Instanciator::getCardFromXAge(int age){
     return Bage;
 }
 
-std::vector<Building> Instanciator::extractXRandomBuildingsFrom(std::vector<Building> cartes,unsigned int X){
-    std::vector<Building> randRes;
+std::vector<Building*> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
+    std::vector<Building*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
     for (unsigned int i = 0; i<cartes.size()-X; i++){
@@ -97,8 +97,8 @@ std::vector<Building> Instanciator::extractXRandomBuildingsFrom(std::vector<Buil
     return randRes;
 }
 
-std::vector<ProgressToken> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken> cartes,unsigned int X){
-    std::vector<ProgressToken> randRes;
+std::vector<ProgressToken*> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X){
+    std::vector<ProgressToken*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
     for (unsigned int i = 0; i<cartes.size()-X; i++){
@@ -116,8 +116,8 @@ std::vector<ProgressToken> Instanciator::extractXRandomProgressTokensFrom(std::v
     return randRes;
 }
 
-std::vector<Wonder> Instanciator::extractXRandomWondersFrom(std::vector<Wonder> cartes,unsigned int X){
-    std::vector<Wonder> randRes;
+std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes,unsigned int X){
+    std::vector<Wonder*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
     for (unsigned int i = 0; i<cartes.size()-X; i++){
