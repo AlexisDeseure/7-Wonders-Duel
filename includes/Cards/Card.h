@@ -16,7 +16,7 @@ class City;
 class Game;
 class Ressource;
 enum class RessourceType;
-#include <iostream>
+
 class Card {
     private:
         std::string name;
@@ -27,9 +27,7 @@ class Card {
 
     public :
         Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
-            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost){
-                std::cout << "construct";
-              };
+            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost){};
 
         virtual ~Card();
 

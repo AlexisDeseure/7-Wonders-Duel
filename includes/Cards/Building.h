@@ -28,9 +28,7 @@ class Building : public Card{
         ~Building() = default;
         Building(const std::string& name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t,
                  int a, const std::vector<std::string>& chainIn = {}, const std::vector<std::string>& chainOut = {})
-            : Card(name, cost, effects, direct_cost), age(a), chainIn(chainIn), chainOut(chainOut), type(t) {
-                  std::cout << "construct";
-              };
+            : Card(name, cost, effects, direct_cost), age(a), chainIn(chainIn), chainOut(chainOut), type(t) {};
         BuildingType getType() const {return type;}
         int getAge() const {return age;};
         void addChainOutToCity(City* city) const;

@@ -6,506 +6,475 @@
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "cost": null,
                 "direct_cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Wood",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Exploitation",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 1,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Wood",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Bassin Clayux",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Clay",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Cavit\u00c3\u00a9",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 1,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Clay",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Gisement",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Stone",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Mine",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 1,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Stone",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Glassrie",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "grey",
+                "color": "Gray",
                 "direct_cost": 1,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Glass",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Presse",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "grey",
+                "color": "Gray",
                 "direct_cost": 1,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Paper",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Tour de Garde",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Ecuries",
                 "age": 1,
                 "chainage_send": "Haras",
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Caserne",
                 "age": 1,
                 "chainage_send": "Baraquements",
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Palissade",
                 "age": 1,
                 "chainage_send": "Fortifications",
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Atelier",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         1
                     ],
                     "AddScientificSymbol": [
                         "archipendulum"
                     ]
-                },
-                "scientific_symbol": "Pendule"
+                }
             },
             {
                 "name": "Apothicaire",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         1
                     ],
                     "AddScientificSymbol": [
                         "wheel"
                     ]
-                },
-                "scientific_symbol": "Roue"
+                }
             },
             {
                 "name": "Scriptorium",
                 "age": 1,
                 "chainage_send": "Biblioth\u00c3\u00a8que",
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
                         "quill"
                     ]
-                },
-                "scientific_symbol": "Plume"
+                }
             },
             {
                 "name": "Officine",
                 "age": 1,
                 "chainage_send": "Dispensaire",
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
                         "pestle"
                     ]
-                },
-                "scientific_symbol": "Bol"
+                }
             },
             {
                 "name": "D\u00c3\u00a9pot de Pierre",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 3,
                 "cost": null,
                 "effects": {
-                    "changeMarketRule": [
+                    "ChangeMarketRule": [
                         "Stone"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "D\u00c3\u00a9pot d'Clay'",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 3,
                 "cost": null,
                 "effects": {
-                    "changeMarketRule": [
+                    "ChangeMarketRule": [
                         "Clay"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "D\u00c3\u00a9pot de Wood",
                 "age": 1,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 3,
                 "cost": null,
                 "effects": {
-                    "changeMarketRule": [
+                    "ChangeMarketRule": [
                         "Wood"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Taverne",
                 "age": 1,
                 "chainage_send": "Phare",
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         4
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Th\u00c3\u00a9\u00c3\u00a2tre",
                 "age": 1,
                 "chainage_send": "Statue",
                 "chainage_receive": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Autel",
                 "age": 1,
                 "chainage_send": "Temple",
                 "chainage_receive": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Bains",
                 "age": 1,
                 "chainage_send": "Aqueduc",
                 "chainage_receive": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Scierie",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Wood",
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Briqueterie",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Clay",
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Carri\u00c3\u00a8re",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "brown",
+                "color": "Brown",
                 "direct_cost": 2,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Stone",
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Soufflerie",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "grey",
+                "color": "Gray",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Glass",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "S\u00c3\u00a9choir",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "grey",
+                "color": "Gray",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addRessource": [
+                    "AddRessource": [
                         "Paper",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Muraille",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 2
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Haras",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "Ecuries",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
                     "Wood": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Baraquements",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "Caserne",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": 3,
                 "cost": null,
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Champ de tir",
                 "age": 2,
                 "chainage_send": "Atelier de si\u00c3\u00a8ge",
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 1,
@@ -513,104 +482,98 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Place d'armes'",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "Ecuries",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Forum",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 3,
                 "cost": {
                     "Clay": 1
                 },
                 "effects": {
-                    "addRessourceChoice": [
+                    "AddRessourceChoice": [
                         "Glass",
                         "Paper"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Caravans\u00c3\u00a9rail",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 2,
                 "cost": {
                     "Glass": 1,
                     "Paper": 1
                 },
                 "effects": {
-                    "addRessourceChoice": [
+                    "AddRessourceChoice": [
                         "Wood",
                         "Clay",
                         "Glass"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Douanes",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": 4,
                 "cost": null,
                 "effects": {
-                    "changeMarketRule": [
+                    "ChangeMarketRule": [
                         "Glass"
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Brasserie",
                 "age": 2,
                 "chainage_send": "Ar\u00c3\u00a8ne",
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": null,
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         6
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Biblioth\u00c3\u00a8que",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "scriptorium",
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 1,
@@ -618,204 +581,193 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         2
                     ],
                     "AddScientificSymbol": [
                         "quill"
                     ]
-                },
-                "scientific_symbol": "Plume"
+                }
             },
             {
                 "name": "Dispensaire",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "Officine",
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         2
                     ],
                     "AddScientificSymbol": [
                         "pestle"
                     ]
-                },
-                "scientific_symbol": "Bol"
+                }
             },
             {
                 "name": "Ecole",
                 "age": 2,
                 "chainage_send": "Universit\u00c3\u00a9",
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 2,
                     "Wood": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         1
                     ],
                     "AddScientificSymbol": [
                         "wheel"
                     ]
-                },
-                "scientific_symbol": "Roue"
+                }
             },
             {
                 "name": "Laboratoire",
                 "age": 2,
                 "chainage_send": "Observatoire",
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 1,
                     "Glass": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         1
                     ],
                     "AddScientificSymbol": [
                         "archipendulum"
                     ]
-                },
-                "scientific_symbol": "Pendule"
+                }
             },
             {
                 "name": "Tribunal",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Glass": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         5
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Statue",
                 "age": 2,
                 "chainage_send": "Jardins",
                 "chainage_receive": "Th\u00c3\u00a9\u00c3\u00a2tre",
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         4
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Temple",
                 "age": 2,
                 "chainage_send": "Panth\u00c3\u00a9on",
                 "chainage_receive": "Autel",
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 1,
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         4
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Aqueduc",
                 "age": 2,
                 "chainage_send": null,
                 "chainage_receive": "Bains",
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 3
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         5
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Rostres",
                 "age": 2,
                 "chainage_send": "S\u00c3\u00a9nat",
                 "chainage_receive": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 3
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         4
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Arsenal",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 3,
                     "Wood": 2
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Pr\u00c3\u00a9toire",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "red",
+                "color": "Red",
                 "direct_cost": 8,
                 "cost": null,
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Fortifications",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": "Palissade",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 2,
@@ -823,54 +775,51 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Atelier de si\u00c3\u00a8ge",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": "Champ de tir",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 3,
                     "Glass": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Cirque",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": "Place d'armes",
-                "color": "red",
+                "color": "Red",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Stone": 2
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Acad\u00c3\u00a9mie",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 2,
@@ -878,21 +827,20 @@
                     "Wood": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ],
                     "AddScientificSymbol": [
                         "sundial"
                     ]
-                },
-                "scientific_symbol": "Horloge solaire"
+                }
             },
             {
                 "name": "Etude",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 2,
@@ -900,21 +848,20 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ],
                     "AddScientificSymbol": [
                         "sundial"
                     ]
-                },
-                "scientific_symbol": "Horloge solaire"
+                }
             },
             {
                 "name": "Universit\u00c3\u00a9",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": "Ecole",
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -922,63 +869,60 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         2
                     ],
                     "AddScientificSymbol": [
                         "armillary_sphere"
                     ]
-                },
-                "scientific_symbol": "Globe"
+                }
             },
             {
                 "name": "Observatoire",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": "Ecole",
-                "color": "green",
+                "color": "Green",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 1,
                     "Paper": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         2
                     ],
                     "AddScientificSymbol": [
                         "armillary_sphere"
                     ]
-                },
-                "scientific_symbol": "Globe"
+                }
             },
             {
                 "name": "Chambre de commerce",
                 "age": 3,
                 "chainage_send": null,
                 "chainage_receive": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 2
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "grey",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Gray",
                         3
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Port",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 1,
@@ -986,66 +930,63 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "brown",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Brown",
                         2
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Armurerie",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "red",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Red",
                         1
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Phare",
                 "age": 3,
                 "chainage_receive": "Taverne",
                 "chainage_send": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "gold",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Yellow",
                         1
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Ar\u00c3\u00a8ne",
                 "age": 3,
                 "chainage_receive": "Brasserie",
                 "chainage_send": null,
-                "color": "gold",
+                "color": "Yellow",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -1053,21 +994,20 @@
                     "Wood": 1
                 },
                 "effects": {
-                    "earnXMoneyPerWonderAtConstruct": [
+                    "EarnXMoneyPerWonderAtConstruct": [
                         1
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Palace",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 2,
@@ -1076,72 +1016,68 @@
                     "Wood": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         7
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Hotel de Ville",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 3,
                     "Wood": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         7
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Ob\u00c3\u00a9lisque",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 2,
                     "Glass": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         5
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Jardin",
                 "age": 3,
                 "chainage_receive": "Statue",
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
                     "Wood": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         6
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Panth\u00c3\u00a9on",
                 "age": 3,
                 "chainage_receive": "Temple",
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -1149,18 +1085,17 @@
                     "Paper": 2
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         6
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "S\u00c3\u00a9nat",
                 "age": 3,
                 "chainage_receive": "Rostres",
                 "chainage_send": null,
-                "color": "blue",
+                "color": "Blue",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 2,
@@ -1168,18 +1103,17 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         5
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Commer\u00c3\u00a7ants",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -1188,23 +1122,22 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
+                    "EarnXMoneyPerMostAtConstruct": [
                         "Yellow",
                         1
                     ],
-                    "earnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnXVictoryPointPerThingMostAtEndGame": [
                         "Yellow",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Armateurs",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -1213,24 +1146,23 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "brown",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Brown",
                         1
                     ],
-                    "earnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnXVictoryPointPerThingMostAtEndGame": [
                         "Gray",
                         "Brown",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des B\u00c3\u00a2tisseurs",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Clay": 1,
@@ -1239,18 +1171,17 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "earnXVictoryPointPerMostWonderAtEndGame": [
+                    "EarnXVictoryPointPerMostWonderAtEndGame": [
                         2
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Magistrats",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 2,
@@ -1258,65 +1189,62 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "blue",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Blue",
                         1
                     ],
-                    "earnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnXVictoryPointPerThingMostAtEndGame": [
                         "Blue",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Scientifiques",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Clay": 2
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "green",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Green",
                         1
                     ],
-                    "earnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnXVictoryPointPerThingMostAtEndGame": [
                         "Green",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Usuriers",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Wood": 2,
                     "Stone": 2
                 },
                 "effects": {
-                    "earnXVictoryPointPerLotOfMoneyMostAtEndGame": [
+                    "EarnXVictoryPointPerLotOfMoneyMostAtEndGame": [
                         1,
                         3
                     ]
-                },
-                "scientific_symbol": null
+                }
             },
             {
                 "name": "Guilde des Tacticiens",
                 "age": 3,
                 "chainage_receive": null,
                 "chainage_send": null,
-                "color": "purple",
+                "color": "Purple",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 2,
@@ -1324,26 +1252,25 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "earnXMoneyPerMostAtConstruct": [
-                        "red",
+                    "EarnXMoneyPerMostAtConstruct": [
+                        "Red",
                         1
                     ],
-                    "earnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnXVictoryPointPerThingMostAtEndGame": [
                         "Red",
                         1
                     ]
-                },
-                "scientific_symbol": null
+                }
             }
         ],
         "ProgressTokenList": [
             {
                 "name": "Agriculture",
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         4
                     ],
-                    "addMoney": [
+                    "AddMoney": [
                         6
                     ]
                 }
@@ -1351,7 +1278,7 @@
             {
                 "name": "Architecture",
                 "effects": {
-                    "wonderCostReducedByX": [
+                    "WonderCostReducedByX": [
                         2
                     ]
                 }
@@ -1359,7 +1286,7 @@
             {
                 "name": "Economie",
                 "effects": {
-                    "takeAdversaryTradeMoney": null
+                    "TakeAdversaryTradeMoney": null
                 }
             },
             {
@@ -1382,7 +1309,7 @@
             {
                 "name": "Math\u00c3\u00a9matiques",
                 "effects": {
-                    "earnVictoryPointsPerProgressTokenAtEndGame": [
+                    "EarnVictoryPointsPerProgressTokenAtEndGame": [
                         3
                     ]
                 }
@@ -1390,7 +1317,7 @@
             {
                 "name": "Philosophie",
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         7
                     ]
                 }
@@ -1407,16 +1334,16 @@
             {
                 "name": "Th\u00c3\u00a9ologie",
                 "effects": {
-                    "newWondersHaveInstantReplaying": null
+                    "NewWondersHaveInstantReplaying": null
                 }
             },
             {
                 "name": "Urbanisme",
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         6
                     ],
-                    "earnMoneyPerBuildingChaining": [
+                    "EarnMoneyPerBuildingChaining": [
                         4
                     ]
                 }
@@ -1432,13 +1359,13 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "discardAdversaryCard": [
+                    "DiscardAdversaryCard": [
                         "Gray"
                     ],
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
                 }
@@ -1451,10 +1378,10 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         2
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
                 }
@@ -1468,12 +1395,12 @@
                     "Paper": 2
                 },
                 "effects": {
-                    "addRessourceChoice": [
+                    "AddRessourceChoice": [
                         "Stone",
                         "Clay",
                         "Wood"
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         4
                     ]
                 }
@@ -1487,13 +1414,13 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         6
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ],
-                    "instantReplaying": null
+                    "InstantReplaying": null
                 }
             },
             {
@@ -1505,8 +1432,8 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "chooseOneProgressTokenWithinThreeDiscarded": null,
-                    "addVictoryPoint": [
+                    "ChooseOneProgressTokenWithinThreeDiscarded": null,
+                    "AddVictoryPoint": [
                         4
                     ]
                 }
@@ -1520,8 +1447,8 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "buildOneDiscardedBuilding": null,
-                    "addVictoryPoint": [
+                    "BuildOneDiscardedBuilding": null,
+                    "AddVictoryPoint": [
                         2
                     ]
                 }
@@ -1535,14 +1462,14 @@
                     "Clay": 1
                 },
                 "effects": {
-                    "addRessourceChoice": [
+                    "AddRessourceChoice": [
                         "Glass",
                         "Paper"
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         2
                     ],
-                    "instantReplaying": null
+                    "InstantReplaying": null
                 }
             },
             {
@@ -1553,7 +1480,7 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         9
                     ]
                 }
@@ -1567,10 +1494,10 @@
                     "Stone": 1
                 },
                 "effects": {
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         6
                     ],
-                    "instantReplaying": null
+                    "InstantReplaying": null
                 }
             },
             {
@@ -1583,13 +1510,13 @@
                     "Stone": 1
                 },
                 "effects": {
-                    "discardAdversaryCard": [
+                    "DiscardAdversaryCard": [
                         "Brown"
                     ],
-                    "moveConflictPawn": [
+                    "MoveConflictPawn": [
                         1
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
                 }
@@ -1604,10 +1531,10 @@
                     "Stone": 1
                 },
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         12
                     ],
-                    "instantReplaying": null
+                    "InstantReplaying": null
                 }
             },
             {
@@ -1619,14 +1546,14 @@
                     "Clay": 2
                 },
                 "effects": {
-                    "addMoney": [
+                    "AddMoney": [
                         3
                     ],
-                    "instantReplaying": null,
-                    "adversaryPaysMoneyToBank": [
+                    "InstantReplaying": null,
+                    "AdversaryPaysMoneyToBank": [
                         3
                     ],
-                    "addVictoryPoint": [
+                    "AddVictoryPoint": [
                         3
                     ]
                 }

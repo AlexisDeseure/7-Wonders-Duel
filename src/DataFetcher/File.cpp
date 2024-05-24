@@ -245,19 +245,19 @@ std::pair<QString,QString> File::getChaining(QString name){
     return std::make_pair(QString(), QString());
 }
 
-QString File::getScientificSymbol(QString name){
-    QString Symbol;
-    QJsonArray LBuilding = listeBuildings();
-    for (auto points: LBuilding) {
-        QString Bname = points.toObject().value("name").toString();
-        if (Bname==name) {
-            Symbol = points.toObject().value("scientific_symbol").toString();
-            return Symbol;
-        }
-    }
-    qDebug() << "Pas de bâtiments avec ce nom!";
-    return QString();
-}
+// QString File::getScientificSymbol(QString name){
+//     QString Symbol;
+//     QJsonArray LBuilding = listeBuildings();
+//     for (auto points: LBuilding) {
+//         QString Bname = points.toObject().value("name").toString();
+//         if (Bname==name) {
+//             Symbol = points.toObject().value("scientific_symbol").toString();
+//             return Symbol;
+//         }
+//     }
+//     qDebug() << "Pas de bâtiments avec ce nom!";
+//     return QString();
+// }
 
 QString File::getColor(QString name){
     QString couleur;

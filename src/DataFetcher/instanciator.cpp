@@ -4,8 +4,10 @@ Instanciator *Instanciator::instance = nullptr;
 
 std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTransfer> vecTransfer){
     std::vector<Effect*> effets;
+
     for (File::EffectTransfer transfer:vecTransfer){
         Effect* currEffect = EffectFactory::instance().create(transfer.getEffect().toStdString());
+        std::cout<<"effect : "<<transfer.getEffect().toStdString();
         currEffect->setParameters(transfer.getAmount(),transfer.getResType());
         effets.insert(effets.end(),1,currEffect);
     }
@@ -21,9 +23,10 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            std::cout << "ah " <<noms.second.toStdString()<<" "<<(noms.first == "Building");
+            std::vector<RessourceCost> t = json.getCost(noms.second);
+            std::cout << ", nom carte : " <<noms.second.toStdString()<<"---"<<json.getAge(noms.second)<<std::endl;
             Building* currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
-            std::cout << "oh";
+            std::cout << "-- FIN";
             addBuildingToInstanciator(currBuild);
         }
     }
