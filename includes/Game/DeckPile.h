@@ -14,6 +14,7 @@ private:
     std::vector<Wonder*> wonders;
     std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> progress_tokens;
 public:
+    DeckPile(int nb_buildings, int nb_token, int nb_wonder);
 
 };
 

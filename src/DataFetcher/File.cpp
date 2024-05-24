@@ -1,4 +1,9 @@
 #include "File.h"
+#include "RessourceCost.h"
+#include "Game.h"
+#include "Ressource.h"
+
+File::File() : file_path(FILE_PATH), file(readFile()) {};
 
 QJsonDocument File::readFile() {
     QString JsonFilePath = getFilePath();

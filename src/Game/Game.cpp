@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Board.h"
 #include "Player.h"
+#include "Instanciator.h"
 
 #include <random>
 #include <iostream>
@@ -131,6 +132,7 @@ std::string getStrInput()
 
 
 void Game::startGame(){
+
     std::cout << "Game started" << std::endl;
     startMenu();
     std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;

@@ -8,9 +8,7 @@
 #include <QMainWindow>
 #include <vector>
 
-#include "RessourceCost.h"
-#include "Game.h"
-#include "Ressource.h"
+class RessourceCost;
 
 class File
 {
@@ -38,7 +36,7 @@ public:
         EffectTransfer() = default;
     };
 
-    File() : file_path(FILE_PATH), file(readFile()) {};
+    File();
     QString getFilePath(){return file_path;}
     QJsonDocument getFile() {return file;}
 

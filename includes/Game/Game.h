@@ -9,11 +9,11 @@
 
 #include <string>
 #include <vector>
-#include "Instanciator.h"
 
 class Board;
 class Player;
 enum class AiLevel;
+class Building;
 
 class Game{
     private:
