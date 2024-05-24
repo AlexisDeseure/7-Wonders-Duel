@@ -8,6 +8,8 @@
 #define FILE_PATH "../../data/data.json"
 
 #include <string>
+#include <vector>
+#include "Instanciator.h"
 
 class Board;
 class Player;
@@ -19,6 +21,7 @@ class Game{
         Board& board;
         Player* players[2];
         bool isReplaying;
+        std::vector<Building> buildings_age;
 
     public:
 

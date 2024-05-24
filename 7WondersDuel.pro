@@ -60,6 +60,7 @@ HEADERS = \
    includes/Effects/Effect.h \
    includes/Effects/EffectFactory.h \
    includes/Effects/List/BuildingCostReducedByX.h \
+   includes/Game/DeckPile.h \
    includes/Game/Game.h \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
@@ -103,6 +104,7 @@ SOURCES = \
    src/Effects/List/TakeAdversaryTradeMoney.cpp \
    src/Effects/List/WonderCostReducedByX.cpp \
    src/Effects/Effect.cpp \
+   src/Game/DeckPile.cpp \
    src/Game/Game.cpp \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \

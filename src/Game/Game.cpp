@@ -26,7 +26,6 @@ void Game::startMenu(){
     int choice;
 
     for (int i = 0; i < 2; i++) {
-        choice = 0;
         do{
             displayplayerChoice(i+1);
             switch (choice = getIntInput()) {
@@ -167,6 +166,7 @@ void Game::playTurn(){
 void Game::selectWondersPhase(){
     randomPlayerStart();
     std::cout << "Phase de selection des merveilles" << std::endl;
+
 }
 
 void Game::advanceAge(){
@@ -189,11 +189,8 @@ void Game::invertTurnPlayer(){
 void Game::randomPlayerStart() {
     if(selectRandomInteger() == 1){
         invertTurnPlayer();
-        std::cout << "Turn inverted" << std::endl;
     }
-    else {
-        std::cout << "Turn not inverted" << std::endl;
-    }
+    std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
 };
 
 int selectRandomInteger(int min, int max){
