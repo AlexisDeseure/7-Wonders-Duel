@@ -52,6 +52,18 @@ public:
         return instance;
     }
 
+    class Discarded {
+    private:
+        std::vector<ProgressToken> discarded_PTs;
+        std::vector<Building> discarded_buildings;
+    public:
+        void discardBuilding(Building building){discarded_buildings.push_back(building);};
+        void discardProgressToken(ProgressToken PT){discarded_PTs.push_back(PT);};
+
+        std::vector<ProgressToken> getDiscardedPTs(){return discarded_PTs;};
+        std::vector<Building> getDiscardedBuildings(){return discarded_buildings;};
+    };
+
     //Interdiction de la recopie.
     Instanciator& operator=(const Instanciator& x) = delete;
     Instanciator(const Instanciator&)= delete;
