@@ -6,10 +6,15 @@
 #define MAX_WONDERS 7
 #define WONDER_LENGTH 4
 #define FILE_PATH "../../data/data.json"
+#define NB_BUILDING_PER_AGE 20
+#define NB_PROGRESS_TOKEN_BOARD 5
+#define NB_WONDERS 8
 
 #include <string>
 #include <vector>
 
+
+class DeckPile;
 class Board;
 class Player;
 enum class AiLevel;
@@ -21,7 +26,7 @@ class Game{
         Board& board;
         Player* players[2];
         bool isReplaying;
-        std::vector<Building> buildings_age;
+        DeckPile& deck;
 
     public:
 

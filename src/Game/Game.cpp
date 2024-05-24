@@ -2,15 +2,14 @@
 #include "Board.h"
 #include "Player.h"
 #include "Instanciator.h"
-
+#include "DeckPile.h"
 #include <random>
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), board(*new Board()), isReplaying(false){
+Game::Game() : age(0), board(*new Board()), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
     players[0] = new Player();
     players[1] = new Player();
-
     std::cout << "Game created" << std::endl;
     startGame();
 }
@@ -19,6 +18,7 @@ Game::~Game() {
     delete &board;
     delete players[0];
     delete players[1];
+    delete &deck;
     std::cout << "Game finished" << std::endl;
 }
 
