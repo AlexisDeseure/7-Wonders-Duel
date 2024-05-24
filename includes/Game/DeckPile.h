@@ -13,9 +13,16 @@ private:
     std::pair<std::vector<Building*>, std::vector<Building*>> buildings;
     std::vector<Wonder*> wonders;
     std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> progress_tokens;
+
+
 public:
     DeckPile(int nb_buildings, int nb_token, int nb_wonder);
-
+    void addDiscardedBuilding(Building* build);
+    Wonder* selectNextWonder();
+    Building* selectNextBuilding();
+    ProgressToken* selectNextProgressToken();
+    std::vector<Building*> getDiscardedBuildings() {return buildings.second;};
+    std::vector<ProgressToken*> getOtherProgressTokens() {return progress_tokens.second;};
 };
 
 #endif // DECKPILE_H
