@@ -82,7 +82,7 @@ std::vector<Building*> Instanciator::extractXRandomBuildingsFrom(std::vector<Bui
     std::vector<Building*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<cartes.size()-X; i++){
+    for (unsigned int i = 0; i<X; i++){
         unsigned int currVal = rand()%cartes.size()+1;
         if (find(val.begin(),val.end(),currVal) != val.end()) {
             val.push_back(currVal);
@@ -94,6 +94,8 @@ std::vector<Building*> Instanciator::extractXRandomBuildingsFrom(std::vector<Bui
             randRes.push_back(cartes[i]);
         }
     }
+    auto rng = std::default_random_engine {};
+    std::shuffle(randRes.begin(),randRes.end(),rng);
     return randRes;
 }
 
@@ -101,7 +103,7 @@ std::vector<ProgressToken*> Instanciator::extractXRandomProgressTokensFrom(std::
     std::vector<ProgressToken*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<cartes.size()-X; i++){
+    for (unsigned int i = 0; i<X; i++){
         unsigned int currVal = rand()%cartes.size()+1;
         if (find(val.begin(),val.end(),currVal) !=val.end()) {
             val.push_back(currVal);
@@ -113,6 +115,8 @@ std::vector<ProgressToken*> Instanciator::extractXRandomProgressTokensFrom(std::
             randRes.push_back(cartes[i]);
         }
     }
+    auto rng = std::default_random_engine {};
+    std::shuffle(randRes.begin(),randRes.end(),rng);
     return randRes;
 }
 
@@ -120,7 +124,7 @@ std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*
     std::vector<Wonder*> randRes;
     srand((unsigned int)time(0));
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<cartes.size()-X; i++){
+    for (unsigned int i = 0; i<X; i++){
         unsigned int currVal = rand()%cartes.size()+1;
         if (find(val.begin(),val.end(),currVal) !=val.end()) {
             val.push_back(currVal);
@@ -132,5 +136,7 @@ std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*
             randRes.push_back(cartes[i]);
         }
     }
+    auto rng = std::default_random_engine {};
+    std::shuffle(randRes.begin(),randRes.end(),rng);
     return randRes;
 }
