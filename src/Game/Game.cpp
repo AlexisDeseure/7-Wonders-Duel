@@ -8,18 +8,29 @@
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), board(*new Board(VICTORY_POSITION)), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
-    players[0] = new Player(COIN_START);
-    players[1] = new Player(COIN_START);
+// Game::Game() : age(0), board(*new Board(Instanciator::getInstanciator()->getGameParameters().getLengthConflictPawnBoard())),
+//     isReplaying(false), deck(*new DeckPile(Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge(),
+//                          Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard(),
+//                          Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders())){
+Game::Game() : age(0), isReplaying(false) {
+    Instanciator* inst = Instanciator::getInstanciator();
+    int length = inst->getGameParameters().getLengthConflictPawnBoard();
+    board = new Board(length);
+    std::cout << "test";
+    deck = new DeckPile(20,5,8);
+    //int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
+    //std::cout << "test"<<nb_pt;
+    players[0] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
+    players[1] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
     std::cout << "Game created" << std::endl;
     startGame();
 }
 
 Game::~Game() {
-    delete &board;
+    delete board;
     delete players[0];
     delete players[1];
-    delete &deck;
+    delete deck;
     std::cout << "Game finished" << std::endl;
 }
 
@@ -138,7 +149,7 @@ void Game::startGame(){
     startMenu();
     std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
     selectWondersPhase();
-    while (age < AGE_MAX){
+    while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()){
         playAge();
     }
     endGame();
@@ -175,7 +186,7 @@ void Game::endTurn() {
 }
 
 void Game::updateConflictPawn() {
-    ConflictPawn& conflict = board.getConflictPawn();
+    ConflictPawn& conflict = board->getConflictPawn();
     int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
     conflict.move(totalShields);
     if (conflict.isMilitaryVictory()){
@@ -190,7 +201,7 @@ void Game::updateConflictPawn() {
 }
 
 bool Game::checkMilitaryVictory() const {
-    return board.getConflictPawn().isMilitaryVictory();
+    return board->getConflictPawn().isMilitaryVictory();
 }
 
 void Game::selectWondersPhase(){
@@ -202,7 +213,7 @@ void Game::selectWondersPhase(){
 void Game::advanceAge(){
     std::cout << "Age avance" << std::endl;
     age++;
-    deck.advanceAge(age);
+    deck->advanceAge(age);
 
 }
 

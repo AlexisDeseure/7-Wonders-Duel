@@ -36,7 +36,7 @@ public:
         EffectTransfer() = default;
     };
 
-    File();
+    File(std::string name);
     QString getFilePath(){return file_path;}
     QJsonDocument getFile() {return file;}
 

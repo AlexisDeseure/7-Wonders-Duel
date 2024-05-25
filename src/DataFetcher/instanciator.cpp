@@ -1,5 +1,10 @@
 #include "Instanciator.h"
 #include "Game.h"
+#include "Ressource.h"
+#include "RessourceCost.h"
+#include "EffectFactory.h"
+#include "IncludeEffects.h"
+
 Instanciator *Instanciator::instance = nullptr;
 
 std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTransfer> vecTransfer){
@@ -22,7 +27,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building* currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
+            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).first.toStdString()}, {cards_file->getChaining(noms.second).second.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -35,7 +40,7 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Wonder"){
-            Wonder* currWonder = new Wonder(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getWonderEffects(noms.second)),json.getDirectCost(noms.second));
+            Wonder* currWonder = new Wonder(noms.second.toStdString(),cards_file->getCost(noms.second),effTransToEffect(cards_file->getWonderEffects(noms.second)),cards_file->getDirectCost(noms.second));
             addWonderToInstanciator(currWonder);
         }
     }
@@ -47,7 +52,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),{},effTransToEffect(json.getProgressTokenEffects(noms.second)),0);
+            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),{},effTransToEffect(cards_file->getProgressTokenEffects(noms.second)),0);
             addPTtoInstanciator(currPT);
         }
     }
@@ -73,11 +78,11 @@ std::vector<Building*> Instanciator::getCardFromXAge(int age){
             buildings.push_back(building);
         }
     }
-    if (age < 1 || age > AGE_MAX){
+    if (age < 1 || age > getInstanciator()->getGameParameters().getNumberAge()){
         qDebug() << "Renvoie d'un vecteur vide, il n'y a pas d'âge" << age << "!";
         return {};
     }
-    else if (age == AGE_MAX) {
+    else if (age == getInstanciator()->getGameParameters().getNumberAge()) {
         std::vector<Building*> guilds;
         std::vector<Building*> classic_buildings;
         for (Building* bats: buildings) {
@@ -89,8 +94,8 @@ std::vector<Building*> Instanciator::getCardFromXAge(int age){
             }
         }
 
-        buildings = extractXRandomBuildingsFrom(classic_buildings,classic_buildings.size()-NB_CARD_GUILDS).first;
-        std::vector<Building*> choseGuilds = extractXRandomBuildingsFrom(guilds,NB_CARD_GUILDS).first;
+        buildings = extractXRandomBuildingsFrom(classic_buildings,classic_buildings.size()-getInstanciator()->getGameParameters().getNumberCardGuilds()).first;
+        std::vector<Building*> choseGuilds = extractXRandomBuildingsFrom(guilds,getInstanciator()->getGameParameters().getNumberCardGuilds()).first;
         for (Building* guild:choseGuilds){
             buildings.push_back(guild);
         }

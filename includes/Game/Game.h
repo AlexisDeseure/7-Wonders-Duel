@@ -1,19 +1,17 @@
 #ifndef GAME_H
 #define GAME_H
 
-#define COIN_START 7
-#define AGE_MAX 3
-#define WONDERS_MAX 7
-#define VICTORY_POSITION 9
+// #define COIN_START 7
+// #define AGE_MAX 3
+// #define WONDERS_MAX 7
+// #define VICTORY_POSITION 9
 
-#define NB_BUILDING_PER_AGE 20
-#define NB_PROGRESS_TOKEN_BOARD 5
-#define NB_WONDERS 8
-#define NB_CARD_GUILDS 3
+// #define NB_BUILDING_PER_AGE 20
+// #define NB_PROGRESS_TOKEN_BOARD 5
+// #define NB_WONDERS 8
+// #define NB_CARD_GUILDS 3
 
-
-
-#define FILE_PATH "../../../data/data.json"
+#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
 
 #include <string>
 #include <vector>
@@ -28,10 +26,10 @@ class Building;
 class Game{
     private:
         int age;
-        Board& board;
+        Board* board;
         Player* players[2];
         bool isReplaying;
-        DeckPile& deck;
+        DeckPile* deck;
         void updateConflictPawn();
 
     public:

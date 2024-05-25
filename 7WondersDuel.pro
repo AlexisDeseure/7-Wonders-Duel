@@ -2,7 +2,10 @@
 # This file was created for editing the project sources only.
 # You may attempt to use it for building too, by modifying this file here.
 
-QT += core gui widgets
+#TARGET = 7WondersDuel
+
+QT       += core gui
+#QT = core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,6 +30,7 @@ HEADERS += \
    includes/City/City.h \
    includes/City/Ressource.h \
    includes/City/ScientificSymbol.h \
+   includes/DataFetcher/GameParameters.h \
    includes/DeckManager/DeckElement.h \
    includes/DeckManager/MarketDeck.h \
    includes/Effects/IncludeEffects.h \
@@ -76,6 +80,7 @@ SOURCES += \
    src/City/City.cpp \
    src/City/Ressource.cpp \
    src/City/ScientificSymbol.cpp \
+   src/DataFetcher/GameParameters.cpp \
    src/DataFetcher/Instanciator.cpp \
    src/DeckManager/DeckElement.cpp \
    src/DeckManager/MarketDeck.cpp \
@@ -129,10 +134,11 @@ INCLUDEPATH += \
     includes/Ui
 
 FORMS += \
-    includes/Ui/mainwindow.ui \
-    includes/Ui/gamewindow.ui \
-    includes/Ui/playerwidget.ui \
-    includes/Ui/cardwidget.ui
+    SevenWonderUI.ui
+    # includes/Ui/mainwindow.ui \
+    # includes/Ui/gamewindow.ui \
+    # includes/Ui/playerwidget.ui \
+    # includes/Ui/cardwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

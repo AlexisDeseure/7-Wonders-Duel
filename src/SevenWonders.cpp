@@ -18,6 +18,8 @@
 #include"AddMoney.h"
 #include"DeckElement.h"
 #include"AddRessource.h"
+#include "GameParameters.h"
+
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -74,7 +76,7 @@ int main(int argc, char* argv[]) {
 
     Game();
 
-
+    //cout<<Instanciator::getInstanciator()->getGameParameters();
     system("pause");
 
     return 0;

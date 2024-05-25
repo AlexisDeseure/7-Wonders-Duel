@@ -1,17 +1,14 @@
 #ifndef INSTANCIATOR_H
 #define INSTANCIATOR_H
 
-#include <ctime>
-#include <cstdlib>
+
 #include "Building.h"
 #include "Wonder.h"
 #include "Card.h"
 #include "ProgressToken.h"
 #include "File.h"
-#include "Ressource.h"
-#include "RessourceCost.h"
-#include "EffectFactory.h"
-#include "IncludeEffects.h"
+#include "Game.h"
+#include "GameParameters.h"
 
 class Instanciator
 {
@@ -20,7 +17,8 @@ private:
     std::vector<Building*> buildings_instanciator;
     std::vector<Wonder*> wonders_instanciator;
     std::vector<ProgressToken*> progress_tokens_instanciator;
-    File json;
+    File* cards_file;
+    GameParameters& game_parameters;
     std::vector<std::pair<QString,QString>> names;
 
     // On souhaite instancier une seule fois, on met en privé les méthodes qui permettent de créer les instances.
@@ -37,8 +35,10 @@ private:
 
     static Instanciator* instance;
 
-    Instanciator() {
-        names = json.getNames();
+    Instanciator() : game_parameters(*new GameParameters(GAME_PARAMETERS_PATH)){
+        std::cout << "test1";
+        cards_file = new File(game_parameters.getCardsPath());
+        names = cards_file->getNames();
         constructBuilding();
         constructWonder();
         constructPT();
@@ -47,8 +47,9 @@ private:
 public:
 
     static Instanciator* getInstanciator(){
-        if (!instance)
+        if (!instance){
             instance = new Instanciator;
+        }
         return instance;
     }
 
@@ -71,6 +72,8 @@ public:
 
     //Extraction des cartes d'un âge:
     std::vector<Building*> getCardFromXAge(int age);
+
+    const GameParameters& getGameParameters() const {return game_parameters;}
 };
 
 #endif // INSTANCIATOR_H

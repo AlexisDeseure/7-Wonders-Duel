@@ -1,30 +1,30 @@
-#ifndef GAMEWINDOW_H
-#define GAMEWINDOW_H
+// #ifndef GAMEWINDOW_H
+// #define GAMEWINDOW_H
 
-#include <QMainWindow>
-#include "playerwidget.h"
-#include "cardwidget.h"
-#include "Game.h" //  game header
+// #include <QMainWindow>
+// #include "playerwidget.h"
+// #include "cardwidget.h"
+// #include "Game.h" //  game header
 
-class GameWindow : public QMainWindow
-{
-    Q_OBJECT
+// class GameWindow : public QMainWindow
+// {
+//     Q_OBJECT
 
-public:
-    explicit GameWindow(QWidget *parent = nullptr);
-    ~GameWindow();
+// public:
+//     explicit GameWindow(QWidget *parent = nullptr);
+//     ~GameWindow();
 
-private:
-    PlayerWidget *player1Widget;
-    PlayerWidget *player2Widget;
-    QList<CardWidget*> cardWidgets;
+// private:
+//     PlayerWidget *player1Widget;
+//     PlayerWidget *player2Widget;
+//     QList<CardWidget*> cardWidgets;
 
-    void setupUi();
-    void setupConnections();
-    Game game; // game instance
+//     void setupUi();
+//     void setupConnections();
+//     Game game; // game instance
 
-public slots:
-    void onCardClicked();
-};
+// public slots:
+//     void onCardClicked();
+// };
 
-#endif // GAMEWINDOW_H
+// #endif // GAMEWINDOW_H

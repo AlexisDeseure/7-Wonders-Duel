@@ -4,7 +4,6 @@
 DeckPile::DeckPile(int nb_buildings, int nb_token, int nb_wonder) : nb_buildings(nb_buildings){
     wonders = Instanciator::getInstanciator()->extractXRandomWondersFrom(Instanciator::getInstanciator()->getWonders(), nb_wonder);
     progress_tokens = Instanciator::getInstanciator()->extractXRandomProgressTokensFrom(Instanciator::getInstanciator()->getPTInstanciator(), nb_token);
-
 }
 
 

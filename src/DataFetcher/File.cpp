@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "Ressource.h"
 
-File::File() : file_path(FILE_PATH), file(readFile()) {};
+File::File(std::string name) : file_path(QString::fromStdString(name)), file(readFile()) {};
 
 QJsonDocument File::readFile() {
     QString JsonFilePath = getFilePath();

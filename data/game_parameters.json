@@ -1,0 +1,40 @@
+{
+    "data_path": "../../data/data.json",
+    "coin_start": 7,
+    "number_age": 3,
+    "cards": {
+        "wonders_max": 7,
+        "number_selected_wonders": 8,
+        "number_building_per_age": 20,
+        "number_progress_token_board": 5,
+        "number_card_guilds": 3
+    },
+    "conflict_pawn": {
+        "length": 9,
+        "disposition": [
+            {
+                "number": 1,
+                "victory_points": 2,
+                "effect": null
+            },
+            {
+                "number": 3,
+                "victory_points": 5,
+                "effect": {
+                    "AdversaryPaysMoneyToBank": [
+                        2
+                    ]
+                }
+            },
+            {
+                "number": 6,
+                "victory_points": 10,
+                "effect": {
+                    "AdversaryPaysMoneyToBank": [
+                        5
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -9,4 +9,3 @@ void Effect::apply(Game& game) {
     /*Application de l'effet*/
     effect(game);
 }
-
