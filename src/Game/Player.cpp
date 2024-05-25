@@ -75,6 +75,10 @@ bool Player::buyCard(Game& game, Card& card,MarketDeck& marketDeck){
     }
     return false;
 }
+void Player::addWonderToCity(Wonder* wonder) {
+    city.addWonder(wonder);
+}
+
 
 void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
     if (!availableWonders.empty()) {
@@ -93,7 +97,7 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             std::cout << getName() << " (AI) chose " << chosenWonder.getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            wonders.push_back(chosenWonder);
+            addWonderToCity(chosenWonder);
         } else {
             // Human player
             std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
@@ -115,12 +119,9 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             std::cout << getName() << " chose " << chosenWonder.getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            wonders.push_back(chosenWonder);
+            addWonderToCity(chosenWonder);
         }
 
     }
-}
-void Player::addWonderToCity(Wonder* wonder) {
-    city.addWonder(wonder);
 }
 
