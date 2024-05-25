@@ -4,11 +4,14 @@
 #define COIN_START 7
 #define AGE_MAX 3
 #define WONDERS_MAX 7
+#define VICTORY_POSITION 9
 
 #define NB_BUILDING_PER_AGE 20
 #define NB_PROGRESS_TOKEN_BOARD 5
 #define NB_WONDERS 8
 #define NB_CARD_GUILDS 3
+
+
 
 #define FILE_PATH "../../../data/data.json"
 
@@ -29,7 +32,6 @@ class Game{
         Player* players[2];
         bool isReplaying;
         DeckPile& deck;
-        ConflictPawn conflictPawn;
         void updateConflictPawn();
 
     public:

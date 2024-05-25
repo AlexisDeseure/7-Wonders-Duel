@@ -56,6 +56,7 @@ class City {
         void addChainSymbol(const std::string& symbol); //permet d'ajouter le nom d'un symbole de chainage à la ville
         bool hasChainSymbol(const std::string& symbol) const; //permet de vérifier si un symbole de chainage est présent dans la ville
         int getNumberOfBuildingType(BuildingType type) const; //obtenir le nombre du building possédés d'une même couleur
+        int getShields() const {return number_of_shields;}
         void addEachTurnEffects(Effect* effect);
         void addEndGameEffects(Effect* effect);
         void applyEndEffects(Game& game);

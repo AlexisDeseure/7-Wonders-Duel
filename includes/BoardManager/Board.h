@@ -16,12 +16,13 @@ class Board{
         std::vector<ProgressToken*> progressToken; //jetons sélectionnés en début de partie
 
     public:
-        Board();
+        Board(int victory_position);
         ~Board()=default;
         bool canConstructWonder() const { return constructed_wonders < WONDERS_MAX; };
         void constructWonder() { constructed_wonders++; };
         void advanceConflictPawn(int step);
         bool deckIsEmpty() const;
+        ConflictPawn& getConflictPawn(){return conflict_pawn;};
 
 };
 

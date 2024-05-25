@@ -16,6 +16,10 @@ Player::~Player(){
     std::cout << "Player destroyed" << std::endl;
 }
 
+int Player::getShields() const{
+    return city.getShields();
+};
+
 std::string AiLeveltoString(AiLevel level){
     std::string str;
     switch (level) {

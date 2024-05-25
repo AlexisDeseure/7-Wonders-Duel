@@ -3,11 +3,12 @@
 #include "Player.h"
 #include "Instanciator.h"
 #include "DeckPile.h"
+#include "ConflictPawn.h"
 #include <random>
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), board(*new Board()), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
+Game::Game() : age(0), board(*new Board(VICTORY_POSITION)), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
     players[0] = new Player(COIN_START);
     players[1] = new Player(COIN_START);
     std::cout << "Game created" << std::endl;
@@ -167,18 +168,29 @@ void Game::playTurn(){
 
 void Game::endTurn() {
     updateConflictPawn();
+    //pas besoin de reset : la différence donne direct la position
     // Reset shields at the end of the turn
-    player[0].resetShields();
-    player[1].resetShields();
+    // players[0]->resetShields();
+    // players[1]->resetShields();
 }
 
 void Game::updateConflictPawn() {
-    int totalShields = player1.getShields() - player2.getShields();
-    conflictPawn.move(totalShields);
+    ConflictPawn& conflict = board.getConflictPawn();
+    int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
+    conflict.move(totalShields);
+    if (conflict.isMilitaryVictory()){
+        if (conflict.getPosition() >= 0){
+            //getTurnPlayer() gagne TODO
+
+        }
+        else{
+            //getOtherPlayer() gagne TODO
+        }
+    }
 }
 
 bool Game::checkMilitaryVictory() const {
-    return conflictPawn.isMilitaryVictory();
+    return board.getConflictPawn().isMilitaryVictory();
 }
 
 void Game::selectWondersPhase(){

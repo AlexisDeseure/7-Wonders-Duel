@@ -1,9 +1,11 @@
 #ifndef CONFLICTPAWN_H
 #define CONFLICTPAWN_H
 
+class Player;
+
 class ConflictPawn {
 public:
-    ConflictPawn();
+    ConflictPawn(int victory_position);
 
     void move(int shields);
     int getPosition() const;
@@ -11,7 +13,7 @@ public:
 
 private:
     int position;
-    static const int VICTORY_POSITION = 9; // Position to win the game
+    const int victory_position = 9; // Position to win the game
 };
 
 #endif // CONFLICTPAWN_H
