@@ -191,11 +191,16 @@ void Game::selectWondersPhase() {
 
     // Function to handle the selection phase
     auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        std::vector<Wonder*> wondersToSelect;
+        wondersToSelect.reserve(4); // Reserve space for efficiency
 
-        // Populate wondersToSelect with objects pointed to by allWonders
+        for (int i = 0; i < 4; i++) {
+            wondersToSelect.push_back(allWonders.back()); // Add the last wonder to the selected list
+            allWonders.pop_back(); // Remove the last wonder from allWonders
+        }
 
         std::cout << "Available Wonders: ";
-        for (const auto& wonder : allWonders) {
+        for (const auto& wonder : wondersToSelect) {
             std::cout << wonder->getName() << " ";
         }
         std::cout << std::endl;
@@ -283,4 +288,3 @@ int selectRandomInteger(int min, int max){
     int number = dis(gen);
     return number;
 }
-
