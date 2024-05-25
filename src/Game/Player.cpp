@@ -75,3 +75,47 @@ bool Player::buyCard(Game& game, Card& card,MarketDeck& marketDeck){
     }
     return false;
 }
+
+void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
+    if (!availableWonders.empty()) {
+        // Check if the player is AI
+        if (isAIPlayer()) {
+            // Randomly pick a wonder from the available wonders
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<> dis(0, availableWonders.size() - 1);
+            int index = dis(gen);
+
+            // Take the randomly chosen wonder
+            Wonder chosenWonder = availableWonders[index];
+            availableWonders.erase(availableWonders.begin() + index);
+
+            std::cout << getName() << " (AI) chose " << chosenWonder.getName() << std::endl;
+
+            // Add the chosen wonder to the player's wonders
+            wonders.push_back(chosenWonder);
+        } else {
+            // Human player
+            std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
+            for (int i = 0; i < availableWonders.size(); ++i) {
+                std::cout << i + 1 << ". " << availableWonders[i].getName() << std::endl;
+            }
+
+            // Ask the player to choose a wonder
+            int choice;
+            do {
+                std::cout << "Enter the number corresponding to your choice: ";
+                choice = getIntInput();
+            } while (choice < 1 || choice > availableWonders.size());
+
+            // Take the chosen wonder
+            Wonder chosenWonder = availableWonders[choice - 1];
+            availableWonders.erase(availableWonders.begin() + choice - 1);
+
+            std::cout << getName() << " chose " << chosenWonder.getName() << std::endl;
+
+            // Add the chosen wonder to the player's wonders
+            wonders.push_back(chosenWonder);
+        }
+    }
+}
