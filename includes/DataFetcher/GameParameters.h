@@ -43,9 +43,7 @@ public:
     int getNumberAge() const { return number_age; }
     int getWondersMax() const { return wonders_max; }
     int getNumberSelectedWonders() const { return number_selected_wonders; }
-    int getNumberBuildingPerAge() const {
-        std::cout << number_building_per_age;
-        return number_building_per_age; }
+    int getNumberBuildingPerAge() const { return number_building_per_age; }
     int getNumberProgressTokenBoard() const { return number_progress_token_board; }
     int getNumberCardGuilds() const { return number_card_guilds; }
     int getLengthConflictPawnBoard() const { return length_conflict_pawn_board; }

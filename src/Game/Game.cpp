@@ -206,14 +206,14 @@ void Game::selectWondersPhase() {
         std::cout << std::endl;
 
         // First player chooses 1 wonder
-        firstPlayer->chooseWonder(allWonders);
+        firstPlayer->chooseWonder(wondersToSelect);
 
         // Second player chooses 2 wonders
-        secondPlayer->chooseWonder(allWonders);
-        secondPlayer->chooseWonder(allWonders);
+        secondPlayer->chooseWonder(wondersToSelect);
+        secondPlayer->chooseWonder(wondersToSelect);
 
         // First player takes the remaining wonder
-        firstPlayer->chooseWonder(allWonders);
+        firstPlayer->chooseWonder(wondersToSelect);
     };
 
     // First selection phase

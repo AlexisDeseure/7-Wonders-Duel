@@ -7,7 +7,7 @@
 #include"Game.h"
 #include"Effect.h"
 #include"Card.h"
-
+#include "Board.h"
 #include <set>
 #include <algorithm>
 #include <iostream>
@@ -139,12 +139,13 @@ bool City::constructBuilding(Building* building, Game& game) {
 
 bool City::constructWonder(Wonder* wonder, Game& game) {
     int cost = static_cast<int>(wonder->getCost(this));
-    if (canAfford(cost) && !wonder->isBuilt()) {
+    if (game.getBoard().canConstructWonder() && canAfford(cost) && !wonder->isBuilt()) {
         treasury -= cost;
         wonder->setBuilt(true);
         wonders.push_back(wonder);
         wonder->applyEffects(game);
-        std::cout << "Wonder consuite: " << wonder->getName() << std::endl;
+        game.getBoard().constructWonder();
+        std::cout << "Wonder construite: " << wonder->getName() << std::endl;
         return true;
     } else {
         std::cout << "Conditions non accomplies pour construire la wonder." << std::endl;
