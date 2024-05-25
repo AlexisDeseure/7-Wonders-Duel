@@ -172,9 +172,10 @@ void Game::selectWondersPhase(){
 }
 
 void Game::advanceAge(){
+    std::cout << "Age avance" << std::endl;
     age++;
     deck.advanceAge(age);
-    std::cout << "Age avance" << std::endl;
+
 }
 
 void Game::endGame(){

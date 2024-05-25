@@ -1,7 +1,6 @@
 #ifndef INSTANCIATOR_H
 #define INSTANCIATOR_H
 
-#define NB_CARD_GUILDS 3
 #include <ctime>
 #include <cstdlib>
 #include "Building.h"
@@ -39,13 +38,9 @@ private:
     static Instanciator* instance;
 
     Instanciator() {
-        std::cout << "test";
         names = json.getNames();
-        std::cout << "tost";
         constructBuilding();
-        std::cout << "tist";
         constructWonder();
-        std::cout << "tast";
         constructPT();
     };
 

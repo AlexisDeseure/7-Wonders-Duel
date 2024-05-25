@@ -196,7 +196,8 @@
                         1
                     ],
                     "AddScientificSymbol": [
-                        "archipendulum"
+                        "archipendulum",
+                        1
                     ]
                 }
             },
@@ -215,7 +216,8 @@
                         1
                     ],
                     "AddScientificSymbol": [
-                        "wheel"
+                        "wheel",
+                        1
                     ]
                 }
             },
@@ -229,7 +231,8 @@
                 "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
-                        "quill"
+                        "quill",
+                        1
                     ]
                 }
             },
@@ -243,7 +246,8 @@
                 "cost": null,
                 "effects": {
                     "AddScientificSymbol": [
-                        "pestle"
+                        "pestle",
+                        1
                     ]
                 }
             },
@@ -585,7 +589,8 @@
                         2
                     ],
                     "AddScientificSymbol": [
-                        "quill"
+                        "quill",
+                        1
                     ]
                 }
             },
@@ -605,7 +610,8 @@
                         2
                     ],
                     "AddScientificSymbol": [
-                        "pestle"
+                        "pestle",
+                        1
                     ]
                 }
             },
@@ -625,7 +631,8 @@
                         1
                     ],
                     "AddScientificSymbol": [
-                        "wheel"
+                        "wheel",
+                        1
                     ]
                 }
             },
@@ -645,7 +652,8 @@
                         1
                     ],
                     "AddScientificSymbol": [
-                        "archipendulum"
+                        "archipendulum",
+                        1
                     ]
                 }
             },
@@ -831,7 +839,8 @@
                         3
                     ],
                     "AddScientificSymbol": [
-                        "sundial"
+                        "sundial",
+                        1
                     ]
                 }
             },
@@ -852,7 +861,8 @@
                         3
                     ],
                     "AddScientificSymbol": [
-                        "sundial"
+                        "sundial",
+                        1
                     ]
                 }
             },
@@ -873,7 +883,8 @@
                         2
                     ],
                     "AddScientificSymbol": [
-                        "armillary_sphere"
+                        "armillary_sphere",
+                        1
                     ]
                 }
             },
@@ -893,7 +904,8 @@
                         2
                     ],
                     "AddScientificSymbol": [
-                        "armillary_sphere"
+                        "armillary_sphere",
+                        1
                     ]
                 }
             },
@@ -908,7 +920,7 @@
                     "Paper": 2
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Gray",
                         3
                     ],
@@ -930,7 +942,7 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Brown",
                         2
                     ],
@@ -951,7 +963,7 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Red",
                         1
                     ],
@@ -972,7 +984,7 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Yellow",
                         1
                     ],
@@ -994,7 +1006,7 @@
                     "Wood": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerWonderAtConstruct": [
+                    "EarnMoneyPerWonderAtConstruct": [
                         1
                     ],
                     "AddVictoryPoint": [
@@ -1122,11 +1134,11 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Yellow",
                         1
                     ],
-                    "EarnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnVictoryPointPerThingMostAtEndGame": [
                         "Yellow",
                         1
                     ]
@@ -1146,11 +1158,11 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Brown",
                         1
                     ],
-                    "EarnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnVictoryPointPerThingMostAtEndGame": [
                         "Gray",
                         "Brown",
                         1
@@ -1171,7 +1183,7 @@
                     "Glass": 1
                 },
                 "effects": {
-                    "EarnXVictoryPointPerMostWonderAtEndGame": [
+                    "EarnVictoryPointPerMostWonderAtEndGame": [
                         2
                     ]
                 }
@@ -1189,11 +1201,11 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Blue",
                         1
                     ],
-                    "EarnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnVictoryPointPerThingMostAtEndGame": [
                         "Blue",
                         1
                     ]
@@ -1211,11 +1223,11 @@
                     "Clay": 2
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Green",
                         1
                     ],
-                    "EarnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnVictoryPointPerThingMostAtEndGame": [
                         "Green",
                         1
                     ]
@@ -1233,7 +1245,7 @@
                     "Stone": 2
                 },
                 "effects": {
-                    "EarnXVictoryPointPerLotOfMoneyMostAtEndGame": [
+                    "EarnVictoryPointPerLotOfMoneyMostAtEndGame": [
                         1,
                         3
                     ]
@@ -1252,11 +1264,11 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "EarnXMoneyPerMostAtConstruct": [
+                    "EarnMoneyPerMostAtConstruct": [
                         "Red",
                         1
                     ],
-                    "EarnXVictoryPointPerThingMostAtEndGame": [
+                    "EarnVictoryPointPerThingMostAtEndGame": [
                         "Red",
                         1
                     ]
@@ -1293,7 +1305,8 @@
                 "name": "Loi",
                 "effects": {
                     "AddScientificSymbol": [
-                        "scale"
+                        "scale",
+                        1
                     ]
                 }
             },

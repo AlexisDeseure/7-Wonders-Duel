@@ -1,5 +1,5 @@
 #include "Instanciator.h"
-
+#include "Game.h"
 Instanciator *Instanciator::instance = nullptr;
 
 std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTransfer> vecTransfer){
@@ -7,7 +7,6 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 
     for (File::EffectTransfer transfer:vecTransfer){
         Effect* currEffect = EffectFactory::instance().create(transfer.getEffect().toStdString());
-        std::cout<<"effect : "<<transfer.getEffect().toStdString();
         currEffect->setParameters(transfer.getAmount(),transfer.getResType());
         effets.insert(effets.end(),1,currEffect);
     }
@@ -23,10 +22,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            std::vector<RessourceCost> t = json.getCost(noms.second);
-            std::cout << ", nom carte : " <<noms.second.toStdString()<<"---"<<json.getAge(noms.second)<<std::endl;
             Building* currBuild = new Building(noms.second.toStdString(),json.getCost(noms.second), effTransToEffect(json.getBuildingEffects(noms.second)), json.getDirectCost(noms.second), StringToBuildingType(json.getColor(noms.second).toStdString()), json.getAge(noms.second), {json.getChaining(noms.second).first.toStdString()}, {json.getChaining(noms.second).second.toStdString()});
-            std::cout << "-- FIN";
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -51,7 +47,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),json.getCost(noms.second),effTransToEffect(json.getProgressTokenEffects(noms.second)),json.getDirectCost(noms.second));
+            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),{},effTransToEffect(json.getProgressTokenEffects(noms.second)),0);
             addPTtoInstanciator(currPT);
         }
     }
@@ -60,118 +56,96 @@ void Instanciator::constructPT(){
 //ProgressToken(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
 
 void Instanciator::addBuildingToInstanciator(Building* building){
-    getBuildings().insert(getBuildings().end(),1,building);
+    buildings_instanciator.push_back(building);
 }
 
 void Instanciator::addPTtoInstanciator(ProgressToken* PT){
-    getPTInstanciator().insert(getPTInstanciator().end(),1,PT);
+    progress_tokens_instanciator.push_back(PT);
 }
 void Instanciator::addWonderToInstanciator(Wonder* wonder){
-    getWonders().insert(getWonders().end(),1,wonder);
+    wonders_instanciator.push_back(wonder);
 }
 
 std::vector<Building*> Instanciator::getCardFromXAge(int age){
-    std::vector<Building*> Bage;
-    for (Building* buildings : getBuildings()){
-        if (buildings->getAge() == age){
-            Bage.insert(Bage.end(),1,buildings);
+    std::vector<Building*> buildings;
+    for (Building* building : getBuildings()){
+        if (building->getAge() == age){
+            buildings.push_back(building);
         }
     }
-    if (age < 1 || age > 3){
+    if (age < 1 || age > AGE_MAX){
         qDebug() << "Renvoie d'un vecteur vide, il n'y a pas d'âge" << age << "!";
+        return {};
     }
-    else if (age == 3) {
-        std::vector<Building*> guildes;
-        std::vector<Building*> buildings;
-        for (Building* bats: Bage) {
+    else if (age == AGE_MAX) {
+        std::vector<Building*> guilds;
+        std::vector<Building*> classic_buildings;
+        for (Building* bats: buildings) {
             if (bats->getType() == BuildingType::Purple) {
-                guildes.push_back(bats);
+                guilds.push_back(bats);
             }
             else {
-                buildings.push_back(bats);
+                classic_buildings.push_back(bats);
             }
         }
-        std::vector<Building*> ret = extractXRandomBuildingsFrom(buildings,buildings.size()-NB_CARD_GUILDS).first;
-        std::vector<Building*> choseGuilds = extractXRandomBuildingsFrom(guildes,NB_CARD_GUILDS).first;
+
+        buildings = extractXRandomBuildingsFrom(classic_buildings,classic_buildings.size()-NB_CARD_GUILDS).first;
+        std::vector<Building*> choseGuilds = extractXRandomBuildingsFrom(guilds,NB_CARD_GUILDS).first;
         for (Building* guild:choseGuilds){
-            ret.push_back(guild);
+            buildings.push_back(guild);
         }
-        auto rng = std::default_random_engine {};
-        std::shuffle(ret.begin(),ret.end(),rng);
-        return ret;
     }
-    auto rng = std::default_random_engine {};
-    std::shuffle(Bage.begin(),Bage.end(),rng);
-    return Bage;
+    return buildings;
 }
 
-std::pair<std::vector<Building*>,std::vector<Building*>> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int X){
-    std::vector<Building*> randRes;
-    std::vector<Building*> randRest;
-    srand((unsigned int)time(0));
+std::pair<std::vector<Building*>,std::vector<Building*>> Instanciator::extractXRandomBuildingsFrom(std::vector<Building*> cartes,unsigned int nb){
+    std::vector<Building*> rand_token;
+    std::vector<Building*> rand_token_remaining;
+
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::shuffle(cartes.begin(), cartes.end(), rng);
+
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<X; i++){
-        unsigned int currVal = rand()%cartes.size()+1;
-        if (find(val.begin(),val.end(),currVal) != val.end()) {
-            val.push_back(currVal);
-        }
-        else i--;
-    }
+
     for (unsigned int i = 0; i<cartes.size();i++){
-        if (find(val.begin(),val.end(),i)!=val.end()){
-            randRes.push_back(cartes[i]);
-        }
-        else {
-            randRest.push_back(cartes[i]);
-        }
+        if (i<nb) rand_token.push_back(cartes[i]);
+        else rand_token_remaining.push_back(cartes[i]);
     }
-    auto rng = std::default_random_engine {};
-    std::shuffle(randRes.begin(),randRes.end(),rng);
-    return make_pair(randRes,randRest);
+
+    return make_pair(rand_token,rand_token_remaining);
 }
 
-std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int X){
-    std::vector<ProgressToken*> randRes;
-    std::vector<ProgressToken*> randRest;
-    srand((unsigned int)time(0));
+std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int nb){
+    std::vector<ProgressToken*> rand_token;
+    std::vector<ProgressToken*> rand_token_remaining;
+
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::shuffle(cartes.begin(), cartes.end(), rng);
+
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<X; i++){
-        unsigned int currVal = rand()%cartes.size()+1;
-        if (find(val.begin(),val.end(),currVal) !=val.end()) {
-            val.push_back(currVal);
-        }
-        else i--;
-    }
+
     for (unsigned int i = 0; i<cartes.size();i++){
-        if (find(val.begin(),val.end(),i)!=val.end()){
-            randRes.push_back(cartes[i]);
-        }
-        else {
-            randRest.push_back(cartes[i]);
-        }
+        if (i<nb) rand_token.push_back(cartes[i]);
+        else rand_token_remaining.push_back(cartes[i]);
     }
-    auto rng = std::default_random_engine {};
-    std::shuffle(randRes.begin(),randRes.end(),rng);
-    return make_pair(randRes,randRest);
+
+    return make_pair(rand_token,rand_token_remaining);
 }
 
-std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes,unsigned int X){
-    std::vector<Wonder*> randRes;
-    srand((unsigned int)time(0));
+std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes, unsigned int nb){
+    std::vector<Wonder*> rand_wonders;
+
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::shuffle(cartes.begin(), cartes.end(), rng);
+
     std::vector<unsigned int> val;
-    for (unsigned int i = 0; i<X; i++){
-        unsigned int currVal = rand()%cartes.size()+1;
-        if (find(val.begin(),val.end(),currVal) !=val.end()) {
-            val.push_back(currVal);
-        }
-        else i--;
+
+    for (unsigned int i = 0; i<nb;i++){
+        rand_wonders.push_back(cartes[i]);
     }
-    for (unsigned int i = 0; i<cartes.size();i++){
-        if (find(val.begin(),val.end(),i)!=val.end()){
-            randRes.push_back(cartes[i]);
-        }
-    }
-    auto rng = std::default_random_engine {};
-    std::shuffle(randRes.begin(),randRes.end(),rng);
-    return randRes;
+
+    return rand_wonders;
 }

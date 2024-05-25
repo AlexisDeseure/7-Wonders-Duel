@@ -8,6 +8,7 @@
 #define NB_BUILDING_PER_AGE 20
 #define NB_PROGRESS_TOKEN_BOARD 5
 #define NB_WONDERS 8
+#define NB_CARD_GUILDS 3
 
 #define FILE_PATH "../../../data/data.json"
 
