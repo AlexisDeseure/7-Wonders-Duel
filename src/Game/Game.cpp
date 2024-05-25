@@ -226,7 +226,14 @@ void Game::selectWondersPhase() {
 }
 
 bool Game::endTurn() {
-    updateConflictPawn();
+    if(updateConflictPawn()){
+        if (board->getConflictPawn().getPosition() >= 0){
+            winner = &getTurnPlayer();
+        }
+        else{
+            winner = &getOtherPlayer();
+        }
+    }
     //pas besoin de reset : la différence donne direct la position
     // Reset shields at the end of the turn
     // players[0]->resetShields();
@@ -234,19 +241,14 @@ bool Game::endTurn() {
 }
 
 
-void Game::updateConflictPawn() {
+bool Game::updateConflictPawn() {
     ConflictPawn& conflict = board->getConflictPawn();
     int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
     conflict.move(totalShields);
     if (conflict.isMilitaryVictory()){
-        if (conflict.getPosition() >= 0){
-            //getTurnPlayer() gagne TODO
-
-        }
-        else{
-            //getOtherPlayer() gagne TODO
-        }
+        return true;
     }
+    return false;
 }
 
 bool Game::checkMilitaryVictory() const {

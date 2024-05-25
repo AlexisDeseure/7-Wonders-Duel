@@ -30,7 +30,7 @@ class Game{
         Player* players[2];
         bool isReplaying;
         DeckPile* deck;
-        void updateConflictPawn();
+        bool updateConflictPawn();
         Player* winner;
 
     public:
