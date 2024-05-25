@@ -170,11 +170,15 @@ void Game::selectWondersPhase() {
     // Choose a first player randomly
     randomPlayerStart();
 
-    // Create a list of all 12 wonders (for example purposes, creating placeholder wonders)
-    std::vector<Wonder> allWonders;
-    for (int i = 0; i < 12; ++i) {
-        // Create placeholder wonders with unique names
-        allWonders.emplace_back("Wonder " + std::to_string(i + 1), std::vector<RessourceCost>(), std::vector<Effect*>(), 0);
+    // Create a vector to store all available wonders
+    std::vector<Wonder*> allWonders;
+
+    // Get the list of instantiated wonders from the Instanciator class
+    std::vector<Wonder*> instantiatedWonders = instanciator.getWonders();
+
+    // Iterate over the instantiated wonders and add them to the allWonders vector
+    for (int i = 0; i < 12 && i < instantiatedWonders.size(); i++) {
+        allWonders.push_back(instantiatedWonders[i]);
     }
 
     // Shuffle the wonders
