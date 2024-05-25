@@ -29,9 +29,12 @@ class Game{
         Player* players[2];
         bool isReplaying;
         DeckPile& deck;
+        ConflictPawn conflictPawn;
+        void updateConflictPawn();
 
     public:
-
+        void endTurn();
+        bool checkMilitaryVictory() const;
         void advanceAge();
         void startGame();
         void replay();

@@ -165,6 +165,22 @@ void Game::playTurn(){
     getTurnPlayer().play(*this);
 }
 
+void Game::endTurn() {
+    updateConflictPawn();
+    // Reset shields at the end of the turn
+    player[0].resetShields();
+    player[1].resetShields();
+}
+
+void Game::updateConflictPawn() {
+    int totalShields = player1.getShields() - player2.getShields();
+    conflictPawn.move(totalShields);
+}
+
+bool Game::checkMilitaryVictory() const {
+    return conflictPawn.isMilitaryVictory();
+}
+
 void Game::selectWondersPhase(){
     randomPlayerStart();
     std::cout << "Phase de selection des merveilles" << std::endl;

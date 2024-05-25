@@ -2,15 +2,16 @@
 #define CONFLICTPAWN_H
 
 class ConflictPawn {
+public:
+    ConflictPawn();
 
-private : 
-	int current_position; 
-	// Les positions militaires sont
-	// de -x jusqu'au x
-public :
-	ConflictPawn() :current_position(0) {};
-	int move(int a = 0) ; 
+    void move(int shields);
+    int getPosition() const;
+    bool isMilitaryVictory() const;
 
-
+private:
+    int position;
+    static const int VICTORY_POSITION = 9; // Position to win the game
 };
-#endif
+
+#endif // CONFLICTPAWN_H
