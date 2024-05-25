@@ -20,7 +20,9 @@ public:
     DeckPile(int nb_buildings, int nb_token, int nb_wonder);
 
     void addDiscardedBuilding(Building* build);
-
+    std::vector<Wonder*>& getAllWonders() {
+        return wonders;
+    }
     Wonder* selectNextWonder();
     Building* selectNextBuilding();
     ProgressToken* selectNextProgressToken();
