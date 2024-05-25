@@ -1,15 +1,16 @@
 #include "Game.h"
 #include "Board.h"
 #include "Player.h"
-
+#include "Instanciator.h"
+#include "DeckPile.h"
+#include "ConflictPawn.h"
 #include <random>
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), board(*new Board()){
-    players[0] = new Player();
-    players[1] = new Player();
-
+Game::Game() : age(0), board(*new Board(VICTORY_POSITION)), isReplaying(false), deck(*new DeckPile(NB_BUILDING_PER_AGE, NB_PROGRESS_TOKEN_BOARD, NB_WONDERS)){
+    players[0] = new Player(COIN_START);
+    players[1] = new Player(COIN_START);
     std::cout << "Game created" << std::endl;
     startGame();
 }
@@ -18,6 +19,7 @@ Game::~Game() {
     delete &board;
     delete players[0];
     delete players[1];
+    delete &deck;
     std::cout << "Game finished" << std::endl;
 }
 
@@ -25,8 +27,7 @@ void Game::startMenu(){
     AiLevel level;
     int choice;
 
-    for (int i = 0; i < NB_PLAYERS; i++) {
-        choice = 0;
+    for (int i = 0; i < 2; i++) {
         do{
             displayplayerChoice(i+1);
             switch (choice = getIntInput()) {
@@ -132,6 +133,7 @@ std::string getStrInput()
 
 
 void Game::startGame(){
+
     std::cout << "Game started" << std::endl;
     startMenu();
     std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
@@ -154,8 +156,13 @@ void Game::playAge(){
 //    }
 }
 
+void Game::replay(){
+    if (!isReplaying) isReplaying=true;
+}
+
 void Game::playTurn(){
-    invertTurnPlayer();
+    if (!isReplaying) invertTurnPlayer();
+    isReplaying=false;
     getTurnPlayer().play(*this);
 }
 
@@ -204,9 +211,39 @@ void Game::selectWondersPhase() {
     std::cout << "Wonder selection phase completed." << std::endl;
 }
 
+void Game::endTurn() {
+    updateConflictPawn();
+    //pas besoin de reset : la différence donne direct la position
+    // Reset shields at the end of the turn
+    // players[0]->resetShields();
+    // players[1]->resetShields();
+}
+
+void Game::updateConflictPawn() {
+    ConflictPawn& conflict = board.getConflictPawn();
+    int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
+    conflict.move(totalShields);
+    if (conflict.isMilitaryVictory()){
+        if (conflict.getPosition() >= 0){
+            //getTurnPlayer() gagne TODO
+
+        }
+        else{
+            //getOtherPlayer() gagne TODO
+        }
+    }
+}
+
+bool Game::checkMilitaryVictory() const {
+    return board.getConflictPawn().isMilitaryVictory();
+}
+
+
 void Game::advanceAge(){
-    age++;
     std::cout << "Age avance" << std::endl;
+    age++;
+    deck.advanceAge(age);
+
 }
 
 void Game::endGame(){
@@ -224,11 +261,8 @@ void Game::invertTurnPlayer(){
 void Game::randomPlayerStart() {
     if(selectRandomInteger() == 1){
         invertTurnPlayer();
-        std::cout << "Turn inverted" << std::endl;
     }
-    else {
-        std::cout << "Turn not inverted" << std::endl;
-    }
+    std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
 };
 
 int selectRandomInteger(int min, int max){

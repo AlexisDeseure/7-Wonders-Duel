@@ -5,46 +5,39 @@
 
 #include <utility>
 #include <vector>
+#include <list>
 
 #include <QString>
 
-#include "Ressource.h"
+#include "RessourceCost.h"
 
 class Effect;
 class City;
 class Game;
-
-enum class CardType {
-    Yellow,
-    Brown,
-    Grey,
-    Purple,
-    Green,
-    Red,
-    Blue,
-    LENGTH
-};
+class Ressource;
+enum class RessourceType;
 
 class Card {
     private:
         std::string name;
-        std::vector<Ressource*> cost;
         std::vector<Effect*> effects;
-        const unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
-        CardType type;
+        std::vector<RessourceCost> cost;
+        unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
+
 
     public :
-        Card(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, CardType t)
-            : name(std::move(name)), cost(cost), effects(effects), money_cost(direct_cost), type(t){};
+        Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
+            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost){};
 
         virtual ~Card();
 
-        void ajouteRessources(Ressource* R);
+        void addRessources(RessourceCost R);
         std::string getName() const {
             return name;
         };
-        CardType getType() const {return type;}
-        unsigned int getMoneyCost() const; //permet simplment d'accéder au potentiel coût imposé en or
+
+        unsigned int getMoneyCost() const; //permet simplement d'accéder au potentiel coût imposé en or
+        std::list<RessourceType> getLackingRessources(City* city) const;
         unsigned int getCost(City* city) const; //permet d'obtenir le coût minimal réel que devra payer une ville pour se procurer la carte (à utiliser avant chaque achat)
         void applyEffects(Game& game);
         virtual bool isChainInInCity(const City* city) const = 0;

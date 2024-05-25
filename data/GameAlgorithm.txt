@@ -1,0 +1,78 @@
+#####
+INIT
+#####
+Starting state:
+conflict_pawn = 0 ([-9,0[ for player2, ]0,9] for player2)
+Place the 4 Military tokens face up, on their spaces.
+Shuffle the Progress tokens and place 5 of them randomly, face up, on
+the board. Return the rest to the box.
+Each player takes 7 coins from the Bank
+
+• Place 4 random Wonders, face up, between the two players
+• The first player chooses 1 Wonder
+• The second player chooses 2 Wonders
+• The first player takes the remaining Wonder
+• Place 4 more Wonders and repeat the selection, but this time, start with
+the second player
+
+PLAYER : 1 and 2 
+starting_player = 1
+winCondition = 0 if no player has won, 1 or 2 if p1 or p2 wins
+
+#####
+GAME
+#####
+
+
+FOR EACH AGE:
+	remove 3 random cards from list of cards (maybe by not initialising 3 random cards in the deck)
+
+	if age = 3:
+		add 3 random guild cards to the age 3 deck
+	
+	Shuffle deck
+
+	active_player = starting_player
+
+	while deck not empty and !winCondition() : //pretty much everything in this loop is just play(active_player)
+		fetch selectable cards into pointer list
+		player picks card (from deck or wonders)
+		if building select action :
+			construct building (pay ressources, buy if not enough)
+			discard card for coins
+		if wonder select card to discard (pay ressources for wonder, buy if not enough)
+		apply_effects()
+		active_player = active_player%2 +1
+	end while
+	
+	if(winCondition()):
+		endGame()	
+
+	if conflict_pawn<0:
+		starting_player = selectStartingPlayer(player1) //player1 selects starting player
+	else if conflict_pawn>0:
+		starting_player = selectStartingPlayer(player2) //player2 selects starting player
+	else : 
+		starting_player = active_player
+
+end for
+
+########
+END GAME
+########
+winner = winCondition()
+if !winner:
+	If no player has won a victory through supremacy before the end of Age III, the
+	player who has the most victory points wins the game.
+	To determine your total, add:
+		• Your military victory points (0, 2, 5, or 10 depending on the position of
+		the Conflict pawn).
+		• Victory points from your Buildings (blue,green,yellow, and purple
+		cards).
+		• Victory points from your Wonders.
+		• Your victory points from Progress.
+		• Your city’s treasury: each complete set of 3 coins is worth 1 point.
+		In the case where both players are tied, the player who has the most victory
+		points from their Civilian Buildings (blue cards) wins the game. If this is also a
+		tie, then both players share their victory
+		

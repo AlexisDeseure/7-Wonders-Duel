@@ -1,4 +1,3 @@
-//Crée par Mateo
 #ifndef PROGRESSTOKEN_H
 #define PROGRESSTOKEN_H
 
@@ -10,13 +9,13 @@ class ProgressToken : public Card{
 
     private:
         bool on_the_board;
-        //const Board* board;
 
     public:
-        ProgressToken(std::string name, const std::vector<Ressource*>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, CardType t)
-        : Card(std::move(name), cost, effects, direct_cost,t), on_the_board(false) {};
+        ProgressToken(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
+        : Card(std::move(name), cost, effects, direct_cost), on_the_board(false) {};
         bool onTheBoard() const{ return on_the_board;};
         void status_switch(){if (!on_the_board) on_the_board = true;};
+        bool isChainInInCity([[maybe_unused]] const City* city) const override {return false;};
 };
 
 

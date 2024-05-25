@@ -19,6 +19,8 @@ enum class RessourceType {
     LENGTH
 };
 
+const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name { "Wood", "Stone", "Clay", "Paper", "Glass"};
+
 extern const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name;
 
 class Ressource {

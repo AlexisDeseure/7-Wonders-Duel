@@ -2,9 +2,6 @@
 
 #include "iostream"
 
-const std::array<std::string, static_cast<int>(RessourceType::LENGTH)> ressource_name { "Wood", "Stone", "Clay", "Paper", "Glass"};
-
-
 Ressource::Ressource(std::vector<RessourceType> t, unsigned int a, unsigned int p) : types(std::move(t)),amount(a),price(p),isTradable((types.size() <= 1)),isMarketRuleHasChanged(false){}
 
 void Ressource::updatePrice(int sum) {

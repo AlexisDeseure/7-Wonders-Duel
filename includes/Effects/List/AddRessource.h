@@ -14,6 +14,9 @@ class AddRessource : public Effect {
     private:
         RessourceType ressource;
         int quantity;
+        // obsolete correspond au 2ème paramètres dans le vecteur de int, permet de décider si oui
+        //ou non le fait d'ajouter cette ressource augmente le prix pour l'adversaire (seulemment les cartes marrons et grises
+        //selon les règles) par exemple les ressources produites par des wonder devrait avoir 0 pour cet attribut
 
 };
 

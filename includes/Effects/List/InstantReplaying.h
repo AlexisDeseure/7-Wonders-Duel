@@ -1,7 +1,14 @@
 #ifndef INSTANTREPLAYING_H
 #define INSTANTREPLAYING_H
 
-class City; // Déclaration anticipée de City
-class Effect; // Déclaration anticipée de Effect
+#include "EffectFactory.h"
+
+class InstantReplaying : public Effect {
+    public:
+        InstantReplaying() = default;
+        void effect(Game& game) override;
+};
+
+REGISTER_CLASS(InstantReplaying);
 
 #endif

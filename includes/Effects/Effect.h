@@ -5,6 +5,7 @@
 #include <vector>
 
 class Game;
+class Card;
 
 class Effect{
     public:
@@ -14,8 +15,12 @@ class Effect{
         // implementation of the template method design pattern
         void apply(Game& game);
         virtual void effect(Game& game) = 0;
-        virtual void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) = 0;
+
+        virtual void endEffect([[maybe_unused]] Game& game) {};
+        virtual void eachTurnEffect([[maybe_unused]] Game& game, [[maybe_unused]] Card& card) {};
+        virtual void setParameters([[maybe_unused]] std::vector<int> int_parameters, [[maybe_unused]] std::vector<std::string> string_parameters) {};
 };
+
 
 
 

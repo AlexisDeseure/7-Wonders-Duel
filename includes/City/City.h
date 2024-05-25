@@ -1,9 +1,6 @@
 #ifndef CITY_H
 #define CITY_H
 
-#define PROGRESS_TOKEN_LENGTH 10
-#define WONDER_LENGTH 4
-
 #include <string>
 #include <vector>
 #include <list>
@@ -16,9 +13,10 @@ class Ressource;
 class ScientificSymbol;
 class Card;
 class Game;
+class Effect;
 enum class RessourceType;
 enum class SymboleType;
-enum class CardType;
+enum class BuildingType;
 
 class City {
     private:
@@ -33,15 +31,19 @@ class City {
         std::vector<Building*> buildings;
         std::vector<std::string> chain_symbols;
 
+        std::list<Effect*> eachTurnEffects;
+        std::list<Effect*> endGameEffects;
+
     public:
-        City(int victory = 0, int treasury = 0, int shields = 0);
+        City(int treasury = 0);
         ~City();
         Ressource& getRessource(RessourceType name);
+        ScientificSymbol& getScientificSymbol(SymboleType name);
         std::vector<Ressource*>& getRessources();
-        unsigned int getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources); //permet de calculer le
-        // prix pour les ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"
+        void updateRemainingRessources(std::list<RessourceType>& remaining_ressources); //permet de modifier la liste des ressources manquantes (ie : celles qui ne sont pas représentées par les ressources "classiques"
         // de la ville) à partir des ressource à choix
         int getDistinctScientificSymbols() const;
+        int getTreasury() const;
         bool canAfford(int price) const;
         bool constructBuilding(Building* building, Game& game);
         bool constructWonder(Wonder* wonder, Game& game);
@@ -53,7 +55,15 @@ class City {
         void addShields(int shields);
         void addChainSymbol(const std::string& symbol); //permet d'ajouter le nom d'un symbole de chainage à la ville
         bool hasChainSymbol(const std::string& symbol) const; //permet de vérifier si un symbole de chainage est présent dans la ville
-        int getNumberOfBuildingType(CardType type) const; //obtenir le nombre du building possédés d'une même couleur
+        int getNumberOfBuildingType(BuildingType type) const; //obtenir le nombre du building possédés d'une même couleur
+        int getShields() const {return number_of_shields;}
+        void addEachTurnEffects(Effect* effect);
+        void addEndGameEffects(Effect* effect);
+        void applyEndEffects(Game& game);
+        void applyEachTurnEffects(Game& game, Card& card);
+        void addCard(Card& card); //permet d'ajouter une carte à la ville (fonctionne pour tous les types)
+        std::vector<Wonder*>& getWonders();
+        std::vector<ProgressToken*>& getProgressTokens();
 };
 
 template <typename T>

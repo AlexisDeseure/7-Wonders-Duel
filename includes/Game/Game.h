@@ -2,26 +2,44 @@
 #define GAME_H
 
 #define COIN_START 7
-#define NB_PLAYERS 2
 #define AGE_MAX 3
+#define WONDERS_MAX 7
+#define VICTORY_POSITION 9
+
+#define NB_BUILDING_PER_AGE 20
+#define NB_PROGRESS_TOKEN_BOARD 5
+#define NB_WONDERS 8
+#define NB_CARD_GUILDS 3
+
+
+
+#define FILE_PATH "../../../data/data.json"
 
 #include <string>
+#include <vector>
 
+
+class DeckPile;
 class Board;
 class Player;
 enum class AiLevel;
+class Building;
 
 class Game{
     private:
         int age;
         Board& board;
-        Player* players[NB_PLAYERS];
+        Player* players[2];
+        bool isReplaying;
+        DeckPile& deck;
+        void updateConflictPawn();
 
     public:
-
+        void endTurn();
+        bool checkMilitaryVictory() const;
         void advanceAge();
         void startGame();
-
+        void replay();
         void selectWondersPhase();
         void endGame();
         void invertTurnPlayer();

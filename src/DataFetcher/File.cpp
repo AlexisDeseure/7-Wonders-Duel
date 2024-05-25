@@ -1,4 +1,9 @@
 #include "File.h"
+#include "RessourceCost.h"
+#include "Game.h"
+#include "Ressource.h"
+
+File::File() : file_path(FILE_PATH), file(readFile()) {};
 
 QJsonDocument File::readFile() {
     QString JsonFilePath = getFilePath();
@@ -17,6 +22,7 @@ QJsonDocument File::readFile() {
         }
     }
     qDebug() << "Lecture Impossible";
+    return QJsonDocument();
 }
 
 QJsonArray File::listeBuildings() {
@@ -28,6 +34,7 @@ QJsonArray File::listeBuildings() {
             return LBuildings;
         }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 
@@ -40,6 +47,7 @@ QJsonArray File::listeProgressToken() {
         return LProgressToken;
     }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 QJsonArray File::listeWonder(){
@@ -51,6 +59,7 @@ QJsonArray File::listeWonder(){
         return LWonder;
     }
     qDebug() << "Erreur de lecture";
+    return QJsonArray();
 }
 
 QJsonObject File::getBuildingsProperties(QString name){
@@ -156,9 +165,9 @@ std::vector<File::EffectTransfer> File::getWonderEffects(QString name){
 
 std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet){
     os << "Effet: " << effet.getEffect().toStdString() << "| Parametres: ";
-    for(QString element : effet.getResType())
+    for(std::string& element : effet.getResType())
     {
-        os<<" "<<element.toStdString()<<" ";
+        os<<" "<<element<<" ";
     }
     for(int element : effet.getAmount())
     {
@@ -167,24 +176,26 @@ std::ostream& operator<<(std::ostream& os, File::EffectTransfer& effet){
     return os;
 }
 
-std::vector<std::pair<QString,int>> File::getCost(QString name){
+std::vector<RessourceCost> File::getCost(QString name){
 
     QJsonObject building = getBuildingsProperties(name);
     QJsonObject Wonder = getWonderProperties(name);
     QJsonObject PT = getProgressTokenProperties(name);
 
-    std::vector<std::pair<QString,int>> cost;
+    std::vector<RessourceCost> cost;
 
     if (!building.empty()) {
         QJsonObject LCost = building.value("cost").toObject();
-        for (auto points:LCost.keys()){
-            cost.insert(cost.end(),1,std::make_pair(points,LCost.value(points).toInt()));
+        for (auto& points:LCost.keys()){
+            cost.insert(cost.end(),1,RessourceCost(LCost.value(points).toInt(),StringToRessourceType(points.toStdString())));
         }
+        //RessourceCost(int number, RessourceType t) : amount(static_cast<unsigned int>(number)), type(t){};
+        //RessourceType StringToRessourceType(std::string nom);
     }
     else if (!Wonder.empty()){
         QJsonObject LCost = Wonder.value("cost").toObject();
-        for (auto points:LCost.keys()){
-            cost.insert(cost.end(),1,std::make_pair(points,LCost.value(points).toInt()));
+        for (auto& points:LCost.keys()){
+            cost.insert(cost.end(),1,RessourceCost(LCost.value(points).toInt(),StringToRessourceType(points.toStdString())));
         }
     }
     else if (!PT.empty()){
@@ -223,25 +234,30 @@ std::pair<QString,QString> File::getChaining(QString name){
     for (auto points: LBuilding) {
         QString Bname = points.toObject().value("name").toString();
         if (Bname==name) {
-            std::pair<QString,QString> chaining = std::make_pair(points.toObject().value("chainage_send").toString(),points.toObject().value("chainage_receive").toString());
+            std::pair<QString,QString> chaining = std::make_pair(
+                points.toObject().value("chainage_send").toString(),
+                points.toObject().value("chainage_receive").toString()
+            );
             return chaining;
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return std::make_pair(QString(), QString());
 }
 
-QString File::getScientificSymbol(QString name){
-    QString Symbol;
-    QJsonArray LBuilding = listeBuildings();
-    for (auto points: LBuilding) {
-        QString Bname = points.toObject().value("name").toString();
-        if (Bname==name) {
-            Symbol = points.toObject().value("scientific_symbol").toString();
-            return Symbol;
-        }
-    }
-    qDebug() << "Pas de bâtiments avec ce nom!";
-}
+// QString File::getScientificSymbol(QString name){
+//     QString Symbol;
+//     QJsonArray LBuilding = listeBuildings();
+//     for (auto points: LBuilding) {
+//         QString Bname = points.toObject().value("name").toString();
+//         if (Bname==name) {
+//             Symbol = points.toObject().value("scientific_symbol").toString();
+//             return Symbol;
+//         }
+//     }
+//     qDebug() << "Pas de bâtiments avec ce nom!";
+//     return QString();
+// }
 
 QString File::getColor(QString name){
     QString couleur;
@@ -254,6 +270,7 @@ QString File::getColor(QString name){
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return QString();
 }
 
 int File::getAge(QString name){
@@ -261,11 +278,33 @@ int File::getAge(QString name){
     QJsonArray LBuilding = listeBuildings();
     for (auto points: LBuilding) {
         QString Bname = points.toObject().value("name").toString();
-        qDebug() << Bname;
         if (Bname==name) {
             age = points.toObject().value("age").toInt();
             return age;
         }
     }
     qDebug() << "Pas de bâtiments avec ce nom!";
+    return 0;
+}
+
+int File::getDirectCost(QString name){
+    int dc;
+    QJsonArray LBuilding = listeBuildings();
+    QJsonArray LWonder = listeWonder();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            dc = points.toObject().value("direct_cost").toInt();
+            return dc;
+        }
+    }
+    for (auto points: LWonder) {
+        QString Wname = points.toObject().value("name").toString();
+        if (Wname==name) {
+            dc = points.toObject().value("direct_cost").toInt();
+            return dc;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom";
+    return 0;
 }

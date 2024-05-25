@@ -5,16 +5,21 @@
 #include"Ressource.h"
 #include"ScientificSymbol.h"
 #include"Game.h"
+#include"Effect.h"
+#include"Card.h"
 
 #include <set>
 #include <algorithm>
 #include <iostream>
 
-City::City(int victory, int treasury, int shields)
-        : victory_points(victory), treasury(treasury), number_of_shields(shields){
+City::City(int treasury)
+        : victory_points(0), treasury(treasury), number_of_shields(0){
     // Parcourt de la liste des ressources de bases pour instancier correctement les ressources de la ville
     for (int i = 0; i < static_cast<int>(RessourceType::LENGTH); i++) {
         ressources.push_back(new Ressource({static_cast<RessourceType>(i)}));
+    }
+    for (int i = 0; i < static_cast<int>(SymboleType::LENGTH); i++) {
+        scientific_symbols.push_back(new ScientificSymbol(static_cast<SymboleType>(i)));
     }
 }
 
@@ -37,7 +42,11 @@ City::~City() {
     }
 }
 
-int City::getNumberOfBuildingType(CardType type) const{
+int City::getTreasury() const{
+    return treasury;
+}
+
+int City::getNumberOfBuildingType(BuildingType type) const{
     int number = 0;
     for (auto& building : buildings){
         if (building->getType() == type) number++;
@@ -54,22 +63,29 @@ Ressource& City::getRessource(RessourceType name) {
     throw std::invalid_argument("Ressource non trouvée.");
 }
 
+ScientificSymbol& City::getScientificSymbol(SymboleType name){
+    for (auto& symbol : scientific_symbols) {
+        if (symbol->getType() == name) {
+            return *symbol;
+        }
+    }
+    throw std::invalid_argument("Symbole Scientifique non trouvé.");
+}
+
 std::vector<Ressource*>& City::getRessources() {
     return ressources;
 }
 
-unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& remaining_ressources) {
+void City::updateRemainingRessources(std::list<RessourceType>& remaining_ressources) {
     // Chercher si pour chaque ressource à choix possédée, les ressources interchangeable sont dans la liste des
     // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
-    // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide, sinon le prix des ressources
-    // restantes est calculé et retourné.
+    // a le prix le plus élevé. Le programme s'arrete quand remaining_ressources est vide
 
-    unsigned int price = 0;
     RessourceType type_intermediaire_prix_haut = RessourceType::LENGTH;
 
     for (auto& ressource : ressources) {
         if (remaining_ressources.empty()) {
-            return price;
+            return;
         }
         if (!ressource->getTradable()) {
             for(auto& type : ressource->getTypes()){
@@ -92,12 +108,6 @@ unsigned int City::getPriceForRemainingRessources(std::list<RessourceType>& rema
             }
         }
     }
-
-    // Calcul du prix des ressources restantes
-    for (auto& ressource : remaining_ressources) {
-        price += getRessource(ressource).getPrice();
-    }
-    return price;
 
 }
 
@@ -146,11 +156,12 @@ void City::discardCard(Card* card) {
     int coinsReceived = 2; // Base amount for discarding a card
 
      //  Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
-    coinsReceived += getNumberOfBuildingType(CardType::Yellow);
+    coinsReceived += getNumberOfBuildingType(BuildingType::Yellow);
 
     treasury += coinsReceived;
     std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
     // Handle card removal or placement into a discard pile if necessary
+    // TODO
 }
 
 bool City::checkScientificVictory() {
@@ -159,6 +170,7 @@ bool City::checkScientificVictory() {
 
 void City::addMoney(int money) {
     treasury += money;
+    treasury = std::max(treasury, 0);
 }
 
 void City::addVictoryPoints(int points) {
@@ -187,6 +199,47 @@ bool City::hasChainSymbol(const std::string& symbol) const {
     }
     return false;
 }
+
+void City::addEachTurnEffects(Effect* effect){
+    eachTurnEffects.push_back(effect);
+}
+
+void City::addEndGameEffects(Effect* effect){
+    endGameEffects.push_back(effect);
+}
+
+std::vector<Wonder*>& City::getWonders(){
+    return wonders;
+}
+
+std::vector<ProgressToken*>& City::getProgressTokens(){
+    return progress_tokens;
+}
+
+void City::applyEndEffects(Game& game){
+    for (auto& effect : endGameEffects) {
+        effect->endEffect(game);
+    }
+}
+
+void City::applyEachTurnEffects(Game& game, Card& card){
+    for (auto& effect : eachTurnEffects) {
+        effect->eachTurnEffect(game, card);
+    }
+}
+
+void City::addCard(Card& card){
+    if (dynamic_cast<Wonder*>(&card)){
+        wonders.push_back(dynamic_cast<Wonder*>(&card));
+    }
+    else if (dynamic_cast<Building*>(&card)){
+        buildings.push_back(dynamic_cast<Building*>(&card));
+    }
+    else if (dynamic_cast<ProgressToken*>(&card)){
+        progress_tokens.push_back(dynamic_cast<ProgressToken*>(&card));
+    }
+}
+
 
 template <typename T>
 void removeFirstElement(std::list<T>& vec, const T& element) {
