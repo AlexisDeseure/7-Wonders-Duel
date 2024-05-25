@@ -42,5 +42,6 @@ class Player{
         const DeckElement* selectCard(Game& game, MarketDeck& marketDeck); //permet au joueur de sélectionner une carte à jouer
         bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
+        void chooseWonder(std::vector<Wonder>& availableWonders);
 };
 #endif
