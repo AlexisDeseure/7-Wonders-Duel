@@ -178,7 +178,7 @@ void Game::selectWondersPhase() {
     randomPlayerStart();
 
     // Create a vector to store all available wonders
-    std::vector<Wonder*>& allWonders = deck->getAllWonders();
+    std::vector<Wonder*> allWonders = deck->getAllWonders();
 
     // Get the list of instantiated wonders from the Instanciator class
 
@@ -187,17 +187,17 @@ void Game::selectWondersPhase() {
 
     // Function to handle the selection phase
     auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
-        std::vector<Wonder> wondersToSelect;
-        wondersToSelect.reserve(allWonders.size() - 4); // Reserve space for efficiency
+        std::vector<Wonder*> wondersToSelect;
+        wondersToSelect.reserve(4); // Reserve space for efficiency
 
-        // Populate wondersToSelect with objects pointed to by allWonders
-        for (const auto& ptr : allWonders) {
-            wondersToSelect.push_back(*ptr);
+        for (int i = 0; i < 4; i++) {
+            wondersToSelect.push_back(allWonders.back()); // Add the last wonder to the selected list
+            allWonders.pop_back(); // Remove the last wonder from allWonders
         }
 
         std::cout << "Available Wonders: ";
         for (const auto& wonder : wondersToSelect) {
-            std::cout << wonder.getName() << " ";
+            std::cout << wonder->getName() << " ";
         }
         std::cout << std::endl;
 
