@@ -219,6 +219,7 @@ void Game::endTurn() {
     // players[1]->resetShields();
 }
 
+
 void Game::updateConflictPawn() {
     ConflictPawn& conflict = board.getConflictPawn();
     int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
@@ -237,6 +238,7 @@ void Game::updateConflictPawn() {
 bool Game::checkMilitaryVictory() const {
     return board.getConflictPawn().isMilitaryVictory();
 }
+
 
 
 void Game::advanceAge(){
