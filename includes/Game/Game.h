@@ -11,7 +11,7 @@
 // #define NB_WONDERS 8
 // #define NB_CARD_GUILDS 3
 
-#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
+#define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
 
 #include <string>
 #include <vector>

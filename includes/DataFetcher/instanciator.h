@@ -36,7 +36,6 @@ private:
     static Instanciator* instance;
 
     Instanciator() : game_parameters(*new GameParameters(GAME_PARAMETERS_PATH)){
-        std::cout << "test1";
         cards_file = new File(game_parameters.getCardsPath());
         names = cards_file->getNames();
         constructBuilding();

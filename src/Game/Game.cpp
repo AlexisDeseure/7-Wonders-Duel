@@ -8,18 +8,14 @@
 #include <iostream>
 #include <algorithm>
 
-// Game::Game() : age(0), board(*new Board(Instanciator::getInstanciator()->getGameParameters().getLengthConflictPawnBoard())),
-//     isReplaying(false), deck(*new DeckPile(Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge(),
-//                          Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard(),
-//                          Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders())){
 Game::Game() : age(0), isReplaying(false) {
     Instanciator* inst = Instanciator::getInstanciator();
     int length = inst->getGameParameters().getLengthConflictPawnBoard();
     board = new Board(length);
-    std::cout << "test";
-    deck = new DeckPile(20,5,8);
-    //int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
-    //std::cout << "test"<<nb_pt;
+    int nb_b = inst->getGameParameters().getNumberBuildingPerAge();
+    int nb_pt = inst->getGameParameters().getNumberProgressTokenBoard();
+    int nb_w = inst->getGameParameters().getNumberSelectedWonders();
+    deck = new DeckPile(nb_b,nb_pt,nb_w);
     players[0] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
     players[1] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
     std::cout << "Game created" << std::endl;
@@ -182,7 +178,7 @@ void Game::selectWondersPhase() {
     randomPlayerStart();
 
     // Create a vector to store all available wonders
-    std::vector<Wonder*>& allWonders = deck.getAllWonders();
+    std::vector<Wonder*>& allWonders = deck->getAllWonders();
 
     // Get the list of instantiated wonders from the Instanciator class
 
