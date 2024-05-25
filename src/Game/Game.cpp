@@ -234,10 +234,6 @@ bool Game::endTurn() {
             winner = &getOtherPlayer();
         }
     }
-    //pas besoin de reset : la différence donne direct la position
-    // Reset shields at the end of the turn
-    // players[0]->resetShields();
-    // players[1]->resetShields();
 }
 
 

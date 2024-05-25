@@ -33,7 +33,6 @@ class Player{
         std::string getName() const {return name;};
         AiLevel getAiLevel() const {return aiLevel;};
 
-        void resetShields();
         void setAI(bool ai){isAI = ai;};
         void setAiLevel(AiLevel level){aiLevel = level;};
         void setName(std::string n){this->name = std::move(n);};

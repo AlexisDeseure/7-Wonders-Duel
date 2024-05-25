@@ -9,19 +9,55 @@ skinparam class {
 skinparam classAttributeIconSize 0
 
 
-class MyException {
-    -info: string
-    +getInfo(): string
-}
-
 class Board {
   -age : int
   +advancedAge()
   +updateMarket()
 }
-note left of Board : Board is a singleton
 
-class City{
+class Game {
+  -age : int
+  -board : Board*
+  -players[2] : Player* 
+  -isReplaying : bool 
+  -deck : DeckPile* 
+  -updateConflictPawn() : bool 
+  -winner : Player* 
+  +bool endTurn() : bool
+  +advanceAge() : void
+  +startGame() : void
+  +getTurnPlayer() : Player& 
+  +getOtherPlayer() : Player& 
+  +bool playAge() : void
+  +playTurn() : void
+  +startMenu() : void
+}
+
+enum AiLevel{
+    EASY,
+    MEDIUM,
+    HARD
+}
+
+class Player{
+  - city : City&
+  -isAI : bool
+  -aiLevel : AiLevel
+  -name : string
+  +selectCard(Game& game, MarketDeck& marketDeck) : DeckElement*
+  +buyCard(Game& game, Card& card,MarketDeck& marketDeck) : bool
+  +play(Game& game) : void
+  +chooseWonder(Wonder[] availableWonders) : void
+}
+
+class DeckPile{
+ -buildings : pair[Building[], Building[]]
+ -wonders : Wonder[]
+ -progress_tokens : pair[ProgressToken[], ProgressToken[]]
+ 
+ +advanceAge(int age) : void
+}
+class City {
  -military_position : int
   -treasury : int
   -number_of_shields : int
@@ -117,10 +153,17 @@ class Ressource{
   +getAmount() : int
   +updatePrice() : void
 }
-class Effect{
-    -effect_name
+abstract class Effect <<abstract>>{
+    + apply(Game& game) : void <<abstract>>
+    + endEffect(Game& game) : void <<abstract>>
+    + eachTurnEffect(Game& game, Card& card) : void <<abstract>>
+    + setParameters(int[], string[]) : void <<abstract>>
 }
 
+class ExempleEffect {
+  + apply(Game& game) : void
+  + setParameters(int[], string[]) : void
+}
 /'
 class InstantReplaying{
   +apply()
@@ -209,16 +252,52 @@ class ChangeMarketRule{
   +apply()
 }'/
 
+class Instanciator{
+-cards_file
+-game_parameters
+-buildings_instanciator
+-wonders_instanciator
+-progress_tokens_instanciator
+
+}
+
+class File {
+-file_path
+-file
+-readFile()
+
+}
+
+Instanciator *-- File
 
 enum SymbolType {
-    COMPASS, QUILL, WHEEL, TABLET, SCALE, BOWL, GLOBE
+    COMPASS, 
+    QUILL, 
+    WHEEL, 
+    TABLET, 
+    SCALE, 
+    BOWL, 
+    GLOBE
 }
 
 enum ResourceType {
-    WOOD, STONE, CLAY, PAPER, GLASS
+    WOOD, 
+    STONE,
+    CLAY, 
+    PAPER, 
+    GLASS
 }
 
-Board *-- "2" City
+enum BuildingType {
+  Yellow,
+  Brown,
+  rey,
+  Purple, 
+  Green,
+  Red,
+  Blue
+}
+Player *-- "1" City
 Board o-- "5" ProgressToken 
 Board *-- "1" MarketDeck
 Board *-- "1" ConflictPawn
@@ -248,18 +327,16 @@ Effect <|--  MoveConflictPawn
 Effect <|--  AddVictoryPoint
 Effect <|--  AdversaryPaysMoneyToBank
 Effect <|--  InstantReplaying'/
-DeckElement "0..1" --o "0..1" DeckElement : fils droit
+
+/'DeckElement "0..1" --o "0..1" DeckElement : fils droit
 DeckElement "0..1" --o "0..1" DeckElement : fils gauche
 DeckElement "0..1" --o "0..1" DeckElement : père droit
-DeckElement "0..1" --o "0..1" DeckElement : père gauche
+DeckElement "0..1" --o "0..1" DeckElement : père gauche'/
 
-Effect <|--  RessourceEffect
-Effect <|--  CoinEffect
-Effect <|--  VictoryPointEffect
-Effect <|--  ScientificSymbolEffect
-Effect <|--  ShieldEffect
-Effect <|--  ChangeRessourceCostEffect
-
+Effect <|-- ExempleEffect
+Game *-- Board
+Game *-- "2" Player
+Game *-- DeckPile
 Card "*" --- "*" Effect
 Card <|-- Building
 Card <|-- Wonder
