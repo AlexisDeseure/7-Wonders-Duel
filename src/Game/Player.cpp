@@ -80,7 +80,7 @@ void Player::addWonderToCity(Wonder* wonder) {
 }
 
 
-void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
+void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
     if (!availableWonders.empty()) {
         // Check if the player is AI
         if (isAIPlayer()) {
@@ -91,18 +91,18 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             int index = dis(gen);
 
             // Take the randomly chosen wonder
-            Wonder chosenWonder = availableWonders[index];
+            Wonder* chosenWonder = availableWonders[index];
             availableWonders.erase(availableWonders.begin() + index);
 
-            std::cout << getName() << " (AI) chose " << chosenWonder.getName() << std::endl;
+            std::cout << getName() << " (AI) chose " << chosenWonder->getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            addWonderToCity(&chosenWonder);
+            addWonderToCity(chosenWonder);
         } else {
             // Human player
             std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
             for (int i = 0; i < availableWonders.size(); ++i) {
-                std::cout << i + 1 << ". " << availableWonders[i].getName() << std::endl;
+                std::cout << i + 1 << ". " << availableWonders[i]->getName() << std::endl;
             }
 
             // Ask the player to choose a wonder
@@ -113,13 +113,13 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             } while (choice < 1 || choice > availableWonders.size());
 
             // Take the chosen wonder
-            Wonder chosenWonder = availableWonders[choice - 1];
+            Wonder* chosenWonder = availableWonders[choice - 1];
             availableWonders.erase(availableWonders.begin() + choice - 1);
 
-            std::cout << getName() << " chose " << chosenWonder.getName() << std::endl;
+            std::cout << getName() << " chose " << chosenWonder->getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            addWonderToCity(&chosenWonder);
+            addWonderToCity(chosenWonder);
         }
 
     }

@@ -31,9 +31,10 @@ class Game{
         bool isReplaying;
         DeckPile* deck;
         void updateConflictPawn();
+        Player* winner;
 
     public:
-        void endTurn();
+        bool endTurn();
         bool checkMilitaryVictory() const;
         void advanceAge();
         void startGame();
@@ -44,7 +45,8 @@ class Game{
         void randomPlayerStart();
         Player& getTurnPlayer() const { return *players[0]; };
         Player& getOtherPlayer() const { return *players[1]; };
-        void playAge();
+        Board& getBoard() {return *board;}
+        bool playAge();
         void playTurn();
         void startMenu();
         void displayplayerChoice(int nb_joueur);

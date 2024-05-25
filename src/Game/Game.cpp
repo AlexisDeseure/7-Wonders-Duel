@@ -146,13 +146,15 @@ void Game::startGame(){
     std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
     selectWondersPhase();
     while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()){
-        playAge();
+        if (playAge()){
+            break;
+        }
     }
     endGame();
 
 }
 
-void Game::playAge(){
+bool Game::playAge(){
     advanceAge();
     std::cout << "Age " << age << " en cours" << std::endl;
     // vérifier quel est le joueur mené militairement pour lui laisser qui commence l'age entre
@@ -160,7 +162,9 @@ void Game::playAge(){
     // à faire
 //    while (!board.deckIsEmpty()){
 //        getTurnPlayer().play();
+//        if(endTurn()){return true;}
 //    }
+    return false;
 }
 
 void Game::replay(){
@@ -178,7 +182,7 @@ void Game::selectWondersPhase() {
     randomPlayerStart();
 
     // Create a vector to store all available wonders
-    std::vector<Wonder*>& allWonders = deck->getAllWonders();
+    std::vector<Wonder*> allWonders = deck->getAllWonders();
 
     // Get the list of instantiated wonders from the Instanciator class
 
@@ -187,29 +191,24 @@ void Game::selectWondersPhase() {
 
     // Function to handle the selection phase
     auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
-        std::vector<Wonder> wondersToSelect;
-        wondersToSelect.reserve(allWonders.size() - 4); // Reserve space for efficiency
 
         // Populate wondersToSelect with objects pointed to by allWonders
-        for (const auto& ptr : allWonders) {
-            wondersToSelect.push_back(*ptr);
-        }
 
         std::cout << "Available Wonders: ";
-        for (const auto& wonder : wondersToSelect) {
-            std::cout << wonder.getName() << " ";
+        for (const auto& wonder : allWonders) {
+            std::cout << wonder->getName() << " ";
         }
         std::cout << std::endl;
 
         // First player chooses 1 wonder
-        firstPlayer->chooseWonder(wondersToSelect);
+        firstPlayer->chooseWonder(allWonders);
 
         // Second player chooses 2 wonders
-        secondPlayer->chooseWonder(wondersToSelect);
-        secondPlayer->chooseWonder(wondersToSelect);
+        secondPlayer->chooseWonder(allWonders);
+        secondPlayer->chooseWonder(allWonders);
 
         // First player takes the remaining wonder
-        firstPlayer->chooseWonder(wondersToSelect);
+        firstPlayer->chooseWonder(allWonders);
     };
 
     // First selection phase
@@ -221,7 +220,7 @@ void Game::selectWondersPhase() {
     std::cout << "Wonder selection phase completed." << std::endl;
 }
 
-void Game::endTurn() {
+bool Game::endTurn() {
     updateConflictPawn();
     //pas besoin de reset : la différence donne direct la position
     // Reset shields at the end of the turn
@@ -260,7 +259,7 @@ void Game::advanceAge(){
 
 void Game::endGame(){
     std::cout << "Calcul du gagnant" << std::endl;
-    std::cout << "Game ended" << std::endl;
+    std::cout << "Bravo à "<< winner->getName() << "qui remporte la victoire !" << std::endl;
 }
 
 void Game::invertTurnPlayer(){
