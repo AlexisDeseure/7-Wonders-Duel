@@ -177,6 +177,54 @@ void Game::playTurn(){
     getTurnPlayer().play(*this);
 }
 
+void Game::selectWondersPhase() {
+    // Choose a first player randomly
+    randomPlayerStart();
+
+    // Create a vector to store all available wonders
+    std::vector<Wonder*>& allWonders = deck.getAllWonders();
+
+    // Get the list of instantiated wonders from the Instanciator class
+
+    // Shuffle the wonders
+    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+
+    // Function to handle the selection phase
+    auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        std::vector<Wonder> wondersToSelect;
+        wondersToSelect.reserve(allWonders.size() - 4); // Reserve space for efficiency
+
+        // Populate wondersToSelect with objects pointed to by allWonders
+        for (const auto& ptr : allWonders) {
+            wondersToSelect.push_back(*ptr);
+        }
+
+        std::cout << "Available Wonders: ";
+        for (const auto& wonder : wondersToSelect) {
+            std::cout << wonder.getName() << " ";
+        }
+        std::cout << std::endl;
+
+        // First player chooses 1 wonder
+        firstPlayer->chooseWonder(wondersToSelect);
+
+        // Second player chooses 2 wonders
+        secondPlayer->chooseWonder(wondersToSelect);
+        secondPlayer->chooseWonder(wondersToSelect);
+
+        // First player takes the remaining wonder
+        firstPlayer->chooseWonder(wondersToSelect);
+    };
+
+    // First selection phase
+    selectionPhase(players[0], players[1]);
+
+    // Second selection phase, with the turn order reversed
+    selectionPhase(players[1], players[0]);
+
+    std::cout << "Wonder selection phase completed." << std::endl;
+}
+
 void Game::endTurn() {
     updateConflictPawn();
     //pas besoin de reset : la différence donne direct la position
@@ -184,6 +232,7 @@ void Game::endTurn() {
     // players[0]->resetShields();
     // players[1]->resetShields();
 }
+
 
 void Game::updateConflictPawn() {
     ConflictPawn& conflict = board->getConflictPawn();
@@ -204,11 +253,7 @@ bool Game::checkMilitaryVictory() const {
     return board->getConflictPawn().isMilitaryVictory();
 }
 
-void Game::selectWondersPhase(){
-    randomPlayerStart();
-    std::cout << "Phase de selection des merveilles" << std::endl;
 
-}
 
 void Game::advanceAge(){
     std::cout << "Age avance" << std::endl;

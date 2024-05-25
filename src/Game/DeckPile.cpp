@@ -13,6 +13,7 @@ Wonder* DeckPile::selectNextWonder(){
     return W;
 }
 
+
 Building* DeckPile::selectNextBuilding(){
     Building* B = buildings.first.back();
     buildings.first.pop_back();
@@ -27,5 +28,7 @@ ProgressToken* DeckPile::selectNextProgressToken(){
 
 
 void DeckPile::advanceAge(int age){
+    //first -> les buildings de láge
+
     buildings.first = Instanciator::getInstanciator()->extractXRandomBuildingsFrom(Instanciator::getInstanciator()->getCardFromXAge(age), nb_buildings).first;
 }

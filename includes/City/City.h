@@ -64,6 +64,7 @@ class City {
         void addCard(Card& card); //permet d'ajouter une carte à la ville (fonctionne pour tous les types)
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();
+        void addWonder(Wonder* wonder);
 };
 
 template <typename T>

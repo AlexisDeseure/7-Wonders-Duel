@@ -240,6 +240,10 @@ void City::addCard(Card& card){
     }
 }
 
+void City::addWonder(Wonder* wonder) {
+    wonders.push_back(wonder);
+}
+
 
 template <typename T>
 void removeFirstElement(std::list<T>& vec, const T& element) {
@@ -248,4 +252,5 @@ void removeFirstElement(std::list<T>& vec, const T& element) {
         vec.erase(it);
     }
 }
+
 
