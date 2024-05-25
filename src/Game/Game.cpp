@@ -182,7 +182,7 @@ void Game::selectWondersPhase() {
     randomPlayerStart();
 
     // Create a vector to store all available wonders
-    std::vector<Wonder*>& allWonders = deck.getAllWonders();
+    std::vector<Wonder*>& allWonders = deck->getAllWonders();
 
     // Get the list of instantiated wonders from the Instanciator class
 
