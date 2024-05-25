@@ -14,6 +14,7 @@ Wonder* DeckPile::selectNextWonder(){
     return W;
 }
 
+
 Building* DeckPile::selectNextBuilding(){
     Building* B = buildings.first.back();
     buildings.first.pop_back();

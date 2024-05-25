@@ -97,7 +97,7 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             std::cout << getName() << " (AI) chose " << chosenWonder.getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            addWonderToCity(chosenWonder);
+            addWonderToCity(&chosenWonder);
         } else {
             // Human player
             std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
@@ -119,7 +119,7 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             std::cout << getName() << " chose " << chosenWonder.getName() << std::endl;
 
             // Add the chosen wonder to the player's wonders
-            addWonderToCity(chosenWonder);
+            addWonderToCity(&chosenWonder);
         }
 
     }
