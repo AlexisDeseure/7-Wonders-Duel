@@ -43,5 +43,6 @@ class Player{
         bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
         void chooseWonder(std::vector<Wonder>& availableWonders);
+        void addWonderToCity(Wonder* wonder):
 };
 #endif

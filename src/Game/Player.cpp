@@ -117,5 +117,10 @@ void Player::chooseWonder(std::vector<Wonder>& availableWonders) {
             // Add the chosen wonder to the player's wonders
             wonders.push_back(chosenWonder);
         }
+
     }
 }
+void Player::addWonderToCity(Wonder* wonder) {
+    city.addWonder(wonder);
+}
+
