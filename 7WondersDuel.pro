@@ -1,15 +1,12 @@
-# Created by and for Qt Creator This file was created for editing the project sources only.
+# Created by and for Qt Creator
+# This file was created for editing the project sources only.
 # You may attempt to use it for building too, by modifying this file here.
 
-#TARGET = 7WondersDuel
-
-QT       += core gui
-#QT = core gui widgets
+QT += core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
-
 CONFIG += console
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -19,8 +16,7 @@ CONFIG += console
 DISTFILES += \
     data/data.json
 
-
-HEADERS = \
+HEADERS += \
    includes/BoardManager/Board.h \
    includes/BoardManager/ConflictPawn.h \
    includes/Cards/Building.h \
@@ -65,9 +61,13 @@ HEADERS = \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
    includes/Ui/SevenWonderUI.h \
-   includes/DataFetcher/Instanciator.h
+   includes/DataFetcher/Instanciator.h \
+   includes/Ui/mainwindow.h \
+   includes/Ui/gamewindow.h \
+   includes/Ui/playerwidget.h \
+   includes/Ui/cardwidget.h
 
-SOURCES = \
+SOURCES += \
    src/BoardManager/Board.cpp \
    src/BoardManager/ConflictPawn.cpp \
    src/Cards/Building.cpp \
@@ -110,10 +110,14 @@ SOURCES = \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
    src/Ui/SevenWonderUI.cpp \
+   src/Ui/mainwindow.cpp \
+   src/Ui/gamewindow.cpp \
+   src/Ui/playerwidget.cpp \
+   src/Ui/cardwidget.cpp \
    test/example_test_feature_2.cpp \
    test/test_effects.cpp
 
-INCLUDEPATH = \
+INCLUDEPATH += \
     includes/BoardManager \
     includes/Cards \
     includes/City \
@@ -125,10 +129,12 @@ INCLUDEPATH = \
     includes/Ui
 
 FORMS += \
-    SevenWonderUI.ui
+    includes/Ui/mainwindow.ui \
+    includes/Ui/gamewindow.ui \
+    includes/Ui/playerwidget.ui \
+    includes/Ui/cardwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
