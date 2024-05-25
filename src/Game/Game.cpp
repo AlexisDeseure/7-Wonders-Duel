@@ -159,9 +159,49 @@ void Game::playTurn(){
     getTurnPlayer().play(*this);
 }
 
-void Game::selectWondersPhase(){
+void Game::selectWondersPhase() {
+    // Choose a first player randomly
     randomPlayerStart();
-    std::cout << "Phase de selection des merveilles" << std::endl;
+
+    // Create a list of all 12 wonders (for example purposes, creating placeholder wonders)
+    std::vector<Wonder> allWonders;
+    for (int i = 0; i < 12; ++i) {
+        // Create placeholder wonders with unique names
+        allWonders.emplace_back("Wonder " + std::to_string(i + 1), std::vector<RessourceCost>(), std::vector<Effect*>(), 0);
+    }
+
+    // Shuffle the wonders
+    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+
+    // Function to handle the selection phase
+    auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        std::vector<Wonder> wondersToSelect(allWonders.end() - 4, allWonders.end());
+        allWonders.resize(allWonders.size() - 4);
+
+        std::cout << "Available Wonders: ";
+        for (const auto& wonder : wondersToSelect) {
+            std::cout << wonder.getName() << " ";
+        }
+        std::cout << std::endl;
+
+        // First player chooses 1 wonder
+        firstPlayer->chooseWonder(wondersToSelect);
+
+        // Second player chooses 2 wonders
+        secondPlayer->chooseWonder(wondersToSelect);
+        secondPlayer->chooseWonder(wondersToSelect);
+
+        // First player takes the remaining wonder
+        firstPlayer->chooseWonder(wondersToSelect);
+    };
+
+    // First selection phase
+    selectionPhase(players[0], players[1]);
+
+    // Second selection phase, with the turn order reversed
+    selectionPhase(players[1], players[0]);
+
+    std::cout << "Wonder selection phase completed." << std::endl;
 }
 
 void Game::advanceAge(){
