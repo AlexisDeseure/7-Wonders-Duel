@@ -7,6 +7,7 @@
 #include "AddScientificSymbol.h"
 #include "AddVictoryPoint.h"
 #include "AdversaryPaysMoneyToBank.h"
+#include "BuildingCostReducedByX.h"
 #include "BuildOneDiscardedBuilding.h"
 #include "ChangeMarketRule.h"
 #include "ChooseOneProgressTokenWithinThreeDiscarded.h"
