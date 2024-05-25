@@ -4,7 +4,7 @@
 #include <string>
 #include <utility>
 #include "MarketDeck.h"
-
+#include "Wonder.h"
 class City;
 class Game;
 class Card;

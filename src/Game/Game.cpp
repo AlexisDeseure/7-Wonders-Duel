@@ -174,7 +174,7 @@ void Game::selectWondersPhase() {
     std::vector<Wonder*> allWonders;
 
     // Get the list of instantiated wonders from the Instanciator class
-    std::vector<Wonder*> instantiatedWonders = instanciator.getWonders();
+    std::vector<Wonder*> instantiatedWonders = Instanciator.getWonders();
 
     // Iterate over the instantiated wonders and add them to the allWonders vector
     for (int i = 0; i < 12 && i < instantiatedWonders.size(); i++) {
