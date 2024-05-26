@@ -6,6 +6,8 @@
 #include "ConflictPawn.h"
 #include "GameParameters.h"
 #include "City.h"
+#include "Effect.h"
+#include "AddVictoryPoint.h"
 #include <random>
 #include <iostream>
 #include <algorithm>
@@ -271,7 +273,12 @@ void Game::endGame(){
         calculateWinner();
     }
     std::cout << "Calcul du gagnant" << std::endl;
-    std::cout << "Bravo à "<< winner->getName() << "qui remporte la victoire !" << std::endl;
+    if (winner == nullptr){
+        std::cout << "Egalité !" << std::endl;
+    }
+    else {
+        std::cout << "Bravo à " << winner->getName() << "qui remporte la victoire !" << std::endl;
+    }
 }
 
 void Game::calculateWinner(){
@@ -298,10 +305,38 @@ void Game::calculateWinner(){
         winner = &getTurnPlayer();
     }
     else{
-        //processEquality(); // TODO
+        processEquality();
     }
 }
 
+void Game::processEquality(){
+    //attribuer la victoire à celui qui a le plus de points de victoire sur ses cartes bleues sinon à personne
+    int score1 = getNumberOfVictoryPointsBlue(getTurnPlayer());
+    int score2 = getNumberOfVictoryPointsBlue(getOtherPlayer());
+    if (score1 > score2){
+        winner = &getTurnPlayer();
+    }
+    else if (score1 < score2){
+        winner = &getOtherPlayer();
+    }
+    else{
+        winner = nullptr;
+    }
+}
+
+int Game::getNumberOfVictoryPointsBlue(Player& player){
+    int number_victory_points_blue = 0;
+    for (auto& building : player.getCity().getBuildings()){
+        if (building->getType() == BuildingType::Blue){
+            for (auto& effect : building->getEffects()){
+                if (dynamic_cast<AddVictoryPoint*>(effect) != nullptr){
+                    number_victory_points_blue += dynamic_cast<AddVictoryPoint*>(effect)->getQuantity();
+                }
+            }
+        }
+    }
+    return number_victory_points_blue;
+}
 
 
 void Game::invertTurnPlayer(){

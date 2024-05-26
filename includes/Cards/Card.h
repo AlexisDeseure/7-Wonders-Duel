@@ -41,7 +41,7 @@ class Card {
         unsigned int getCost(City* city) const; //permet d'obtenir le coût minimal réel que devra payer une ville pour se procurer la carte (à utiliser avant chaque achat)
         void applyEffects(Game& game);
         virtual bool isChainInInCity(const City* city) const = 0;
-
+        std::vector<Effect*> getEffects() const {return effects;};
 
 };
 

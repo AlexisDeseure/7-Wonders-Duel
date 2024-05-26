@@ -108,7 +108,7 @@ void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
         } else {
             // Human player
             std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
-            for (int i = 0; i < availableWonders.size(); ++i) {
+            for (size_t i = 0; i < availableWonders.size(); ++i) {
                 std::cout << i + 1 << ". " << availableWonders[i]->getName() << std::endl;
             }
 
@@ -117,7 +117,7 @@ void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
             do {
                 std::cout << "Enter the number corresponding to your choice: ";
                 choice = getIntInput();
-            } while (choice < 1 || choice > availableWonders.size());
+            } while (choice < 1 || static_cast<size_t>(choice) > availableWonders.size());
 
             // Take the chosen wonder
             Wonder* chosenWonder = availableWonders[choice - 1];
