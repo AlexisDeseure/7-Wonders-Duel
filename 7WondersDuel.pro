@@ -112,9 +112,7 @@ SOURCES = \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
-   src/Ui/SevenWonderUI.cpp \
-   test/example_test_feature_2.cpp \
-   test/test_effects.cpp
+   src/Ui/SevenWonderUI.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \
