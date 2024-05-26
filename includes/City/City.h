@@ -65,6 +65,7 @@ class City {
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();
         void addWonder(Wonder* wonder);
+        int getVictoryPoints() const{ return victory_points;};
 };
 
 template <typename T>

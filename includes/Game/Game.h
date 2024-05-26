@@ -30,17 +30,18 @@ class Game{
         Player* players[2];
         bool isReplaying;
         DeckPile* deck;
-        bool updateConflictPawn();
         Player* winner;
 
     public:
         bool endTurn();
         bool checkMilitaryVictory() const;
+        bool updateConflictPawn();
         void advanceAge();
         void startGame();
         void replay();
         void selectWondersPhase();
         void endGame();
+        void calculateWinner();
         void invertTurnPlayer();
         void randomPlayerStart();
         Player& getTurnPlayer() const { return *players[0]; };

@@ -38,6 +38,7 @@ class Player{
         void setName(std::string n){this->name = std::move(n);};
 
         int getShields() const;
+        int getScore(Game& game) const; // get the score of the player (number of victory points)
         const DeckElement* selectCard(Game& game, MarketDeck& marketDeck); //permet au joueur de sélectionner une carte à jouer
         bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour

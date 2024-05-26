@@ -4,11 +4,13 @@
 #include "Instanciator.h"
 #include "DeckPile.h"
 #include "ConflictPawn.h"
+#include "GameParameters.h"
+#include "City.h"
 #include <random>
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), isReplaying(false) {
+Game::Game() : age(0), isReplaying(false), winner(nullptr) {
     Instanciator* inst = Instanciator::getInstanciator();
     int length = inst->getGameParameters().getLengthConflictPawnBoard();
     board = new Board(length);
@@ -161,7 +163,7 @@ bool Game::playAge(){
     // les deux joueurs (lui, l'adversaire, ou aléatoirement en utilisant la méthode randomPlayerStart)
     // à faire
 //    while (!board.deckIsEmpty()){
-//        getTurnPlayer().play();
+//        playTurn();
 //        if(endTurn()){return true;}
 //    }
     return false;
@@ -227,13 +229,17 @@ void Game::selectWondersPhase() {
 
 bool Game::endTurn() {
     if(updateConflictPawn()){
+        std::cout << "Victoire militaire !" << std::endl;
         if (board->getConflictPawn().getPosition() >= 0){
             winner = &getTurnPlayer();
         }
         else{
             winner = &getOtherPlayer();
         }
+        return true;
     }
+
+    return false;
 }
 
 
@@ -261,9 +267,42 @@ void Game::advanceAge(){
 }
 
 void Game::endGame(){
+    if (winner == nullptr){
+        calculateWinner();
+    }
     std::cout << "Calcul du gagnant" << std::endl;
     std::cout << "Bravo à "<< winner->getName() << "qui remporte la victoire !" << std::endl;
 }
+
+void Game::calculateWinner(){
+    int position = board->getConflictPawn().getPosition();
+    int victory_points_conflict = 0;
+    for (auto& element :Instanciator::getInstanciator()->getGameParameters().getConflictPawnBoard()){
+        if (std::abs(position)>=element.number){
+            victory_points_conflict = element.victory_points;
+        }
+    }
+    if (position > 0){
+        getTurnPlayer().getCity().addVictoryPoints(victory_points_conflict);
+    }
+    else{
+        getOtherPlayer().getCity().addVictoryPoints(victory_points_conflict);
+    }
+    int score1 = getTurnPlayer().getScore(*this);
+    invertTurnPlayer();
+    int score2 = getTurnPlayer().getScore(*this);
+    if (score1 > score2){
+        winner = &getOtherPlayer();
+    }
+    else if (score1 < score2){
+        winner = &getTurnPlayer();
+    }
+    else{
+        //processEquality(); // TODO
+    }
+}
+
+
 
 void Game::invertTurnPlayer(){
     // Player &player = getTurnPlayer();

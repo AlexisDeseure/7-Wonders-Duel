@@ -20,6 +20,13 @@ int Player::getShields() const{
     return city.getShields();
 };
 
+int Player::getScore(Game& game) const{
+    city.applyEndEffects(game); //appliquer les effets de fin de partie (ex: les points de victoire des cartes guildes
+    int score = city.getTreasury()/3; // 1 pts pour 3 pièces
+    score += city.getVictoryPoints();
+    return score;
+};
+
 std::string AiLeveltoString(AiLevel level){
     std::string str;
     switch (level) {
