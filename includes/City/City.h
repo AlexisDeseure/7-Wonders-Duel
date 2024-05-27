@@ -65,6 +65,8 @@ class City {
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();
         void addWonder(Wonder* wonder);
+        void addScientificSymbol(SymboleType name, int quantity, Game& game);
+        void addProgressToken(ProgressToken* PT, Game& game);
         int getVictoryPoints() const{ return victory_points;};
         std::vector<Building*> getBuildings() const {return buildings;};
 

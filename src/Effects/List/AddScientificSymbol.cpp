@@ -8,7 +8,7 @@
 AddScientificSymbol::AddScientificSymbol() : symbol(SymboleType::LENGTH), quantity(0) {}
 
 void AddScientificSymbol::effect(Game& game) {
-    game.getTurnPlayer().getCity().getScientificSymbol(symbol) += quantity;
+    game.getTurnPlayer().getCity().addScientificSymbol(symbol, quantity, game);
 }
 
 void AddScientificSymbol::setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) {

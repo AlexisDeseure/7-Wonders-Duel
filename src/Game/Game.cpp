@@ -245,7 +245,6 @@ bool Game::endTurn() {
         winner = &getTurnPlayer();
         return true;
     }
-
     return false;
 }
 

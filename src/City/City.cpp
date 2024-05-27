@@ -169,6 +169,19 @@ void City::discardCard(Card* card) {
     // TODO
 }
 
+void City::addProgressToken(ProgressToken *PT, Game& game) {
+    progress_tokens.push_back(PT);
+    PT->applyEffects(game);
+}
+
+void City::addScientificSymbol(SymboleType type, int quantity, Game& game) {
+    ScientificSymbol& symbol = getScientificSymbol(type);
+    if (symbol.getCount()%2 == 1){
+        addProgressToken(game.getBoard().getProgressToken(game.getTurnPlayer()), game);
+    }
+    symbol += quantity;
+}
+
 bool City::checkScientificVictory() {
     return getDistinctScientificSymbols() >= Instanciator::getInstanciator()->getGameParameters().getNumberScientificSymbolToWin(); // Il y a 6 symboles distinct dans le jeu
 }

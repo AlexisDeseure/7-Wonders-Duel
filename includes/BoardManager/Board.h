@@ -7,13 +7,14 @@
 class ConflictPawn;
 class MarketDeck;
 class ProgressToken;
+class Player;
 
 class Board{
     private:
         int constructed_wonders;
         ConflictPawn& conflict_pawn;
         MarketDeck& market_deck;
-        std::vector<ProgressToken*> progressToken; //jetons sélectionnés en début de partie
+        std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> progressToken; //jetons sélectionnés en début de partie
 
     public:
         Board(int victory_position);
@@ -22,6 +23,7 @@ class Board{
         void constructWonder() { constructed_wonders++; };
         void advanceConflictPawn(int step);
         bool deckIsEmpty() const;
+        ProgressToken* getProgressToken(Player& player) const;
         ConflictPawn& getConflictPawn(){return conflict_pawn;};
 
 };
