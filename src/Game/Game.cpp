@@ -182,54 +182,43 @@ void Game::playTurn(){
 }
 
 void Game::selectWondersPhase() {
-    // Choose a first player randomly
+    // permet de sélectionner les merveilles pour chaque joueur parmis 8 merveilles sélectionnées aléatoirement
+
     randomPlayerStart();
-
-    // Create a vector to store all available wonders
     std::vector<Wonder*> allWonders = deck->getAllWonders();
-
-    // Get the list of instantiated wonders from the Instanciator class
-
-    // Shuffle the wonders
     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
 
-    // Function to handle the selection phase
     auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        // fonction pour la phase de sélection des wonders
         std::vector<Wonder*> wondersToSelect;
-        wondersToSelect.reserve(4); // Reserve space for efficiency
+        wondersToSelect.reserve(4); // Réservation de la mémoire pour les 4 wonders pour éviter les réallocations
 
         for (int i = 0; i < 4; i++) {
-            wondersToSelect.push_back(allWonders.back()); // Add the last wonder to the selected list
-            allWonders.pop_back(); // Remove the last wonder from allWonders
+            wondersToSelect.push_back(allWonders.back());
+            allWonders.pop_back();
         }
 
-        std::cout << "Available Wonders: ";
+        std::cout << "Merveilles disponibles : ";
         for (const auto& wonder : wondersToSelect) {
             std::cout << wonder->getName() << " ";
         }
         std::cout << std::endl;
 
-        // First player chooses 1 wonder
+        // ordre de sélection des wonders :
         firstPlayer->chooseWonder(wondersToSelect);
-
-        // Second player chooses 2 wonders
         secondPlayer->chooseWonder(wondersToSelect);
         secondPlayer->chooseWonder(wondersToSelect);
-
-        // First player takes the remaining wonder
         firstPlayer->chooseWonder(wondersToSelect);
     };
 
-    // First selection phase
     selectionPhase(players[0], players[1]);
-
-    // Second selection phase, with the turn order reversed
     selectionPhase(players[1], players[0]);
 
-    std::cout << "Wonder selection phase completed." << std::endl;
+    std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
 }
 
 bool Game::endTurn() {
+    //fin du tour, vérifier si le joueur a gagné
     if(updateConflictPawn()){
         std::cout << "Victoire militaire !" << std::endl;
         if (board->getConflictPawn().getPosition() >= 0){
@@ -250,31 +239,41 @@ bool Game::endTurn() {
 
 
 bool Game::updateConflictPawn() {
+    //mettre à jour la position du pion de conflit et appliquer les effets des cases si nécessaire
     ConflictPawn& conflict = board->getConflictPawn();
     int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
     conflict.move(totalShields);
     if (checkMilitaryVictory()){
-        return true;
+        return true; // victoire militaire détectée
     }
-    return false;
+    for (auto& step : Instanciator::getInstanciator()->getGameParameters().getConflictPawnBoard()){
+        if (conflict.getPosition() >= step.number && step.effect != nullptr){
+            step.effect->apply(*this); //on applique l'effet de la case (il s'appliquera sur le joueur en train de jouer)
+            step.effect = nullptr; //on reset l'effet pour ne pas l'appliquer plusieurs fois
+        }
+    }
+    return false; // pas de victoire militaire détectée
 }
 
 bool Game::checkMilitaryVictory() const {
+    //vérifier si le joueur a gagné militairement
     return board->getConflictPawn().isMilitaryVictory();
 }
 
 bool Game::checkScientificVictory() const {
+    //vérifier si le joueur a gagné scientifiquement
     return getTurnPlayer().getCity().checkScientificVictory();
 }
 
 void Game::advanceAge(){
+    //avancer l'âge
     std::cout << "Age avance" << std::endl;
     age++;
     deck->advanceAge(age);
-
 }
 
 void Game::endGame(){
+    //fin du jeu, calcul du gagnant
     if (winner == nullptr){
         calculateWinner();
     }
@@ -285,9 +284,11 @@ void Game::endGame(){
     else {
         std::cout << "Bravo à " << winner->getName() << "qui remporte la victoire !" << std::endl;
     }
+    //TODO : détruire les objets dynamiques, pointeurs, etc
 }
 
 void Game::calculateWinner(){
+    //calculer le score de chaque joueur et déterminer le gagnant
     int position = board->getConflictPawn().getPosition();
     int victory_points_conflict = 0;
     for (auto& element :Instanciator::getInstanciator()->getGameParameters().getConflictPawnBoard()){
@@ -331,6 +332,7 @@ void Game::processEquality(){
 }
 
 int Game::getNumberOfVictoryPointsBlue(Player& player){
+    //retourne le nombre de points de victoire sur les cartes bleues
     int number_victory_points_blue = 0;
     for (auto& building : player.getCity().getBuildings()){
         if (building->getType() == BuildingType::Blue){
@@ -346,13 +348,12 @@ int Game::getNumberOfVictoryPointsBlue(Player& player){
 
 
 void Game::invertTurnPlayer(){
-    // Player &player = getTurnPlayer();
-    // players[0] = &getOtherPlayer();
-    // players[1] = &player;
+    //inverser les joueurs à chaque tour
     std::swap(players[0], players[1]);
 }
 
 void Game::randomPlayerStart() {
+    //choisir aléatoirement le joueur qui commence
     if(selectRandomInteger() == 1){
         invertTurnPlayer();
     }
@@ -360,6 +361,7 @@ void Game::randomPlayerStart() {
 };
 
 int selectRandomInteger(int min, int max){
+    //retourne un entier aléatoire entre min et max
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(min, max);

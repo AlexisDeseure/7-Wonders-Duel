@@ -5,13 +5,6 @@
 #include "Card.h"
 #include "Instanciator.h"
 #include "EffectFactory.h"
-#include <QApplication>
-#include <QMainWindow>
-#include <QPushButton>
-#include <QTextStream>
-#include <QString>
-#include <iostream>
-#include <vector>
 #include"Ressource.h"
 #include"Building.h"
 #include"Effect.h"
@@ -20,9 +13,31 @@
 #include"AddRessource.h"
 #include "GameParameters.h"
 
+#include <QTextStream>
+#include <QApplication>
+#include <QMainWindow>
+#include <QPushButton>
+#include <QTextStream>
+#include <QString>
+#include <iostream>
+#include <vector>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+
+
 using namespace std;
 
 int main(int argc, char* argv[]) {
+#ifdef _WIN32
+    // Définit la console pour utiliser l'encodage UTF-8 sous Windows
+    // SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);  // UTF-16LE
+    SetConsoleCP(CP_UTF8);
+#endif
+
     // std::vector<RessourceCost> ressourceVector;
     // RessourceCost R1(5, RessourceType::Wood);
     // RessourceCost R2(5, RessourceType::Wood);
@@ -73,7 +88,6 @@ int main(int argc, char* argv[]) {
     //     cout << ressourceTypeToString(t);
     // }
     // cout<<endl;
-
     Game();
 
     //cout<<Instanciator::getInstanciator()->getGameParameters();
