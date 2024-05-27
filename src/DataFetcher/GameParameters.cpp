@@ -31,6 +31,7 @@ void GameParameters::readAndInstanciate(std::string file_path){
     number_age = obj["number_age"].toInt();
     QJsonObject cards = obj["cards"].toObject();
     wonders_max = cards["wonders_max"].toInt();
+    number_scientific_symbol_to_win = cards["number_scientific_symbol_to_win"].toInt();
 
     number_selected_wonders = cards["number_selected_wonders"].toInt();
     number_building_per_age = cards["number_building_per_age"].toInt();

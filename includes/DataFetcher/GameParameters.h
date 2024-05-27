@@ -22,6 +22,7 @@ private:
     std::string cards_path;
     int coins_start;
     int number_age;
+    int number_scientific_symbol_to_win;
 
     int wonders_max;
     int number_selected_wonders;
@@ -47,6 +48,7 @@ public:
     int getNumberProgressTokenBoard() const { return number_progress_token_board; }
     int getNumberCardGuilds() const { return number_card_guilds; }
     int getLengthConflictPawnBoard() const { return length_conflict_pawn_board; }
+    int getNumberScientificSymbolToWin() const { return number_scientific_symbol_to_win; }
     std::vector<ConflictPawnElement> getConflictPawnBoard() const { return conflict_pawn_board; }
 
 

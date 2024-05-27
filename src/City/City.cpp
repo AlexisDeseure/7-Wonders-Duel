@@ -7,7 +7,9 @@
 #include"Game.h"
 #include"Effect.h"
 #include"Card.h"
-#include "Board.h"
+#include"Board.h"
+#include"Instanciator.h"
+#include"GameParameters.h"
 #include <set>
 #include <algorithm>
 #include <iostream>
@@ -112,11 +114,13 @@ void City::updateRemainingRessources(std::list<RessourceType>& remaining_ressour
 }
 
 int City::getDistinctScientificSymbols() const {
-    std::set<SymboleType> symbols;
-    for (const auto& symbol : scientific_symbols) {
-        symbols.insert(symbol->getType());
+    int number_distinct = 0;
+    for (auto& symbol : scientific_symbols) {
+        if (symbol->getCount() > 0) {
+            number_distinct++;
+        }
     }
-    return static_cast<int>(symbols.size());
+    return number_distinct;
 }
 
 bool City::canAfford(int price) const {
@@ -166,7 +170,7 @@ void City::discardCard(Card* card) {
 }
 
 bool City::checkScientificVictory() {
-    return getDistinctScientificSymbols() >= 6; // Il y a 6 symboles distinct dans le jeu
+    return getDistinctScientificSymbols() >= Instanciator::getInstanciator()->getGameParameters().getNumberScientificSymbolToWin(); // Il y a 6 symboles distinct dans le jeu
 }
 
 void City::addMoney(int money) {

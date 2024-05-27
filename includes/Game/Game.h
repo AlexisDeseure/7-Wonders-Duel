@@ -26,6 +26,7 @@ class Game{
     public:
         bool endTurn();
         bool checkMilitaryVictory() const;
+        bool checkScientificVictory() const;
         bool updateConflictPawn();
         void processEquality();
         void advanceAge();

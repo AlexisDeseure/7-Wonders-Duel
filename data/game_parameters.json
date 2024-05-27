@@ -2,6 +2,7 @@
     "data_path": "../../../data/data.json",
     "coin_start": 7,
     "number_age": 3,
+    "number_scientific_symbol_to_win": 6,
     "cards": {
         "wonders_max": 7,
         "number_selected_wonders": 8,

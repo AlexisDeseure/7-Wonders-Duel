@@ -102,6 +102,6 @@ add_executable(7_Wonders_Duel
         src/Ui/SevenWonderUI.cpp
 
         test/test_effects.cpp
-        test/example_test_feature_2.cpp)
+        test/example_test_feature_2.cpp src/DataFetcher/Instanciator.cpp)
 
 

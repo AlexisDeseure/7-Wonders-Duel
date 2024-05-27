@@ -38,6 +38,7 @@ class ScientificSymbol{
             count+=sum;
         };
         SymboleType getType() const { return symbol_type; }; //Renvoie le type de symbole
+        int getCount() const { return count; }; //Renvoie le nombre de symboles
 };
 
 std::string symboleTypeToString(SymboleType type);

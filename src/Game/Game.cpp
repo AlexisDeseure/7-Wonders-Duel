@@ -240,6 +240,11 @@ bool Game::endTurn() {
         }
         return true;
     }
+    if (checkScientificVictory()){
+        std::cout << "Victoire scientifique !" << std::endl;
+        winner = &getTurnPlayer();
+        return true;
+    }
 
     return false;
 }
@@ -249,7 +254,7 @@ bool Game::updateConflictPawn() {
     ConflictPawn& conflict = board->getConflictPawn();
     int totalShields = getTurnPlayer().getShields() - getOtherPlayer().getShields();
     conflict.move(totalShields);
-    if (conflict.isMilitaryVictory()){
+    if (checkMilitaryVictory()){
         return true;
     }
     return false;
@@ -259,7 +264,9 @@ bool Game::checkMilitaryVictory() const {
     return board->getConflictPawn().isMilitaryVictory();
 }
 
-
+bool Game::checkScientificVictory() const {
+    return getTurnPlayer().getCity().checkScientificVictory();
+}
 
 void Game::advanceAge(){
     std::cout << "Age avance" << std::endl;

@@ -67,6 +67,7 @@ class City {
         void addWonder(Wonder* wonder);
         int getVictoryPoints() const{ return victory_points;};
         std::vector<Building*> getBuildings() const {return buildings;};
+
 };
 
 template <typename T>
