@@ -40,6 +40,7 @@ class Game{
         Player& getTurnPlayer() const { return *players[0]; };
         Player& getOtherPlayer() const { return *players[1]; };
         Board& getBoard() {return *board;}
+        DeckPile& getDeck() {return *deck;}
         bool playAge();
         void playTurn();
         void startMenu();

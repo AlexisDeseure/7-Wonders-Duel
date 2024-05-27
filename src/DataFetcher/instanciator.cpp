@@ -118,7 +118,7 @@ std::pair<std::vector<Building*>,std::vector<Building*>> Instanciator::extractXR
         else rand_token_remaining.push_back(cartes[i]);
     }
 
-    return make_pair(rand_token,rand_token_remaining);
+    return {rand_token,rand_token_remaining};
 }
 
 std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator::extractXRandomProgressTokensFrom(std::vector<ProgressToken*> cartes,unsigned int nb){
@@ -136,7 +136,7 @@ std::pair<std::vector<ProgressToken*>,std::vector<ProgressToken*>> Instanciator:
         else rand_token_remaining.push_back(cartes[i]);
     }
 
-    return make_pair(rand_token,rand_token_remaining);
+    return {rand_token,rand_token_remaining};
 }
 
 std::vector<Wonder*> Instanciator::extractXRandomWondersFrom(std::vector<Wonder*> cartes, unsigned int nb){

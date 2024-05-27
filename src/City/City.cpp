@@ -10,6 +10,7 @@
 #include"Board.h"
 #include"Instanciator.h"
 #include"GameParameters.h"
+#include"DeckPile.h"
 #include <set>
 #include <algorithm>
 #include <iostream>
@@ -157,16 +158,17 @@ bool City::constructWonder(Wonder* wonder, Game& game) {
     }
 }
 
-void City::discardCard(Card* card) {
-    int coinsReceived = 2; // Base amount for discarding a card
+void City::discardBuilding(Building* building, Game& game) {
+    int coinsReceived = Instanciator::getInstanciator()->getGameParameters().getBaseMarketCoins(); // Base amount for discarding a card
 
      //  Ajoute des pièces supplémentaires +1  coint par carte jaune (batiment commerical)
     coinsReceived += getNumberOfBuildingType(BuildingType::Yellow);
 
     treasury += coinsReceived;
     std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
-    // Handle card removal or placement into a discard pile if necessary
-    // TODO
+
+    // placer la carte dans la défausse
+    game.getDeck().addDiscardedBuilding(building);
 }
 
 void City::addProgressToken(ProgressToken *PT, Game& game) {
@@ -177,7 +179,7 @@ void City::addProgressToken(ProgressToken *PT, Game& game) {
 void City::addScientificSymbol(SymboleType type, int quantity, Game& game) {
     ScientificSymbol& symbol = getScientificSymbol(type);
     if (symbol.getCount()%2 == 1){
-        addProgressToken(game.getBoard().getProgressToken(game.getTurnPlayer()), game);
+        addProgressToken(game.getBoard().getProgressToken(game, game.getTurnPlayer()), game);
     }
     symbol += quantity;
 }

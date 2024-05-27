@@ -47,7 +47,7 @@ class City {
         bool canAfford(int price) const;
         bool constructBuilding(Building* building, Game& game);
         bool constructWonder(Wonder* wonder, Game& game);
-        void discardCard(Card* card);
+        void discardBuilding(Building* building, Game& game);
         bool checkScientificVictory(); //sera surtout gérer dans game ou player mais garder pour les opérations dans city (simplifier la relecture: elle sera appelée par une autre méthode et ainsi de suite)
         void addMoney(int money);
         void addRessource(std::vector<RessourceType> types);

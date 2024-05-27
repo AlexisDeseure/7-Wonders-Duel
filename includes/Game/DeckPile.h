@@ -20,15 +20,15 @@ public:
     DeckPile(int nb_buildings, int nb_token, int nb_wonder);
 
     void addDiscardedBuilding(Building* build);
-    std::vector<Wonder*>& getAllWonders() {
-        return wonders;
-    }
-    Wonder* selectNextWonder();
-    Building* selectNextBuilding();
-    ProgressToken* selectNextProgressToken();
+    std::vector<Wonder*>& getAllWonders() { return wonders; }
+//    Wonder* selectNextWonder();
+//    Building* selectNextBuilding();
+//    ProgressToken* selectNextProgressToken();
 
-    std::vector<Building*> getDiscardedBuildings() {return buildings.second;};
-    std::vector<ProgressToken*> getOtherProgressTokens() {return progress_tokens.second;};
+    std::vector<Building*>& getDiscardedBuildings() {return buildings.second;};
+    std::vector<ProgressToken*>& getOtherProgressTokens() {return progress_tokens.second;};
+    std::vector<Building*>& getBuildings() {return buildings.first;};
+    std::vector<ProgressToken*>& getProgressTokens() {return progress_tokens.first;};
 
     void advanceAge(int age);
 };

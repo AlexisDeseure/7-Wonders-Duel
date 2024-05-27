@@ -28,6 +28,7 @@ void GameParameters::readAndInstanciate(std::string file_path){
 
     cards_path = obj["data_path"].toString().toStdString();
     coins_start = obj["coin_start"].toInt();
+    base_market_coins = obj["base_market_coins"].toInt();
     number_age = obj["number_age"].toInt();
     QJsonObject cards = obj["cards"].toObject();
     wonders_max = cards["wonders_max"].toInt();

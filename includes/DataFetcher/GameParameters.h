@@ -21,6 +21,7 @@ private:
 
     std::string cards_path;
     int coins_start;
+    int base_market_coins;
     int number_age;
     int number_scientific_symbol_to_win;
 
@@ -41,6 +42,7 @@ public:
 
     std::string getCardsPath() const { return cards_path; }
     int getCoinsStart() const { return coins_start; }
+    int getBaseMarketCoins() const { return base_market_coins; }
     int getNumberAge() const { return number_age; }
     int getWondersMax() const { return wonders_max; }
     int getNumberSelectedWonders() const { return number_selected_wonders; }
