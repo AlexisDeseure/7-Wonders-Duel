@@ -42,6 +42,7 @@ public:
     void readAndInstanciate(std::string file_path);
 
     std::string getCardsPath() const { return cards_path; }
+    std::string getBuildingsLayoutPath() const { return buildings_layout_path; }
     int getCoinsStart() const { return coins_start; }
     int getBaseMarketCoins() const { return base_market_coins; }
     int getNumberAge() const { return number_age; }

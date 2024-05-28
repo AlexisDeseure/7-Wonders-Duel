@@ -9,6 +9,7 @@ class MarketDeck;
 class ProgressToken;
 class Player;
 class Game;
+class Building;
 
 class Board{
     private:
@@ -22,6 +23,7 @@ class Board{
         bool canConstructWonder() const;
         void constructWonder() { constructed_wonders++; };
         bool deckIsEmpty() const;
+        void advanceAge(int age, std::vector<Building*>& buildings);
         ProgressToken* getProgressToken(Game& game, Player& player, bool within_discarded = false, int number_choice = 0) const;
         ConflictPawn& getConflictPawn(){return conflict_pawn;};
 

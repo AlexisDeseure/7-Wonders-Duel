@@ -9,6 +9,7 @@
 #include "File.h"
 #include "Game.h"
 #include "GameParameters.h"
+#include "BuildingsLayout.h"
 
 class Instanciator
 {
@@ -18,6 +19,7 @@ private:
     std::vector<Wonder*> wonders_instanciator;
     std::vector<ProgressToken*> progress_tokens_instanciator;
     File* cards_file;
+    BuildingsLayout* buildings_layout;
     GameParameters& game_parameters;
     std::vector<std::pair<QString,QString>> names;
 
@@ -37,6 +39,7 @@ private:
 
     Instanciator() : game_parameters(*new GameParameters(GAME_PARAMETERS_PATH)){
         cards_file = new File(game_parameters.getCardsPath());
+        buildings_layout = new BuildingsLayout(game_parameters.getBuildingsLayoutPath(), game_parameters.getNumberAge());
         names = cards_file->getNames();
         constructBuilding();
         constructWonder();
@@ -45,6 +48,19 @@ private:
 
 public:
 
+    ~Instanciator(){
+        for(auto & it : buildings_instanciator){
+            delete it;
+        }
+        for(auto & it : wonders_instanciator){
+            delete it;
+        }
+        for(auto & it : progress_tokens_instanciator){
+            delete it;
+        }
+        delete cards_file;
+        delete buildings_layout;
+    }
     static Instanciator* getInstanciator(){
         if (!instance){
             instance = new Instanciator;
@@ -73,6 +89,7 @@ public:
     std::vector<Building*> getCardFromXAge(int age);
 
     const GameParameters& getGameParameters() const {return game_parameters;}
+    BuildingsLayout& getBuildingsLayout() const {return *buildings_layout;}
 };
 
 #endif // INSTANCIATOR_H

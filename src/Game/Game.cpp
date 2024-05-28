@@ -266,10 +266,11 @@ bool Game::checkScientificVictory() const {
 }
 
 void Game::advanceAge(){
-    //avancer l'âge
+    //avancer à l'âge suivant
     std::cout << "Age avance" << std::endl;
     age++;
     deck->advanceAge(age);
+    board->advanceAge(age, deck->getBuildings());
 }
 
 void Game::endGame(){

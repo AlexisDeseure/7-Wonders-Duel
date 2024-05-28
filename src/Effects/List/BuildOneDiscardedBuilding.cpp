@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "DeckPile.h"
 #include "City.h"
+#include "Building.h"
 #include <iostream>
 #include <vector>
 

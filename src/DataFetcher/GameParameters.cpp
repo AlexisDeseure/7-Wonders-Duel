@@ -13,7 +13,7 @@ GameParameters::~GameParameters(){
 }
 
 void GameParameters::readAndInstanciate(std::string file_path){
-    QFile file(QString::fromStdString(file_path)); // open json file
+    QFile file(QString::fromStdString(file_path));
     if(!file.open(QIODevice::ReadOnly)){
         qDebug() << "Error opening file";
         return;

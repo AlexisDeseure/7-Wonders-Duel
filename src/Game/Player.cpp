@@ -51,37 +51,37 @@ void Player::play(Game& game){
     //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
 }
 
-const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
-    const DeckElement** building_list = marketDeck.getFirstBuildings();
-    for(size_t i = 0; i<(sizeof(DeckElement)/sizeof(building_list));i++){
-        if (building_list[i]->isVisible()){
-            std::cout<<"Building "<<"n°"<<i<<"\n";
-        }
-    }
-    std::cout<<"Select a card: ";
-    int select = getIntInput();
-    return building_list[select];
-}
+// const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
+//     const DeckElement** building_list = marketDeck.getFirstBuildings();
+//     for(size_t i = 0; i<(sizeof(DeckElement)/sizeof(building_list));i++){
+//         if (building_list[i]->isVisible()){
+//             std::cout<<"Building "<<"n°"<<i<<"\n";
+//         }
+//     }
+//     std::cout<<"Select a card: ";
+//     int select = getIntInput();
+//     return building_list[select];
+// }
 
-bool Player::buyCard(Game& game, Card& card,MarketDeck& marketDeck){
-    if (city.canAfford(card.getCost(&city))){
-        city.applyEachTurnEffects(game, card);
-        card.applyEffects(game);
-        if (dynamic_cast<Wonder*>(&card)){ //card is a wonder, il faut choisir un building à défausser pour construire le wonder
-            const DeckElement* discarded_card = Player::selectCard(game,marketDeck); //on choisit une des cartes parmi les premières du deck
-            //MarketDeck::iterator it = begin() //tentative avec un itérateur mais ne marche pas :/
-            //marketDeck.getBuilding(marketDeck);
-            if(discarded_card->isVisible()){
-                discarded_card->DeckElement::deleteDeckFromMarket(); //suppression "manuelle" pour le moment, il faut remplacer le premier élément dans le deck
-            }
-        }
+// bool Player::buyCard(Game& game, Card& card,MarketDeck& marketDeck){
+//     if (city.canAfford(card.getCost(&city))){
+//         city.applyEachTurnEffects(game, card);
+//         card.applyEffects(game);
+//         if (dynamic_cast<Wonder*>(&card)){ //card is a wonder, il faut choisir un building à défausser pour construire le wonder
+//             const DeckElement* discarded_card = Player::selectCard(game,marketDeck); //on choisit une des cartes parmi les premières du deck
+//             //MarketDeck::iterator it = begin() //tentative avec un itérateur mais ne marche pas :/
+//             //marketDeck.getBuilding(marketDeck);
+//             if(discarded_card->isVisible()){
+//                 discarded_card->DeckElement::deleteDeckFromMarket(); //suppression "manuelle" pour le moment, il faut remplacer le premier élément dans le deck
+//             }
+//         }
 
 
-        city.addCard(card);
-        return true;
-    }
-    return false;
-}
+//         city.addCard(card);
+//         return true;
+//     }
+//     return false;
+// }
 void Player::addWonderToCity(Wonder* wonder) {
     city.addWonder(wonder);
 }

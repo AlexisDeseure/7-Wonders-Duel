@@ -13,6 +13,8 @@
 #include"AddRessource.h"
 #include "GameParameters.h"
 #include "IncludeEffects.h"
+#include "MarketDeck.h"
+#include "DeckPile.h"
 
 #include <QTextStream>
 #include <QApplication>
@@ -91,6 +93,19 @@ int main(int argc, char* argv[]) {
     // cout<<endl;
     // Effect* currEffect = EffectFactory::instance().create("ChooseProgressTokenDiscarded");
     // currEffect->setParameters({},{});
+    Instanciator::getInstanciator();
+    int nb_b = Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge();
+    int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
+    int nb_w = Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders();
+    DeckPile deck(nb_b,nb_pt,nb_w);
+    MarketDeck market;
+
+    for (int age = 1; age <=3; age++){
+        deck.advanceAge(age);
+        market.advanceAge(age, deck.getBuildings());
+        cout << market;
+        cout <<endl<<endl<<"###################################"<<endl<<endl;
+    }
     Game();
 
     //cout<<Instanciator::getInstanciator()->getGameParameters();

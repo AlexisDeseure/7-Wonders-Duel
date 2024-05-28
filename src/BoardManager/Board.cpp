@@ -8,6 +8,7 @@
 #include "City.h"
 #include "Game.h"
 #include "DeckPile.h"
+#include "Building.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -20,6 +21,10 @@ Board::Board(int victory_position) : constructed_wonders(0), conflict_pawn(*new 
 
 bool Board::deckIsEmpty() const{
     return market_deck.isEmpty();
+}
+
+void Board::advanceAge(int age, std::vector<Building*>& buildings){
+    market_deck.advanceAge(age, buildings);
 }
 
 ProgressToken* Board::getProgressToken(Game& game, Player& player, bool within_discarded, int number_choice) const{

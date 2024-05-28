@@ -68,7 +68,8 @@ HEADERS = \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
    includes/Ui/SevenWonderUI.h \
-   includes/DataFetcher/Instanciator.h
+   includes/DataFetcher/Instanciator.h \
+   includes/DataFetcher/BuildingsLayout.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -79,6 +80,7 @@ SOURCES = \
    src/City/City.cpp \
    src/City/Ressource.cpp \
    src/City/ScientificSymbol.cpp \
+   src/DataFetcher/BuildingsLayout.cpp \
    src/DataFetcher/GameParameters.cpp \
    src/DataFetcher/Instanciator.cpp \
    src/DeckManager/DeckElement.cpp \
