@@ -12,6 +12,7 @@
 #include"DeckElement.h"
 #include"AddRessource.h"
 #include "GameParameters.h"
+#include "IncludeEffects.h"
 
 #include <QTextStream>
 #include <QApplication>
@@ -88,6 +89,8 @@ int main(int argc, char* argv[]) {
     //     cout << ressourceTypeToString(t);
     // }
     // cout<<endl;
+    Effect* currEffect = EffectFactory::instance().create("ChooseProgressTokenDiscarded");
+    currEffect->setParameters({},{});
     Game();
 
     //cout<<Instanciator::getInstanciator()->getGameParameters();

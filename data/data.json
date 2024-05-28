@@ -1445,7 +1445,7 @@
                     "Paper": 1
                 },
                 "effects": {
-                    "ChooseOneProgressTokenWithinThreeDiscarded": null,
+                    "ChooseProgressTokenDiscarded": null,
                     "AddVictoryPoint": [
                         4
                     ]

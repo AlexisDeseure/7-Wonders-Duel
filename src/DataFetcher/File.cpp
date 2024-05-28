@@ -160,6 +160,7 @@ std::vector<File::EffectTransfer> File::getWonderEffects(QString name){
         }
         effets.insert(effets.end(),1,effetunique);
     }
+
     return effets;
 }
 
@@ -183,7 +184,6 @@ std::vector<RessourceCost> File::getCost(QString name){
     QJsonObject PT = getProgressTokenProperties(name);
 
     std::vector<RessourceCost> cost;
-
     if (!building.empty()) {
         QJsonObject LCost = building.value("cost").toObject();
         for (auto& points:LCost.keys()){
@@ -201,6 +201,7 @@ std::vector<RessourceCost> File::getCost(QString name){
     else if (!PT.empty()){
         qDebug() << "Un Progress Token n'a pas d'attribut 'cost'";
     }
+
     return cost;
 }
 
@@ -295,6 +296,7 @@ int File::getDirectCost(QString name){
         QString Bname = points.toObject().value("name").toString();
         if (Bname==name) {
             dc = points.toObject().value("direct_cost").toInt();
+
             return dc;
         }
     }
@@ -302,6 +304,7 @@ int File::getDirectCost(QString name){
         QString Wname = points.toObject().value("name").toString();
         if (Wname==name) {
             dc = points.toObject().value("direct_cost").toInt();
+
             return dc;
         }
     }

@@ -10,7 +10,7 @@
 #include "BuildingCostReducedByX.h"
 #include "BuildOneDiscardedBuilding.h"
 #include "ChangeMarketRule.h"
-#include "ChooseOneProgressTokenWithinThreeDiscarded.h"
+#include "ChooseProgressTokenDiscarded.h"
 #include "DiscardAdversaryCard.h"
 #include "EarnMoneyPerBuildingChaining.h"
 #include "EarnMoneyPerMostAtConstruct.h"

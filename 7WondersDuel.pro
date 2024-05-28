@@ -44,7 +44,7 @@ HEADERS = \
    includes/Effects/List/AdversaryPaysMoneyToBank.h \
    includes/Effects/List/BuildOneDiscardedBuilding.h \
    includes/Effects/List/ChangeMarketRule.h \
-   includes/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.h \
+   includes/Effects/List/ChooseProgressTokenDiscarded.h \
    includes/Effects/List/DiscardAdversaryCard.h \
    includes/Effects/List/EarnMoneyPerBuildingChaining.h \
    includes/Effects/List/EarnMoneyPerMostAtConstruct.h \
@@ -91,7 +91,7 @@ SOURCES = \
    src/Effects/List/BuildOneDiscardedBuilding.cpp \
    src/Effects/List/BuildingCostReducedByX.cpp \
    src/Effects/List/ChangeMarketRule.cpp \
-   src/Effects/List/ChooseOneProgressTokenWithinThreeDiscarded.cpp \
+   src/Effects/List/ChooseProgressTokenDiscarded.cpp \
    src/Effects/List/DiscardAdversaryCard.cpp \
    src/Effects/List/EarnMoneyPerBuildingChaining.cpp \
    src/Effects/List/EarnMoneyPerMostAtConstruct.cpp \
