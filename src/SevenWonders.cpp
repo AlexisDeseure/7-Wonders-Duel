@@ -89,8 +89,8 @@ int main(int argc, char* argv[]) {
     //     cout << ressourceTypeToString(t);
     // }
     // cout<<endl;
-    Effect* currEffect = EffectFactory::instance().create("ChooseProgressTokenDiscarded");
-    currEffect->setParameters({},{});
+    // Effect* currEffect = EffectFactory::instance().create("ChooseProgressTokenDiscarded");
+    // currEffect->setParameters({},{});
     Game();
 
     //cout<<Instanciator::getInstanciator()->getGameParameters();

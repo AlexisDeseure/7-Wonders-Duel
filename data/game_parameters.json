@@ -1,5 +1,6 @@
 {
-    "data_path": "../../../data/data.json",
+    "cards_path": "../../../data/cards.json",
+    "buildings_layout_path": "../../../data/buildings_layout.json",
     "coin_start": 7,
     "base_market_coins": 2,
     "number_age": 3,

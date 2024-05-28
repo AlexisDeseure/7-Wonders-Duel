@@ -20,6 +20,7 @@ private:
     };
 
     std::string cards_path;
+    std::string buildings_layout_path;
     int coins_start;
     int base_market_coins;
     int number_age;

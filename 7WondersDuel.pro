@@ -17,8 +17,9 @@ CONFIG += console
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 DISTFILES += \
-    data/data.json \
-    data/game_parameters.json
+    data/cards.json \
+    data/game_parameters.json \
+    data/buildings_layout.json
 
 
 HEADERS = \
