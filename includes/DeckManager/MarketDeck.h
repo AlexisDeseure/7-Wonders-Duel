@@ -11,6 +11,7 @@ class MarketDeck {
 
     private:
         std::vector<std::vector<DeckElement*>> elements;
+        std::vector<DeckElement*> elements_selectionables;
 
     public:
         MarketDeck() = default;
@@ -21,7 +22,7 @@ class MarketDeck {
         void advanceAge(int age, std::vector<Building*>& buildings);
         bool isEmpty() const { return elements.empty(); };
         void addFirstBuilding(const DeckElement* building) ;
-        std::vector<DeckElement*> getFirstBuildings() const{return elements[0];};
+        std::vector<DeckElement*> getFirstBuildings() const{return elements_selectionables;};
         std::vector<std::vector<DeckElement*>> getAllBuildings() const { return elements; };
 //        class iterator {
 //            private:

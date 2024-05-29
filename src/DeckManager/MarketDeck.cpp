@@ -9,14 +9,20 @@
 
 void MarketDeck::advanceAge(int age, std::vector<Building*>& buildings) {
     elements = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings);
+    elements_selectionables = elements[0];
 }
 
 std::ostream &operator<<(std::ostream& os, const MarketDeck& m){
-    for(auto& lignes : m.getAllBuildings()){
-        for(auto& element : lignes){
+    std::vector<std::vector<DeckElement*>> all =  m.getAllBuildings();
+    for(auto it = all.end()-1; it != all.begin()-1; --it){
+        for(auto& element : *it){
             os << *element << " | ";
         }
         os << std::endl;
+    }
+    os << std::endl << "Elements sélectionables : " << std::endl;
+    for (auto& element : m.getFirstBuildings()){
+        os << *element << " | ";
     }
     return os;
 }
