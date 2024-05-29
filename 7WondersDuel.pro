@@ -5,6 +5,7 @@
 
 QT       += core gui
 #QT = core gui widgets
+QT += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -68,6 +69,10 @@ HEADERS = \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
    includes/Ui/SevenWonderUI.h \
+   includes/UI/cardwidget.h \
+   includes/UI/gamewindow.h \
+   includes/UI/mainwindow.h \
+   includes/UI/playerwidget.h \
    includes/DataFetcher/Instanciator.h \
    includes/DataFetcher/BuildingsLayout.h
 
@@ -115,7 +120,11 @@ SOURCES = \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
-   src/Ui/SevenWonderUI.cpp
+    src/UI/UiTest.cpp \
+   src/Ui/SevenWonderUI.cpp\
+   src/UI/gamewindow.cpp \
+   src/UI/mainwindow.cpp \
+   src/UI/playerwidget.cpp \
 
 INCLUDEPATH = \
     includes/BoardManager \
