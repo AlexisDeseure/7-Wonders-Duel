@@ -42,12 +42,12 @@ void BuildingsLayout::readAndInstanciate(std::string file_path, int number_age){
 
                 if (!element["left_son"].isNull()){
                     de->setLeftSon(age_layout[0][element["left_son"].toInt()-1]);
-                    de->getLeftSon().setRightFather(de);
+                    de->getLeftSon()->setRightFather(de);
                 }
 
                 if (!element["right_son"].isNull()){
                     de->setRightSon(age_layout[0][element["right_son"].toInt()-1]);
-                    de->getRightSon().setLeftFather(de);
+                    de->getRightSon()->setLeftFather(de);
                 }
                 ligne_layout.push_back(de);
             }

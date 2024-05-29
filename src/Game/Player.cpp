@@ -67,9 +67,11 @@ void Player::play(Game& game){
     std::cout << "2 : Discard Building "  ;
     int action;
     std::cin >> action ;
+
     if(action == 1) {
 
         getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
+         game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
         cout<< "Building construit" ;
 
     }
@@ -77,13 +79,14 @@ void Player::play(Game& game){
     if (action == 2) {
 
         getCity().discardBuilding(firstbuildings[choix-1]->getBuilding(),game);
+        game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
+
         cout << "building detruit";
     }
 
     // Choisir une action
     //Construct builing
     //DISCARD BUILDING
-
     //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
 
 }
