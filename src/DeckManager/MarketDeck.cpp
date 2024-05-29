@@ -52,46 +52,36 @@ void MarketDeck::removeBuilding(DeckElement* building) {
 //    first_buildings = new_first_buildings;
 //    nb_first_buildings++;
 //}
+void MarketDeck::addFirstBuilding(DeckElement* building, unsigned int index) {
+    if (index < elements_selectionables.size()) {
+        elements_selectionables.insert(elements_selectionables.begin() + index, building);
+    } else {
+        elements_selectionables.push_back(building);
+    }
+}
 
-//DeckElement& MarketDeck::iterator::getBuilding(MarketDeck& M) {
-//    DeckElement& currentElement = **building;
-//
-//    if (currentElement.getLeftFather() == nullptr && currentElement.getRightFather() == nullptr) { //pas de père, noed origine
-//
-//        // Ajout des fis a la liste des buildings possibles, en les mettant a visible s'ils  existent
-//        currentElement.deleteDeckFromMarket();
-//
-//        //Il faut enlever le building des first_building
-//        //MarketDeck
-//        int index = -1;
-//        for (int i = 0; i < M.nb_first_buildings; i++) {
-//            if (M.first_buildings[i] == *building) {
-//                index = i;
-//                break;
-//            }
-//        }
-//        if (index != -1) {
-//            for (int i = index; i < M.nb_first_buildings - 1; i++) {
-//                M.first_buildings[i] = M.first_buildings[i + 1];
-//            }
-//            M.nb_first_buildings--;
-//        }
-//
-//        if(currentElement.getRightSon()) {
-//
-//            M.addFirstBuilding(currentElement.getRightSon()) ;
-//
-//
-//        }
-//        if(currentElement.getLeftSon()) {
-//
-//            M.addFirstBuilding(currentElement.getLeftSon()) ;
-//
-//        }
-//    }
-//
-//    return currentElement;
-//}
+DeckElement& MarketDeck::getBuilding(unsigned int i) {
+    DeckElement* currentElement = elements_selectionables[i];
+    if (currentElement->getLeftFather() == nullptr && currentElement->getRightFather() == nullptr) { // No father, origin node
+
+        // Add sons to the list of possible buildings, making them visible if they exist
+        currentElement->deleteDeckFromMarket();
+
+        // Remove the building from first_building
+        if (i < elements_selectionables.size()) {
+            elements_selectionables.erase(elements_selectionables.begin() + i);
+        }
+
+        // Place sons at the same index
+        if (currentElement->getRightSon()) {
+            addFirstBuilding(currentElement->getRightSon(), i);
+        }
+        if (currentElement->getLeftSon()) {
+            addFirstBuilding(currentElement->getLeftSon(), i);
+        }
+    }
+    return *currentElement;
+}
 
 
 

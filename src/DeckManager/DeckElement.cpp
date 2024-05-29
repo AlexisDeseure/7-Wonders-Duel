@@ -4,6 +4,7 @@
 
  void DeckElement::deleteDeckFromMarket() const{
 
+
     if (right_son) {
         right_son->left_father = nullptr ;
         if (right_son->right_father)
