@@ -31,8 +31,10 @@ class Building : public Card{
             : Card(name, cost, effects, direct_cost), age(a), chainIn(chainIn), chainOut(chainOut), type(t) {};
         BuildingType getType() const {return type;}
         int getAge() const {return age;};
-        void addChainOutToCity(City* city) const;
-        bool isChainInInCity(const City* city) const override;
+        void addChainOutToCity(City* city) const; // les symboles en possession
+        bool isChainInInCity(const City* city) const override;  // les symboles pour faire le build
+        void print() const ;
+
 };
 
 std::string buildingTypeToString(BuildingType type);
