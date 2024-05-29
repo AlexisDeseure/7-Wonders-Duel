@@ -23,6 +23,6 @@ void BuildOneDiscardedBuilding::effect(Game& game) {
     }
     Building* selected = discardedBuildings[choice-1];
     discardedBuildings.erase(discardedBuildings.begin() + choice-1);
-    game.getTurnPlayer().getCity().addCard(*selected);
+    player.getCity().addCard(*selected);
     selected->applyEffects(game);
 }

@@ -29,6 +29,24 @@ int Player::getScore(Game& game) const{
     return score;
 };
 
+int Player::getPlayerChoice(int max){
+    int choice;
+    bool first_try = true;
+    if (isAI){
+        choice = selectRandomInteger(1, max);
+    }
+    else{
+        do {
+            if (first_try) first_try = false;
+            else std::cout << "Choix invalide, réessayer." << std::endl;
+            std::cout << name << ", entrez un nombre entre 1 et " << max << " :";
+            choice = getIntInput();
+        } while (choice < 1 || choice > max);
+    }
+
+    return choice;
+}
+
 std::string AiLeveltoString(AiLevel level){
     std::string str;
     switch (level) {
@@ -49,9 +67,9 @@ std::string AiLeveltoString(AiLevel level){
 }
 
 void Player::play(Game& game){
-    std::cout << "joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
+    std::cout << "Le joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
 
-    std::cout << "Veuillez selectionner une carte\n";
+    std::cout << "Veuillez selectionner une carte parmis les suivantes : " << std::endl;
     std::vector<DeckElement*> firstbuildings = game.getBoard().getMarketDeck().getFirstBuildings();
     int i = 1 ;
     for (DeckElement* element : firstbuildings) {
@@ -59,25 +77,20 @@ void Player::play(Game& game){
         element->getBuilding()->print();
         i++;
     }
-    int choix;
-    std::cout << "Veuillez choisir un numéro : ";
-    std::cin >> choix;
-    std::cout << "Veuillez choisir une action : ";
-    std::cout << "1 : Construct Building " ;
-    std::cout << "2 : Discard Building "  ;
-    int action;
-    std::cin >> action ;
-    if(action == 1) {
 
+    int choix = getPlayerChoice(static_cast<int>(firstbuildings.size()));
+    std::cout << "Veuillez choisir une action parmis : " << std::endl;
+    std::cout << "\t1 : Construct Building "<< std::endl;
+    std::cout << "\t2 : Discard Building "<< std::endl;
+    int action = getPlayerChoice(2);
+
+    if(action == 1) {
         getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
         cout<< "Building construit" ;
-
     }
-
-    if (action == 2) {
-
+    else {
         getCity().discardBuilding(firstbuildings[choix-1]->getBuilding(),game);
-        cout << "building detruit";
+        cout << "building détruit";
     }
 
     // Choisir une action
@@ -124,47 +137,28 @@ void Player::addWonderToCity(Wonder* wonder) {
 
 }
 
+
+
 void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
     if (!availableWonders.empty()) {
-        // Check if the player is AI
-        if (isAIPlayer()) {
-            // Randomly pick a wonder from the available wonders
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> dis(0, availableWonders.size() - 1);
-            int index = dis(gen);
-
-            // Take the randomly chosen wonder
-            Wonder* chosenWonder = availableWonders[index];
-            availableWonders.erase(availableWonders.begin() + index);
-
-            std::cout << getName() << " (AI) chose " << chosenWonder->getName() << std::endl;
-
-            // Add the chosen wonder to the player's wonders
-            addWonderToCity(chosenWonder);
-        } else {
-            // Human player
-            std::cout << getName() << ", choose a wonder from the following options:" << std::endl;
-            for (size_t i = 0; i < availableWonders.size(); ++i) {
-                std::cout << i + 1 << ". " << availableWonders[i]->getName() << std::endl;
-            }
-
-            // Ask the player to choose a wonder
-            int choice;
-            do {
-                std::cout << "Enter the number corresponding to your choice: ";
-                choice = getIntInput();
-            } while (choice < 1 || static_cast<size_t>(choice) > availableWonders.size());
-
-            // Take the chosen wonder
-            Wonder* chosenWonder = availableWonders[choice - 1];
-            availableWonders.erase(availableWonders.begin() + choice - 1);
-
-            std::cout << getName() << " chose " << chosenWonder->getName() << std::endl;
-
-            // Add the chosen wonder to the player's wonders
-            addWonderToCity(chosenWonder);
-
+        
+        // Human player
+        std::cout << getName() << ", choisir une merveille parmi les suivantes :" << std::endl;
+        for (size_t i = 0; i < availableWonders.size(); ++i) {
+            std::cout <<"\t"<< i + 1 << " : " << availableWonders[i]->getName() << std::endl;
         }
+
+        // Ask the player to choose a wonder
+        int choice = getPlayerChoice(static_cast<int>(availableWonders.size()));
+
+        // Take the chosen wonder
+        Wonder* chosenWonder = availableWonders[choice - 1];
+        availableWonders.erase(availableWonders.begin() + choice - 1);
+
+        std::cout << getName() << " a choisi " << chosenWonder->getName() << std::endl;
+
+        // Add the chosen wonder to the player's wonders
+        addWonderToCity(chosenWonder);
+
     }
 }

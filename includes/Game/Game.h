@@ -46,7 +46,7 @@ class Game{
         void startMenu();
         void displayplayerChoice(int nb_joueur);
         void displayAiLevelChoice();
-        AiLevel aiOptions();
+        AiLevel aiOptions(Player& player);
         int getNumberOfVictoryPointsBlue(Player& player);
         Game();
         ~Game();

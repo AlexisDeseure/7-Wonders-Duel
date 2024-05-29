@@ -45,5 +45,7 @@ class Player{
         void play(Game& game); //permet de permettre au joueur de jouer son tour
         void chooseWonder(std::vector<Wonder*>& availableWonders);
         void addWonderToCity(Wonder* wonder);
+
+        int getPlayerChoice(int max); //permet de récupérer l'entrée utilisateur
 };
 #endif

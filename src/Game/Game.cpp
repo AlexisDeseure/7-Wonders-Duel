@@ -39,53 +39,42 @@ void Game::startMenu(){
     int choice;
 
     for (int i = 0; i < 2; i++) {
-        do{
-            displayplayerChoice(i+1);
-            switch (choice = getIntInput()) {
-                case 1:
-                    players[i]->setAI(false);
-                    std::cout << "Entrez le nom du joueur : "<< std::endl;
-                    players[i]->setName(getStrInput());
-                    break;
-
-                case 2:
-                    players[i]->setAI(true);
-                    level = aiOptions();
-                    players[i]->setAiLevel(level);
-                    players[i]->setName("BOT " + AiLeveltoString(level));
-                    break;
-
-                default:
-                    std::cout << "Choix invalide" << std::endl;
-                    break;
-            }
-        }while(choice < 1 || choice > 2);
-    }
-}
-
-AiLevel Game::aiOptions() {
-    AiLevel level;
-    int choice = 0;
-    do {
-        displayAiLevelChoice();
-        switch (choice = getIntInput()) {
+        displayplayerChoice(i+1);
+        switch (choice = players[i]->getPlayerChoice(2)) {
             case 1:
-                level = AiLevel::EASY;
+                players[i]->setAI(false);
+                std::cout << "Entrez le nom du joueur : "<< std::endl;
+                players[i]->setName(getStrInput());
                 break;
 
             case 2:
-                level = AiLevel::MEDIUM;
+                players[i]->setAI(true);
+                level = aiOptions(*players[i]);
+                players[i]->setAiLevel(level);
+                players[i]->setName("BOT " + AiLeveltoString(level));
                 break;
 
-            case 3:
-                level = AiLevel::HARD;
-                break;
-
-            default:
-                std::cout << "Choix invalide" << std::endl;
-                break;
         }
-    }while (choice < 1 || choice > 3);
+    }
+}
+
+AiLevel Game::aiOptions(Player& player) {
+    AiLevel level;
+    int choice = 0;
+    displayAiLevelChoice();
+    switch (choice = player.getPlayerChoice(3)) {
+        case 1:
+            level = AiLevel::EASY;
+            break;
+
+        case 2:
+            level = AiLevel::MEDIUM;
+            break;
+
+        case 3:
+            level = AiLevel::HARD;
+            break;
+    }
 
     return level;
 }
@@ -102,7 +91,6 @@ void Game::displayplayerChoice(int nb_joueur){
     std::cout << "Choisissez le type du joueur " << nb_joueur << std::endl;
     std::cout << "\t1. Humain" << std::endl;
     std::cout << "\t2. IA" << std::endl;
-    std::cout << "Selection: ";
 }
 
 int getIntInput()
