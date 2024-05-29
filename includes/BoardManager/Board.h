@@ -18,6 +18,7 @@ class Board{
         MarketDeck& market_deck;
 
     public:
+        MarketDeck& getMarketDeck(){return market_deck; }
         Board(int victory_position);
         ~Board()=default;
         bool canConstructWonder() const;

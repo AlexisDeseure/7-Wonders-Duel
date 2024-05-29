@@ -6,7 +6,7 @@
 #include "Game.h"
 #include <list>
 #include <iostream>
-
+#include "Building.h"
 using namespace std;
 
 // en fait cette fonction ne sert pas l'idée c'est de faire tout dans getCost : en fait la fonction doit renvoyer le
@@ -79,5 +79,20 @@ void Card::applyEffects(Game& game) {
 
 void Card::addRessources(RessourceCost R) {
     cost.push_back(R);
+}
+
+void Building::print() const {
+    std::cout << "Building Name: " << getName() << "\n";
+    std::cout << "Age: " << age << "\n";
+    std::cout << "Type: " << building_type_name[static_cast<int>(type)] << "\n";
+    std::cout << "Chain In: ";
+    for (const auto& chain : chainIn) {
+        std::cout << chain << " ";
+    }
+    std::cout << "\nChain Out: ";
+    for (const auto& chain : chainOut) {
+        std::cout << chain << " ";
+    }
+    std::cout << "\n";
 }
 

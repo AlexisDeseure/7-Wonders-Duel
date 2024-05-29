@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "Player.h"
 #include "City.h"
 #include "Game.h"
 #include "Card.h"
@@ -6,7 +6,9 @@
 #include "Building.h"
 #include <utility>
 #include <iostream>
+#include "Board.h"
 
+using namespace std ;
 Player::Player(int treasury) : city(*new City(treasury)), isAI(false), aiLevel(AiLevel::NONE), name("Player"){
     std::cout << "Player created" << std::endl;
 }
@@ -48,7 +50,42 @@ std::string AiLeveltoString(AiLevel level){
 
 void Player::play(Game& game){
     std::cout << "joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
+
+    std::cout << "Veuillez selectionner une carte\n";
+    std::vector<DeckElement*> firstbuildings = game.getBoard().getMarketDeck().getFirstBuildings();
+    int i = 1 ;
+    for (DeckElement* element : firstbuildings) {
+        cout<< i << " ";
+        element->getBuilding()->print();
+        i++;
+    }
+    int choix;
+    std::cout << "Veuillez choisir un numéro : ";
+    std::cin >> choix;
+    std::cout << "Veuillez choisir une action : ";
+    std::cout << "1 : Construct Building " ;
+    std::cout << "2 : Discard Building "  ;
+    int action;
+    std::cin >> action ;
+    if(action == 1) {
+
+        getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
+        cout<< "Building construit" ;
+
+    }
+
+    if (action == 2) {
+
+        getCity().discardBuilding(firstbuildings[choix-1]->getBuilding(),game);
+        cout << "building detruit";
+    }
+
+    // Choisir une action
+    //Construct builing
+    //DISCARD BUILDING
+
     //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
+
 }
 
 // const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
@@ -84,8 +121,8 @@ void Player::play(Game& game){
 // }
 void Player::addWonderToCity(Wonder* wonder) {
     city.addWonder(wonder);
-}
 
+}
 
 void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
     if (!availableWonders.empty()) {

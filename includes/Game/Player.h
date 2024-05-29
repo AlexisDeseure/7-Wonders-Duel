@@ -5,6 +5,7 @@
 #include <utility>
 #include "MarketDeck.h"
 #include "Wonder.h"
+#include "DeckElement.h"
 class City;
 class Game;
 class Card;

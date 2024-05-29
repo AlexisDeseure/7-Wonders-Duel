@@ -5,16 +5,18 @@
 #include "Card.h"
 #include "Instanciator.h"
 #include "EffectFactory.h"
-#include"Ressource.h"
-#include"Building.h"
-#include"Effect.h"
-#include"AddMoney.h"
-#include"DeckElement.h"
-#include"AddRessource.h"
+#include "Ressource.h"
+#include "Building.h"
+#include "Effect.h"
+#include "AddMoney.h"
+#include "DeckElement.h"
+#include "AddRessource.h"
 #include "GameParameters.h"
 #include "IncludeEffects.h"
 #include "MarketDeck.h"
 #include "DeckPile.h"
+#include "SevenWonderUI.h"
+#include "StartMenu.h"
 
 #include <QTextStream>
 #include <QApplication>
@@ -93,42 +95,43 @@ int main(int argc, char* argv[]) {
     // cout<<endl;
     // Effect* currEffect = EffectFactory::instance().create("ChooseProgressTokenDiscarded");
     // currEffect->setParameters({},{});
-    Instanciator::getInstanciator();
-    int nb_b = Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge();
-    int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
-    int nb_w = Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders();
-    DeckPile deck(nb_b,nb_pt,nb_w);
-    MarketDeck market;
+    // Instanciator::getInstanciator();
+    // int nb_b = Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge();
+    // int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
+    // int nb_w = Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders();
+    // DeckPile deck(nb_b,nb_pt,nb_w);
+    // MarketDeck market;
 
-    for (int age = 1; age <=3; age++){
-        deck.advanceAge(age);
-        market.advanceAge(age, deck.getBuildings());
-        cout << market;
-        cout <<endl<<endl<<"###################################"<<endl<<endl;
-    }
-    Game();
+    // for (int age = 1; age <=3; age++){
+    //     deck.advanceAge(age);
+    //     market.advanceAge(age, deck.getBuildings());
+    //     cout << market;
+    //     cout <<endl<<endl<<"###################################"<<endl<<endl;
+    // }
+    // Game();
 
-    //cout<<Instanciator::getInstanciator()->getGameParameters();
-    system("pause");
+    // //cout<<Instanciator::getInstanciator()->getGameParameters();
+    // system("pause");
 
-    return 0;
-    // // Test QT
-    // QMainWindow fenetre;
-    // fenetre.setWindowTitle("Ma Fenêtre Qt");
-    // fenetre.setGeometry(100, 100, 400, 200);
-    // QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-    // bouton->setGeometry(150, 80, 100, 30);
-    // QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-    // Affichage de la fenêtre
-    // fenetre.show();
+    // Test QT
+    QApplication app(argc, argv);
+    QMainWindow fenetre;
+    StartMenu start_menu = StartMenu(&fenetre);
+    fenetre.setWindowTitle("Seven Wonders Duel");
+    start_menu.setGeometry(fenetre.geometry());
+    //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
+    //bouton->setGeometry(150, 80, 100, 30);
+    //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-    // SevenWonderUI ui;
-    // ui.show();
+    //Affichage de la fenêtre
+    fenetre.show();
 
-    // // Exécution de la boucle d'événements
-    // return app.exec();
+    //SevenWonderUI ui;
+    //ui.show();
 
+    // Exécution de la boucle d'événements
+    return app.exec();
 
 
 }
