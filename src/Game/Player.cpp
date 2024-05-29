@@ -67,6 +67,7 @@ void Player::play(Game& game){
     std::cout << "2 : Discard Building "  ;
     int action;
     std::cin >> action ;
+
     if(action == 1) {
 
         getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
