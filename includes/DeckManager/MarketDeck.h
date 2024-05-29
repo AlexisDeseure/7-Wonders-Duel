@@ -24,9 +24,8 @@ class MarketDeck {
         void addFirstBuilding(const DeckElement* building) ;
         std::vector<DeckElement*> getFirstBuildings() const{return elements_selectionables;};
         std::vector<std::vector<DeckElement*>> getAllBuildings() const { return elements; };
-
-
-//        class iterator {
+        DeckElement& getBuilding(unsigned int i );
+        void addFirstBuilding(DeckElement* building, unsigned int index) ;  //        class iterator {
 //            private:
 //                DeckElement** building;
 //                unsigned int nb_buildings;

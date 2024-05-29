@@ -24,10 +24,10 @@ class DeckElement {
 
         void deleteDeckFromMarket() const;
 
-        DeckElement& getRightSon() const { return *right_son; };
-        DeckElement& getLeftSon() const { return *left_son; };
-        DeckElement& getRightFather() const { return *right_father; };
-        DeckElement& getLeftFather() const { return *left_father; };
+        DeckElement* getRightSon() const { return right_son; };
+        DeckElement* getLeftSon() const { return left_son; };
+        DeckElement* getRightFather() const { return right_father; };
+        DeckElement* getLeftFather() const { return left_father; };
         Building* getBuilding() const { return building; };
 
         void setRightSon(DeckElement* new_el) { right_son = new_el; };

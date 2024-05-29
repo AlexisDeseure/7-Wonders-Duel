@@ -86,17 +86,19 @@ void Player::play(Game& game){
 
     if(action == 1) {
         getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
+         game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
         cout<< "Building construit" ;
     }
     else {
         getCity().discardBuilding(firstbuildings[choix-1]->getBuilding(),game);
-        cout << "building détruit";
+        game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
+
+        cout << "building detruit";
     }
 
     // Choisir une action
     //Construct builing
     //DISCARD BUILDING
-
     //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
 
 }
@@ -141,7 +143,7 @@ void Player::addWonderToCity(Wonder* wonder) {
 
 void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
     if (!availableWonders.empty()) {
-        
+
         // Human player
         std::cout << getName() << ", choisir une merveille parmi les suivantes :" << std::endl;
         for (size_t i = 0; i < availableWonders.size(); ++i) {
