@@ -9,6 +9,7 @@ public:
 
     void effect(Game& game) override;
     void eachTurnEffect(Game& game, Card& card) override;
+    void print() override {std::cout << "Rejouer immédiatement pour chaque nouvelle merveille construite" << std::endl;};
 
 };
 

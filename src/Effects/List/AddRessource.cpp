@@ -20,3 +20,7 @@ void AddRessource::inverseEffect(Game &game) {
     game.getOtherPlayer().getCity().getRessource(ressource) += -quantity;
     game.getTurnPlayer().getCity().getRessource(ressource).updatePrice(-quantity);
 }
+
+void AddRessource::print() {
+    std::cout << "Obtenir " << quantity << " " << ressourceTypeToString(ressource) << std::endl;
+}

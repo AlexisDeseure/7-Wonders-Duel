@@ -42,6 +42,7 @@ class Card {
         void applyEffects(Game& game);
         virtual bool isChainInInCity(const City* city) const = 0;
         std::vector<Effect*> getEffects() const {return effects;};
+        virtual void print() const;
 
 };
 

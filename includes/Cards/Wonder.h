@@ -2,6 +2,7 @@
 #define WONDER_H
 
 #include "Card.h"
+#include <iostream>
 
 class Wonder : public Card{
     private:
@@ -14,6 +15,7 @@ class Wonder : public Card{
         bool isBuilt() const {return active;};
         void setBuilt(bool b){active = b;};
         bool isChainInInCity([[maybe_unused]] const City* city) const override {return false;};
+        void print() const override {std::cout << ((active)?"Déjà construite":"Pas encore construite")<<std::endl;};
 };
 // Wonder
 

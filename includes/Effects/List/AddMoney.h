@@ -7,6 +7,7 @@ class AddMoney : public Effect {
     public:
         AddMoney() : quantity(0) {};
 
+        void print() override{ std::cout << "Obtenir " << quantity << " pièces" << std::endl;};
         void effect(Game& game) override;
         void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) override;
 

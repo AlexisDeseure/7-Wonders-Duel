@@ -27,7 +27,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).first.toStdString()}, {cards_file->getChaining(noms.second).second.toStdString()});
+            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).second.toStdString()}, {cards_file->getChaining(noms.second).first.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }

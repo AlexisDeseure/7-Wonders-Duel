@@ -13,3 +13,7 @@ void ChangeMarketRule::effect(Game& game) {
 void ChangeMarketRule::setParameters([[maybe_unused]] std::vector<int> int_parameters, std::vector<std::string> string_parameters) {
     ressource = StringToRessourceType(string_parameters[0]);
 }
+
+void ChangeMarketRule::print() {
+    std::cout << "Changer la règle du marché de la ressource " << ressourceTypeToString(ressource)<<" (prix fixé à 1 pièce)" << std::endl;
+}

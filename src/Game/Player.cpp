@@ -4,6 +4,11 @@
 #include "Card.h"
 #include "Wonder.h"
 #include "Building.h"
+#include "DeckElement.h"
+#include "MarketDeck.h"
+#include "DeckPile.h"
+#include "Building.h"
+
 #include <utility>
 #include <iostream>
 #include "Board.h"
@@ -67,40 +72,63 @@ std::string AiLeveltoString(AiLevel level){
 }
 
 void Player::play(Game& game){
+    MarketDeck& marketDeck = game.getBoard().getMarketDeck();
     std::cout << "Le joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
 
-    std::cout << "Veuillez selectionner une carte parmis les suivantes : " << std::endl;
-    std::vector<DeckElement*> firstbuildings = game.getBoard().getMarketDeck().getFirstBuildings();
-    int i = 1 ;
-    for (DeckElement* element : firstbuildings) {
-        cout<< i << " ";
-        element->getBuilding()->print();
-        i++;
+    std::cout << "Veuillez selectionner une carte parmi les suivantes : " << std::endl;
+    std::vector<DeckElement*>& firstbuildings = marketDeck.getFirstBuildings();
+
+    marketDeck.print();
+
+    int choice = getPlayerChoice(static_cast<int>(firstbuildings.size()));
+    Building* building = firstbuildings[choice-1]->getBuilding();
+
+    std::cout << "Vous avez choisi le bâtiment : " << building->getName() << std::endl;
+
+    bool check_choice = false;
+    while (!check_choice){
+        std::cout << "Veuillez choisir une action parmi : " << std::endl;
+        std::cout << "\t1 : Construire le bâtiment "<< std::endl;
+        std::cout << "\t2 : Echanger le bâtiment contre des pièces "<< std::endl;
+        std::cout << "\t3 : Construire une merveille en utilisant ce bâtiment"<< std::endl;
+        int action = getPlayerChoice(3);
+
+        if(action == 1) {
+            check_choice = city.constructBuilding(building,game);
+            if (check_choice){
+                city.applyEachTurnEffects(game, *building);
+                building->applyEffects(game);
+                marketDeck.getBuilding(choice - 1);
+                cout<< "Bâtiment construit" << endl;
+            }
+
+        }
+        else if(action == 2) {
+            city.discardBuilding(building,game);
+            marketDeck.getBuilding(choice - 1) ;
+            cout << "Bâtiment détruit" << endl;
+            check_choice = true;
+        }
+        else{
+            std::cout << "Choisissez une merveille à construire : " << std::endl;
+            std::vector<Wonder*>& Wonders = getCity().getWonders();
+            int i = 1;
+            for (auto& wonder : Wonders){
+                std::cout << i << " : " << std::endl;
+                wonder->print();
+                i++;
+            }
+            int wonder_choice = getPlayerChoice(static_cast<int>(Wonders.size()));
+            check_choice = city.constructWonder(Wonders[wonder_choice-1],game);
+            if (check_choice){
+                city.applyEachTurnEffects(game, *Wonders[wonder_choice-1]);
+                Wonders[wonder_choice-1]->applyEffects(game);
+                marketDeck.getBuilding(choice - 1);
+                game.getDeck().addDiscardedBuilding(building);
+                cout<< "Merveille construite" << endl;
+            }
+        }
     }
-
-    int choix = getPlayerChoice(static_cast<int>(firstbuildings.size()));
-    std::cout << "Veuillez choisir une action parmis : " << std::endl;
-    std::cout << "\t1 : Construct Building "<< std::endl;
-    std::cout << "\t2 : Discard Building "<< std::endl;
-    int action = getPlayerChoice(2);
-
-    if(action == 1) {
-        getCity().constructBuilding(firstbuildings[choix-1]->getBuilding(),game);
-         game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
-        cout<< "Building construit" ;
-    }
-    else {
-        getCity().discardBuilding(firstbuildings[choix-1]->getBuilding(),game);
-        game.getBoard().getMarketDeck().getBuilding(choix - 1) ;
-
-        cout << "building detruit";
-    }
-
-    // Choisir une action
-    //Construct builing
-    //DISCARD BUILDING
-    //TODO utiliser buyCard pour le choix de construction de wonders et de card + implémenter le discard card
-
 }
 
 // const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer

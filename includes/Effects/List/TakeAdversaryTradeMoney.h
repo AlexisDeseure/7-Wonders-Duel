@@ -9,6 +9,7 @@ public:
 
     void effect(Game& game) override;
     void eachTurnEffect(Game& game, Card& card) override;
+    void print() override {std::cout << "Prendre l'argent investi par l'adversaire pour acheter des ressources" << std::endl;};
 
 };
 

@@ -81,18 +81,26 @@ void Card::addRessources(RessourceCost R) {
     cost.push_back(R);
 }
 
-void Building::print() const {
-    std::cout << "Building Name: " << getName() << "\n";
-    std::cout << "Age: " << age << "\n";
-    std::cout << "Type: " << building_type_name[static_cast<int>(type)] << "\n";
-    std::cout << "Chain In: ";
-    for (const auto& chain : chainIn) {
-        std::cout << chain << " ";
+void Card::print() const {
+    cout << "\tNom : " << name << endl;
+    cout << "\tCoût : ";
+    if (cost.empty() && money_cost == 0) {
+        cout << "Aucun" << endl;
     }
-    std::cout << "\nChain Out: ";
-    for (const auto& chain : chainOut) {
-        std::cout << chain << " ";
+    else{
+        cout << endl;
+        for (auto& ressource : cost) {
+            cout << "\t\t- " << ressource.getAmount() << " " << ressourceTypeToString(ressource.getType()) << endl;
+        }
+        if (money_cost > 0){
+            cout << "\t\t- Pièces : " << money_cost << endl;
+        }
     }
-    std::cout << "\n";
+    if(!effects.empty()) {
+        cout << "\tEffets : " << endl;
+        for (auto &effect: effects) {
+            effect->display();
+        }
+    }
 }
 

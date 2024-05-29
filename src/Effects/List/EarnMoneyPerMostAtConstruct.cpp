@@ -17,3 +17,7 @@ void EarnMoneyPerMostAtConstruct::setParameters(std::vector<int> int_parameters,
     money = int_parameters[0];
     type = StringToBuildingType(string_parameters[0]);
 }
+
+void EarnMoneyPerMostAtConstruct::print() {
+    std::cout << "Gagner " << money << " pièces par " << buildingTypeToString(type) << " construit" << std::endl;
+}

@@ -2,7 +2,7 @@
 #define BUILDING_H
 
 #include "Card.h"
-
+#include <iostream>
 
 enum class BuildingType {
     Yellow,
@@ -33,11 +33,13 @@ class Building : public Card{
         int getAge() const {return age;};
         void addChainOutToCity(City* city) const; // les symboles en possession
         bool isChainInInCity(const City* city) const override;  // les symboles pour faire le build
-        void print() const ;
+        void print() const override;
 
 };
 
 std::string buildingTypeToString(BuildingType type);
 BuildingType StringToBuildingType(std::string nom);
+
+std::ostream &operator<<(std::ostream& os, const Building& b);
 
 #endif

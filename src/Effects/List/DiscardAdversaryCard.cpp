@@ -34,3 +34,7 @@ void DiscardAdversaryCard::setParameters([[maybe_unused]] std::vector<int> int_p
     if (type != BuildingType::Gray && type != BuildingType::Brown)
         throw std::invalid_argument("DiscardAdversaryCard::setParameters: invalid building type : accepted values are 'Gray' or 'Brown'");
 }
+
+void DiscardAdversaryCard::print(){
+    std::cout << "Défausser un bâtiment de type " << buildingTypeToString(type) << " de la ville de l'adversaire" << std::endl;
+}

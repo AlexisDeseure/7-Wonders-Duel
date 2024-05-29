@@ -11,3 +11,8 @@ void Effect::apply(Game& game) {
     /*Application de l'effet*/
     effect(game);
 }
+
+void Effect::display() {
+    std::cout << "\t\t- ";
+    print();
+}

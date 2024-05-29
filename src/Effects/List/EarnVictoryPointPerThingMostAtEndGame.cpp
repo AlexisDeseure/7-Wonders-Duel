@@ -31,3 +31,14 @@ void EarnVictoryPointPerThingMostAtEndGame::setParameters(std::vector<int> int_p
         types.push_back(StringToBuildingType(type));
     }
 }
+
+void EarnVictoryPointPerThingMostAtEndGame::print() {
+    std::cout << "Gagner " << number << " points de victoire par building de couleur ";
+    for(auto& type : types){
+        if (type != types[0]){
+            std::cout << " ou ";
+        }
+        std::cout << buildingTypeToString(type);
+    }
+    std::cout<<" construit(s)" << std::endl;
+}

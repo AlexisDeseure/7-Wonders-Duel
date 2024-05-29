@@ -15,3 +15,7 @@ void AddScientificSymbol::setParameters(std::vector<int> int_parameters, std::ve
     quantity = int_parameters[0];
     symbol = StringToSymboleType(string_parameters[0]);
 }
+
+void AddScientificSymbol::print() {
+    std::cout << "Obtenir " << quantity << " " << symboleTypeToString(symbol) << std::endl;
+}

@@ -24,3 +24,7 @@ void MoveConflictPawnMorePerNew::eachTurnEffect(Game& game, Card& card){
         city.addShields(shields);
     }
 }
+
+void MoveConflictPawnMorePerNew::print() {
+    std::cout << "Gagner " << shields << " boucliers par carte de type " << buildingTypeToString(type) << " construite" << std::endl;
+}

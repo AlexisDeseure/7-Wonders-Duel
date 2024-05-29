@@ -2,19 +2,18 @@
 #include "Building.h"
 
 
- void DeckElement::deleteDeckFromMarket() const{
-
-
-    if (right_son) {
-        right_son->left_father = nullptr ;
-        if (right_son->right_father)
-            right_son->setVisible();
-    }
+void DeckElement::deleteDeckFromMarket() const{
 
     if (left_son) {
-        left_son->right_father = nullptr ;
-        if (left_son->left_father)
+        left_son->setRightFather(nullptr) ;
+        if (!left_son->getLeftFather())
             left_son->setVisible();
+    }
+
+    if (right_son) {
+        right_son->setLeftFather(nullptr) ;
+        if (!right_son->getRightFather())
+            right_son->setVisible();
     }
 
 }

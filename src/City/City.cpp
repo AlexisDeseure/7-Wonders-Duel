@@ -151,7 +151,6 @@ bool City::constructWonder(Wonder* wonder, Game& game) {
     if (game.getBoard().canConstructWonder() && canAfford(cost) && !wonder->isBuilt()) {
         treasury -= cost;
         wonder->setBuilt(true);
-        wonders.push_back(wonder);
         wonder->applyEffects(game);
         game.getBoard().constructWonder();
         std::cout << "Wonder construite: " << wonder->getName() << std::endl;
@@ -169,7 +168,7 @@ void City::discardBuilding(Building* building, Game& game) {
     coinsReceived += getNumberOfBuildingType(BuildingType::Yellow);
 
     treasury += coinsReceived;
-    std::cout << "Card discarded for " << coinsReceived << " coins." << std::endl;
+    std::cout << "Bâtiment jetée pour " << coinsReceived << " pièces." << std::endl;
 
     // placer la carte dans la défausse
     game.getDeck().addDiscardedBuilding(building);

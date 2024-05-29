@@ -31,10 +31,10 @@ void GameParameters::readAndInstanciate(std::string file_path){
     coins_start = obj["coin_start"].toInt();
     base_market_coins = obj["base_market_coins"].toInt();
     number_age = obj["number_age"].toInt();
+    number_scientific_symbol_to_win = obj["number_scientific_symbol_to_win"].toInt();
+
     QJsonObject cards = obj["cards"].toObject();
     wonders_max = cards["wonders_max"].toInt();
-    number_scientific_symbol_to_win = cards["number_scientific_symbol_to_win"].toInt();
-
     number_selected_wonders = cards["number_selected_wonders"].toInt();
     number_building_per_age = cards["number_building_per_age"].toInt();
     number_progress_token_board = cards["number_progress_token_board"].toInt();

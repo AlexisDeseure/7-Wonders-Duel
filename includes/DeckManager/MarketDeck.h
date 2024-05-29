@@ -11,7 +11,7 @@ class MarketDeck {
 
     private:
         std::vector<std::vector<DeckElement*>> elements;
-        std::vector<DeckElement*> elements_selectionables;
+        std::vector<DeckElement*> selectable_elements;
 
     public:
         MarketDeck() = default;
@@ -20,12 +20,15 @@ class MarketDeck {
         MarketDeck& operator=(const MarketDeck& m) = delete;
 
         void advanceAge(int age, std::vector<Building*>& buildings);
-        bool isEmpty() const { return elements.empty(); };
-        void addFirstBuilding(const DeckElement* building) ;
-        std::vector<DeckElement*> getFirstBuildings() const{return elements_selectionables;};
-        std::vector<std::vector<DeckElement*>> getAllBuildings() const { return elements; };
-        DeckElement& getBuilding(unsigned int i );
-        void addFirstBuilding(DeckElement* building, unsigned int index) ;  //        class iterator {
+        bool isEmpty() const { return selectable_elements.empty(); };
+        std::vector<DeckElement*>& getFirstBuildings() {return selectable_elements;};
+        std::vector<std::vector<DeckElement*>>& getAllBuildings() { return elements; };
+        void getBuilding(unsigned int i );
+        void addFirstBuilding(DeckElement* building, unsigned int index) ;
+        void print();
+
+
+        //        class iterator {
 //            private:
 //                DeckElement** building;
 //                unsigned int nb_buildings;

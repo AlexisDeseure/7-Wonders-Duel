@@ -1,5 +1,6 @@
 #include "Building.h"
 #include "City.h"
+#include "Card.h"
 #include <stdexcept>
 
 void Building::addChainOutToCity(City* city) const {
@@ -31,4 +32,30 @@ BuildingType StringToBuildingType(std::string nom){
         }
     }
     throw std::invalid_argument("BuildingType not found");
+}
+void Building::print() const {
+    Card::print();
+    std::cout << "\tCouleur : " << buildingTypeToString(type) << std::endl;
+
+    if (!chainIn.empty() && !chainIn[0].empty()) {
+        std::cout << "\tCoût de chaînage : ";
+        for (const auto& chain : chainIn) {
+            std::cout << chain << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    if(!chainOut.empty() && !chainOut[0].empty()) {
+        std::cout << "\tGain de symbole de chaînage : ";
+        for (const auto& chain : chainOut) {
+            std::cout << chain << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+
+std::ostream &operator<<(std::ostream& os, const Building& b){
+    b.print();
+    return os;
 }

@@ -44,3 +44,6 @@ void BuildingCostReducedByX::eachTurnEffect(Game& game, Card& card){
     }
 }
 
+void BuildingCostReducedByX::print() {
+    std::cout << "Réduction du coût de construction de " << reduction << " ressources pour les bâtiments de type " << buildingTypeToString(type) << std::endl;
+}

@@ -86,42 +86,7 @@ void Game::displayplayerChoice(int nb_joueur){
     std::cout << "\t2. IA" << std::endl;
 }
 
-int getIntInput()
-{
-    /**
-     * @brief Récupère l'entrée de l'utilisateur et empêche les erreurs de saisie
-     *
-     * @return int
-     */
 
-    int choice;
-    std::string input;
-    std::cin.clear();
-    std::getline(std::cin, input);
-
-    if (input.length() > 0 && std::isdigit(input[0])) {
-        choice = std::stoi(input);
-    } else {
-        choice = -1; // Valeur invalide
-    }
-    std::cout << std::endl;
-    return choice;
-}
-
-std::string getStrInput()
-{
-    /**
-     * @brief Récupère l'entrée de l'utilisateur et empêche les erreurs de saisie
-     *
-     * @return std::string
-     */
-
-    std::string input;
-    std::cin.clear();
-    std::getline(std::cin, input);
-    std::cout << std::endl;
-    return input;
-}
 
 
 void Game::startGame(){
@@ -147,13 +112,13 @@ void Game::chooseWhoStartsAge(Player& player){
     int choice = player.getPlayerChoice(3);
     switch (choice) {
         case 1:
-            if (&getTurnPlayer() != players[0]) invertTurnPlayer();
-            std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
+            if (&getTurnPlayer() == players[0]) invertTurnPlayer();
+            std::cout << getOtherPlayer().getName() <<" commencera !" << std::endl;
             break;
 
         case 2:
-            if (&getTurnPlayer() != players[1]) invertTurnPlayer();
-            std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
+            if (&getTurnPlayer() == players[1]) invertTurnPlayer();
+            std::cout << getOtherPlayer().getName() <<" commencera !" << std::endl;
             break;
 
         default:
@@ -176,10 +141,12 @@ bool Game::playAge(){
     else{
         randomPlayerStart();
     }
-//    while (!board.deckIsEmpty()){
-//        playTurn();
-//        if(endTurn()){return true;}
-//    }
+    while (!board->deckIsEmpty()){
+        playTurn();
+
+        if(endTurn())
+            return true;
+    }
     return false;
 }
 
@@ -295,7 +262,7 @@ void Game::endGame(){
         std::cout << "Egalité !" << std::endl;
     }
     else {
-        std::cout << "Bravo à " << winner->getName() << "qui remporte la victoire !" << std::endl;
+        std::cout << "Bravo à " << winner->getName() << " qui remporte la victoire !" << std::endl;
     }
     //TODO : détruire les objets dynamiques, pointeurs, etc
 }
@@ -370,7 +337,7 @@ void Game::randomPlayerStart() {
     if(selectRandomInteger() == 1){
         invertTurnPlayer();
     }
-    std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
+    std::cout << getOtherPlayer().getName() <<" commencera !" << std::endl;
 };
 
 int selectRandomInteger(int min, int max){
@@ -380,4 +347,41 @@ int selectRandomInteger(int min, int max){
     std::uniform_int_distribution<> dis(min, max);
     int number = dis(gen);
     return number;
+}
+
+int getIntInput()
+{
+    /**
+     * @brief Récupère l'entrée de l'utilisateur et empêche les erreurs de saisie
+     *
+     * @return int
+     */
+
+    int choice;
+    std::string input;
+    std::cin.clear();
+    std::getline(std::cin, input);
+
+    if (input.length() > 0 && std::isdigit(input[0])) {
+        choice = std::stoi(input);
+    } else {
+        choice = -1; // Valeur invalide
+    }
+    std::cout << std::endl;
+    return choice;
+}
+
+std::string getStrInput()
+{
+    /**
+     * @brief Récupère l'entrée de l'utilisateur et empêche les erreurs de saisie
+     *
+     * @return std::string
+     */
+
+    std::string input;
+    std::cin.clear();
+    std::getline(std::cin, input);
+    std::cout << std::endl;
+    return input;
 }

@@ -14,6 +14,7 @@ class EarnVictoryPointPerThingMostAtEndGame : public Effect {
         void endEffect(Game& game) override;
         void setParameters(std::vector<int> int_parameters, std::vector<std::string> string_parameters) override;
         int processTotalNumberForCity(City& city);
+        void print() override;
 
     private:
         int number;
