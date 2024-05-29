@@ -79,6 +79,10 @@ std::vector<Ressource*>& City::getRessources() {
     return ressources;
 }
 
+std::vector<Building*>& City::getBuildings(){
+    return buildings;
+}
+
 void City::updateRemainingRessources(std::list<RessourceType>& remaining_ressources) {
     // Chercher si pour chaque ressource à choix possédée, les ressources interchangeable sont dans la liste des
     // ressources manquantes. Si c'est le cas, on supprime de remaining_ressources la ressource interchangeable qui
@@ -264,6 +268,9 @@ void City::addWonder(Wonder* wonder) {
     wonders.push_back(wonder);
 }
 
+void City::removeBuilding(Building* building) {
+    buildings.erase(std::remove(buildings.begin(), buildings.end(), building), buildings.end());
+}
 
 template <typename T>
 void removeFirstElement(std::list<T>& vec, const T& element) {
