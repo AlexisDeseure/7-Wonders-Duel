@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
     SetConsoleCP(CP_UTF8);
 #endif
 
-    Instanciator::getInstanciator();
+    /*Instanciator::getInstanciator();
     int nb_b = Instanciator::getInstanciator()->getGameParameters().getNumberBuildingPerAge();
     int nb_pt = Instanciator::getInstanciator()->getGameParameters().getNumberProgressTokenBoard();
     int nb_w = Instanciator::getInstanciator()->getGameParameters().getNumberSelectedWonders();
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
     // Set AI levels if needed
     player1.setAI(false); // Assuming player1 is not AI
     player2.setAI(true);  // Assuming player2 is AI
-    player2.setAiLevel(AiLevel::EASY); // Set AI level to EASY for player2
+    player2.setAiLevel(AiLevel::EASY);  Set AI level to EASY for player2*/
 
     // std::vector<RessourceCost> ressourceVector;
     // RessourceCost R1(5, RessourceType::Wood);
@@ -165,7 +165,7 @@ int main(int argc, char* argv[]) {
     // return app.exec();
 
     // Execute play method for player1
-    player1.play(game);
+    // player1.play(game);
 
     system("pause");
     return 0;

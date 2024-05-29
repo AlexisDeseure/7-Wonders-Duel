@@ -2,7 +2,7 @@
 #define GAME_H
 
 
-#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
+#define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
 
 #include <string>
 #include <vector>
@@ -48,6 +48,7 @@ class Game{
         void displayAiLevelChoice();
         AiLevel aiOptions(Player& player);
         int getNumberOfVictoryPointsBlue(Player& player);
+        void chooseWhoStartsAge(Player& player);
         Game();
         ~Game();
 };

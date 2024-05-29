@@ -40,15 +40,14 @@ void Game::startMenu(){
 
     for (int i = 0; i < 2; i++) {
         displayplayerChoice(i+1);
-        switch (choice = players[i]->getPlayerChoice(2)) {
+        choice = players[i]->getPlayerChoice(2);
+        switch (choice) {
             case 1:
-                players[i]->setAI(false);
                 std::cout << "Entrez le nom du joueur : "<< std::endl;
                 players[i]->setName(getStrInput());
                 break;
 
             case 2:
-                players[i]->setAI(true);
                 level = aiOptions(*players[i]);
                 players[i]->setAiLevel(level);
                 players[i]->setName("BOT " + AiLeveltoString(level));
@@ -59,24 +58,19 @@ void Game::startMenu(){
 }
 
 AiLevel Game::aiOptions(Player& player) {
-    AiLevel level;
-    int choice = 0;
     displayAiLevelChoice();
-    switch (choice = player.getPlayerChoice(3)) {
+    int choice = player.getPlayerChoice(3);
+    player.setAI(true);
+    switch (choice) {
         case 1:
-            level = AiLevel::EASY;
-            break;
+            return AiLevel::EASY;
 
         case 2:
-            level = AiLevel::MEDIUM;
-            break;
+            return AiLevel::MEDIUM;
 
-        case 3:
-            level = AiLevel::HARD;
-            break;
+        default:
+            return AiLevel::HARD;
     }
-
-    return level;
 }
 
 void Game::displayAiLevelChoice(){
@@ -84,7 +78,6 @@ void Game::displayAiLevelChoice(){
     std::cout << "\t1. Facile" << std::endl;
     std::cout << "\t2. Moyen" << std::endl;
     std::cout << "\t3. Difficile" << std::endl;
-    std::cout << "Selection: ";
 }
 
 void Game::displayplayerChoice(int nb_joueur){
@@ -135,7 +128,7 @@ void Game::startGame(){
 
     std::cout << "Game started" << std::endl;
     startMenu();
-    std::cout << "nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
+    std::cout << "Nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
     selectWondersPhase();
     while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()){
         if (playAge()){
@@ -146,12 +139,43 @@ void Game::startGame(){
 
 }
 
+void Game::chooseWhoStartsAge(Player& player){
+    std::cout << player.getName() << ", choisissez qui commence l'âge : " << std::endl;
+    std::cout << "\t1 : " << players[0]->getName() << std::endl;
+    std::cout << "\t2 : " << players[1]->getName() << std::endl;
+    std::cout << "\t3 : Aléatoire" << std::endl;
+    int choice = player.getPlayerChoice(3);
+    switch (choice) {
+        case 1:
+            if (&getTurnPlayer() != players[0]) invertTurnPlayer();
+            std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
+            break;
+
+        case 2:
+            if (&getTurnPlayer() != players[1]) invertTurnPlayer();
+            std::cout << getTurnPlayer().getName() <<" commencera !" << std::endl;
+            break;
+
+        default:
+            randomPlayerStart();
+            break;
+    }
+}
+
 bool Game::playAge(){
     advanceAge();
     std::cout << "Age " << age << " en cours" << std::endl;
     // vérifier quel est le joueur mené militairement pour lui laisser qui commence l'age entre
     // les deux joueurs (lui, l'adversaire, ou aléatoirement en utilisant la méthode randomPlayerStart)
-    // à faire
+    if (board->getConflictPawn().getPosition()<0){
+        chooseWhoStartsAge(getTurnPlayer());
+    }
+    else if (board->getConflictPawn().getPosition()>0){
+        chooseWhoStartsAge(getOtherPlayer());
+    }
+    else{
+        randomPlayerStart();
+    }
 //    while (!board.deckIsEmpty()){
 //        playTurn();
 //        if(endTurn()){return true;}
