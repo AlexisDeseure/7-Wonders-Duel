@@ -6,7 +6,8 @@
 
 class Game;
 class Card;
-
+class Building;
+class City;
 class Effect{
     public:
         Effect() = default;

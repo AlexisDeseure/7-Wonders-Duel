@@ -7,7 +7,7 @@
 enum class BuildingType {
     Yellow,
     Brown,
-    Grey,
+    Gray,
     Purple,
     Green,
     Red,

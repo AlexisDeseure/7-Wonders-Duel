@@ -15,3 +15,8 @@ void AddRessource::setParameters(std::vector<int> int_parameters, std::vector<st
     quantity = int_parameters[0];
     ressource = StringToRessourceType(string_parameters[0]);
 }
+
+void AddRessource::inverseEffect(Game &game) {
+    game.getOtherPlayer().getCity().getRessource(ressource) += -quantity;
+    game.getTurnPlayer().getCity().getRessource(ressource).updatePrice(-quantity);
+}

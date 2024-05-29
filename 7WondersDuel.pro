@@ -69,7 +69,8 @@ HEADERS = \
    includes/DataFetcher/File.h \
    includes/Ui/SevenWonderUI.h \
    includes/DataFetcher/Instanciator.h \
-   includes/DataFetcher/BuildingsLayout.h
+   includes/DataFetcher/BuildingsLayout.h \
+   includes/Ui/StartMenu.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -115,7 +116,8 @@ SOURCES = \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
-   src/Ui/SevenWonderUI.cpp
+   src/Ui/SevenWonderUI.cpp \
+   src/Ui/StartMenu.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \
