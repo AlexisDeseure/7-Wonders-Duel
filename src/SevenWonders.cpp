@@ -31,6 +31,8 @@
 
 using namespace std;
 
+
+
 int main(int argc, char* argv[]) {
 #ifdef _WIN32
     // Définit la console pour utiliser l'encodage UTF-8 sous Windows
