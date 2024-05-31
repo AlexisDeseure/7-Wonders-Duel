@@ -5,25 +5,17 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
     QSize size = parent->size();
     QRect ALL_size = QRect(parent->pos(),size);
 
-    QRect upper_size = QRect(0,0,size.rwidth(),size.rheight()/8);
-    //LAYOUT GLOBAL
+//LAYOUT GLOBAL
     ALL = new QVBoxLayout(this);
     ALL->setGeometry(ALL_size);
-    //upper_window
+
+//UPPER TAB
 
     upper_window = new QHBoxLayout();
-
-    upper_window->setGeometry(upper_size);
-
-    start_menu = new QLabel("Start Menu");
-    //start_menu->setGeometry(0,0,size.rwidth()/3,size.rheight()/8);
-
-    seven_wonder_duel = new QLabel("7 Wonders Duel");
-    //seven_wonder_duel->setGeometry(size.rwidth()*(2/3),0,size.rwidth()/3,size.rheight()/8);
-
-    QUIT = new QPushButton("Quit");
-    //QUIT->setGeometry(size.rwidth(),0,size.rwidth()/3,size.rheight()/8);
-    QUIT->setDefault(0);
+        start_menu = new QLabel("Start Menu");
+        seven_wonder_duel = new QLabel("7 Wonders Duel");
+        QUIT = new QPushButton("Quit");
+        QUIT->setDefault(0);
 
     upper_window->addWidget(start_menu);
     upper_window->addWidget(seven_wonder_duel);
@@ -31,24 +23,97 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
     ALL->addLayout(upper_window);
 
-    //Bandes pour les joueurs:
-    //START = new QPushButton;
-    //START->setDefault(1);
+//BANDE JOUEURS:
+    player_settings_tab = new QHBoxLayout();
+    //JOUEUR 1
+        player1_settings = new QVBoxLayout();
+
+            PLAYER1 = new QLabel("PLAYER 1");
+            PLAYER1->setFixedHeight(20);
+            QLabel* p1_type = new QLabel("Choose Player 1 Type");
+            p1_type->setFixedHeight(20);
+            upper_band_p1 = new QHBoxLayout();
+
+            QButtonGroup* p1_type_group = new QButtonGroup;
+            p1_HUMAIN = new QCheckBox("HUMAIN");
+            p1_IA = new QCheckBox("IA");
+
+            p1_type_group->addButton(p1_HUMAIN);
+            p1_type_group->addButton(p1_IA);
+
+            upper_band_p1->addWidget(p1_HUMAIN);
+            upper_band_p1->addWidget(p1_IA);
 
 
-    // choose_player1 = new QToolBox;
+            input_p1_name = new QInputDialog;
+            input_p1_name->setOption(QInputDialog::NoButtons);
+            //textValue() pour récupérer l'input.
+            input_p1_name->setLabelText("PLAYER 1 NAME");
 
-    // choose_player2 = new QToolBox;
+            player1_settings->addWidget(PLAYER1);
+            player1_settings->addWidget(p1_type);
+            player1_settings->addLayout(upper_band_p1);
+            player1_settings->addWidget(input_p1_name);
 
-    // choose_IA_difficulty_p1 = new QToolBox;
+    //JOUEUR 2
+        player2_settings = new QVBoxLayout();
 
-    // choose_IA_difficulty_p2 = new QToolBox;
+            QLabel* p2_type = new QLabel("Choose Player 2 Type");
+            PLAYER2 = new QLabel("PLAYER 2");
+            PLAYER2->setFixedHeight(20);
+            p2_type->setFixedHeight(20);
+            upper_band_p2 = new QHBoxLayout();
+            QButtonGroup* p2_type_group = new QButtonGroup;
+            p2_HUMAIN = new QCheckBox("HUMAIN");
+            p2_IA = new QCheckBox("IA");
 
-    // choose_starting_player = new QToolBox;
+            p2_type_group->addButton(p2_HUMAIN);
+            p2_type_group->addButton(p2_IA);
 
-    // choose_DLC = new QToolBox;
+            upper_band_p2->addWidget(p2_HUMAIN);
+            upper_band_p2->addWidget(p2_IA);
 
-    // input_p1_name = new QInputDialog;
+            input_p2_name = new QInputDialog;
+            input_p2_name->setOption(QInputDialog::NoButtons);
+            //textValue() pour récupérer l'input.
+            input_p2_name->setLabelText("PLAYER 2 NAME");
 
-    // input_p2_name = new QInputDialog;
+            player2_settings->addWidget(PLAYER2);
+            player2_settings->addWidget(p2_type);
+            player2_settings->addLayout(upper_band_p2);
+            player2_settings->addWidget(input_p2_name);
+
+        player_settings_tab->addLayout(player1_settings);
+        player_settings_tab->addLayout(player2_settings);
+
+    ALL->addLayout(player_settings_tab);
+
+    //BANDE INFERIEURE
+
+    QButtonGroup* starter_group = new QButtonGroup;
+
+    QLabel* choose_starting_player = new QLabel("Choose Starter");
+
+    lower_games_settings = new QHBoxLayout;
+
+    p1_starter = new QCheckBox("Joueur 1");
+    p2_starter = new QCheckBox("Joueur 2");
+    random_starter = new QCheckBox("Aléatoire");
+
+    starter_group->addButton(p1_starter);
+    starter_group->addButton(p2_starter);
+    starter_group->addButton(random_starter);
+
+    START = new QPushButton("START GAME");
+    START->setDefault(1);
+
+    lower_games_settings->addWidget(p1_starter);
+    lower_games_settings->addWidget(p2_starter);
+    lower_games_settings->addWidget(random_starter);
+    lower_games_settings->addWidget(START);
+
+    ALL->addWidget(choose_starting_player);
+    ALL->addLayout(lower_games_settings);
+
+
 }

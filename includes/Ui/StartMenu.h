@@ -29,22 +29,25 @@ private:
             //Joueur 1
             QVBoxLayout* player1_settings;
                 QHBoxLayout* upper_band_p1;
-                    QToolBox* choose_player1;
-                    QToolBox* choose_IA_difficulty_p1;
+                    QLabel* PLAYER1;
+                    QCheckBox* p1_HUMAIN;
+                    QCheckBox* p1_IA;
                 QInputDialog* input_p1_name;
 
             //Joueur 2
             QVBoxLayout* player2_settings;
                 QHBoxLayout* upper_band_p2;
-                    QToolBox* choose_player2;
-                    QToolBox* choose_IA_difficulty_p2;
+                    QLabel* PLAYER2;
+                    QCheckBox* p2_HUMAIN;
+                    QCheckBox* p2_IA;
                 QInputDialog* input_p2_name;
 
         //Bande du bas
         QHBoxLayout* lower_games_settings;
             QPushButton* START;
-            QToolBox* choose_starting_player;
-            QToolBox* choose_DLC;
+            QCheckBox* p1_starter;
+            QCheckBox* p2_starter;
+            QCheckBox* random_starter;
 
 public:
     StartMenu(QWidget *parent);
