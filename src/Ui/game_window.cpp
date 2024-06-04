@@ -19,10 +19,10 @@ GameWindow::GameWindow(QWidget *parent)
 
     //grid setup: maybe add a static value for grids and cols, so you can do fractions ?
     //4 rows, 5 columns
-    grid->addWidget(player1,0,0,4,1); //row 0-4, column 0
-    grid->addWidget(player2,0,4,4,1); //row 0-4, column 4
-    grid->addWidget(market,0,1,3,3); //row 0-2, column 1-3
-    grid->addWidget(military_deck,3,1,1,3);//row 3, column 1-3
+    grid->addWidget(military_deck,0,0,1,1);//row 0, column 0
+    grid->addWidget(market,0,1,1,3); //row 0, column 1-3
+    grid->addWidget(player1,0,4,1,1); //row 0, column 0
+    //grid->addWidget(player2,0,4,1,1); //row 0, column 4
 
     //Colors for testing at the moment
     player1->setStyleSheet("background-color: blue; color: white;");

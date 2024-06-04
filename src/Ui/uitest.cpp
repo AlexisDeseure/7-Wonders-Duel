@@ -2,7 +2,7 @@
 #include <QWidget>
 #include "game_window.h"
 //#include "mainwindow.h"
-int main(int argc, char *argv[])
+int uitest(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     GameWindow* w = new GameWindow();

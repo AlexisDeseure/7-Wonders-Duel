@@ -73,7 +73,6 @@ HEADERS = \
    includes/DataFetcher/BuildingsLayout.h \
    includes/Ui/StartMenu.h \
    includes/Ui/game_window.h \
-   includes/Ui/mainwindow.h \
    includes/Ui/marketdeckwidget.h \
    includes/Ui/militarydeck.h \
    includes/Ui/playerwidget.h
@@ -126,10 +125,10 @@ SOURCES = \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
    src/Ui/game_window.cpp \
-   src/Ui/main.cpp \
    src/Ui/marketdeckwidget.cpp \
    src/Ui/militarydeck.cpp \
-   src/Ui/playerwidget.cpp
+   src/Ui/playerwidget.cpp \
+   src/Ui/uitest.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \

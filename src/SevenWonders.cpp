@@ -18,6 +18,7 @@
 #include "Player.h"  // Ensure Player.h is included
 #include "SevenWonderUI.h"
 #include "StartMenu.h"
+#include "game_window.h"
 
 
 #include <QTextStream>
@@ -145,24 +146,31 @@ int main(int argc, char* argv[]) {
     // system("pause");
 
 
-    // Test QT
-    QApplication app(argc, argv);
-    QMainWindow fenetre;
-    StartMenu start_menu = StartMenu(&fenetre);
-    fenetre.setWindowTitle("Seven Wonders Duel");
-    fenetre.setFixedSize(400,250);
-    start_menu.setGeometry(fenetre.geometry());
-    //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-    //bouton->setGeometry(150, 80, 100, 30);
-    //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
-    //Affichage de la fenêtre
-    fenetre.show();
+    // Test UI menu
+    // QApplication app(argc, argv);
+    // QMainWindow fenetre;
+    // StartMenu start_menu = StartMenu(&fenetre);
+    // fenetre.setWindowTitle("Seven Wonders Duel");
+    // fenetre.setFixedSize(400,250);
+    // start_menu.setGeometry(fenetre.geometry());
+    // //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
+    // //bouton->setGeometry(150, 80, 100, 30);
+    // //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
+    // //Affichage de la fenêtre
+    //fenetre.show();
+    //return app.exec();
+
+    //TEST UI JEU
+    QApplication a(argc, argv);
+    GameWindow* w = new GameWindow();
+    w->resize(1200,800);
+    w->showFullScreen();
+    return a.exec();
 
     //SevenWonderUI ui;
     //ui.show();
 
     // Exécution de la boucle d'événements
-    return app.exec();
 
     // Execute play method for player1
     // player1.play(game);
