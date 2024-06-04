@@ -8,11 +8,12 @@
 #include <QToolBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "Connector.h"
 
 class StartMenu: public QWidget{
     Q_OBJECT
 private:
-
+    StartMenuConnector* connecteur;
     //Indentations : du père au fils.
 
     //Layout global

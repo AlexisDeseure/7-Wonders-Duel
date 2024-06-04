@@ -148,14 +148,13 @@ int main(int argc, char* argv[]) {
     // Test QT
     QApplication app(argc, argv);
     QMainWindow fenetre;
-    fenetre.setFixedSize(400,225);
     StartMenu start_menu = StartMenu(&fenetre);
     fenetre.setWindowTitle("Seven Wonders Duel");
+    fenetre.setFixedSize(400,250);
     start_menu.setGeometry(fenetre.geometry());
     //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
     //bouton->setGeometry(150, 80, 100, 30);
     //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
-
     //Affichage de la fenêtre
     fenetre.show();
 
