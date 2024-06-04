@@ -95,7 +95,6 @@ void Player::play(Game& game){
 
         if(action == 1) {
             check_choice = city.constructBuilding(building,game);
-            std::cout << "test";
             if (check_choice){
                 city.applyEachTurnEffects(game, *building);
                 building->applyEffects(game);

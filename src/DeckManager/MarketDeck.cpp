@@ -50,19 +50,20 @@ void MarketDeck::addFirstBuilding(DeckElement* building, unsigned int index) {
 void MarketDeck::getBuilding(unsigned int i) {
     DeckElement* currentElement = selectable_elements[i];
     currentElement->deleteDeckFromMarket();
-
     if (i < selectable_elements.size()) { // Suppression de l'élément sélectionné
         selectable_elements.erase(selectable_elements.begin() + i);
     }
-
     // Ajout des fils de l'élément supprimé si ils n'ont pas de père
-    if (currentElement->getLeftSon()->getLeftFather() == nullptr) {
-        addFirstBuilding(currentElement->getLeftSon(), i);
-        i++;
+    if (currentElement->getLeftSon()!=nullptr){
+        if (currentElement->getLeftSon()->getLeftFather() == nullptr) {
+            addFirstBuilding(currentElement->getLeftSon(), i);
+            i++;
+        }
     }
-    if (currentElement->getRightSon()->getRightFather() == nullptr)
-        addFirstBuilding(currentElement->getRightSon(), i);
-
+    if(currentElement->getRightSon()==nullptr){
+        if (currentElement->getRightSon()->getRightFather() == nullptr)
+            addFirstBuilding(currentElement->getRightSon(), i);
+    }
     // supprimer l'élément de l'architecture donc de sa ligne
     for (auto& line : elements) {
         for (auto it = line.begin(); it != line.end(); ++it) {
