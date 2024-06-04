@@ -1,23 +1,21 @@
-// #ifndef PLAYERWIDGET_H
-// #define PLAYERWIDGET_H
+#ifndef PLAYERWIDGET_H
+#define PLAYERWIDGET_H
+#include <QWidget>
+#include <vector>
+class PlayerWidget : public QWidget{
+public:
+    PlayerWidget(QWidget *parent = nullptr);
+    ~PlayerWidget() = default;
 
-// #include <QWidget>
-// #include <QLabel>
-// #include <QMap>
+    //Player& getplayer const(){return player;};
+private:
+    PlayerWidget(const PlayerWidget& widget) = delete;
+    //Player player;
+    //vector<BuildingWidgets*> buildings;
+    //std::vector<ProgressTokenWidgets*> progress_Tokens;
+    //std::vector<RessourceWidgets> ressources;
+    //MoneyWidget *money;
 
-// class PlayerWidget : public QWidget
-// {
-//     Q_OBJECT
+};
 
-// public:
-//     explicit PlayerWidget(QWidget *parent = nullptr);
-
-//     void updateResources(const QMap<QString, int> &resources);
-//     void updateVictoryPoints(int points);
-
-// private:
-//     QLabel *resourcesLabel;
-//     QLabel *victoryPointsLabel;
-// };
-
-// #endif // PLAYERWIDGET_H
+#endif // PLAYERWIDGET_H

@@ -1,0 +1,6 @@
+<RCC>
+<qresource prefix="/images">
+    <file>image/board.png</file>
+    <!-- Add other files as needed -->
+</qresource>
+</RCC>

@@ -71,7 +71,12 @@ HEADERS = \
    includes/Ui/SevenWonderUI.h \
    includes/DataFetcher/Instanciator.h \
    includes/DataFetcher/BuildingsLayout.h \
-   includes/Ui/StartMenu.h
+   includes/Ui/StartMenu.h \
+   game_window.h \
+   mainwindow.h \
+   marketdeckwidget.h \
+   militarydeck.h \
+   playerwidget.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -119,7 +124,13 @@ SOURCES = \
    src/SevenWonders.cpp \
    src/Ui/Connector.cpp \
    src/Ui/SevenWonderUI.cpp \
-   src/Ui/StartMenu.cpp
+   src/Ui/StartMenu.cpp \
+   game_window.cpp \
+   main.cpp \
+   mainwindow.cpp \
+   marketdeckwidget.cpp \
+   militarydeck.cpp \
+   playerwidget.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \
@@ -134,6 +145,8 @@ INCLUDEPATH = \
 
 FORMS += \
     SevenWonderUI.ui
+
+RESOURCES += ressources.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
