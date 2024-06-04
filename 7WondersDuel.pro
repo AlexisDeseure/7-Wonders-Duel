@@ -72,11 +72,11 @@ HEADERS = \
    includes/DataFetcher/Instanciator.h \
    includes/DataFetcher/BuildingsLayout.h \
    includes/Ui/StartMenu.h \
-   game_window.h \
-   mainwindow.h \
-   marketdeckwidget.h \
-   militarydeck.h \
-   playerwidget.h
+   includes/Ui/game_window.h \
+   includes/Ui/mainwindow.h \
+   includes/Ui/marketdeckwidget.h \
+   includes/Ui/militarydeck.h \
+   includes/Ui/playerwidget.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -125,12 +125,11 @@ SOURCES = \
    src/Ui/Connector.cpp \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
-   game_window.cpp \
-   main.cpp \
-   mainwindow.cpp \
-   marketdeckwidget.cpp \
-   militarydeck.cpp \
-   playerwidget.cpp
+   src/Ui/game_window.cpp \
+   src/Ui/main.cpp \
+   src/Ui/marketdeckwidget.cpp \
+   src/Ui/militarydeck.cpp \
+   src/Ui/playerwidget.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \
