@@ -15,7 +15,10 @@ class Wonder : public Card{
         bool isBuilt() const {return active;};
         void setBuilt(bool b){active = b;};
         bool isChainInInCity([[maybe_unused]] const City* city) const override {return false;};
-        void print() const override {std::cout << ((active)?"Déjà construite":"Pas encore construite")<<std::endl;};
+        void print() const override {
+            Card::print();
+            std::cout << ((active)?"Déjà construite":"Pas encore construite")<<std::endl;
+        };
 };
 // Wonder
 
