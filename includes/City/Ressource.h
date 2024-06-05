@@ -49,7 +49,7 @@ class Ressource {
 
         void changeMarketRule(){isMarketRuleHasChanged=true;};
         RessourceType getType() const;
-
+        void print() const;
         std::vector<RessourceType> getTypes() const { return types; };
 
 };

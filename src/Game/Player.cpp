@@ -8,6 +8,7 @@
 #include "MarketDeck.h"
 #include "DeckPile.h"
 #include "Building.h"
+#import "ScientificSymbol.h"
 
 #include <utility>
 #include <iostream>
@@ -73,8 +74,18 @@ std::string AiLeveltoString(AiLevel level){
 
 void Player::play(Game& game){
     MarketDeck& marketDeck = game.getBoard().getMarketDeck();
+    City& city = getCity();
     std::cout << "Le joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
-
+    std::cout << "Récapitulatif des possessions du joueur : "<<std::endl;
+    std::cout << "Money : "<<city.getTreasury()<<std::endl;
+    std::cout << "Ressources : "<<std::endl;
+    for (auto& r : city.getRessources()){
+        r->print();
+    }
+    std::cout << "Jetons de progrès : "<<std::endl;
+    for (auto& r : city.getScientificSymbols()){
+        r->print();
+    }
     std::cout << "Veuillez selectionner une carte parmi les suivantes : " << std::endl;
     std::vector<DeckElement*>& firstbuildings = marketDeck.getFirstBuildings();
 
@@ -97,7 +108,6 @@ void Player::play(Game& game){
             check_choice = city.constructBuilding(building,game);
             if (check_choice){
                 city.applyEachTurnEffects(game, *building);
-                building->applyEffects(game);
                 marketDeck.getBuilding(choice - 1);
                 cout<< "Bâtiment construit" << endl;
             }
@@ -122,7 +132,6 @@ void Player::play(Game& game){
             check_choice = city.constructWonder(Wonders[wonder_choice-1],game);
             if (check_choice){
                 city.applyEachTurnEffects(game, *Wonders[wonder_choice-1]);
-                Wonders[wonder_choice-1]->applyEffects(game);
                 marketDeck.getBuilding(choice - 1);
                 game.getDeck().addDiscardedBuilding(building);
                 cout<< "Merveille construite" << endl;
@@ -171,23 +180,21 @@ void Player::addWonderToCity(Wonder* wonder) {
 
 void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
     if (!availableWonders.empty()) {
+        int choice;
+        if (availableWonders.size()!=1){
+            std::cout << getName() << ", choisir une merveille parmi les suivantes :" << std::endl;
+            for (size_t i = 0; i < availableWonders.size(); ++i) {
+                std::cout <<"\t"<< i + 1 << " : " << availableWonders[i]->getName() << std::endl;
+            }
 
-        // Human player
-        std::cout << getName() << ", choisir une merveille parmi les suivantes :" << std::endl;
-        for (size_t i = 0; i < availableWonders.size(); ++i) {
-            std::cout <<"\t"<< i + 1 << " : " << availableWonders[i]->getName() << std::endl;
+            choice = getPlayerChoice(static_cast<int>(availableWonders.size()));
         }
-
-        // Ask the player to choose a wonder
-        int choice = getPlayerChoice(static_cast<int>(availableWonders.size()));
-
-        // Take the chosen wonder
+        else choice = 1;
         Wonder* chosenWonder = availableWonders[choice - 1];
         availableWonders.erase(availableWonders.begin() + choice - 1);
 
         std::cout << getName() << " a choisi " << chosenWonder->getName() << std::endl;
 
-        // Add the chosen wonder to the player's wonders
         addWonderToCity(chosenWonder);
 
     }

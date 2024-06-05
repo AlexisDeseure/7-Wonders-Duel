@@ -79,6 +79,10 @@ std::vector<Ressource*>& City::getRessources() {
     return ressources;
 }
 
+std::vector<ScientificSymbol*>& City::getScientificSymbols(){
+    return scientific_symbols;
+}
+
 std::vector<Building*>& City::getBuildings(){
     return buildings;
 }

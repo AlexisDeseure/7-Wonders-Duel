@@ -3,6 +3,7 @@
 
 #include <array>
 #include <string>
+#include <iostream>
 
 /*Un symbole n'a qu'un seul type, il faudra faire gaffe à la composition de la classe ScientificSymbol
 avec City, bien faire une liste et que la fonction de rajout vérifie correctement qu'il n'y a pas déjà le type
@@ -39,6 +40,7 @@ class ScientificSymbol{
         };
         SymboleType getType() const { return symbol_type; }; //Renvoie le type de symbole
         int getCount() const { return count; }; //Renvoie le nombre de symboles
+        void print() const;
 };
 
 std::string symboleTypeToString(SymboleType type);

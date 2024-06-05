@@ -16,3 +16,7 @@ SymboleType StringToSymboleType(std::string nom){
     }
     throw std::invalid_argument("SymboleType not found");
 }
+
+void ScientificSymbol::print() const {
+    std::cout<<"- "<<symboleTypeToString(symbol_type)<<" : "<<count<<std::endl;
+};

@@ -39,6 +39,7 @@ class City {
         ~City();
         Ressource& getRessource(RessourceType name);
         ScientificSymbol& getScientificSymbol(SymboleType name);
+        std::vector<ScientificSymbol*>& getScientificSymbols();
         std::vector<Ressource*>& getRessources();
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();

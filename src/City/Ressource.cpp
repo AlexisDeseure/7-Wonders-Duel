@@ -49,6 +49,21 @@ unsigned int Ressource::getPrice() const {
     throw std::invalid_argument("error : ressource à choix ne peut pas avoir de prix");
 }
 
+void Ressource::print() const{
+    std::cout<<"- "<<ressourceTypeToString(types[0]);
+    if(isTradable){
+        std::cout << " - number : "<<amount<<" - market price : ";
+        if (isMarketRuleHasChanged) std::cout <<1;
+        else std::cout << price;
+    }
+    else{
+        for (auto r : std::vector<RessourceType>(types.begin()+1,types.end())){
+            std::cout<<"/"<<ressourceTypeToString(r);
+        }
+        std::cout<<" - Ressource à choix";
+    }
+    std::cout<<std::endl;
+}
 
 
 
