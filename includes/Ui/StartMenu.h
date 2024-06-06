@@ -1,6 +1,7 @@
 #ifndef STARTMENU_H
 #define STARTMENU_H
 
+#include "Connector.h"
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
@@ -8,14 +9,13 @@
 #include <QToolBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include "Connector.h"
+
 
 class StartMenu: public QWidget{
     Q_OBJECT
 private:
-    StartMenuConnector* connecteur;
     //Indentations : du père au fils.
-
+    StartMenuConnector* connecteur;
     //Layout global
     QVBoxLayout* ALL;
 
@@ -53,6 +53,8 @@ private:
 public:
     StartMenu(QWidget *parent);
     ~StartMenu() = default;
+public slots:
+    void startButtonHandler(){connecteur->startButtonHandler();};
 };
 
 #endif // STARTMENU_H

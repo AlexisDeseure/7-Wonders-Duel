@@ -19,7 +19,6 @@
 #include "SevenWonderUI.h"
 #include "StartMenu.h"
 
-
 #include <QTextStream>
 #include <QApplication>
 #include <QMainWindow>

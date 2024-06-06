@@ -1,11 +1,10 @@
 #include "StartMenu.h"
-#include "Connector.h"
 
 StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
     QSize size = parent->size();
     QRect ALL_size = QRect(parent->pos(),size);
-    StartMenuConnector* connecteur = new StartMenuConnector;
+    //StartMenuConnector* connecteur = new StartMenuConnector;
 
 //LAYOUT GLOBAL
     ALL = new QVBoxLayout(this);
@@ -18,7 +17,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
         seven_wonder_duel = new QLabel("7 Wonders Duel");
         QUIT = new QPushButton("Quit");
         QUIT->setDefault(0);
-        //connect(QUIT, &QPushButton::released, this, connecteur->quitButtonHandler());
+        connect(QUIT, SIGNAL(clicked()), qApp, SLOT(quit()));
 
     upper_window->addWidget(start_menu);
     upper_window->addWidget(seven_wonder_duel);
@@ -109,6 +108,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
     START = new QPushButton("START GAME");
     START->setDefault(1);
+    connect(START, SIGNAL(clicked()), this, SLOT(startButtonHandler()));
 
     lower_games_settings->addWidget(p1_starter);
     lower_games_settings->addWidget(p2_starter);

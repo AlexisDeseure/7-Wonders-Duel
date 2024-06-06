@@ -1,8 +1,6 @@
 #include "Connector.h"
+#include <QtCore>
 
-void StartMenuConnector::StartButtonHandler(){
-}
-
-void StartMenuConnector::quitButtonHandler(){
-
+void StartMenuConnector::startButtonHandler(){
+    qDebug() << "START PRESSED";
 }
