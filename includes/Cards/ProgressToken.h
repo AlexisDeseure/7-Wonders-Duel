@@ -16,7 +16,7 @@ class ProgressToken : public Card{
         bool onTheBoard() const{ return on_the_board;};
         void status_switch(){if (!on_the_board) on_the_board = true;};
         bool isChainInInCity([[maybe_unused]] const City* city) const override {return false;};
-        void print() const override {};
+        void print() const override {Card::print();};
 };
 
 

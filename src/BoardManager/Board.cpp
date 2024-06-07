@@ -34,14 +34,15 @@ ProgressToken* Board::getProgressToken(Game& game, Player& player, bool within_d
         progress_tokens_list = deck.getOtherProgressTokens();
         std::shuffle(progress_tokens_list.begin(), progress_tokens_list.end(), std::mt19937(std::random_device()()));
     }
+    int nb_choice = (within_discarded)?(std::min(number_choice, static_cast<int>(progress_tokens_list.size()))):progress_tokens_list.size();
     if (!progress_tokens_list.empty()){
         std::cout << player.getName() <<", choisissez un jeton de progrès parmi la liste :" << std::endl;
-
         // Affichage des jetons de progrès (tous ceux du plateau ou number_choice parmi ceux défaussés)
-        for (int i = 1; i <= (within_discarded)?progress_tokens_list.size():number_choice; i++){
-            std::cout << i << " : " << progress_tokens_list[i]->getName() << std::endl;
+        for (int i = 1; i <= nb_choice; i++){
+            std::cout << i << " : " << std::endl;
+            progress_tokens_list[i-1]->print();
         }
-        int choice = player.getPlayerChoice(static_cast<int>((within_discarded)?progress_tokens_list.size():number_choice));
+        int choice = player.getPlayerChoice(static_cast<int>(nb_choice));
         ProgressToken* selected = progress_tokens_list[choice-1];
         progress_tokens_list.erase(progress_tokens_list.begin() + choice-1);
 
