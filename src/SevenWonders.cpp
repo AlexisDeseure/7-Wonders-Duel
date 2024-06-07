@@ -1,32 +1,26 @@
-#include "Game.h"
-#include "Building.h"
-#include "ProgressToken.h"
-#include "City.h"
-#include "Card.h"
-#include "Instanciator.h"
-#include "EffectFactory.h"
-#include "Ressource.h"
-#include "Building.h"
-#include "Effect.h"
-#include "AddMoney.h"
-#include "DeckElement.h"
-#include "AddRessource.h"
-#include "GameParameters.h"
-#include "IncludeEffects.h"
-#include "MarketDeck.h"
-#include "DeckPile.h"
-#include "Player.h"  // Ensure Player.h is included
-#include "SevenWonderUI.h"
+// #include "Game.h"
+// #include "Building.h"
+// #include "ProgressToken.h"
+// #include "City.h"
+// #include "Card.h"
+// #include "Instanciator.h"
+// #include "EffectFactory.h"
+// #include "Ressource.h"
+// #include "Building.h"
+// #include "Effect.h"
+// #include "AddMoney.h"
+// #include "DeckElement.h"
+// #include "AddRessource.h"
+// #include "GameParameters.h"
+// #include "IncludeEffects.h"
+// #include "MarketDeck.h"
+// #include "DeckPile.h"
+// #include "Player.h"  // Ensure Player.h is included
+// #include "SevenWonderUI.h"
 #include "StartMenu.h"
-
-#include <QTextStream>
-#include <QApplication>
+#include <QtCore>
 #include <QMainWindow>
-#include <QPushButton>
-#include <QTextStream>
-#include <QString>
-#include <iostream>
-#include <vector>
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -147,14 +141,10 @@ int main(int argc, char* argv[]) {
     // Test QT
     QApplication app(argc, argv);
     QMainWindow fenetre;
-    StartMenu start_menu = StartMenu(&fenetre);
+    StartMenu start_menu(&fenetre);
     fenetre.setWindowTitle("Seven Wonders Duel");
     fenetre.setFixedSize(400,250);
     start_menu.setGeometry(fenetre.geometry());
-    //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-    //bouton->setGeometry(150, 80, 100, 30);
-    //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
-    //Affichage de la fenêtre
     fenetre.show();
 
     //SevenWonderUI ui;

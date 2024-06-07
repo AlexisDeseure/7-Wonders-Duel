@@ -4,7 +4,6 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
     QSize size = parent->size();
     QRect ALL_size = QRect(parent->pos(),size);
-    //StartMenuConnector* connecteur = new StartMenuConnector;
 
 //LAYOUT GLOBAL
     ALL = new QVBoxLayout(this);
@@ -106,10 +105,13 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
     starter_group->addButton(p2_starter);
     starter_group->addButton(random_starter);
 
+
+
+
     START = new QPushButton("START GAME");
     START->setDefault(1);
-    connect(START, SIGNAL(clicked()), this, SLOT(startButtonHandler()));
-
+    connect(START, SIGNAL(clicked()), this, SLOT(startButton()));
+    connect(START, SIGNAL(clicked()), this, SLOT(close()));
     lower_games_settings->addWidget(p1_starter);
     lower_games_settings->addWidget(p2_starter);
     lower_games_settings->addWidget(random_starter);
@@ -117,4 +119,28 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
     ALL->addWidget(choose_starting_player);
     ALL->addLayout(lower_games_settings);
+}
+
+void StartMenu::startButton(){
+    setGameParameters();
+    displayGameParameters();
+}
+
+void StartMenu::setGameParameters(){
+    setp1typeIA(p1_IA->isChecked());
+    setp1TypeHuman(p1_HUMAIN->isChecked());
+    setp2TypeIA(p2_IA->isChecked());
+    setp2TypeHuman(p2_HUMAIN->isChecked());
+    setp1name(input_p1_name->textValue());
+    setp2name(input_p2_name->textValue());
+    setp1starts(p1_starter->isChecked());
+    setp2starts(p2_starter->isChecked());
+    setrandomstart(random_starter->isChecked());
+    qDebug() << "Starting Parameters set!";
+}
+
+void StartMenu::displayGameParameters(){
+    qDebug() << "P1IA: " <<getp1typeIA() << " | P1H: "<< getp1typeHuman() << " | P2IA: "<< getp2typeIA() << " | P2H:"
+              << getp2typeHuman() << " | P1Name: " <<getp1name().toStdString() <<" | P2Name: " << getp2name().toStdString()
+              <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< setrandomstart();
 }
