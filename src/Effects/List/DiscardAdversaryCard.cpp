@@ -17,16 +17,22 @@ void DiscardAdversaryCard::effect(Game& game){
             buildings_to_discard.push_back(building);
         }
     }
-    std::cout <<  "Choisir un bâtiment à supprimer de la ville de l'adversaire :" << std::endl;
-    for (size_t i = 0; i < buildings_to_discard.size(); i++){
-        std::cout << "\t" <<i+1 << " : " << buildings_to_discard[i]->getName() << std::endl;
+    if (!buildings_to_discard.empty()){
+        std::cout <<  "Choisir un bâtiment à supprimer de la ville de l'adversaire :" << std::endl;
+        for (size_t i = 0; i < buildings_to_discard.size(); i++){
+            std::cout << "\t" <<i+1 << " : " << buildings_to_discard[i]->getName() << std::endl;
+        }
+        int choice = game.getTurnPlayer().getPlayerChoice(buildings_to_discard.size());
+        std::cout << "Vous avez choisi " << buildings_to_discard[choice-1]->getName() << std::endl;
+        city.removeBuilding(buildings_to_discard[choice-1]);
+        for (auto& effect : buildings_to_discard[choice-1]->getEffects()){
+            effect->inverseEffect(game);
+        }
+        game.getDeck().addDiscardedBuilding(buildings_to_discard[choice-1]);
     }
-    int choice = game.getTurnPlayer().getPlayerChoice(buildings_to_discard.size());
-    city.removeBuilding(buildings_to_discard[choice-1]);
-    for (auto& effect : buildings_to_discard[choice-1]->getEffects()){
-        effect->inverseEffect(game);
+    else{
+        std::cout << "Malheureusement, "<<game.getOtherPlayer().getName()<<" ne dispose d'aucun bâtiment de type "<<buildingTypeToString(type)<<std::endl;
     }
-    game.getDeck().addDiscardedBuilding(buildings_to_discard[choice-1]);
 }
 
 void DiscardAdversaryCard::setParameters([[maybe_unused]] std::vector<int> int_parameters, std::vector<std::string> string_parameters){

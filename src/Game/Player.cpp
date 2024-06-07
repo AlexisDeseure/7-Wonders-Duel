@@ -38,6 +38,9 @@ int Player::getScore(Game& game) const{
 int Player::getPlayerChoice(int max){
     int choice;
     bool first_try = true;
+    if (max <1){
+        return 0;
+    }
     if (isAI){
         choice = selectRandomInteger(1, max);
     }
@@ -128,6 +131,7 @@ void Player::play(Game& game){
                 i++;
             }
             int wonder_choice = getPlayerChoice(static_cast<int>(Wonders.size()));
+            std::cout << "Vous avez sélectionné : "<<Wonders[wonder_choice-1]->getName()<<std::endl;
             check_choice = city.constructWonder(Wonders[wonder_choice-1],game);
             if (check_choice){
                 city.applyEachTurnEffects(game, *Wonders[wonder_choice-1]);

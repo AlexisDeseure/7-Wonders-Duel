@@ -192,6 +192,7 @@ void Game::selectWondersPhase() {
     // permet de sélectionner les merveilles pour chaque joueur parmis 8 merveilles sélectionnées aléatoirement
     std::cout <<std::endl << "*********************** Sélection des Merveilles ***********************" <<std::endl<<std::endl;
     randomPlayerStart();
+    invertTurnPlayer(); //nécessaire car c'est ce qui est fait ensuite automatiquement à chaque tour de jeu classique
     std::vector<Wonder*> allWonders = deck->getAllWonders();
     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
 
@@ -205,9 +206,9 @@ void Game::selectWondersPhase() {
             allWonders.pop_back();
         }
 
-        std::cout << "Merveilles disponibles : ";
+        std::cout << "Merveilles disponibles : "<<std::endl;
         for (const auto& wonder : wondersToSelect) {
-            std::cout << wonder->getName() << " ";
+            std::cout <<"\t- "<< wonder->getName() << std::endl;
         }
         std::cout << std::endl;
 
