@@ -60,7 +60,7 @@ void MarketDeck::getBuilding(unsigned int i) {
             i++;
         }
     }
-    if(currentElement->getRightSon()==nullptr){
+    if(currentElement->getRightSon()!=nullptr){
         if (currentElement->getRightSon()->getRightFather() == nullptr)
             addFirstBuilding(currentElement->getRightSon(), i);
     }

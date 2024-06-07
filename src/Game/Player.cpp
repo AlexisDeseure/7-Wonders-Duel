@@ -111,7 +111,6 @@ void Player::play(Game& game){
                 marketDeck.getBuilding(choice - 1);
                 cout<< "Bâtiment construit" << endl;
             }
-
         }
         else if(action == 2) {
             city.discardBuilding(building,game);
