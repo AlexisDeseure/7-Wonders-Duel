@@ -17,6 +17,7 @@ class Building;
 class Game{
     private:
         int age;
+        unsigned int turn;
         Board* board;
         Player* players[2];
         bool isReplaying;

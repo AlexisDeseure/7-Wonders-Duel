@@ -12,7 +12,7 @@
 #include <iostream>
 #include <algorithm>
 
-Game::Game() : age(0), isReplaying(false), winner(nullptr) {
+Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     Instanciator* inst = Instanciator::getInstanciator();
     int length = inst->getGameParameters().getLengthConflictPawnBoard();
     board = new Board(length);
@@ -22,7 +22,6 @@ Game::Game() : age(0), isReplaying(false), winner(nullptr) {
     deck = new DeckPile(nb_b,nb_pt,nb_w);
     players[0] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
     players[1] = new Player(Instanciator::getInstanciator()->getGameParameters().getCoinsStart());
-    std::cout << "Game created" << std::endl;
     startGame();
 }
 
@@ -31,12 +30,24 @@ Game::~Game() {
     delete players[0];
     delete players[1];
     delete deck;
-    std::cout << "Game finished" << std::endl;
+    std::cout << R"(
+  __  __               _       _ _                  _          _                    _
+ |  \/  |             (_)     | ( )                (_)        (_)                  | |
+ | \  / | ___ _ __ ___ _    __| |/  __ ___   _____  _ _ __     _  ___  _   _  ___  | |
+ | |\/| |/ _ \ '__/ __| |  / _` |  / _` \ \ / / _ \| | '__|   | |/ _ \| | | |/ _ \ | |
+ | |  | |  __/ | | (__| | | (_| | | (_| |\ V / (_) | | |      | | (_) | |_| |  __/ |_|
+ |_|  |_|\___|_|  \___|_|  \__,_|  \__,_| \_/ \___/|_|_|      | |\___/ \__,_|\___| (_)
+                                                             _/ |
+                                                            |__/
+)" << std::endl;
 }
 
 void Game::startMenu(){
     AiLevel level;
     int choice;
+
+    std::cout <<std::endl << "*********************** Choix des joueurs *********************** " << std::endl<<std::endl;
+
 
     for (int i = 0; i < 2; i++) {
         displayplayerChoice(i+1);
@@ -48,12 +59,19 @@ void Game::startMenu(){
                 break;
 
             case 2:
-                level = aiOptions(*players[i]);
-                players[i]->setAiLevel(level);
-                players[i]->setName("BOT " + AiLeveltoString(level));
+                // level = aiOptions(*players[i]);
+                // players[i]->setAiLevel(level);
+                players[i]->setAI(true);
+                players[i]->setAiLevel(AiLevel::EASY);
+                players[i]->setName("BOT");// + AiLeveltoString(level));
                 break;
 
         }
+    }
+
+    if (players[0]->getName() == players[1]->getName()){
+        players[0]->setName(players[0]->getName() + " (1)");
+        players[1]->setName(players[1]->getName() + " (2)");
     }
 }
 
@@ -91,7 +109,15 @@ void Game::displayplayerChoice(int nb_joueur){
 
 void Game::startGame(){
 
-    std::cout << "Game started" << std::endl;
+    std::cout << R"(
+_________   __      __                  .___                    ________                .__
+\______  \ /  \    /  \____   ____    __| _/___________  ______ \______ \  __ __   ____ |  |
+    /    / \   \/\/   /  _ \ /    \  / __ |/ __ \_  __ \/  ___/  |    |  \|  |  \_/ __ \|  |
+   /    /   \        (  <_> )   |  \/ /_/ \  ___/|  | \/\___ \   |    `   \  |  /\  ___/|  |__
+  /____/     \__/\  / \____/|___|  /\____ |\___  >__|  /____  > /_______  /____/  \___  >____/
+                  \/             \/      \/    \/           \/          \/            \/
+    )" << std::endl;
+
     startMenu();
     std::cout << "Nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
     selectWondersPhase();
@@ -155,14 +181,16 @@ void Game::replay(){
 }
 
 void Game::playTurn(){
+    turn++;
     if (!isReplaying) invertTurnPlayer();
     isReplaying=false;
+    std::cout <<std::endl << "*********************** Tour numéro  "<<turn<<" - Joueur "<< getTurnPlayer().getName() <<" *********************** " << std::endl<<std::endl;
     getTurnPlayer().play(*this);
 }
 
 void Game::selectWondersPhase() {
     // permet de sélectionner les merveilles pour chaque joueur parmis 8 merveilles sélectionnées aléatoirement
-
+    std::cout <<std::endl << "*********************** Sélection des Merveilles ***********************" <<std::endl<<std::endl;
     randomPlayerStart();
     std::vector<Wonder*> allWonders = deck->getAllWonders();
     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
@@ -190,8 +218,8 @@ void Game::selectWondersPhase() {
         firstPlayer->chooseWonder(wondersToSelect);
     };
 
-    selectionPhase(players[0], players[1]);
-    selectionPhase(players[1], players[0]);
+    selectionPhase(&getTurnPlayer(), &getOtherPlayer());
+    selectionPhase(&getOtherPlayer(), &getTurnPlayer());
 
     std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
 }
@@ -246,14 +274,17 @@ bool Game::checkScientificVictory() const {
 
 void Game::advanceAge(){
     //avancer à l'âge suivant
-    std::cout << "Age avance" << std::endl;
     age++;
+    std::cout <<std::endl << "*********************** Age "<<age<<" *********************** " << std::endl<<std::endl;
+
     deck->advanceAge(age);
     board->advanceAge(age, deck->getBuildings());
 }
 
 void Game::endGame(){
     //fin du jeu, calcul du gagnant
+    std::cout <<std::endl << "*********************** Fin du jeu *********************** " << std::endl<<std::endl;
+
     if (winner == nullptr){
         calculateWinner();
     }

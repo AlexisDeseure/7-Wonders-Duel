@@ -16,7 +16,7 @@ void GameParameters::readAndInstanciate(std::string file_path){
     QFile file(QString::fromStdString(file_path));
     if(!file.open(QIODevice::ReadOnly)){
         qDebug() << "Error opening file";
-        return;
+        throw JsonReadException("Impossible de lire le fichier de paramètres, vérifier le chemin");
     }
 
     QByteArray data = file.readAll();

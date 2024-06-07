@@ -16,12 +16,12 @@
 
 using namespace std ;
 Player::Player(int treasury) : city(*new City(treasury)), isAI(false), aiLevel(AiLevel::NONE), name("Player"){
-    std::cout << "Player created" << std::endl;
+    // std::cout << "Player created" << std::endl;
 }
 
 Player::~Player(){
     delete &city;
-    std::cout << "Player destroyed" << std::endl;
+    // std::cout << "Player destroyed" << std::endl;
 }
 
 int Player::getShields() const{
