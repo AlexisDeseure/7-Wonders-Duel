@@ -6,13 +6,25 @@
 
 #include <string>
 #include <vector>
-
+#include <exception>
 
 class DeckPile;
 class Board;
 class Player;
 enum class AiLevel;
 class Building;
+
+class GameException : public std::exception {
+public:
+    GameException(const std::string& message) : msg(message) {}
+
+    virtual const char* what() const noexcept override {
+        return msg.c_str();
+    }
+
+private:
+    std::string msg;
+};
 
 class Game{
     private:
