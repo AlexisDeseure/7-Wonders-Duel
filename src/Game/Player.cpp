@@ -8,7 +8,7 @@
 #include "MarketDeck.h"
 #include "DeckPile.h"
 #include "Building.h"
-#import "ScientificSymbol.h"
+#include "ScientificSymbol.h"
 
 #include <utility>
 #include <iostream>
