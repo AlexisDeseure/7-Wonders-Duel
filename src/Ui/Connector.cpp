@@ -1,8 +1,9 @@
 #include "Connector.h"
 
-void StartMenuConnector::StartButtonHandler(){
+Connector::Connector(Game* game):game(game) {
+    game->attach(this);
 }
 
-void StartMenuConnector::quitButtonHandler(){
-
+void Connector::update(Subject* subject) {
+    // Update UI 
 }

@@ -1,11 +1,12 @@
 #ifndef CONNECTOR_H
 #define CONNECTOR_H
+#include <QtCore>
+#include "Game.h"
+#include "Observer.h"
 
-
-class StartMenuConnector{
+class Connector{
 public:
-    void StartButtonHandler();
-    void quitButtonHandler();
+    Connector(Game* game);
 };
 
 #endif // CONNECTOR_H

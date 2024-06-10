@@ -75,7 +75,9 @@ HEADERS = \
    includes/Ui/game_window.h \
    includes/Ui/marketdeckwidget.h \
    includes/Ui/militarydeck.h \
-   includes/Ui/playerwidget.h
+   includes/Ui/playerwidget.h \
+   includes/Ui/Subject.h \
+   includes/Ui/Observer.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
