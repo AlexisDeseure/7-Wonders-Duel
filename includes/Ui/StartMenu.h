@@ -21,7 +21,6 @@ private:
     bool p2Starts;
     bool randomStarter;
     //Indentations : du père au fils.
-    StartMenuConnector* connecteur;
     //Layout global
     QVBoxLayout* ALL;
 

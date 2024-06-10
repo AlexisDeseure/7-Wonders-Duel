@@ -4,14 +4,6 @@
 #include "Game.h"
 #include "Observer.h"
 
-class StartMenuConnector: public QObject{
-Q_OBJECT
-public slots:
-    void startButtonHandler();
-public:
-    StartMenuConnector()=default;
-};
-
 class Connector{
 public:
     Connector(Game* game);
