@@ -128,7 +128,6 @@ SOURCES = \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
    src/Ui/game_window.cpp \
-   src/Ui/main.cpp \
    src/Ui/marketdeckwidget.cpp \
    src/Ui/militarydeck.cpp \
    src/Ui/playerwidget.cpp

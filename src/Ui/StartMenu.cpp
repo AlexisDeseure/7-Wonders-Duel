@@ -124,6 +124,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 void StartMenu::startButton(){
     setGameParameters();
     displayGameParameters();
+    emit StartPressed();
 }
 
 void StartMenu::setGameParameters(){
