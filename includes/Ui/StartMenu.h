@@ -1,7 +1,6 @@
 #ifndef STARTMENU_H
 #define STARTMENU_H
 
-#include "Connector.h"
 #include <QtWidgets>
 #include <QVBoxLayout>
 #include <QHBoxLayout>

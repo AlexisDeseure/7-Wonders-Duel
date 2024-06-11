@@ -2,8 +2,10 @@
 #define GAME_H
 
 
+#include "qtmetamacros.h"
 #define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
 
+#include "instanciator.h"
 #include <string>
 #include <vector>
 #include <exception>

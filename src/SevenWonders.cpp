@@ -139,31 +139,31 @@ int main(int argc, char* argv[]) {
     //     cout << market;
     //     cout <<endl<<endl<<"###################################"<<endl<<endl;
     // }
-    Game();
+    //Game();
 
     // //cout<<Instanciator::getInstanciator()->getGameParameters();
     // system("pause");
 
 
     // Test QT
-    // QApplication app(argc, argv);
-    // QMainWindow fenetre;
-    // fenetre.setFixedSize(400,225);
-    // StartMenu start_menu = StartMenu(&fenetre);
-    // fenetre.setWindowTitle("Seven Wonders Duel");
-    // start_menu.setGeometry(fenetre.geometry());
-    // //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-    // //bouton->setGeometry(150, 80, 100, 30);
-    // //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
+    QApplication app(argc, argv);
+    QMainWindow fenetre;
+    fenetre.setFixedSize(400,225);
+    StartMenu start_menu = StartMenu(&fenetre);
+    fenetre.setWindowTitle("Seven Wonders Duel");
+    start_menu.setGeometry(fenetre.geometry());
+    //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
+    //bouton->setGeometry(150, 80, 100, 30);
+    //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-    // //Affichage de la fenêtre
-    // fenetre.show();
+    //Affichage de la fenêtre
+    fenetre.show();
 
-    //SevenWonderUI ui;
-    //ui.show();
+    SevenWonderUI ui;
+    ui.show();
 
-    // Exécution de la boucle d'événements
-    // return app.exec();
+    //Exécution de la boucle d'événements
+    return app.exec();
 
     // Execute play method for player1
     // player1.play(game);
