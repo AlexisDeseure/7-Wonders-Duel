@@ -2,6 +2,7 @@
 #include "RessourceCost.h"
 #include "Game.h"
 #include "Ressource.h"
+#include"GameParameters.h"
 
 File::File(std::string name) : file_path(QString::fromStdString(name)), file(readFile()) {};
 
@@ -15,14 +16,16 @@ QJsonDocument File::readFile() {
         QJsonDocument Document = QJsonDocument::fromJson(Bytes, &JsonError);
         if (JsonError.error!=QJsonParseError::NoError) {
             qDebug() << "Error in Json Data: " << JsonError.errorString();
+            throw JsonReadException("Error in Json Data: " + JsonError.errorString());
         }
         else {
-            qDebug() << "No error in Json";
+            // qDebug() << "No error in Json";
             return Document;
         }
     }
     qDebug() << "Lecture Impossible";
-    return QJsonDocument();
+    throw JsonReadException("Lecture Impossible");
+    // return QJsonDocument();
 }
 
 QJsonArray File::listeBuildings() {
@@ -34,7 +37,8 @@ QJsonArray File::listeBuildings() {
             return LBuildings;
         }
     qDebug() << "Erreur de lecture";
-    return QJsonArray();
+    throw JsonReadException("Lecture Impossible");
+    // return QJsonArray();
 }
 
 
@@ -47,7 +51,8 @@ QJsonArray File::listeProgressToken() {
         return LProgressToken;
     }
     qDebug() << "Erreur de lecture";
-    return QJsonArray();
+    throw JsonReadException("Lecture Impossible");
+    // return QJsonArray();
 }
 
 QJsonArray File::listeWonder(){
@@ -59,7 +64,8 @@ QJsonArray File::listeWonder(){
         return LWonder;
     }
     qDebug() << "Erreur de lecture";
-    return QJsonArray();
+    throw JsonReadException("Lecture Impossible");
+    // return QJsonArray();
 }
 
 QJsonObject File::getBuildingsProperties(QString name){

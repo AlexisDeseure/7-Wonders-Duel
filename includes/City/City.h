@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <list>
-
+#include <algorithm>
 
 class Building;
 class Wonder;
@@ -39,6 +39,7 @@ class City {
         ~City();
         Ressource& getRessource(RessourceType name);
         ScientificSymbol& getScientificSymbol(SymboleType name);
+        std::vector<ScientificSymbol*>& getScientificSymbols();
         std::vector<Ressource*>& getRessources();
         std::vector<Wonder*>& getWonders();
         std::vector<ProgressToken*>& getProgressTokens();
@@ -77,6 +78,11 @@ class City {
 };
 
 template <typename T>
-void removeFirstElement(std::list<T>& vec, const T& element);
+void removeFirstElement(std::list<T>& vec, const T& element) {
+    auto it = std::find(vec.begin(), vec.end(), element);
+    if (it != vec.end()) {
+        vec.erase(it);
+    }
+}
 
 #endif // CITY_H

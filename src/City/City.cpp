@@ -12,7 +12,6 @@
 #include"GameParameters.h"
 #include"DeckPile.h"
 #include <set>
-#include <algorithm>
 #include <iostream>
 
 City::City(int treasury)
@@ -77,6 +76,10 @@ ScientificSymbol& City::getScientificSymbol(SymboleType name){
 
 std::vector<Ressource*>& City::getRessources() {
     return ressources;
+}
+
+std::vector<ScientificSymbol*>& City::getScientificSymbols(){
+    return scientific_symbols;
 }
 
 std::vector<Building*>& City::getBuildings(){
@@ -271,12 +274,5 @@ void City::removeBuilding(Building* building) {
     buildings.erase(std::remove(buildings.begin(), buildings.end(), building), buildings.end());
 }
 
-template <typename T>
-void removeFirstElement(std::list<T>& vec, const T& element) {
-    auto it = std::find(vec.begin(), vec.end(), element);
-    if (it != vec.end()) {
-        vec.erase(it);
-    }
-}
 
 

@@ -1,7 +1,7 @@
 #include"BuildingsLayout.h"
 #include"DeckElement.h"
 #include"Building.h"
-
+#include"GameParameters.h"
 
 BuildingsLayout::BuildingsLayout(std::string file_path, int number_age){
     readAndInstanciate(file_path, number_age);
@@ -11,7 +11,7 @@ void BuildingsLayout::readAndInstanciate(std::string file_path, int number_age){
     QFile file(QString::fromStdString(file_path));
     if (!file.open(QIODevice::ReadOnly)){
         qDebug() << "Error opening file";
-        return;
+        throw JsonReadException("Impossible de lire le fichier de disposition des cartes, vérifier le chemin");
     }
     QByteArray data = file.readAll();
     file.close();
@@ -22,7 +22,7 @@ void BuildingsLayout::readAndInstanciate(std::string file_path, int number_age){
 
     if(obj.size() != number_age){
         qDebug() << "Error in the number of age";
-        return;
+        throw JsonReadException("Données du fichiers erronées : le nombre d'âge selon la disposition ne correspond pas au nombre réel d'âges.");
     }
 
     for (auto it : obj){

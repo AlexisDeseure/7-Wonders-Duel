@@ -1,6 +1,9 @@
 #ifndef GAMEPARAMETERS_H
 #define GAMEPARAMETERS_H
 
+
+#include <QException>
+#include <QString>
 #include <QtCore>
 #include <QtWidgets>
 #include <QtGui>
@@ -57,6 +60,28 @@ public:
 
 
 };
+
+
+class JsonReadException : public std::runtime_error {
+public:
+    // Constructeur avec un message d'erreur
+    explicit JsonReadException(const QString& message)
+        : std::runtime_error(message.toStdString()), message(message.toStdString()) {}
+
+    // Méthode what() pour obtenir le message d'erreur
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
+
+    // Accesseur pour obtenir le message d'erreur
+    QString getMessage() const {
+        return QString::fromStdString(message);
+    }
+
+private:
+    std::string message;
+};
+
 
 std::ostream &operator<<(std::ostream &os, const GameParameters &game_parameters);
 

@@ -2,10 +2,11 @@
 #define GAME_H
 
 
-#define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
+#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
 
 #include <string>
 #include <vector>
+#include <exception>
 
 
 class DeckPile;
@@ -14,9 +15,21 @@ class Player;
 enum class AiLevel;
 class Building;
 
+class GameException : public std::exception {
+private:
+    std::string message;
+
+public:
+    GameException(const std::string& msg) : message(msg) {}
+    virtual const char* what() const noexcept override {
+        return message.c_str();
+    }
+};
+
 class Game{
     private:
         int age;
+        unsigned int turn;
         Board* board;
         Player* players[2];
         bool isReplaying;
