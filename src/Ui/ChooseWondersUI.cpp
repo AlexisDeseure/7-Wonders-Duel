@@ -23,6 +23,7 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonder
     QHBoxLayout* cards = displayCurrentCards(wonders_vect);
     columns->addLayout(cards);
 }
+
 QHBoxLayout* ChooseWonderStart::displayCurrentCards(std::vector<Wonder*> wond_vect){
     //Layout cartes
     QHBoxLayout* row = new QHBoxLayout;
