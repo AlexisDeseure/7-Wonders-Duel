@@ -16,7 +16,7 @@ class SevenWonderUI : public QMainWindow
 public:
     SevenWonderUI(QWidget *parent = nullptr);
     ~SevenWonderUI();
-
+    void changeChooser();
 private:
     Ui::SevenWonderUI *ui;
 };

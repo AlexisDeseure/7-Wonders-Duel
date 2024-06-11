@@ -125,6 +125,7 @@ SOURCES = \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
+   src/Ui/ChooseWondersUI.cpp \
    src/Ui/Connector.cpp \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
