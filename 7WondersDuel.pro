@@ -65,6 +65,7 @@ HEADERS = \
    includes/Effects/List/BuildingCostReducedByX.h \
    includes/Game/DeckPile.h \
    includes/Game/Game.h \
+   includes/Game/GameUI.h \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
    includes/Ui/ChooseWondersUI.h \
@@ -120,6 +121,7 @@ SOURCES = \
    src/Effects/Effect.cpp \
    src/Game/DeckPile.cpp \
    src/Game/Game.cpp \
+   src/Game/GameUI.cpp \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
