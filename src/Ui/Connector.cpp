@@ -1,3 +1,4 @@
+#include "Game.h"
 #include "Connector.h"
 
 Connector::Connector(Game* game):game(game) {
