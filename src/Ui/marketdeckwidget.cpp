@@ -1,6 +1,11 @@
 #include "marketdeckwidget.h"
 #include "cardwidget.h"
+#include "BuildingsLayout.h"
 #include "Card.h"
+#include <vector>
+
+std::vector<Building*> buildings; //à rajouter dans le main
+
 MarketDeckWidget::MarketDeckWidget(QWidget* parent) : QWidget(parent) {
     Cardlines = new QVBoxLayout(this);
     generateAge(3);
@@ -20,16 +25,25 @@ bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
 void MarketDeckWidget::generateAge(int age){
     delete this->Cardlines;
     Cardlines = new QVBoxLayout(this);
+
     int width = 115;
     int height = 170;
+
+    std::vector<std::vector<DeckElement*>>& layout = BuildingsLayout::getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
+    DeckElement* building;
+
     switch(age){
     case 1: //10 cases de long, 5 lignes
         for(int i = 0; i < 5; i++){
             QGridLayout* line = new QGridLayout(this);
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
+
                     CardWidget* carteWidget = new CardWidget(this);
                     carteWidget->setFixedSize(width,height);
+                    // building = layout[i][j];
+                    // CardWidget* carteWidget = new CardWidget(building,this);
+                    // carteWidget->setFixedSize(100,100);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
@@ -43,6 +57,9 @@ void MarketDeckWidget::generateAge(int age){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(this);
                     carteWidget->setFixedSize(width,height);
+                    // building = layout[i][j];
+                    // CardWidget* carteWidget = new CardWidget(building,this);
+                    // carteWidget->setFixedSize(100,100);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
@@ -56,6 +73,9 @@ void MarketDeckWidget::generateAge(int age){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(this);
                     carteWidget->setFixedSize(width,height);
+                    // building = layout[i][j];
+                    // CardWidget* carteWidget = new CardWidget(building,this);
+                    // carteWidget->setFixedSize(100,100);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
