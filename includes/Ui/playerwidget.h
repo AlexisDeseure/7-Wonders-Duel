@@ -19,6 +19,8 @@ public:
 
     Player* getplayer() const{return player;};
 
+    void updatePlayerInfo();
+
 signals:
     void onRefreshButtonClicked();
 private:
