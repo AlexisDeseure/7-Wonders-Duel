@@ -1,30 +1,39 @@
 #ifndef PLAYERWIDGET_H
 #define PLAYERWIDGET_H
-
 #include <QWidget>
 #include <QLabel>
+#include <QVBoxLayout>
 #include <QPushButton>
-#include <QString>
+#include <vector>
 #include "Player.h"
 
-class PlayerWidget : public QWidget {
-    Q_OBJECT
+/*
+Make fake widgets to show when selecting a card from another player ?
+Also considering switching player widgets between each turn
+*/
 
+class PlayerWidget : public QWidget{
 public:
-    explicit PlayerWidget(Player* player, QWidget *parent = nullptr);
-    void updatePlayerInfo();
+    PlayerWidget(Player* p, QWidget *parent = nullptr);
+    ~PlayerWidget() = default;
 
+    Player* getplayer() const{return player;};
+
+signals:
+    void onRefreshButtonClicked();
 private:
-    Player* m_player;
+    PlayerWidget(const PlayerWidget& widget) = delete;
+    Player* player;
+
     QLabel* playerName;
     QLabel* playerAIStatus;
     QLabel* playerCityTreasury;
     QLabel* playerCityShields;
     QLabel* playerCityVictoryPoints;
+
+    QVBoxLayout* layout;
     QPushButton* refreshButton;
 
-private slots:
-    void onRefreshButtonClicked();
 };
 
 #endif // PLAYERWIDGET_H
