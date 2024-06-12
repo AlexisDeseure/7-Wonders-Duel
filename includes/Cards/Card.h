@@ -6,9 +6,7 @@
 #include <utility>
 #include <vector>
 #include <list>
-
 #include <QString>
-
 #include "RessourceCost.h"
 
 class Effect;

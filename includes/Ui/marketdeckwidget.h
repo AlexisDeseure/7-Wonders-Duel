@@ -1,5 +1,6 @@
 #ifndef MARKETDECKWIDGET_H
 #define MARKETDECKWIDGET_H
+#include "BuildingsLayout.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -8,6 +9,8 @@
 
 class MarketDeckWidget : public QWidget
 {
+
+//friend class BuildingsLayout;
 public:
     MarketDeckWidget(QWidget* parent = nullptr);
     ~MarketDeckWidget() = default;

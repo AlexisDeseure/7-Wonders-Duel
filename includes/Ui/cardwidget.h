@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
-#include <QGraphicsOpacityEffect>
+#include "DeckElement.h"
+#include "Card.h"
 
 class CardWidget : public QWidget
 {
@@ -12,8 +13,9 @@ class CardWidget : public QWidget
 
 public:
     CardWidget(QWidget *parent = nullptr);
-    bool getClickable() const {return clickable;};
-    //Card* getCard() const{return card;};
+    CardWidget(DeckElement* card, QWidget *parent = nullptr);
+    bool getClickable() {return clickable;};
+    DeckElement* getCard() const{return card;};
 
 // signals:
 //     void cardClicked();
@@ -22,17 +24,8 @@ private:
     QLabel *nameLabel;
     QLabel *effectLabel;
     QPushButton *selectButton;
-    QLabel *selectLabel;
-    QGraphicsOpacityEffect *opacityEffect;
     bool clickable;
-    //Card* card;
-protected:
-    void enterEvent(QEnterEvent *event);
-    void leaveEvent(QEvent *event);
-
-private slots:
-    void cardClicked();
-
+    DeckElement* card;
 };
 
 #endif // CARDWIDGET_H
