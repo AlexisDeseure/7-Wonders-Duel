@@ -20,9 +20,7 @@ public:
 
 private:
     int pawn_pos; //[-9;9], maybe make this the final pawn position for the entire game ?
-    static std::string pawn_image_path;
-    static std::string const deck_image_path;
-    QLabel* pawn; //widget containing the image of the pawn, as to make it movable
+    QLabel* pawn; //widget representing the pawn, as to make it movable
     QLabel* deck;
     QGridLayout* pawn_grid; //contains 19 or 21 columns, can't remember which lol
     MilitaryDeck(const MilitaryDeck& widget) = delete;
