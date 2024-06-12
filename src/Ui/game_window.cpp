@@ -1,4 +1,5 @@
 #include "game_window.h"
+#include "PlayerWidget.h"
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -9,8 +10,8 @@ GameWindow::GameWindow(QWidget *parent)
     setWindowTitle("7 Wonders");
     grid = new QGridLayout(this);
 
-    player1 = new PlayerWidget(this);
-    player2 = new PlayerWidget(this);
+    player1 = new PlayerWidget(new Player(100),this);
+    player2 = new PlayerWidget(new Player(100),this);
 
 
     market = new MarketDeckWidget(this);
