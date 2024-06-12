@@ -1,26 +1,29 @@
-// #ifndef CARDWIDGET_H
-// #define CARDWIDGET_H
+#ifndef CARDWIDGET_H
+#define CARDWIDGET_H
 
-// #include <QWidget>
-// #include <QLabel>
-// #include <QPushButton>
+#include <QWidget>
+#include <QLabel>
+#include <QPushButton>
+#include "Card.h"
 
-// class CardWidget : public QWidget
-// {
-//     Q_OBJECT
+class CardWidget : public QWidget
+{
+    Q_OBJECT
 
-// public:
-//     explicit CardWidget(QWidget *parent = nullptr);
-//     void setCardInfo(const QString &name, const QString &effect);
-//     QString getCardName() const;
+public:
+    CardWidget(QWidget *parent = nullptr);
+    bool getClickable() const {return clickable;};
+    //Card* getCard() const{return card;};
 
 // signals:
 //     void cardClicked();
 
-// private:
-//     QLabel *nameLabel;
-//     QLabel *effectLabel;
-//     QPushButton *selectButton;
-// };
+private:
+    QLabel *nameLabel;
+    QLabel *effectLabel;
+    QPushButton *selectButton;
+    bool clickable;
+    //Card* card;
+};
 
-// #endif // CARDWIDGET_H
+#endif // CARDWIDGET_H
