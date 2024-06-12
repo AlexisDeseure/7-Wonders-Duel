@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
+#include "DeckElement.h"
 #include "Card.h"
 
 class CardWidget : public QWidget
@@ -12,8 +13,9 @@ class CardWidget : public QWidget
 
 public:
     CardWidget(QWidget *parent = nullptr);
-    bool getClickable() const {return clickable;};
-    //Card* getCard() const{return card;};
+    CardWidget(DeckElement* card, QWidget *parent = nullptr);
+    bool getClickable() {return clickable;};
+    DeckElement* getCard() const{return card;};
 
 // signals:
 //     void cardClicked();
@@ -23,7 +25,7 @@ private:
     QLabel *effectLabel;
     QPushButton *selectButton;
     bool clickable;
-    //Card* card;
+    DeckElement* card;
 };
 
 #endif // CARDWIDGET_H
