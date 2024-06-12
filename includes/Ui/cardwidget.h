@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
-#include "Card.h"
+#include <QGraphicsOpacityEffect>
 
 class CardWidget : public QWidget
 {
@@ -22,8 +22,17 @@ private:
     QLabel *nameLabel;
     QLabel *effectLabel;
     QPushButton *selectButton;
+    QLabel *selectLabel;
+    QGraphicsOpacityEffect *opacityEffect;
     bool clickable;
     //Card* card;
+protected:
+    void enterEvent(QEnterEvent *event);
+    void leaveEvent(QEvent *event);
+
+private slots:
+    void cardClicked();
+
 };
 
 #endif // CARDWIDGET_H

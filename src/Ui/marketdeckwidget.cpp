@@ -20,6 +20,8 @@ bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
 void MarketDeckWidget::generateAge(int age){
     delete this->Cardlines;
     Cardlines = new QVBoxLayout(this);
+    int width = 115;
+    int height = 170;
     switch(age){
     case 1: //10 cases de long, 5 lignes
         for(int i = 0; i < 5; i++){
@@ -27,7 +29,7 @@ void MarketDeckWidget::generateAge(int age){
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(100,100);
+                    carteWidget->setFixedSize(width,height);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
@@ -40,7 +42,7 @@ void MarketDeckWidget::generateAge(int age){
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(100,100);
+                    carteWidget->setFixedSize(width,height);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
@@ -53,7 +55,7 @@ void MarketDeckWidget::generateAge(int age){
             for(int j = 0; j < 7; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(100,100);
+                    carteWidget->setFixedSize(width,height);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
