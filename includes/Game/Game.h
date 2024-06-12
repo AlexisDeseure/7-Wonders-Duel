@@ -2,7 +2,7 @@
 #define GAME_H
 
 
-#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
+#define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
 
 #include <string>
 #include <vector>
