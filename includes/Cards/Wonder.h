@@ -8,7 +8,7 @@
 class Wonder : public Card{
     private:
         bool active; //Montre si la merveille est sur le plateau
-        Qstring image; //Image de la merveille
+        QString image; //Image de la merveille
     public:
         Wonder(std::string name, const QString img,const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
         : Card(std::move(name), cost, effects, direct_cost),image(img),active(false) {}; //Constructeur
@@ -21,7 +21,7 @@ class Wonder : public Card{
             Card::print();
             std::cout << ((active)?"Déjà construite":"Pas encore construite")<<std::endl;
         };
-        Qstring getImage() const {return image;};
+        QString getImage() const {return image;};
 };
 // Wonder
 
