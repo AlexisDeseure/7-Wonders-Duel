@@ -2,6 +2,7 @@
 #include "cardwidget.h"
 #include "BuildingsLayout.h"
 #include "Card.h"
+#include "Instanciator.h"
 #include <vector>
 
 std::vector<Building*> buildings; //à rajouter dans le main
@@ -29,8 +30,8 @@ void MarketDeckWidget::generateAge(int age){
     int width = 115;
     int height = 170;
 
-    std::vector<std::vector<DeckElement*>>& layout = BuildingsLayout::getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
-    DeckElement* building;
+    // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
+    // DeckElement* building;
 
     switch(age){
     case 1: //10 cases de long, 5 lignes
