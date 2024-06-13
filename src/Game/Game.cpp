@@ -45,7 +45,7 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         startmenu->close();
         if (exit){
             fenetre->close();
-            qApp->quit();
+            quitGame();
         }
         else {
             //Application de StartMenu.
@@ -70,6 +70,7 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             }
 
             if (startmenu->getterminal()){
+                fenetre->close();
                 startGame();
             }
             else{
@@ -122,7 +123,7 @@ Game::~Game() {
         delete players[0];
         delete players[1];
         delete deck;
-        /*std::cout << R"(
+        std::cout << R"(
   __  __               _       _ _                  _          _                    _
  |  \/  |             (_)     | ( )                (_)        (_)              /   | |
  | \  / | ___ _ __ ___ _    __| |/  __ ___   _____  _ _ __     _  ___  _   _  ___  | |
@@ -131,12 +132,12 @@ Game::~Game() {
  |_|  |_|\___|_|  \___|_|  \__,_|  \__,_| \_/ \___/|_|_|      | |\___/ \__,_|\___| (_)
                                                              _/ |
                                                             |__/
-)" << std::endl; */
-        qApp->exit(0);
+)" << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "Error cleaning up game: " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
+    system("pause");
 }
 
 AiLevel Game::aiOptions(Player& player) {

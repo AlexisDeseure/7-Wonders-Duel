@@ -34,11 +34,13 @@ int main(int argc, char* argv[]) {
     // bouton->setGeometry(150, 80, 100, 30);
     // QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-    //Test de l'affichage de jeu
+    //=================Test de l'affichage du market deck ===========================
+    // décommenter pour voir
 
     // MarketDeck* market = new MarketDeck();
     // GameWindow* fenetre = new GameWindow(market);
     // fenetre->show();
+    //===============================================================================
 
     // QApplication app(argc, argv);
     //QMainWindow* fenetre = new QMainWindow();
@@ -46,5 +48,6 @@ int main(int argc, char* argv[]) {
     //ChooseWonderStart* test = new ChooseWonderStart(fenetre);
     //test->show();
     Game();
-    return app.exec();
+
+    // return app.exec();
 }

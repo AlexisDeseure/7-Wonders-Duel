@@ -75,6 +75,9 @@ Q_OBJECT
 
     public slots:
         void quitting(){exit = true;}
+        void quitGame() {
+            qApp->quit();
+        }
 };
 
 int selectRandomInteger(int min = 0, int max = 1);
