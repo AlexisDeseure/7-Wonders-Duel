@@ -24,7 +24,7 @@ class Building : public Card{
         std::vector<std::string> chainIn;
         std::vector<std::string> chainOut;
         BuildingType type;
-        Qstring image;
+        QString image;
 
     public:
         ~Building() = default;
