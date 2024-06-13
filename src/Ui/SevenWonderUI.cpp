@@ -5,7 +5,7 @@
 SevenWonderUI::SevenWonderUI(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::SevenWonderUI)
 {
-    ui->setupUi(this);
+    //ui->setupUi(this);
 
 }
 

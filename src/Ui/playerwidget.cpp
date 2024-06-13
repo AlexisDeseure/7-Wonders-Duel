@@ -5,9 +5,9 @@
 PlayerWidget::PlayerWidget(Player* player, QWidget *parent) : QWidget(parent), m_player(player) {
     playerName = new QLabel(QString::fromStdString(m_player->getName()), this);
     playerAIStatus = new QLabel(QString("AI Level: ") + QString::fromStdString(AiLeveltoString(m_player->getAiLevel())), this);
-    playerCityTreasury = new QLabel(QString("Treasury: ") + QString::number(m_player->getCity().getTreasury()), this);
-    playerCityShields = new QLabel(QString("Shields: ") + QString::number(m_player->getCity().getShields()), this);
-    playerCityVictoryPoints = new QLabel(QString("Victory Points: ") + QString::number(m_player->getCity().getVictoryPoints()), this);
+    //playerCityTreasury = new QLabel(QString("Treasury: ") + QString::number(m_player->getCity().getTreasury()), this);
+    //playerCityShields = new QLabel(QString("Shields: ") + QString::number(m_player->getCity().getShields()), this);
+    //playerCityVictoryPoints = new QLabel(QString("Victory Points: ") + QString::number(m_player->getCity().getVictoryPoints()), this);
     
     refreshButton = new QPushButton("Refresh", this);
     connect(refreshButton, &QPushButton::clicked, this, &PlayerWidget::onRefreshButtonClicked);
@@ -24,9 +24,9 @@ PlayerWidget::PlayerWidget(Player* player, QWidget *parent) : QWidget(parent), m
 void PlayerWidget::updatePlayerInfo() {
     playerName->setText(QString::fromStdString(m_player->getName()));
     playerAIStatus->setText(QString("AI Level: ") + QString::fromStdString(AiLeveltoString(m_player->getAiLevel())));
-    playerCityTreasury->setText(QString("Treasury: ") + QString::number(m_player->getCity().getTreasury()));
-    playerCityShields->setText(QString("Shields: ") + QString::number(m_player->getCity().getShields()));
-    playerCityVictoryPoints->setText(QString("Victory Points: ") + QString::number(m_player->getCity().getVictoryPoints()));
+    //playerCityTreasury->setText(QString("Treasury: ") + QString::number(m_player->getCity().getTreasury()));
+    //playerCityShields->setText(QString("Shields: ") + QString::number(m_player->getCity().getShields()));
+    //playerCityVictoryPoints->setText(QString("Victory Points: ") + QString::number(m_player->getCity().getVictoryPoints()));
 }
 
 void PlayerWidget::onRefreshButtonClicked() {

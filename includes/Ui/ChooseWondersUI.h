@@ -7,8 +7,8 @@
 #include <iostream>
 #include <QtCore>
 #include <QWidget>
-#include "Game.h"
 #include <vector>
+#include "Wonder.h"
 
 class ChooseWonderStart: public QWidget{
 Q_OBJECT
@@ -24,7 +24,7 @@ private:
 
 
 public:
-    ChooseWonderStart(QWidget *parent,Game* game);
+    ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect);
     QHBoxLayout* displayCurrentCards(std::vector<Wonder*> wonders_vect);
 public slots:
     void wondersChoosed();

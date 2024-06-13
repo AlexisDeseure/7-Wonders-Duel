@@ -89,8 +89,10 @@ public:
 
 public slots:
     void startButton();
+    void quitButton();
 signals:
     void StartPressed();
+    void quitPressed();
 };
 
 #endif // STARTMENU_H

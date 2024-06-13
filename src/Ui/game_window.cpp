@@ -9,8 +9,8 @@ GameWindow::GameWindow(QWidget *parent)
     setWindowTitle("7 Wonders");
     grid = new QGridLayout(this);
 
-    player1 = new PlayerWidget(this);
-    player2 = new PlayerWidget(this);
+    //player1 = new PlayerWidget(this);
+    //player2 = new PlayerWidget(this);
 
 
     market = new MarketDeckWidget(this);

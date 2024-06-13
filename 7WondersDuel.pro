@@ -68,7 +68,6 @@ HEADERS = \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
    includes/Ui/ChooseWondersUI.h \
-   includes/Ui/Connector.h \
    includes/Ui/SevenWonderUI.h \
    includes/DataFetcher/Instanciator.h \
    includes/DataFetcher/BuildingsLayout.h \
@@ -124,7 +123,6 @@ SOURCES = \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
    src/Ui/ChooseWondersUI.cpp \
-   src/Ui/Connector.cpp \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
    src/Ui/game_window.cpp \

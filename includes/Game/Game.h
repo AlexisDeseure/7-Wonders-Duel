@@ -8,9 +8,10 @@
 #include <QObject>
 #include "instanciator.h"
 #include <string>
+#include "ChooseWondersUI.h"
 #include <vector>
 #include <exception>
-#include "StartMenu.h"
+
 
 class DeckPile;
 class Board;
@@ -18,8 +19,7 @@ class Player;
 enum class AiLevel;
 class Building;
 
-class GameException : public QObject ,public std::exception{
-Q_OBJECT
+class GameException : public std::exception{
 private:
     std::string message;
 
@@ -30,7 +30,8 @@ public:
     }
 };
 
-class Game{
+class Game:  public QObject{
+Q_OBJECT
     private:
         int age;
         unsigned int turn;
@@ -40,7 +41,7 @@ class Game{
         DeckPile* deck;
         Player* winner;
         bool isTerminal;
-        StartMenu* startmenu;
+        bool exit;
     public:
         bool endTurn();
         bool checkMilitaryVictory() const;
@@ -71,10 +72,10 @@ class Game{
         ~Game();
 
         // UI SPECIFIC
-
+        void selectWonderPhaseUI();
 
     public slots:
-
+        void quitting(){exit = true;}
     signals:
 
 

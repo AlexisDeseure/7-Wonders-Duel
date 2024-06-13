@@ -11,8 +11,9 @@
 #include <random>
 #include <iostream>
 #include <algorithm>
+#include "StartMenu.h"
 
-Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr),startmenu(nullptr) {
+Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
         Instanciator* inst = Instanciator::getInstanciator();
         int length = inst->getGameParameters().getLengthConflictPawnBoard();
@@ -23,23 +24,46 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr),startmenu(nu
         deck = new DeckPile(nb_b, nb_pt, nb_w);
         players[0] = new Player(inst->getGameParameters().getCoinsStart());
         players[1] = new Player(inst->getGameParameters().getCoinsStart());
+        QMainWindow fenetre;
+        fenetre.setFixedSize(400,225);
+        StartMenu* startmenu = new StartMenu(&fenetre);
+        fenetre.setWindowTitle("Seven Wonders Duel");
+        startmenu->setGeometry(fenetre.geometry());
+        //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
+        //bouton->setGeometry(150, 80, 100, 30);
+        //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
-        qDebug()<<"Entered StartMenu Loop, waiting for startPressed()";
+        //Affichage de la fenêtre
+        exit = false;
+        fenetre.show();
+        qDebug()<<"Entered StartMenu Loop, waiting for startPressed() or quitPressed()";
+
         QEventLoop loop;
-        QAbstractButton::connect(startmenu,SIGNAL(StartPressed()),&loop,SLOT(quit()));
+            connect(startmenu,SIGNAL(StartPressed()),&loop,SLOT(quit()));
+            connect(startmenu,SIGNAL(quitPressed()),this,SLOT(quitting()));
+            connect(startmenu,SIGNAL(quitPressed()),&loop,SLOT(quit()));
         loop.exec();
-
+        startmenu->close();
+        if (exit){
+            fenetre.close();
+            qApp->quit();
+        }
+        else {
         //Application de StartMenu.
         //Joueur 1
         players[0]->setAI(startmenu->getp1typeIA());
         players[0]->setName(startmenu->getp1name().toStdString());
         if (startmenu->getp1typeIA()) players[0]->setAiLevel(AiLevel::EASY);
-
         //Joueur 2
         players[1]->setAI(startmenu->getp2typeIA());
         players[1]->setName(startmenu->getp2name().toStdString());
         if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
-
+        if (startmenu->getrandomstart()){
+            randomPlayerStart();
+        }
+        else if (startmenu->getp2starts()){
+            invertTurnPlayer();
+        }
 
         if (players[0]->getName() == players[1]->getName()) {
             players[0]->setName(players[0]->getName() + " (1)");
@@ -50,9 +74,9 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr),startmenu(nu
             startGame();
         }
         else{
-
+            chooseWonderPhase();
         }
-
+        }
     } catch (const std::exception& e) {
         std::cerr << "Error initializing game: " << e.what() << std::endl;
         throw; // Re-throw the exception
@@ -98,7 +122,7 @@ Game::~Game() {
         delete players[0];
         delete players[1];
         delete deck;
-        std::cout << R"(
+        /*std::cout << R"(
   __  __               _       _ _                  _          _                    _
  |  \/  |             (_)     | ( )                (_)        (_)              /   | |
  | \  / | ___ _ __ ___ _    __| |/  __ ___   _____  _ _ __     _  ___  _   _  ___  | |
@@ -107,42 +131,10 @@ Game::~Game() {
  |_|  |_|\___|_|  \___|_|  \__,_|  \__,_| \_/ \___/|_|_|      | |\___/ \__,_|\___| (_)
                                                              _/ |
                                                             |__/
-)" << std::endl;
+)" << std::endl; */
+        qApp->exit(0);
     } catch (const std::exception& e) {
         std::cerr << "Error cleaning up game: " << e.what() << std::endl;
-        throw; // Re-throw the exception
-    }
-}
-
-void Game::startMenu(){
-    try {
-        AiLevel level;
-        int choice;
-
-        std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
-
-        for (int i = 0; i < 2; i++) {
-            displayplayerChoice(i + 1);
-            choice = players[i]->getPlayerChoice(2);
-            switch (choice) {
-            case 1:
-                std::cout << "Entrez le nom du joueur : " << std::endl;
-                players[i]->setName(getStrInput());
-                break;
-            case 2:
-                players[i]->setAI(true);
-                players[i]->setAiLevel(AiLevel::EASY);
-                players[i]->setName("BOT"); // + AiLeveltoString(level));
-                break;
-            }
-        }
-
-        if (players[0]->getName() == players[1]->getName()) {
-            players[0]->setName(players[0]->getName() + " (1)");
-            players[1]->setName(players[1]->getName() + " (2)");
-        }
-    } catch (const std::exception& e) {
-        std::cerr << "Error in startMenu(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
@@ -287,6 +279,10 @@ void Game::playTurn() {
         std::cerr << "Error in playTurn(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
+}
+
+void Game::selectWonderPhaseUI(){
+
 }
 
 void Game::selectWondersPhase() {
