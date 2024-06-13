@@ -17,7 +17,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
         QUIT = new QPushButton("Quit");
         QUIT->setDefault(0);
         //connect(QUIT, SIGNAL(clicked()), qApp, SLOT(quit()));
-        connect(QUIT, SIGNAL(clicked()), this, SLOT(quitButton()), Qt::QueuedConnection);
+        connect(QUIT, SIGNAL(clicked()), this, SLOT(quitButton()));
 
     upper_window->addWidget(start_menu);
     upper_window->addWidget(seven_wonder_duel);

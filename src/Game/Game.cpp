@@ -49,33 +49,35 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             qApp->quit();
         }
         else {
-        //Application de StartMenu.
-        //Joueur 1
-        players[0]->setAI(startmenu->getp1typeIA());
-        players[0]->setName(startmenu->getp1name().toStdString());
-        if (startmenu->getp1typeIA()) players[0]->setAiLevel(AiLevel::EASY);
-        //Joueur 2
-        players[1]->setAI(startmenu->getp2typeIA());
-        players[1]->setName(startmenu->getp2name().toStdString());
-        if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
-        if (startmenu->getrandomstart()){
-            randomPlayerStart();
-        }
-        else if (startmenu->getp2starts()){
-            invertTurnPlayer();
-        }
+            //Application de StartMenu.
+            //Joueur 1
+            players[0]->setAI(startmenu->getp1typeIA());
+            players[0]->setName(startmenu->getp1name().toStdString());
+            if (startmenu->getp1typeIA()) players[0]->setAiLevel(AiLevel::EASY);
+            //Joueur 2
+            players[1]->setAI(startmenu->getp2typeIA());
+            players[1]->setName(startmenu->getp2name().toStdString());
+            if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
+            if (startmenu->getrandomstart()){
+                randomPlayerStart();
+            }
+            else if (startmenu->getp2starts()){
+                invertTurnPlayer();
+            }
 
-        if (players[0]->getName() == players[1]->getName()) {
-            players[0]->setName(players[0]->getName() + " (1)");
-            players[1]->setName(players[1]->getName() + " (2)");
-        }
+            if (players[0]->getName() == players[1]->getName()) {
+                players[0]->setName(players[0]->getName() + " (1)");
+                players[1]->setName(players[1]->getName() + " (2)");
+            }
 
-        if (startmenu->getterminal()){
-            startGame();
-        }
-        else{
-            chooseWonderPhase();
-        }
+            if (startmenu->getterminal()){
+                startGame();
+            }
+            else{
+                qDebug()<<"ICI constr";
+                fenetre.setFixedSize(600,400);
+                selectWonderPhaseUI(&fenetre);
+            }
         }
     } catch (const std::exception& e) {
         std::cerr << "Error initializing game: " << e.what() << std::endl;
@@ -281,8 +283,14 @@ void Game::playTurn() {
     }
 }
 
-void Game::selectWonderPhaseUI(){
-
+void Game::selectWonderPhaseUI(QWidget* fenetre){
+    std::vector<Wonder*> allWonders = deck->getAllWonders();
+    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+    qDebug()<<"ICI before wonder";
+    ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre,allWonders);
+    QEventLoop loopWonder;
+    qDebug() << "Waiting for wonders";
+    loopWonder.exec();
 }
 
 void Game::selectWondersPhase() {

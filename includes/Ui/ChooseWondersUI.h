@@ -9,6 +9,7 @@
 #include <QWidget>
 #include <vector>
 #include "Wonder.h"
+class Wonder;
 
 class ChooseWonderStart: public QWidget{
 Q_OBJECT
@@ -22,15 +23,10 @@ private:
     // Layout de cartes
     QVBoxLayout* columns;
 
-
 public:
     ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect);
     QHBoxLayout* displayCurrentCards(std::vector<Wonder*> wonders_vect);
-public slots:
-    void wondersChoosed();
-signals:
-    void wondersChosen();
-    void readyToReceiveWonders();
+
 };
 
 #endif // CHOOSEWONDERSUI_H

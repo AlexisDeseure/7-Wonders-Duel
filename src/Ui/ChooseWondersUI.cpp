@@ -1,14 +1,6 @@
 #include "ChooseWondersUI.h"
 
-ChooseWonderStart::ChooseWonderStart(QWidget *parent, Game* game) : QWidget(parent){
-
-    emit readyToReceiveWonders();
-    qDebug()<<"Entered Loop";
-    QEventLoop loop;
-    //connect(game,SIGNAL(wondersReady()),&loop,SLOT(quit()));
-    loop.exec();
-
-    //std::vector<Wonder*> shuffled_wonders=game->getWondersFromGameUI();
+ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect) : QWidget(parent){
 
     QSize size = parent->size();
     QRect ALL_size = QRect(parent->pos(),size);
@@ -20,9 +12,12 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent, Game* game) : QWidget(pare
     //player == 1 : joueur 1
     p1 = new QLabel("Joueur 1, à toi de choisir!");
     p2 = new QLabel("Joueur 2, à toi de choisir!");
-
-    //QHBoxLayout* cards = displayCurrentCards(shuffled_wonders);
-    //columns->addLayout(cards);
+    qDebug() << "INSIDE FIRST";
+    QHBoxLayout* cards = displayCurrentCards(wonders_vect);
+    qDebug() << "OUTSIDE FIRST";
+    columns->addLayout(cards);
+    columns->addWidget(p1);
+    columns->addWidget(p2);
 }
 
 QHBoxLayout* ChooseWonderStart::displayCurrentCards(std::vector<Wonder*> wond_vect){

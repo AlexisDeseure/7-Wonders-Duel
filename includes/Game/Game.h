@@ -72,7 +72,7 @@ Q_OBJECT
         ~Game();
 
         // UI SPECIFIC
-        void selectWonderPhaseUI();
+        void selectWonderPhaseUI(QWidget* fenetre);
 
     public slots:
         void quitting(){exit = true;}
