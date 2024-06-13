@@ -10,7 +10,11 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
 {
     setWindowTitle("7 Wonders");
 
-    setStyleSheet("GameWindow{background-image: url(../../../data/image/backgrounds/gameplayingbackground.jpg);}");
+    setStyleSheet("GameWindow{"
+                  "border-image: url(../../../data/image/backgrounds/gameplayingbackground.jpg) 0 0 0 0 stretch stretch;"
+                  "background-repeat: no-repeat;"
+                  "background-position: center;"
+                  "}");
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     grid = new QGridLayout(centralWidget);

@@ -37,9 +37,9 @@ int main(int argc, char* argv[]) {
     //=================Test de l'affichage du market deck ===========================
     // décommenter pour voir
 
-    // MarketDeck* market = new MarketDeck();
-    // GameWindow* fenetre = new GameWindow(market);
-    // fenetre->show();
+    MarketDeck* market = new MarketDeck();
+    GameWindow* fenetre = new GameWindow(market);
+    fenetre->show();
     //===============================================================================
 
     // QApplication app(argc, argv);
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
     //fenetre->setFixedSize(400,225);
     //ChooseWonderStart* test = new ChooseWonderStart(fenetre);
     //test->show();
-    Game();
+    // Game();
 
-    // return app.exec();
+    return app.exec();
 }
