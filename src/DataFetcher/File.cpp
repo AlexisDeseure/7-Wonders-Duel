@@ -2,7 +2,7 @@
 #include "RessourceCost.h"
 #include "Game.h"
 #include "Ressource.h"
-#include"GameParameters.h"
+#include "GameParameters.h"
 
 File::File(std::string name) : file_path(QString::fromStdString(name)), file(readFile()) {};
 
