@@ -1,23 +1,5 @@
 #include "Game.h"
-#include "Building.h"
-#include "ProgressToken.h"
-#include "City.h"
-#include "Card.h"
-#include "Instanciator.h"
-#include "EffectFactory.h"
-#include "Ressource.h"
-#include "Building.h"
-#include "Effect.h"
-#include "AddMoney.h"
-#include "DeckElement.h"
-#include "AddRessource.h"
-#include "GameParameters.h"
-#include "IncludeEffects.h"
-#include "MarketDeck.h"
-#include "DeckPile.h"
-#include "Player.h"  // Ensure Player.h is included
-#include "SevenWonderUI.h"
-#include "StartMenu.h"
+
 
 
 #include <QTextStream>
@@ -44,6 +26,10 @@ int main(int argc, char* argv[]) {
     SetConsoleCP(CP_UTF8);
 #endif
     QApplication app(argc, argv);
+    //QMainWindow* fenetre = new QMainWindow();
+    //fenetre->setFixedSize(400,225);
+    //ChooseWonderStart* test = new ChooseWonderStart(fenetre);
+    //test->show();
     Game();
     return app.exec();
 }

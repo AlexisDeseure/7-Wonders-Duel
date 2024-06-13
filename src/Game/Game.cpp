@@ -12,6 +12,7 @@
 #include <iostream>
 #include <algorithm>
 #include "StartMenu.h"
+#include "ChooseWondersUI.h"
 
 Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
@@ -24,18 +25,16 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         deck = new DeckPile(nb_b, nb_pt, nb_w);
         players[0] = new Player(inst->getGameParameters().getCoinsStart());
         players[1] = new Player(inst->getGameParameters().getCoinsStart());
-        QMainWindow fenetre;
-        fenetre.setFixedSize(400,225);
-        StartMenu* startmenu = new StartMenu(&fenetre);
-        fenetre.setWindowTitle("Seven Wonders Duel");
-        startmenu->setGeometry(fenetre.geometry());
-        //QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-        //bouton->setGeometry(150, 80, 100, 30);
-        //QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
+        QPointer<QMainWindow> fenetre = new QMainWindow();
+        fenetre->setFixedSize(400,225);
+        StartMenu* startmenu = new StartMenu(fenetre);
+        fenetre->setWindowTitle("Seven Wonders Duel");
+        startmenu->setGeometry(fenetre->geometry());
+
 
         //Affichage de la fenêtre
         exit = false;
-        fenetre.show();
+        fenetre->show();
         qDebug()<<"Entered StartMenu Loop, waiting for startPressed() or quitPressed()";
 
         QEventLoop loop;
@@ -45,7 +44,7 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         loop.exec();
         startmenu->close();
         if (exit){
-            fenetre.close();
+            fenetre->close();
             qApp->quit();
         }
         else {
@@ -74,9 +73,8 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
                 startGame();
             }
             else{
-                qDebug()<<"ICI constr";
-                fenetre.setFixedSize(600,400);
-                selectWonderPhaseUI(&fenetre);
+                fenetre->setFixedSize(600,400);
+                selectWonderPhaseUI(fenetre);
             }
         }
     } catch (const std::exception& e) {
@@ -284,12 +282,13 @@ void Game::playTurn() {
 }
 
 void Game::selectWonderPhaseUI(QWidget* fenetre){
+    fenetre->setFixedSize(600,400);
     std::vector<Wonder*> allWonders = deck->getAllWonders();
     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
-    qDebug()<<"ICI before wonder";
     ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre,allWonders);
     QEventLoop loopWonder;
     qDebug() << "Waiting for wonders";
+    connect(wonderUI, SIGNAL(selectionDone()), &loopWonder, SLOT(quit()));
     loopWonder.exec();
 }
 

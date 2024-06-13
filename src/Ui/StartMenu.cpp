@@ -109,7 +109,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
 
 
-    START = new QPushButton("START GAME");
+    START = new QPushButton("START");
     START->setDefault(1);
     connect(START, SIGNAL(clicked()), this, SLOT(startButton()));
     lower_games_settings->addWidget(p1_starter);

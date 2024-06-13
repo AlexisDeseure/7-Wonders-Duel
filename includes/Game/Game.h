@@ -8,7 +8,6 @@
 #include <QObject>
 #include "instanciator.h"
 #include <string>
-#include "ChooseWondersUI.h"
 #include <vector>
 #include <exception>
 
@@ -76,9 +75,6 @@ Q_OBJECT
 
     public slots:
         void quitting(){exit = true;}
-    signals:
-
-
 };
 
 int selectRandomInteger(int min = 0, int max = 1);
