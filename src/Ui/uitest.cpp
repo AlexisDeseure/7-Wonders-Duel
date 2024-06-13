@@ -4,9 +4,9 @@
 //#include "mainwindow.h"
 int uitest(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    GameWindow* w = new GameWindow();
-    w->resize(1200,800);
-    w->show();
-    return a.exec();
+    // QApplication a(argc, argv);
+    // GameWindow* w = new GameWindow(BuildingsLayout);
+    // w->resize(1200,800);
+    // w->show();
+    // return a.exec();
 }

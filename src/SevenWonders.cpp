@@ -165,7 +165,8 @@ int main(int argc, char* argv[]) {
         // QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
 
         //Test de l'affichage de jeu
-        GameWindow* fenetre = new GameWindow();
+        MarketDeck* market = new MarketDeck();
+        GameWindow* fenetre = new GameWindow(market);
 
 
         // //Affichage de la fenêtre

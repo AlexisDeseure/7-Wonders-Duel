@@ -4,17 +4,18 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-GameWindow::GameWindow(QWidget *parent)
+GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     : QWidget(parent)
 {
     setWindowTitle("7 Wonders");
+
     grid = new QGridLayout(this);
 
     player1 = new PlayerWidget(new Player(100),this);
     player2 = new PlayerWidget(new Player(100),this);
 
 
-    market = new MarketDeckWidget(this);
+    market = new MarketDeckWidget(marketDeck, this);
     military_deck = new MilitaryDeck(this);
 
     // //grid setup: maybe add a static value for grids and cols, so you can do fractions ?
@@ -40,6 +41,8 @@ GameWindow::GameWindow(QWidget *parent)
     b1 = new QPushButton("player1",player1);
     b2 = new QPushButton("player2",player2);
     b4 = new QPushButton("market",market);
+
+
 }
 
 GameWindow::~GameWindow()
