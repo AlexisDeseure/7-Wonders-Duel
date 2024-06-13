@@ -1,18 +1,11 @@
 #ifndef CARDWIDGET_H
 #define CARDWIDGET_H
-
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
 #include <QGraphicsOpacityEffect>
 #include "DeckElement.h"
 #include "Card.h"
-
-
-class CardWidget : public QWidget
-{
-    Q_OBJECT
-
 #include "DeckElement.h"
 #include "Card.h"
 

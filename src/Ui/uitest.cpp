@@ -9,4 +9,5 @@ int uitest(int argc, char *argv[])
     // w->resize(1200,800);
     // w->show();
     // return a.exec();
+    return 0;
 }
