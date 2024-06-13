@@ -3,6 +3,7 @@
 
 #include "Card.h"
 #include <iostream>
+#include <QString>
 
 enum class BuildingType {
     Yellow,
@@ -23,14 +24,16 @@ class Building : public Card{
         std::vector<std::string> chainIn;
         std::vector<std::string> chainOut;
         BuildingType type;
+        Qstring image;
 
     public:
         ~Building() = default;
-        Building(const std::string& name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t,
+        Building(const std::string& name, const QString img,const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, BuildingType t,
                  int a, const std::vector<std::string>& chainIn = {}, const std::vector<std::string>& chainOut = {})
-            : Card(name, cost, effects, direct_cost), age(a), chainIn(chainIn), chainOut(chainOut), type(t) {};
+            : Card(name, cost, effects, direct_cost),image(img),age(a), chainIn(chainIn), chainOut(chainOut), type(t) {};
         BuildingType getType() const {return type;}
         int getAge() const {return age;};
+        Qstring getImage() const {return image;};
         void addChainOutToCity(City* city) const; // les symboles en possession
         bool isChainInInCity(const City* city) const override;  // les symboles pour faire le build
         void print() const override;
