@@ -35,8 +35,6 @@ void MarketDeckWidget::generateAge(int age){
 
     std::vector<std::vector<DeckElement*>>& layout = market->getAllBuildings(); //buildings à rajouter comme var statique
 
-    DeckElement* building;
-
     switch(age){
     case 1: //10 cases de long, 5 lignes
         for(int i = 0; i < 5; i++){

@@ -8,6 +8,7 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     : QWidget(parent)
 {
     setWindowTitle("7 Wonders");
+
     grid = new QGridLayout(this);
 
     player1 = new PlayerWidget(new Player(100),this);
@@ -40,6 +41,8 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     b1 = new QPushButton("player1",player1);
     b2 = new QPushButton("player2",player2);
     b4 = new QPushButton("market",market);
+
+
 }
 
 GameWindow::~GameWindow()
