@@ -8,30 +8,18 @@ CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(false)
 
     // nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
     // effectLabel = new QLabel("Effect", this);
-
-    // QPixmap pixmap("../../../data/image/cards/academy.jpg");
-    // QIcon ButtonIcon(pixmap);
-    // selectButton->setIcon(ButtonIcon);
-
     selectButton = new QPushButton(this);
     selectButton->setIcon(QIcon("../../../data/image/cards/academy.jpg"));
-
     selectButton->setIconSize(QSize(100, 159));
-    selectLabel = new QLabel("Sélectionner", this);
 
+    selectLabel = new QLabel("Sélectionner", this);
     selectLabel->setAlignment(Qt::AlignCenter);
     opacityEffect = new QGraphicsOpacityEffect(this);
-
     selectLabel->setGraphicsEffect(opacityEffect);
     selectLabel->setVisible(false);
 
-    // selectButton->setIconSize(pixmap.rect().size());
-    // this->resize(40,40);
-    // selectButton->resize(40,40);
     this->setStyleSheet("background-color: blue; color: white;");
 
-    // layout->addWidget(nameLabel);
-    // layout->addWidget(effectLabel);
     layout->addWidget(selectButton);
     layout->addWidget(selectLabel);
 

@@ -14,7 +14,7 @@
 
 
 
-class GameWindow : public QWidget
+class GameWindow : public QMainWindow
 {
     Q_OBJECT
 

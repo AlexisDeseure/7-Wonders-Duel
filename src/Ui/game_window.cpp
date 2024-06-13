@@ -4,19 +4,23 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
+
 GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
-    : QWidget(parent)
+    : QMainWindow(parent)
 {
     setWindowTitle("7 Wonders");
 
-    grid = new QGridLayout(this);
+    setStyleSheet("GameWindow{background-image: url(../../../data/image/backgrounds/gameplayingbackground.jpg);}");
+    QWidget* centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);
+    grid = new QGridLayout(centralWidget);
 
-    player1 = new PlayerWidget(new Player(100),this);
-    player2 = new PlayerWidget(new Player(100),this);
+    player1 = new PlayerWidget(new Player(100),centralWidget);
+    player2 = new PlayerWidget(new Player(100),centralWidget);
 
 
-    market = new MarketDeckWidget(marketDeck, this);
-    military_deck = new MilitaryDeck(this);
+    market = new MarketDeckWidget(marketDeck, centralWidget);
+    military_deck = new MilitaryDeck(centralWidget);
 
     // //grid setup: maybe add a static value for grids and cols, so you can do fractions ?
     // //4 rows, 5 columns
@@ -32,16 +36,27 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     //grid->addWidget(military_deck,4,1,1,4);//row 3, column 1-3
 
     //Colors for testing at the moment
-    player1->setStyleSheet("background-color: blue; color: white;");
-    player2->setStyleSheet("background-color: red; color: white;");
+
+    player1->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
+                           "color: white; "
+                           "border-radius: 10px; "
+                           "padding: 10px;");
+
+    player2->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
+                           "color: white; "
+                           "border-radius: 10px; "
+                           "padding: 10px;");
+
+    // market->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
+    //                       "color: white; "
+    //                       "border-radius: 10px; "
+    //                       "padding: 10px;");
     //military_deck->setStyleSheet("background-color: pink; color: white;");
-    market->setStyleSheet("background-color : orange; color: white");
 
     //button testing
-    b1 = new QPushButton("player1",player1);
-    b2 = new QPushButton("player2",player2);
-    b4 = new QPushButton("market",market);
-
+    // b1 = new QPushButton("player1",player1);
+    // b2 = new QPushButton("player2",player2);
+    // b4 = new QPushButton("market",market);
 
 }
 

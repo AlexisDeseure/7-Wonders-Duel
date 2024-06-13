@@ -34,56 +34,70 @@ void MarketDeckWidget::generateAge(int age){
     // DeckElement* building;
 
     std::vector<std::vector<DeckElement*>>& layout = market->getAllBuildings(); //buildings à rajouter comme var statique
+    for(int i = 0; i < 5; i++){
+        QGridLayout* line = new QGridLayout(this);
+        for(int j = 0; j < 11; j++){
+            if (checkCardPos(age,i,j)){
 
-    switch(age){
-    case 1: //10 cases de long, 5 lignes
-        for(int i = 0; i < 5; i++){
-            QGridLayout* line = new QGridLayout(this);
-            for(int j = 0; j < 11; j++){
-                if (checkCardPos(age,i,j)){
-
-                    CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(width,height);
-                    // building = layout[i][j];
-                    // CardWidget* carteWidget = new CardWidget(building,this);
-                    // carteWidget->setFixedSize(100,100);
-                    line->addWidget(carteWidget,i,j,1,1);
-                }
+                CardWidget* carteWidget = new CardWidget(this);
+                carteWidget->setFixedSize(width,height);
+                // building = layout[i][j];
+                // CardWidget* carteWidget = new CardWidget(building,this);
+                // carteWidget->setFixedSize(100,100);
+                line->addWidget(carteWidget,i,j,1,1);
             }
-            Cardlines->addLayout(line);
         }
-        return;
-    case 2: //idem que 1 mais à l'envers
-        for(int i = 0; i < 5; i++){
-            QGridLayout* line = new QGridLayout(this);
-            for(int j = 0; j < 11; j++){
-                if (checkCardPos(age,i,j)){
-                    CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(width,height);
-                    // building = layout[i][j];
-                    // CardWidget* carteWidget = new CardWidget(building,this);
-                    // carteWidget->setFixedSize(100,100);
-                    line->addWidget(carteWidget,i,j,1,1);
-                }
-            }
-            Cardlines->addLayout(line);
-        }
-        return;
-    case 3: //7*7
-        for(int i = 0; i < 7; i++){
-            QGridLayout* line = new QGridLayout(this);
-            for(int j = 0; j < 7; j++){
-                if (checkCardPos(age,i,j)){
-                    CardWidget* carteWidget = new CardWidget(this);
-                    carteWidget->setFixedSize(width,height);
-                    // building = layout[i][j];
-                    // CardWidget* carteWidget = new CardWidget(building,this);
-                    // carteWidget->setFixedSize(100,100);
-                    line->addWidget(carteWidget,i,j,1,1);
-                }
-            }
-            Cardlines->addLayout(line);
-        }
-        return;
+        Cardlines->addLayout(line);
     }
+    // switch(age){
+    // case 1: //10 cases de long, 5 lignes
+    //     for(int i = 0; i < 5; i++){
+    //         QGridLayout* line = new QGridLayout(this);
+    //         for(int j = 0; j < 11; j++){
+    //             if (checkCardPos(age,i,j)){
+
+    //                 CardWidget* carteWidget = new CardWidget(this);
+    //                 carteWidget->setFixedSize(width,height);
+    //                 // building = layout[i][j];
+    //                 // CardWidget* carteWidget = new CardWidget(building,this);
+    //                 // carteWidget->setFixedSize(100,100);
+    //                 line->addWidget(carteWidget,i,j,1,1);
+    //             }
+    //         }
+    //         Cardlines->addLayout(line);
+    //     }
+    //     return;
+    // case 2: //idem que 1 mais à l'envers
+    //     for(int i = 0; i < 5; i++){
+    //         QGridLayout* line = new QGridLayout(this);
+    //         for(int j = 0; j < 11; j++){
+    //             if (checkCardPos(age,i,j)){
+    //                 CardWidget* carteWidget = new CardWidget(this);
+    //                 carteWidget->setFixedSize(width,height);
+    //                 // building = layout[i][j];
+    //                 // CardWidget* carteWidget = new CardWidget(building,this);
+    //                 // carteWidget->setFixedSize(100,100);
+    //                 line->addWidget(carteWidget,i,j,1,1);
+    //             }
+    //         }
+    //         Cardlines->addLayout(line);
+    //     }
+    //     return;
+    // case 3: //7*7
+    //     for(int i = 0; i < 7; i++){
+    //         QGridLayout* line = new QGridLayout(this);
+    //         for(int j = 0; j < 7; j++){
+    //             if (checkCardPos(age,i,j)){
+    //                 CardWidget* carteWidget = new CardWidget(this);
+    //                 carteWidget->setFixedSize(width,height);
+    //                 // building = layout[i][j];
+    //                 // CardWidget* carteWidget = new CardWidget(building,this);
+    //                 // carteWidget->setFixedSize(100,100);
+    //                 line->addWidget(carteWidget,i,j,1,1);
+    //             }
+    //         }
+    //         Cardlines->addLayout(line);
+    //     }
+    //     return;
+    // }
 }

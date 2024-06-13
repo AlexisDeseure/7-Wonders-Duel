@@ -21,11 +21,12 @@ class Card {
         std::vector<Effect*> effects;
         std::vector<RessourceCost> cost;
         unsigned int money_cost; // coût de base de la carte en or (irréductible sauf en cas de chaînage ou l'acquisition est forcément gratuite)
-
+    protected:
+        QString image;
 
     public :
-        Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
-            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost){};
+        Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, QString image)
+            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost), image(image){};
 
         virtual ~Card();
 

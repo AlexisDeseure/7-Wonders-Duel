@@ -4,10 +4,9 @@
 
 #define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
 #include "qtmetamacros.h"
-#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
 #include <QtCore>
 #include <QObject>
-#include "instanciator.h"
+
 #include <string>
 #include <vector>
 #include <exception>
