@@ -3,7 +3,7 @@
 
 #include "Card.h"
 #include <iostream>
-#include <Qstring>
+#include <QString>
 
 class Wonder : public Card{
     private:
