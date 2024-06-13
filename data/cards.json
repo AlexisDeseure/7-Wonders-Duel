@@ -14,7 +14,8 @@
                         "Wood",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Exploitation",
@@ -29,7 +30,8 @@
                         "Wood",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Bassin Clayux",
@@ -44,7 +46,8 @@
                         "Clay",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Cavit\u00e9",
@@ -59,7 +62,8 @@
                         "Clay",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Gisement",
@@ -74,7 +78,8 @@
                         "Stone",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Mine",
@@ -89,7 +94,8 @@
                         "Stone",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Glassrie",
@@ -104,7 +110,8 @@
                         "Glass",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Presse",
@@ -119,7 +126,8 @@
                         "Paper",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Tour de Garde",
@@ -133,7 +141,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Ecuries",
@@ -149,7 +158,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Caserne",
@@ -165,7 +175,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Palissade",
@@ -179,7 +190,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Atelier",
@@ -199,7 +211,8 @@
                         "archipendulum",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Apothicaire",
@@ -219,7 +232,8 @@
                         "wheel",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Scriptorium",
@@ -234,7 +248,8 @@
                         "quill",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Officine",
@@ -249,7 +264,8 @@
                         "pestle",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "D\u00a9pot de Pierre",
@@ -263,7 +279,8 @@
                     "ChangeMarketRule": [
                         "Stone"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "D\u00a9pot d'Clay'",
@@ -277,7 +294,8 @@
                     "ChangeMarketRule": [
                         "Clay"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "D\u00a9pot de Wood",
@@ -291,7 +309,8 @@
                     "ChangeMarketRule": [
                         "Wood"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Taverne",
@@ -305,7 +324,8 @@
                     "AddMoney": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Th\u00a9\u00a2tre",
@@ -319,7 +339,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Autel",
@@ -333,7 +354,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Bains",
@@ -349,7 +371,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Scierie",
@@ -364,7 +387,8 @@
                         "Wood",
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Briqueterie",
@@ -379,7 +403,8 @@
                         "Clay",
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Carri\u00a8re",
@@ -394,7 +419,8 @@
                         "Stone",
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Soufflerie",
@@ -409,7 +435,8 @@
                         "Glass",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "S\u00a9choir",
@@ -424,7 +451,8 @@
                         "Paper",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Muraille",
@@ -440,7 +468,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Haras",
@@ -457,7 +486,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Baraquements",
@@ -471,7 +501,8 @@
                     "MoveConflictPawn": [
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Champ de tir",
@@ -489,7 +520,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Place d'armes'",
@@ -506,7 +538,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Forum",
@@ -523,7 +556,8 @@
                         "Glass",
                         "Paper"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Caravans\u00a9rail",
@@ -542,7 +576,8 @@
                         "Clay",
                         "Glass"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Douanes",
@@ -556,7 +591,8 @@
                     "ChangeMarketRule": [
                         "Glass"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Brasserie",
@@ -570,7 +606,8 @@
                     "AddMoney": [
                         6
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Biblioth\u00a8que",
@@ -592,7 +629,8 @@
                         "quill",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Dispensaire",
@@ -613,7 +651,8 @@
                         "pestle",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Ecole",
@@ -634,7 +673,8 @@
                         "wheel",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Laboratoire",
@@ -655,7 +695,8 @@
                         "archipendulum",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Tribunal",
@@ -672,7 +713,8 @@
                     "AddVictoryPoint": [
                         5
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Statue",
@@ -688,7 +730,8 @@
                     "AddVictoryPoint": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Temple",
@@ -705,7 +748,8 @@
                     "AddVictoryPoint": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Aqueduc",
@@ -721,7 +765,8 @@
                     "AddVictoryPoint": [
                         5
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Rostres",
@@ -737,7 +782,8 @@
                     "AddVictoryPoint": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Arsenal",
@@ -754,7 +800,8 @@
                     "MoveConflictPawn": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Pr\u00a9toire",
@@ -768,7 +815,8 @@
                     "MoveConflictPawn": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Fortifications",
@@ -786,7 +834,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Atelier de si\u00a8ge",
@@ -803,7 +852,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Cirque",
@@ -820,7 +870,8 @@
                     "MoveConflictPawn": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Acad\u00a9mie",
@@ -842,7 +893,8 @@
                         "sundial",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Etude",
@@ -864,7 +916,8 @@
                         "sundial",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Universit\u00a9",
@@ -886,7 +939,8 @@
                         "armillary_sphere",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Observatoire",
@@ -907,7 +961,8 @@
                         "armillary_sphere",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Chambre de commerce",
@@ -927,7 +982,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Port",
@@ -949,7 +1005,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Armurerie",
@@ -970,7 +1027,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Phare",
@@ -991,7 +1049,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Ar\u00a8ne",
@@ -1012,7 +1071,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Palace",
@@ -1031,7 +1091,8 @@
                     "AddVictoryPoint": [
                         7
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Hotel de Ville",
@@ -1048,7 +1109,8 @@
                     "AddVictoryPoint": [
                         7
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Ob\u00a9lisque",
@@ -1065,7 +1127,8 @@
                     "AddVictoryPoint": [
                         5
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Jardin",
@@ -1082,7 +1145,8 @@
                     "AddVictoryPoint": [
                         6
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Panth\u00a9on",
@@ -1100,7 +1164,8 @@
                     "AddVictoryPoint": [
                         6
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "S\u00a9nat",
@@ -1118,7 +1183,8 @@
                     "AddVictoryPoint": [
                         5
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Commer\u00a7ants",
@@ -1142,7 +1208,8 @@
                         "Yellow",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Armateurs",
@@ -1167,7 +1234,8 @@
                         "Brown",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des B\u00a2tisseurs",
@@ -1186,7 +1254,8 @@
                     "EarnVictoryPointPerMostWonderAtEndGame": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Magistrats",
@@ -1209,7 +1278,8 @@
                         "Blue",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Scientifiques",
@@ -1231,7 +1301,8 @@
                         "Green",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Usuriers",
@@ -1249,7 +1320,8 @@
                         1,
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Guilde des Tacticiens",
@@ -1272,7 +1344,8 @@
                         "Red",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             }
         ],
         "ProgressTokenList": [
@@ -1285,7 +1358,8 @@
                     "AddMoney": [
                         6
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Architecture",
@@ -1293,13 +1367,15 @@
                     "WonderCostReducedByX": [
                         2
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Economie",
                 "effects": {
                     "TakeAdversaryTradeMoney": null
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Loi",
@@ -1308,7 +1384,8 @@
                         "scale",
                         1
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Ma\u00a7onnerie",
@@ -1317,7 +1394,8 @@
                         2,
                         "Blue"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Math\u00a9matiques",
@@ -1325,7 +1403,8 @@
                     "EarnVictoryPointsPerProgressTokenAtEndGame": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Philosophie",
@@ -1333,7 +1412,8 @@
                     "AddVictoryPoint": [
                         7
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Strat\u00a9gie",
@@ -1342,13 +1422,15 @@
                         1,
                         "Red"
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Th\u00a9ologie",
                 "effects": {
                     "NewWondersHaveInstantReplaying": null
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Urbanisme",
@@ -1359,7 +1441,8 @@
                     "EarnMoneyPerBuildingChaining": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             }
         ],
         "WondersList": [
@@ -1381,7 +1464,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Le Colosse",
@@ -1397,7 +1481,8 @@
                     "AddVictoryPoint": [
                         3
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Le Grand Phare",
@@ -1416,7 +1501,8 @@
                     "AddVictoryPoint": [
                         4
                     ]
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
             {
                 "name": "Les Jardins Suspendus",
@@ -1434,10 +1520,12 @@
                         3
                     ],
                     "InstantReplaying": null
-                }
+                },
+                "image": "/data/image/cards/Image_Not_Yet_Available.png"
             },
-            {
+           {
                 "name": "La Grande Biblioth\u00e8que",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 1,
@@ -1453,6 +1541,7 @@
             },
             {
                 "name": "Le Mausol\u00e9e",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 2,
@@ -1468,6 +1557,7 @@
             },
             {
                 "name": "La Pir\u00e9e",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 1,
@@ -1487,6 +1577,7 @@
             },
             {
                 "name": "Les Pyramides",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Stone": 3,
@@ -1500,6 +1591,7 @@
             },
             {
                 "name": "Le Sphinx",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Glass": 2,
@@ -1515,6 +1607,7 @@
             },
             {
                 "name": "La Statue de Zeus",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 2,
@@ -1536,6 +1629,7 @@
             },
             {
                 "name": "Le Temple d'Art\u00e9mis",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 1,
@@ -1552,6 +1646,7 @@
             },
             {
                 "name": "La Via Appia",
+                "image": "/data/image/cards/Image_Not_Yet_Available.png",
                 "direct_cost": null,
                 "cost": {
                     "Paper": 1,
@@ -1574,3 +1669,5 @@
         ]
     }
 }
+
+
