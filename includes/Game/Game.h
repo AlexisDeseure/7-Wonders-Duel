@@ -2,6 +2,7 @@
 #define GAME_H
 
 
+#define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
 #include "qtmetamacros.h"
 #define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
 #include <QtCore>

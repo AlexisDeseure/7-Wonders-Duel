@@ -317,3 +317,32 @@ int File::getDirectCost(QString name){
     qDebug() << "Pas de bâtiments avec ce nom";
     return 0;
 }
+
+int File::getImage(QString name){
+    int image;
+    QJsonArray LBuilding = listeBuildings();
+    QJsonArray LWonder = listeWonder();
+    for (auto points: LBuilding) {
+        QString Bname = points.toObject().value("name").toString();
+        if (Bname==name) {
+            image = points.toObject().value("image").toInt();
+            return image;
+        }
+    }
+    for (auto points: LWonder) {
+        QString Wname = points.toObject().value("name").toString();
+        if (Wname==name) {
+            image = points.toObject().value("image").toInt();
+            return image;
+        }
+    }
+     for (auto points: LPT) {
+        QString PTname = points.toObject().value("name").toString();
+        if (PTname==name) {
+            image = points.toObject().value("image").toInt();
+            return image;
+        }
+    }
+    qDebug() << "Pas de bâtiments avec ce nom";
+    return 0;
+}

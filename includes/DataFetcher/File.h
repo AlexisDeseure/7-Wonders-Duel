@@ -61,6 +61,8 @@ public:
 
     QString getColor(QString name);
 
+    QString getImage(QString name);
+
     int getAge(QString name);
 
     int getDirectCost(QString name);

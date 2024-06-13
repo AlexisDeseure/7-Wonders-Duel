@@ -3,13 +3,15 @@
 
 #include "Card.h"
 #include <iostream>
+#include <QString>
 
 class Wonder : public Card{
     private:
         bool active; //Montre si la merveille est sur le plateau
+        QString image; //Image de la merveille
     public:
-        Wonder(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
-        : Card(std::move(name), cost, effects, direct_cost), active(false) {}; //Constructeur
+        Wonder(std::string name, const QString img,const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
+        : Card(std::move(name), cost, effects, direct_cost),image(img),active(false) {}; //Constructeur
 
         void activate(){if(!active) active=true;}; //Selecteur de status
         bool isBuilt() const {return active;};
@@ -19,6 +21,7 @@ class Wonder : public Card{
             Card::print();
             std::cout << ((active)?"Déjà construite":"Pas encore construite")<<std::endl;
         };
+        QString getImage() const {return image;};
 };
 // Wonder
 

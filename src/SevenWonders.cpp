@@ -1,7 +1,4 @@
 #include "Game.h"
-
-
-
 #include <QTextStream>
 #include <QApplication>
 #include <QMainWindow>

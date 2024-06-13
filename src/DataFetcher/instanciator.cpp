@@ -27,7 +27,7 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).second.toStdString()}, {cards_file->getChaining(noms.second).first.toStdString()});
+            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getImage(noms.second),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).second.toStdString()}, {cards_file->getChaining(noms.second).first.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -40,7 +40,7 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Wonder"){
-            Wonder* currWonder = new Wonder(noms.second.toStdString(),cards_file->getCost(noms.second),effTransToEffect(cards_file->getWonderEffects(noms.second)),cards_file->getDirectCost(noms.second));
+            Wonder* currWonder = new Wonder(noms.second.toStdString(),cards_file->getImage(noms.second),cards_file->getCost(noms.second),effTransToEffect(cards_file->getWonderEffects(noms.second)),cards_file->getDirectCost(noms.second));
             addWonderToInstanciator(currWonder);
         }
     }
@@ -52,7 +52,7 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),{},effTransToEffect(cards_file->getProgressTokenEffects(noms.second)),0);
+            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),cards_file->getImage(noms.second),{},effTransToEffect(cards_file->getProgressTokenEffects(noms.second)),0);
             addPTtoInstanciator(currPT);
         }
     }
