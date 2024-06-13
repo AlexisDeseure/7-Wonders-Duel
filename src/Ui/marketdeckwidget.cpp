@@ -7,7 +7,7 @@
 
 std::vector<Building*> buildings; //à rajouter dans le main
 
-MarketDeckWidget::MarketDeckWidget(QWidget* parent) : QWidget(parent) {
+MarketDeckWidget::MarketDeckWidget(MarketDeck* market,QWidget* parent) : QWidget(parent),market(market) {
     Cardlines = new QVBoxLayout(this);
     generateAge(3);
 }
@@ -32,6 +32,10 @@ void MarketDeckWidget::generateAge(int age){
 
     // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
     // DeckElement* building;
+
+    std::vector<std::vector<DeckElement*>>& layout = market->getAllBuildings(); //buildings à rajouter comme var statique
+
+    DeckElement* building;
 
     switch(age){
     case 1: //10 cases de long, 5 lignes
