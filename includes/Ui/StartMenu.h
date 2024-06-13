@@ -19,6 +19,7 @@ private:
     bool p1Starts;
     bool p2Starts;
     bool randomStarter;
+    bool isTerminal;
     //Indentations : du père au fils.
     //Layout global
     QVBoxLayout* ALL;
@@ -53,6 +54,7 @@ private:
             QCheckBox* p1_starter;
             QCheckBox* p2_starter;
             QCheckBox* random_starter;
+            QCheckBox* terminal;
 
 
 public:
@@ -70,6 +72,7 @@ public:
     void setp1starts(bool start){p1Starts = start;}
     void setp2starts(bool start){p2Starts = start;}
     void setrandomstart(bool start){randomStarter = start;}
+    void setterminal(bool term){isTerminal = term;}
 
     bool getp1typeIA(){return p1TypeIA;}
     bool getp1typeHuman(){return p1TypeHuman;}
@@ -79,7 +82,8 @@ public:
     QString getp2name(){return p2Name;}
     bool getp1starts(){return p1Starts;}
     bool getp2starts(){return p2Starts;}
-    bool setrandomstart(){return randomStarter;}
+    bool getrandomstart(){return randomStarter;}
+    bool getterminal(){return isTerminal;}
 
     void displayGameParameters();
 

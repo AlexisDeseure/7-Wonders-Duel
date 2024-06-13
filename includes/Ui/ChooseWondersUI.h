@@ -24,7 +24,7 @@ private:
 
 
 public:
-    ChooseWonderStart(QWidget *parent);
+    ChooseWonderStart(QWidget *parent,Game* game);
     QHBoxLayout* displayCurrentCards(std::vector<Wonder*> wonders_vect);
 public slots:
     void wondersChoosed();

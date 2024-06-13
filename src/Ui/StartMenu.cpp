@@ -100,7 +100,8 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
     p1_starter = new QCheckBox("Joueur 1");
     p2_starter = new QCheckBox("Joueur 2");
     random_starter = new QCheckBox("Aléatoire");
-
+    terminal = new QCheckBox("Partie dans le terminal?");
+    starter_group->addButton(terminal);
     starter_group->addButton(p1_starter);
     starter_group->addButton(p2_starter);
     starter_group->addButton(random_starter);
@@ -137,11 +138,13 @@ void StartMenu::setGameParameters(){
     setp1starts(p1_starter->isChecked());
     setp2starts(p2_starter->isChecked());
     setrandomstart(random_starter->isChecked());
+    setterminal(terminal->isChecked());
     qDebug() << "Starting Parameters set!";
 }
 
 void StartMenu::displayGameParameters(){
     qDebug() << "P1IA: " <<getp1typeIA() << " | P1H: "<< getp1typeHuman() << " | P2IA: "<< getp2typeIA() << " | P2H:"
               << getp2typeHuman() << " | P1Name: " <<getp1name().toStdString() <<" | P2Name: " << getp2name().toStdString()
-              <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< setrandomstart();
+             <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< getrandomstart()
+             << " | jeu dans le terminal: "<<getterminal();
 }

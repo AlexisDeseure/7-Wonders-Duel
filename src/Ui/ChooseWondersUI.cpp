@@ -1,6 +1,6 @@
 #include "ChooseWondersUI.h"
 
-ChooseWonderStart::ChooseWonderStart(QWidget *parent) : QWidget(parent){
+ChooseWonderStart::ChooseWonderStart(QWidget *parent, Game* game) : QWidget(parent){
 
     emit readyToReceiveWonders();
     qDebug()<<"Entered Loop";
