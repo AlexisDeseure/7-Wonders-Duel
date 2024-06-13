@@ -2,12 +2,11 @@
 #include "cardwidget.h"
 #include "BuildingsLayout.h"
 #include "Card.h"
-#include "Instanciator.h"
 #include <vector>
 
 std::vector<Building*> buildings; //à rajouter dans le main
 
-MarketDeckWidget::MarketDeckWidget(QWidget* parent) : QWidget(parent) {
+MarketDeckWidget::MarketDeckWidget(MarketDeck* market,QWidget* parent) : QWidget(parent),market(market) {
     Cardlines = new QVBoxLayout(this);
     generateAge(3);
 }
@@ -26,12 +25,16 @@ bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
 void MarketDeckWidget::generateAge(int age){
     delete this->Cardlines;
     Cardlines = new QVBoxLayout(this);
+<<<<<<< Updated upstream
 
     int width = 115;
     int height = 170;
 
-    // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
-    // DeckElement* building;
+    std::vector<std::vector<DeckElement*>>& layout = BuildingsLayout::getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
+=======
+    std::vector<std::vector<DeckElement*>>& layout = market->getAllBuildings(); //buildings à rajouter comme var statique
+>>>>>>> Stashed changes
+    DeckElement* building;
 
     switch(age){
     case 1: //10 cases de long, 5 lignes
