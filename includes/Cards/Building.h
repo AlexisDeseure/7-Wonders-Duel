@@ -33,7 +33,7 @@ class Building : public Card{
             : Card(name, cost, effects, direct_cost),image(img),age(a), chainIn(chainIn), chainOut(chainOut), type(t) {};
         BuildingType getType() const {return type;}
         int getAge() const {return age;};
-        Qstring getImage() const {return image;};
+        QString getImage() const {return image;};
         void addChainOutToCity(City* city) const; // les symboles en possession
         bool isChainInInCity(const City* city) const override;  // les symboles pour faire le build
         void print() const override;

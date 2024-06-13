@@ -318,28 +318,28 @@ int File::getDirectCost(QString name){
     return 0;
 }
 
-int File::getImage(QString name){
-    int image;
+QString File::getImage(QString name){
     QJsonArray LBuilding = listeBuildings();
     QJsonArray LWonder = listeWonder();
+    QJsonArray LPT = listeProgressToken();
     for (auto points: LBuilding) {
         QString Bname = points.toObject().value("name").toString();
         if (Bname==name) {
-            image = points.toObject().value("image").toInt();
+            QString image = points.toObject().value("image").toString();
             return image;
         }
     }
     for (auto points: LWonder) {
         QString Wname = points.toObject().value("name").toString();
         if (Wname==name) {
-            image = points.toObject().value("image").toInt();
+            QString image = points.toObject().value("image").toString();
             return image;
         }
     }
-     for (auto points: LPT) {
+    for (auto points: LPT) {
         QString PTname = points.toObject().value("name").toString();
         if (PTname==name) {
-            image = points.toObject().value("image").toInt();
+            QString image = points.toObject().value("image").toString();
             return image;
         }
     }
