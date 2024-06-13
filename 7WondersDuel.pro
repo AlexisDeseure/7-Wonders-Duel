@@ -67,7 +67,7 @@ HEADERS = \
    includes/Game/Game.h \
    includes/Game/Player.h \
    includes/DataFetcher/File.h \
-   includes/Ui/Connector.h \
+   includes/Ui/ChooseWondersUI.h \
    includes/Ui/SevenWonderUI.h \
    includes/DataFetcher/Instanciator.h \
    includes/DataFetcher/BuildingsLayout.h \
@@ -76,9 +76,8 @@ HEADERS = \
    includes/Ui/marketdeckwidget.h \
    includes/Ui/militarydeck.h \
    includes/Ui/playerwidget.h \
-   includes/Ui/Subject.h \
-   includes/Ui/Observer.h \
    includes/Ui/cardwidget.h
+   includes/Ui/Subject.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -124,7 +123,7 @@ SOURCES = \
    src/Game/Player.cpp \
    src/DataFetcher/File.cpp \
    src/SevenWonders.cpp \
-   src/Ui/Connector.cpp \
+   src/Ui/ChooseWondersUI.cpp \
    src/Ui/SevenWonderUI.cpp \
    src/Ui/StartMenu.cpp \
    src/Ui/game_window.cpp \

@@ -16,7 +16,8 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
         seven_wonder_duel = new QLabel("7 Wonders Duel");
         QUIT = new QPushButton("Quit");
         QUIT->setDefault(0);
-        connect(QUIT, SIGNAL(clicked()), qApp, SLOT(quit()));
+        //connect(QUIT, SIGNAL(clicked()), qApp, SLOT(quit()));
+        connect(QUIT, SIGNAL(clicked()), this, SLOT(quitButton()));
 
     upper_window->addWidget(start_menu);
     upper_window->addWidget(seven_wonder_duel);
@@ -100,7 +101,7 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
     p1_starter = new QCheckBox("Joueur 1");
     p2_starter = new QCheckBox("Joueur 2");
     random_starter = new QCheckBox("Aléatoire");
-
+    terminal = new QCheckBox("Terminal");
     starter_group->addButton(p1_starter);
     starter_group->addButton(p2_starter);
     starter_group->addButton(random_starter);
@@ -108,13 +109,13 @@ StartMenu::StartMenu(QWidget *parent) : QWidget(parent){
 
 
 
-    START = new QPushButton("START GAME");
+    START = new QPushButton("START");
     START->setDefault(1);
     connect(START, SIGNAL(clicked()), this, SLOT(startButton()));
-    connect(START, SIGNAL(clicked()), this, SLOT(close()));
     lower_games_settings->addWidget(p1_starter);
     lower_games_settings->addWidget(p2_starter);
     lower_games_settings->addWidget(random_starter);
+    lower_games_settings->addWidget(terminal);
     lower_games_settings->addWidget(START);
 
     ALL->addWidget(choose_starting_player);
@@ -127,6 +128,10 @@ void StartMenu::startButton(){
     emit StartPressed();
 }
 
+void StartMenu::quitButton(){
+    emit quitPressed();
+}
+
 void StartMenu::setGameParameters(){
     setp1typeIA(p1_IA->isChecked());
     setp1TypeHuman(p1_HUMAIN->isChecked());
@@ -137,11 +142,13 @@ void StartMenu::setGameParameters(){
     setp1starts(p1_starter->isChecked());
     setp2starts(p2_starter->isChecked());
     setrandomstart(random_starter->isChecked());
+    setterminal(terminal->isChecked());
     qDebug() << "Starting Parameters set!";
 }
 
 void StartMenu::displayGameParameters(){
     qDebug() << "P1IA: " <<getp1typeIA() << " | P1H: "<< getp1typeHuman() << " | P2IA: "<< getp2typeIA() << " | P2H:"
               << getp2typeHuman() << " | P1Name: " <<getp1name().toStdString() <<" | P2Name: " << getp2name().toStdString()
-              <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< setrandomstart();
+             <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< getrandomstart()
+             << " | Terminal: "<<getterminal();
 }

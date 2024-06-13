@@ -13,6 +13,12 @@ class CardWidget : public QWidget
 {
     Q_OBJECT
 
+#include "DeckElement.h"
+#include "Card.h"
+
+class CardWidget : public QWidget
+{
+    Q_OBJECT
 public:
     CardWidget(QWidget *parent = nullptr);
     CardWidget(DeckElement* card, QWidget *parent = nullptr);
@@ -20,7 +26,7 @@ public:
     DeckElement* getCard() const{return card;};
 
 // signals:
-//     void cardClicked();
+// void cardClicked();
 
 private:
     QLabel *nameLabel;
@@ -36,7 +42,6 @@ protected:
 
 private slots:
     void cardClicked();
-
 };
 
 #endif // CARDWIDGET_H

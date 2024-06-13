@@ -11,6 +11,8 @@
 #include <random>
 #include <iostream>
 #include <algorithm>
+#include "StartMenu.h"
+#include "ChooseWondersUI.h"
 
 Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
@@ -23,12 +25,96 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         deck = new DeckPile(nb_b, nb_pt, nb_w);
         players[0] = new Player(inst->getGameParameters().getCoinsStart());
         players[1] = new Player(inst->getGameParameters().getCoinsStart());
-        startGame();
+        QPointer<QMainWindow> fenetre = new QMainWindow();
+        fenetre->setFixedSize(400,225);
+        StartMenu* startmenu = new StartMenu(fenetre);
+        fenetre->setWindowTitle("Seven Wonders Duel");
+        startmenu->setGeometry(fenetre->geometry());
+
+
+        //Affichage de la fenêtre
+        exit = false;
+        fenetre->show();
+        qDebug()<<"Entered StartMenu Loop, waiting for startPressed() or quitPressed()";
+
+        QEventLoop loop;
+            connect(startmenu,SIGNAL(StartPressed()),&loop,SLOT(quit()));
+            connect(startmenu,SIGNAL(quitPressed()),this,SLOT(quitting()));
+            connect(startmenu,SIGNAL(quitPressed()),&loop,SLOT(quit()));
+        loop.exec();
+        startmenu->close();
+        if (exit){
+            fenetre->close();
+            qApp->quit();
+        }
+        else {
+            //Application de StartMenu.
+            //Joueur 1
+            players[0]->setAI(startmenu->getp1typeIA());
+            players[0]->setName(startmenu->getp1name().toStdString());
+            if (startmenu->getp1typeIA()) players[0]->setAiLevel(AiLevel::EASY);
+            //Joueur 2
+            players[1]->setAI(startmenu->getp2typeIA());
+            players[1]->setName(startmenu->getp2name().toStdString());
+            if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
+            if (startmenu->getrandomstart()){
+                randomPlayerStart();
+            }
+            else if (startmenu->getp2starts()){
+                invertTurnPlayer();
+            }
+
+            if (players[0]->getName() == players[1]->getName()) {
+                players[0]->setName(players[0]->getName() + " (1)");
+                players[1]->setName(players[1]->getName() + " (2)");
+            }
+
+            if (startmenu->getterminal()){
+                startGame();
+            }
+            else{
+                fenetre->setFixedSize(600,400);
+                selectWonderPhaseUI(fenetre);
+            }
+        }
     } catch (const std::exception& e) {
         std::cerr << "Error initializing game: " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
+
+// void Game::startMenu(){
+//     try {
+//         AiLevel level;
+//         int choice;
+
+//         std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
+
+//         for (int i = 0; i < 2; i++) {
+//             displayplayerChoice(i + 1);
+//             choice = players[i]->getPlayerChoice(2);
+//             switch (choice) {
+//             case 1:
+//                 std::cout << "Entrez le nom du joueur : " << std::endl;
+//                 players[i]->setName(getStrInput());
+//                 break;
+//             case 2:
+//                 players[i]->setAI(true);
+//                 players[i]->setAiLevel(AiLevel::EASY);
+//                 players[i]->setName("BOT"); // + AiLeveltoString(level));
+//                 break;
+//             }
+//         }
+
+//         if (players[0]->getName() == players[1]->getName()) {
+//             players[0]->setName(players[0]->getName() + " (1)");
+//             players[1]->setName(players[1]->getName() + " (2)");
+//         }
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in startMenu(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
 
 Game::~Game() {
     try {
@@ -36,7 +122,7 @@ Game::~Game() {
         delete players[0];
         delete players[1];
         delete deck;
-        std::cout << R"(
+        /*std::cout << R"(
   __  __               _       _ _                  _          _                    _
  |  \/  |             (_)     | ( )                (_)        (_)              /   | |
  | \  / | ___ _ __ ___ _    __| |/  __ ___   _____  _ _ __     _  ___  _   _  ___  | |
@@ -45,42 +131,10 @@ Game::~Game() {
  |_|  |_|\___|_|  \___|_|  \__,_|  \__,_| \_/ \___/|_|_|      | |\___/ \__,_|\___| (_)
                                                              _/ |
                                                             |__/
-)" << std::endl;
+)" << std::endl; */
+        qApp->exit(0);
     } catch (const std::exception& e) {
         std::cerr << "Error cleaning up game: " << e.what() << std::endl;
-        throw; // Re-throw the exception
-    }
-}
-
-void Game::startMenu(){
-    try {
-        AiLevel level;
-        int choice;
-
-        std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
-
-        for (int i = 0; i < 2; i++) {
-            displayplayerChoice(i + 1);
-            choice = players[i]->getPlayerChoice(2);
-            switch (choice) {
-            case 1:
-                std::cout << "Entrez le nom du joueur : " << std::endl;
-                players[i]->setName(getStrInput());
-                break;
-            case 2:
-                players[i]->setAI(true);
-                players[i]->setAiLevel(AiLevel::EASY);
-                players[i]->setName("BOT"); // + AiLeveltoString(level));
-                break;
-            }
-        }
-
-        if (players[0]->getName() == players[1]->getName()) {
-            players[0]->setName(players[0]->getName() + " (1)");
-            players[1]->setName(players[1]->getName() + " (2)");
-        }
-    } catch (const std::exception& e) {
-        std::cerr << "Error in startMenu(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
@@ -138,7 +192,6 @@ _________   __      __                  .___                    ________        
                   \/             \/      \/    \/           \/          \/            \/
     )" << std::endl;
 
-        startMenu();
         std::cout << "Nom des joueurs : " << players[0]->getName() << " et " << players[1]->getName() << std::endl;
         selectWondersPhase();
         while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
@@ -226,6 +279,17 @@ void Game::playTurn() {
         std::cerr << "Error in playTurn(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
+}
+
+void Game::selectWonderPhaseUI(QWidget* fenetre){
+    fenetre->setFixedSize(600,400);
+    std::vector<Wonder*> allWonders = deck->getAllWonders();
+    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+    ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre,allWonders);
+    QEventLoop loopWonder;
+    qDebug() << "Waiting for wonders";
+    connect(wonderUI, SIGNAL(selectionDone()), &loopWonder, SLOT(quit()));
+    loopWonder.exec();
 }
 
 void Game::selectWondersPhase() {
@@ -495,3 +559,40 @@ std::string getStrInput() {
         throw; // Re-throw the exception
     }
 }
+
+
+// }
+
+// void Game::startMenu(){
+//     try {
+//         AiLevel level;
+//         int choice;
+
+//         std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
+
+//         for (int i = 0; i < 2; i++) {
+//             displayplayerChoice(i + 1);
+//             choice = players[i]->getPlayerChoice(2);
+//             switch (choice) {
+//             case 1:
+//                 std::cout << "Entrez le nom du joueur : " << std::endl;
+//                 players[i]->setName(getStrInput());
+//                 break;
+//             case 2:
+//                 players[i]->setAI(true);
+//                 players[i]->setAiLevel(AiLevel::EASY);
+//                 players[i]->setName("BOT"); // + AiLeveltoString(level));
+//                 break;
+//             }
+//         }
+
+//         if (players[0]->getName() == players[1]->getName()) {
+//             players[0]->setName(players[0]->getName() + " (1)");
+//             players[1]->setName(players[1]->getName() + " (2)");
+//         }
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in startMenu(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
+

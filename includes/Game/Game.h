@@ -3,7 +3,11 @@
 
 
 #define GAME_PARAMETERS_PATH "../../../data/game_parameters.json"
-
+#include "qtmetamacros.h"
+#define GAME_PARAMETERS_PATH "../../data/game_parameters.json"
+#include <QtCore>
+#include <QObject>
+#include "instanciator.h"
 #include <string>
 #include <vector>
 #include <exception>
@@ -15,7 +19,7 @@ class Player;
 enum class AiLevel;
 class Building;
 
-class GameException : public std::exception {
+class GameException : public std::exception{
 private:
     std::string message;
 
@@ -26,7 +30,8 @@ public:
     }
 };
 
-class Game{
+class Game:  public QObject{
+Q_OBJECT
     private:
         int age;
         unsigned int turn;
@@ -35,7 +40,8 @@ class Game{
         bool isReplaying;
         DeckPile* deck;
         Player* winner;
-
+        bool isTerminal;
+        bool exit;
     public:
         bool endTurn();
         bool checkMilitaryVictory() const;
@@ -64,6 +70,12 @@ class Game{
         void chooseWhoStartsAge(Player& player);
         Game();
         ~Game();
+
+        // UI SPECIFIC
+        void selectWonderPhaseUI(QWidget* fenetre);
+
+    public slots:
+        void quitting(){exit = true;}
 };
 
 int selectRandomInteger(int min = 0, int max = 1);
