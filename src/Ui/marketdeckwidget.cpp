@@ -9,7 +9,7 @@ std::vector<Building*> buildings; //à rajouter dans le main
 
 MarketDeckWidget::MarketDeckWidget(MarketDeck* market,QWidget* parent) : QWidget(parent),market(market) {
     Cardlines = new QVBoxLayout(this);
-    generateAge(3);
+    generateAge(2);
 }
 
 bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
