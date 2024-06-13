@@ -1,14 +1,14 @@
 #include "ChooseWondersUI.h"
 
-ChooseWonderStart::ChooseWonderStart(QWidget *parent,Connector* connector) : QWidget(parent){
+ChooseWonderStart::ChooseWonderStart(QWidget *parent) : QWidget(parent){
 
     emit readyToReceiveWonders();
     qDebug()<<"Entered Loop";
     QEventLoop loop;
-    connect(connector,SIGNAL(wondersReady()),&loop,SLOT(quit()));
+    connect(game,SIGNAL(wondersReady()),&loop,SLOT(quit()));
     loop.exec();
 
-    std::vector<Wonder*> shuffled_wonders=connector->getWondersFromGameUI();
+    std::vector<Wonder*> shuffled_wonders=game->getWondersFromGameUI();
 
     QSize size = parent->size();
     QRect ALL_size = QRect(parent->pos(),size);
@@ -18,8 +18,8 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,Connector* connector) : QWi
     columns->setGeometry(ALL_size);
     //player == 0 : joueur 2
     //player == 1 : joueur 1
-    p1=new QLabel("Joueur 1, à toi de choisir!");
-    p2=new QLabel("Joueur 2, à toi de choisir!");
+    p1 = new QLabel("Joueur 1, à toi de choisir!");
+    p2 = new QLabel("Joueur 2, à toi de choisir!");
     if (player){
 
     }
