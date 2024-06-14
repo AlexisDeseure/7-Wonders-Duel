@@ -42,8 +42,11 @@ void MarketDeckWidget::generateAge(int age){
 
                 CardWidget* carteWidget = new CardWidget(this);
                 carteWidget->setFixedSize(width,height);
-                connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)), this, SLOT(updateMarketDeck()));
-                connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)), this, SLOT(updateMarketDeck()));
+                connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)), this, SLOT(this->updateMarketDeck()));
+                connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)), this, SLOT(this->updateMarketDeck()));
+                // connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)),this->parentWidget(),SLOT(/*slot to recieve data and send to players*/));
+                // connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)),this->parentWidget(),SLOT(/*slot to recieve data and send to players*/));
+
                 // building = layout[i][j];
                 // CardWidget* carteWidget = new CardWidget(building,this);
                 // carteWidget->setFixedSize(100,100);

@@ -77,14 +77,13 @@ void CardWidget::leaveEvent(QEvent *event)
 
 void CardWidget::acheter(){
     this->close(); //retire le widget de la fenêtre
-    emit SIGNAL(sendAchat(card)); //envoie signal
+    emit sendAchat(card); //envoie signal
     delete this; //efface le widget
-    show();
 }
 
 void CardWidget::defausser(){
     this->close();
-    emit SIGNAL(sendDefausse(card));
+    emit sendDefausse(card);
     delete this;
 }
 

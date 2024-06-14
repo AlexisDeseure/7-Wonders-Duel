@@ -27,6 +27,7 @@ private:
 
 public slots:
     void updateMarketDeck();
+
 };
 
 #endif // MARKETDECKWIDGET_H
