@@ -19,7 +19,7 @@ void BuildingCostReducedByX::setParameters(std::vector<int> int_parameters, std:
 
 void BuildingCostReducedByX::eachTurnEffect(Game& game, Card& card){
     // on donne l'argent correspondant aux ressources à l'achat avant celui-ci
-    //TODO gérer avec effet économie
+    //gérer avec effet économie
     if (dynamic_cast<Building*>(&card) && dynamic_cast<Building*>(&card)->getType()==type){
         City& city = game.getTurnPlayer().getCity();
         RessourceType max = RessourceType::LENGTH;
