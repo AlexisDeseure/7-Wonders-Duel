@@ -131,7 +131,6 @@ SOURCES = \
    src/Ui/marketdeckwidget.cpp \
    src/Ui/militarydeck.cpp \
    src/Ui/playerwidget.cpp \
-   src/Ui/uitest.cpp \
    src/Ui/cardwidget.cpp
 
 INCLUDEPATH = \
