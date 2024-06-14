@@ -4,6 +4,10 @@
 #include "RessourceCost.h"
 #include "EffectFactory.h"
 #include "IncludeEffects.h"
+#include "Building.h"
+#include "Wonder.h"
+#include "Card.h"
+#include "ProgressToken.h"
 
 Instanciator *Instanciator::instance = nullptr;
 
@@ -23,11 +27,24 @@ std::vector<Effect*> Instanciator::effTransToEffect(std::vector<File::EffectTran
 // Exemple d'instanciation d'une classe à partir de son nom :
 // Effect* effect = EffectFactory::instance().create("AddMoney");
 
-
+Instanciator::~Instanciator(){
+    for(auto & it : buildings_instanciator){
+        delete it;
+    }
+    for(auto & it : wonders_instanciator){
+        delete it;
+    }
+    for(auto & it : progress_tokens_instanciator){
+        delete it;
+    }
+    delete cards_file;
+    delete buildings_layout;
+}
 void Instanciator::constructBuilding(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Building"){
-            Building* currBuild = new Building(noms.second.toStdString(),cards_file->getImage(noms.second),cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).second.toStdString()}, {cards_file->getChaining(noms.second).first.toStdString()});
+            QString image = QString::fromStdString(game_parameters.getCardsImagePath())+"/"+cards_file->getImage(noms.second);
+            Building* currBuild = new Building(noms.second.toStdString(),image,cards_file->getCost(noms.second), effTransToEffect(cards_file->getBuildingEffects(noms.second)), cards_file->getDirectCost(noms.second), StringToBuildingType(cards_file->getColor(noms.second).toStdString()), cards_file->getAge(noms.second), {cards_file->getChaining(noms.second).second.toStdString()}, {cards_file->getChaining(noms.second).first.toStdString()});
             addBuildingToInstanciator(currBuild);
         }
     }
@@ -40,7 +57,8 @@ void Instanciator::constructBuilding(){
 void Instanciator::constructWonder(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Wonder"){
-            Wonder* currWonder = new Wonder(noms.second.toStdString(),cards_file->getImage(noms.second),cards_file->getCost(noms.second),effTransToEffect(cards_file->getWonderEffects(noms.second)),cards_file->getDirectCost(noms.second));
+            QString image = QString::fromStdString(game_parameters.getCardsImagePath())+"/"+cards_file->getImage(noms.second);
+            Wonder* currWonder = new Wonder(noms.second.toStdString(),image,cards_file->getCost(noms.second),effTransToEffect(cards_file->getWonderEffects(noms.second)),cards_file->getDirectCost(noms.second));
             addWonderToInstanciator(currWonder);
         }
     }
@@ -52,7 +70,8 @@ void Instanciator::constructWonder(){
 void Instanciator::constructPT(){
     for (std::pair<QString,QString>& noms : getNames()) {
         if (noms.first == "Progress Token"){
-            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),cards_file->getImage(noms.second),{},effTransToEffect(cards_file->getProgressTokenEffects(noms.second)),0);
+            QString image = QString::fromStdString(game_parameters.getCardsImagePath())+"/"+cards_file->getImage(noms.second);
+            ProgressToken* currPT = new ProgressToken(noms.second.toStdString(),image,{},effTransToEffect(cards_file->getProgressTokenEffects(noms.second)),0);
             addPTtoInstanciator(currPT);
         }
     }

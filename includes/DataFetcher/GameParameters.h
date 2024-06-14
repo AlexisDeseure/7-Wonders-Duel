@@ -23,7 +23,12 @@ private:
     };
 
     std::string cards_path;
+    std::string cards_image_path;
+    std::string cards_image_back_age1;
+    std::string cards_image_back_age2;
+    std::string cards_image_back_age3;
     std::string buildings_layout_path;
+
     int coins_start;
     int base_market_coins;
     int number_age;
@@ -46,6 +51,10 @@ public:
 
     std::string getCardsPath() const { return cards_path; }
     std::string getBuildingsLayoutPath() const { return buildings_layout_path; }
+    std::string getCardsImagePath() const { return cards_image_path; }
+    std::string getCardsImageBackAge1() const { return cards_image_back_age1; }
+    std::string getCardsImageBackAge2() const { return cards_image_back_age2; }
+    std::string getCardsImageBackAge3() const { return cards_image_back_age3; }
     int getCoinsStart() const { return coins_start; }
     int getBaseMarketCoins() const { return base_market_coins; }
     int getNumberAge() const { return number_age; }

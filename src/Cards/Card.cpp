@@ -7,6 +7,7 @@
 #include <list>
 #include <iostream>
 #include "Building.h"
+#include "Instanciator.h"
 using namespace std;
 
 // en fait cette fonction ne sert pas l'idée c'est de faire tout dans getCost : en fait la fonction doit renvoyer le
@@ -24,6 +25,11 @@ Card::~Card() {
     //     delete e;
     // }
 }
+
+Card::Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, QString image)
+    : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost), image(image){
+      };
+
 
 unsigned int Card::getMoneyCost() const{
     return money_cost;

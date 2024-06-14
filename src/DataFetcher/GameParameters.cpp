@@ -28,6 +28,10 @@ void GameParameters::readAndInstanciate(std::string file_path){
 
     cards_path = obj["cards_path"].toString().toStdString();
     buildings_layout_path = obj["buildings_layout_path"].toString().toStdString();
+    cards_image_path = obj["cards_image_path"].toString().toStdString();
+    cards_image_back_age1 = obj["age1_back"].toString().toStdString();
+    cards_image_back_age2 = obj["age2_back"].toString().toStdString();
+    cards_image_back_age3 = obj["age3_back"].toString().toStdString();
     coins_start = obj["coin_start"].toInt();
     base_market_coins = obj["base_market_coins"].toInt();
     number_age = obj["number_age"].toInt();

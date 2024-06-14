@@ -2,14 +2,17 @@
 #define INSTANCIATOR_H
 
 
-#include "Building.h"
-#include "Wonder.h"
-#include "Card.h"
-#include "ProgressToken.h"
+
 #include "File.h"
 #include "Game.h"
 #include "GameParameters.h"
 #include "BuildingsLayout.h"
+
+class Building;
+class Wonder;
+class Card;
+class ProgressToken;
+
 
 class Instanciator
 {
@@ -48,19 +51,7 @@ private:
 
 public:
 
-    ~Instanciator(){
-        for(auto & it : buildings_instanciator){
-            delete it;
-        }
-        for(auto & it : wonders_instanciator){
-            delete it;
-        }
-        for(auto & it : progress_tokens_instanciator){
-            delete it;
-        }
-        delete cards_file;
-        delete buildings_layout;
-    }
+    ~Instanciator();
     static Instanciator* getInstanciator(){
         if (!instance){
             instance = new Instanciator;

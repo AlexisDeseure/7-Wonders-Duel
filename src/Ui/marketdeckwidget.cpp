@@ -32,7 +32,6 @@ void MarketDeckWidget::generateAge(int age){
 
     // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
     // DeckElement* building;
-
     std::vector<std::vector<DeckElement*>>& layout = market->getAllBuildings(); //buildings à rajouter comme var statique
     for(int i = 0; i < 5; i++){
         QGridLayout* line = new QGridLayout(this);

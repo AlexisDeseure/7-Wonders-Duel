@@ -1,6 +1,10 @@
 {
     "cards_path": "../../../data/cards.json",
     "buildings_layout_path": "../../../data/buildings_layout.json",
+    "cards_image_path": "../../../data/image/cards",
+    "age1_back": "age1back.jpg",
+    "age2_back": "age2back.jpg",
+    "age3_back": "age3back.jpg",
     "coin_start": 7,
     "base_market_coins": 2,
     "number_age": 3,

@@ -9,6 +9,7 @@
 #include <QString>
 #include "RessourceCost.h"
 
+
 class Effect;
 class City;
 class Game;
@@ -25,8 +26,7 @@ class Card {
         QString image;
 
     public :
-        Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, QString image)
-            : name(std::move(name)), effects(effects), cost(cost), money_cost(direct_cost), image(image){};
+        Card(std::string name, const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost, QString image);
 
         virtual ~Card();
 
