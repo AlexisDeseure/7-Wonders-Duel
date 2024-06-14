@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include <exception>
-
+#include"Wonder.h"
 
 class DeckPile;
 class Board;
@@ -66,6 +66,8 @@ Q_OBJECT
         AiLevel aiOptions(Player& player);
         int getNumberOfVictoryPointsBlue(Player& player);
         void chooseWhoStartsAge(Player& player);
+
+        void handleWonderSelection(Wonder* selectedWonder, Player* firstPlayer, Player* secondPlayer, std::vector<Wonder*>& wondersToSelect, QEventLoop& loopWonder);
         Game();
         ~Game();
 

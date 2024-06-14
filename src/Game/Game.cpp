@@ -375,6 +375,64 @@ void Game::playTurn() {
 }
 
 
+void Game::selectWonderPhaseUI(QWidget* fenetre){
+    randomPlayerStart();
+    invertTurnPlayer();
+
+    std::vector<Wonder*> allWonders = deck->getAllWonders();
+    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+
+    auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        // Fonction pour la phase de sélection des wonders
+        std::vector<Wonder*> wondersToSelect;
+        wondersToSelect.reserve(4); // Réservation de la mémoire pour les 4 wonders pour éviter les réallocations
+
+        for (int i = 0; i < 4; i++) {
+            wondersToSelect.push_back(allWonders.back());
+            allWonders.pop_back();
+        }
+
+        std::cout << "Merveilles disponibles : " << std::endl;
+        for (const auto& wonder : wondersToSelect) {
+            std::cout << "\t- " << wonder->getName() << std::endl;
+        }
+        std::cout << std::endl;
+
+        ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
+        QEventLoop loopWonder;
+
+        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
+        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleWonderSelection(Wonder*, Player*, Player*, std::vector<Wonder*>&, QEventLoop&)));
+
+        wonderUI->show();
+        loopWonder.exec();
+    };
+
+    selectionPhase(&getTurnPlayer(), &getOtherPlayer());
+    selectionPhase(&getOtherPlayer(), &getTurnPlayer());
+
+    std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
+}
+
+void Game::handleWonderSelection(Wonder* selectedWonder, Player* firstPlayer, Player* secondPlayer, std::vector<Wonder*>& wondersToSelect, QEventLoop& loopWonder) {
+    if (firstPlayer->getCity().getWonders().size() < 2) {
+        firstPlayer->getCity().addWonder(selectedWonder);
+      //  std::cout << firstPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+    } else if (secondPlayer->getCity().getWonders().size() < 2) {
+        secondPlayer->getCity().addWonder(selectedWonder);
+       // std::cout << secondPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+    }
+
+    auto it = std::find(wondersToSelect.begin(), wondersToSelect.end(), selectedWonder);
+    if (it != wondersToSelect.end()) {
+        wondersToSelect.erase(it);
+    }
+
+    if (wondersToSelect.empty()) {
+        loopWonder.quit();
+    }
+}
+
 void Game::selectWondersPhase() {
     try {
         std::cout << std::endl << "*********************** Sélection des Merveilles ***********************" << std::endl << std::endl;
@@ -645,36 +703,36 @@ void Game::endGame() {
 
 // }
 
-// void Game::startMenu(){
-//     try {
-//         AiLevel level;
-//         int choice;
+void Game::startMenu(){
+    try {
+        AiLevel level;
+        int choice;
 
-//         std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
+        std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
 
-//         for (int i = 0; i < 2; i++) {
-//             displayplayerChoice(i + 1);
-//             choice = players[i]->getPlayerChoice(2);
-//             switch (choice) {
-//             case 1:
-//                 std::cout << "Entrez le nom du joueur : " << std::endl;
-//                 players[i]->setName(getStrInput());
-//                 break;
-//             case 2:
-//                 players[i]->setAI(true);
-//                 players[i]->setAiLevel(AiLevel::EASY);
-//                 players[i]->setName("BOT"); // + AiLeveltoString(level));
-//                 break;
-//             }
-//         }
+        for (int i = 0; i < 2; i++) {
+            displayplayerChoice(i + 1);
+            choice = players[i]->getPlayerChoice(2);
+            switch (choice) {
+            case 1:
+                std::cout << "Entrez le nom du joueur : " << std::endl;
+                players[i]->setName(getStrInput());
+                break;
+            case 2:
+                players[i]->setAI(true);
+                players[i]->setAiLevel(AiLevel::EASY);
+                players[i]->setName("BOT"); // + AiLeveltoString(level));
+                break;
+            }
+        }
 
-//         if (players[0]->getName() == players[1]->getName()) {
-//             players[0]->setName(players[0]->getName() + " (1)");
-//             players[1]->setName(players[1]->getName() + " (2)");
-//         }
-//     } catch (const std::exception& e) {
-//         std::cerr << "Error in startMenu(): " << e.what() << std::endl;
-//         throw; // Re-throw the exception
-//     }
-// }
+        if (players[0]->getName() == players[1]->getName()) {
+            players[0]->setName(players[0]->getName() + " (1)");
+            players[1]->setName(players[1]->getName() + " (2)");
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error in startMenu(): " << e.what() << std::endl;
+        throw; // Re-throw the exception
+    }
+}
 
