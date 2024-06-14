@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "game_window.h"
+#include "EndGamePopUp.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -24,30 +25,26 @@ int main(int argc, char* argv[]) {
     SetConsoleCP(CP_UTF8);
 #endif
 
-    QApplication app(argc, argv);
-    // QMainWindow fenetre;
-    // fenetre.setFixedSize(400,225);
-    // StartMenu start_menu = StartMenu(&fenetre);
-    // fenetre.setWindowTitle("Seven Wonders Duel");
-    // start_menu.setGeometry(fenetre.geometry());
-    // QPushButton *bouton = new QPushButton("Cliquez-moi", &fenetre);
-    // bouton->setGeometry(150, 80, 100, 30);
-    // QObject::connect(bouton, &QPushButton::clicked, &fenetre, &QMainWindow::close);
-
     //=================Test de l'affichage du market deck ===========================
     // décommenter pour voir
 
-    MarketDeck* market = new MarketDeck();
-    GameWindow* fenetre = new GameWindow(market);
-    fenetre->show();
+    // MarketDeck* market = new MarketDeck();
+    // GameWindow* fenetre = new GameWindow(market);
+    // fenetre->show();
     //===============================================================================
 
-    // QApplication app(argc, argv);
-    //QMainWindow* fenetre = new QMainWindow();
-    //fenetre->setFixedSize(400,225);
-    //ChooseWonderStart* test = new ChooseWonderStart(fenetre);
-    //test->show();
-    // Game();
-
+    //=================Test de l'affichage du EndGamePopUp ==========================
+    QApplication app(argc, argv);
+    QMainWindow* fenetre = new QMainWindow();
+    fenetre->setGeometry(0,0,1280,720);
+    fenetre->show();
+    EndGamePopUp* test = new EndGamePopUp(fenetre,nullptr);
+    test->show();
+    QEventLoop waitingForEndGame;
+    QAbstractButton::connect(test,SIGNAL(endGame()),&waitingForEndGame,SLOT(quit()));
+    waitingForEndGame.exec();
+    fenetre->close();
+    //===============================================================================
+    //Game();
     return app.exec();
 }

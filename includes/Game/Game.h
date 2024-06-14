@@ -6,7 +6,6 @@
 #include "qtmetamacros.h"
 #include <QtCore>
 #include <QObject>
-
 #include <string>
 #include <vector>
 #include <exception>
@@ -71,8 +70,12 @@ Q_OBJECT
         ~Game();
 
         // UI SPECIFIC
-        void selectWonderPhaseUI(QWidget* fenetre);
-
+        // void selectWonderPhaseUI(QWidget* fenetre);
+        // void startGameUI(QWidget* fenetre);
+        // bool playAgeUI();
+        // void endGameUI(QWidget* fenetre);
+        // void advanceAgeUI();
+        // void playTurnUI();
     public slots:
         void quitting(){exit = true;}
         void quitGame() {
