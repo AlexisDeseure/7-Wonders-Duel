@@ -133,15 +133,36 @@ void StartMenu::quitButton(){
 }
 
 void StartMenu::setGameParameters(){
-    setp1typeIA(p1_IA->isChecked());
-    setp1TypeHuman(p1_HUMAIN->isChecked());
-    setp2TypeIA(p2_IA->isChecked());
-    setp2TypeHuman(p2_HUMAIN->isChecked());
-    setp1name(input_p1_name->textValue());
-    setp2name(input_p2_name->textValue());
-    setp1starts(p1_starter->isChecked());
-    setp2starts(p2_starter->isChecked());
-    setrandomstart(random_starter->isChecked());
+    if (!(p1_IA->isChecked()&&p2_IA->isChecked())){
+        setp1typeIA(false);
+        setp2TypeIA(false);
+    } else {
+        setp1typeIA(p1_IA->isChecked());
+        setp2TypeIA(p2_IA->isChecked());
+    }
+    if(!(p1_HUMAIN->isChecked() && p2_HUMAIN->isChecked())) {
+        setp1TypeHuman(true);
+        setp2TypeHuman(true);
+    } else {
+        setp1TypeHuman(p1_HUMAIN->isChecked());
+        setp2TypeHuman(p2_HUMAIN->isChecked());
+    }
+    if (input_p1_name->textValue().isEmpty()&&input_p2_name->textValue().isEmpty()){
+        setp1name("Joueur");
+        setp2name("Joueur");
+    } else {
+        setp1name(input_p1_name->textValue());
+        setp2name(input_p2_name->textValue());
+    }
+    if (!(p1_starter->isChecked()||p2_starter->isChecked()||random_starter->isChecked())){
+        setp1starts(false);
+        setp2starts(false);
+        setrandomstart(true);
+    } else {
+        setp1starts(p1_starter->isChecked());
+        setp2starts(p2_starter->isChecked());
+        setrandomstart(random_starter->isChecked());
+    }
     setterminal(terminal->isChecked());
     qDebug() << "Starting Parameters set!";
 }
