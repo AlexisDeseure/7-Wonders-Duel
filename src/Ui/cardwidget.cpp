@@ -2,6 +2,13 @@
 #include "Card.h"
 #include <QVBoxLayout>
 
+/* To DO
+- vector to check clickables
+- refresh clickables vector at each turn
+- initialisation test
+- catch the deckElement at player.cpp and marketdeckwidget.cpp
+*/
+
 CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(false)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -39,9 +46,20 @@ void CardWidget::leaveEvent(QEvent *event)
     selectLabel->setVisible(false);
 }
 
+void CardWidget::removeCard(){
+    this->close();
+    delete this;
+}
+
 void CardWidget::cardClicked()
 {
-    qDebug() << "Button clicked!";
+    if (clickable){
+        //afficher un menu
+        selectWidget* selectMenu = new selectWidget(this);
+        selectMenu->show();
+        connect(selectMenu,SIGNAL(selectMenu->acheterPressed()),this,SLOT(removeCard()));
+        connect(selectMenu,SIGNAL(selectMenu->defausserPressed()),this,SLOT(removeCard()));
+    }
 }
 
 

@@ -77,8 +77,10 @@ HEADERS = \
    includes/Ui/militarydeck.h \
    includes/Ui/playerwidget.h \
    includes/Ui/cardwidget.h\
+    includes/Ui/selectwidget.h
 
 SOURCES = \
+   includes/Ui/selectwidget.cpp \
    src/BoardManager/Board.cpp \
    src/BoardManager/ConflictPawn.cpp \
    src/Cards/Building.cpp \

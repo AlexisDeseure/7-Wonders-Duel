@@ -8,6 +8,7 @@
 #include "Card.h"
 #include "DeckElement.h"
 #include "Card.h"
+#include "selectwidget.h"
 
 class CardWidget : public QWidget
 {
@@ -33,8 +34,9 @@ protected:
     void enterEvent(QEnterEvent *event);
     void leaveEvent(QEvent *event);
 
-private slots:
+public slots:
     void cardClicked();
+    void removeCard();
 };
 
 #endif // CARDWIDGET_H
