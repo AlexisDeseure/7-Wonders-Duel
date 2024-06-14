@@ -283,14 +283,61 @@ void Game::playTurn() {
 }
 
 void Game::selectWonderPhaseUI(QWidget* fenetre){
-    fenetre->setFixedSize(600,400);
+    randomPlayerStart();
+    invertTurnPlayer();
+
     std::vector<Wonder*> allWonders = deck->getAllWonders();
     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
-    ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre,allWonders);
-    QEventLoop loopWonder;
-    qDebug() << "Waiting for wonders";
-    connect(wonderUI, SIGNAL(selectionDone()), &loopWonder, SLOT(quit()));
-    loopWonder.exec();
+
+    auto selectionPhase = [&](Player* firstPlayer, Player* secondPlayer) {
+        // Fonction pour la phase de sélection des wonders
+        std::vector<Wonder*> wondersToSelect;
+        wondersToSelect.reserve(4); // Réservation de la mémoire pour les 4 wonders pour éviter les réallocations
+
+        for (int i = 0; i < 4; i++) {
+            wondersToSelect.push_back(allWonders.back());
+            allWonders.pop_back();
+        }
+
+        std::cout << "Merveilles disponibles : " << std::endl;
+        for (const auto& wonder : wondersToSelect) {
+            std::cout << "\t- " << wonder->getName() << std::endl;
+        }
+        std::cout << std::endl;
+
+        ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
+        QEventLoop loopWonder;
+
+        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
+        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleWonderSelection(Wonder*, Player*, Player*, std::vector<Wonder*>&, QEventLoop&)));
+
+        wonderUI->show();
+        loopWonder.exec();
+    };
+
+    selectionPhase(&getTurnPlayer(), &getOtherPlayer());
+    selectionPhase(&getOtherPlayer(), &getTurnPlayer());
+
+    std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
+}
+
+void Game::handleWonderSelection(Wonder* selectedWonder, Player* firstPlayer, Player* secondPlayer, std::vector<Wonder*>& wondersToSelect, QEventLoop& loopWonder) {
+    if (firstPlayer->getCity().getWonders().size() < 2) {
+        firstPlayer->getCity().addWonder(selectedWonder);
+      //  std::cout << firstPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+    } else if (secondPlayer->getCity().getWonders().size() < 2) {
+        secondPlayer->getCity().addWonder(selectedWonder);
+       // std::cout << secondPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+    }
+
+    auto it = std::find(wondersToSelect.begin(), wondersToSelect.end(), selectedWonder);
+    if (it != wondersToSelect.end()) {
+        wondersToSelect.erase(it);
+    }
+
+    if (wondersToSelect.empty()) {
+        loopWonder.quit();
+    }
 }
 
 void Game::selectWondersPhase() {
