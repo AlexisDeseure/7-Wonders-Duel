@@ -75,14 +75,15 @@ void CardWidget::leaveEvent(QEvent *event)
 }
 
 void CardWidget::acheter(){
-    this->close();
-    emit sendAchat(card);
-    delete this;
+    this->close(); //retire le widget de la fenêtre
+    emit SIGNAL(sendAchat(card)); //envoie signal
+    delete this; //efface le widget
+    show();
 }
 
 void CardWidget::defausser(){
     this->close();
-    emit sendDefausse(card);
+    emit SIGNAL(sendDefausse(card));
     delete this;
 }
 
@@ -92,7 +93,7 @@ void CardWidget::cardClicked()
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
-        connect(selectMenu,SIGNAL(selectMenu->acheterPressed()),this,SLOT(acheter()));
+        connect(selectMenu,SIGNAL(selectMenu->acheterPressed()),this,SLOT(acheter())); //correct this signal
         connect(selectMenu,SIGNAL(selectMenu->defausserPressed()),this,SLOT(defausser()));
     }
 }

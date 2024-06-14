@@ -132,7 +132,8 @@ SOURCES = \
    src/Ui/militarydeck.cpp \
    src/Ui/playerwidget.cpp \
    src/Ui/uitest.cpp \
-   src/Ui/cardwidget.cpp
+   src/Ui/cardwidget.cpp \
+   src/Ui/selectwidget.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \

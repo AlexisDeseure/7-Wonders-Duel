@@ -1,6 +1,7 @@
 #ifndef SELECTWIDGET_H
 #define SELECTWIDGET_H
 
+#include <QtCore>
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -8,11 +9,10 @@
 #include <QLabel>
 
 class selectWidget : public QWidget{
+    Q_OBJECT
 public:
     selectWidget(QWidget* parent = nullptr);
     bool achetestatus() const{return achete;};
-
-
 private:
     //Layout
     QVBoxLayout* vLayout;
@@ -27,12 +27,8 @@ private:
     bool defausse;
 
 public slots:
-    void acheter() {
-        emit acheterPressed();
-    };
-    void defausser() {
-        emit defausserPressed();
-    };
+    void acheter();
+    void defausser() ;
 
 signals:
     void acheterPressed();

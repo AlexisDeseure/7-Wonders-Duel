@@ -14,7 +14,17 @@ selectWidget::selectWidget(QWidget* parent) : QWidget(parent) {
     //Connexion
     connect(acheterButton, SIGNAL(clicked()),this,SLOT(acheter()));
     connect(defausseButton, SIGNAL(clicked()),this,SLOT(defausser()));
-
 }
 
+//SLOTS : réception du clic et envoi des signaux
+void selectWidget::acheter(){
+    emit acheterPressed();
+    this->close();
+    delete this;
+}
 
+void selectWidget::defausser() {
+    emit defausserPressed();
+    this->close();
+    delete this;
+}
