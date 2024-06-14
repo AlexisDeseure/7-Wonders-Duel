@@ -33,19 +33,18 @@ int main(int argc, char* argv[]) {
     // fenetre->show();
     //===============================================================================
 
-    //=================Test de l'affichage du EndGamePopUp ===========================
+    //=================Test de l'affichage du EndGamePopUp ==========================
     QApplication app(argc, argv);
     QMainWindow* fenetre = new QMainWindow();
-    fenetre->setFixedSize(400,171);
+    fenetre->setGeometry(0,0,1280,720);
     fenetre->show();
     EndGamePopUp* test = new EndGamePopUp(fenetre,nullptr);
     test->show();
     QEventLoop waitingForEndGame;
     QAbstractButton::connect(test,SIGNAL(endGame()),&waitingForEndGame,SLOT(quit()));
     waitingForEndGame.exec();
+    fenetre->close();
     //===============================================================================
     //Game();
-    fenetre->close();
-    app.quit();
     return app.exec();
 }

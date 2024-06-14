@@ -14,7 +14,7 @@ Q_OBJECT
 private:
     QLabel* WINNER;
     QLabel* time;
-    int i=9;
+    int i=10;
 public:
     EndGamePopUp(QWidget* parent,Player* winner);
 signals:
