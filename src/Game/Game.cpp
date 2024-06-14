@@ -12,7 +12,8 @@
 #include <iostream>
 #include <algorithm>
 #include "StartMenu.h"
-#include "ChooseWondersUI.h"
+//#include "ChooseWondersUI.h"
+//#include "EndGamePopUp.h"
 
 Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
@@ -75,7 +76,8 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             }
             else{
                 fenetre->setFixedSize(600,400);
-                selectWonderPhaseUI(fenetre);
+                //selectWonderPhaseUI(fenetre);
+                //startGameUI(fenetre);
             }
         }
     } catch (const std::exception& e) {
@@ -116,6 +118,95 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
 //         throw; // Re-throw the exception
 //     }
 // }
+
+// -------------- UI METHODS --------------- //
+
+
+// void Game::selectWonderPhaseUI(QWidget* fenetre){
+//     fenetre->setFixedSize(600,400);
+//     std::vector<Wonder*> allWonders = deck->getAllWonders();
+//     std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
+//     ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre,allWonders);
+//     QEventLoop loopWonder;
+//     qDebug() << "Waiting for wonders";
+//     connect(wonderUI, SIGNAL(selectionDone()), &loopWonder, SLOT(quit()));
+//     loopWonder.exec();
+// }
+
+// void Game::startGameUI(QWidget* fenetre) {
+//     //AFFICHER ICI LA FENETRE PRINCIPALE DE JEU.
+//     try {
+//         while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
+//             if (playAgeUI()) {
+//                 break;
+//             }
+//         }
+//         endGameUI(fenetre);
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in startGame(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
+
+
+// bool Game::playAgeUI() {
+//     try {
+//         advanceAgeUI();
+//         if (board->getConflictPawn().getPosition() < 0) {
+//             chooseWhoStartsAge(getTurnPlayer());
+//         } else if (board->getConflictPawn().getPosition() > 0) {
+//             chooseWhoStartsAge(getOtherPlayer());
+//         } else {
+//             randomPlayerStart();
+//         }
+//         while (!board->deckIsEmpty()) {
+//             playTurnUI();
+
+//             if (endTurn()) {
+//                 return true;
+//             }
+//         }
+//         return false;
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in playAgeUI(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
+
+// void Game::playTurnUI() {
+//     try {
+//         turn++;
+//         if (!isReplaying) invertTurnPlayer();
+//         isReplaying = false;
+//         getTurnPlayer().play(*this);
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in playTurn(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
+
+// void Game::endGameUI(QWidget* fenetre) {
+//     try {
+//         std::cout << std::endl << "*********************** Fin du jeu *********************** " << std::endl << std::endl;
+
+//         if (winner == nullptr) {
+//             calculateWinner();
+//         }
+
+//         EndGamePopUp* Popup = new EndGamePopUp(fenetre,winner);
+//         QEventLoop waiting_for_end;
+//         connect(Popup,SIGNAL(endGame()),&waiting_for_end,SLOT(quit()));
+//         waiting_for_end.exec();
+
+//     } catch (const std::exception& e) {
+//         std::cerr << "Error in endGame(): " << e.what() << std::endl;
+//         throw; // Re-throw the exception
+//     }
+// }
+
+// -------------- TERMINAL METHODS --------------- //
+
+//DESTRUCTOR.
 
 Game::~Game() {
     try {
@@ -181,6 +272,7 @@ void Game::displayplayerChoice(int nb_joueur) {
         throw; // Re-throw the exception
     }
 }
+
 
 void Game::startGame() {
     try {
@@ -281,6 +373,7 @@ void Game::playTurn() {
         throw; // Re-throw the exception
     }
 }
+
 
 void Game::selectWonderPhaseUI(QWidget* fenetre){
     randomPlayerStart();
@@ -456,24 +549,6 @@ void Game::advanceAge() {
     }
 }
 
-void Game::endGame() {
-    try {
-        std::cout << std::endl << "*********************** Fin du jeu *********************** " << std::endl << std::endl;
-
-        if (winner == nullptr) {
-            calculateWinner();
-        }
-        std::cout << "Calcul du gagnant" << std::endl;
-        if (winner == nullptr) {
-            std::cout << "Egalité !" << std::endl;
-        } else {
-            std::cout << "Bravo à " << winner->getName() << " qui remporte la victoire !" << std::endl;
-        }
-    } catch (const std::exception& e) {
-        std::cerr << "Error in endGame(): " << e.what() << std::endl;
-        throw; // Re-throw the exception
-    }
-}
 
 void Game::calculateWinner() {
     try {
@@ -607,40 +682,57 @@ std::string getStrInput() {
         throw; // Re-throw the exception
     }
 }
+void Game::endGame() {
+    try {
+        std::cout << std::endl << "*********************** Fin du jeu *********************** " << std::endl << std::endl;
 
+        if (winner == nullptr) {
+            calculateWinner();
+        }
+        std::cout << "Calcul du gagnant" << std::endl;
+        if (winner == nullptr) {
+            std::cout << "Egalité !" << std::endl;
+        } else {
+            std::cout << "Bravo à " << winner->getName() << " qui remporte la victoire !" << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error in endGame(): " << e.what() << std::endl;
+        throw; // Re-throw the exception
+    }
+}
 
 // }
 
-// void Game::startMenu(){
-//     try {
-//         AiLevel level;
-//         int choice;
+void Game::startMenu(){
+    try {
+        AiLevel level;
+        int choice;
 
-//         std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
+        std::cout << std::endl << "*********************** Choix des joueurs *********************** " << std::endl << std::endl;
 
-//         for (int i = 0; i < 2; i++) {
-//             displayplayerChoice(i + 1);
-//             choice = players[i]->getPlayerChoice(2);
-//             switch (choice) {
-//             case 1:
-//                 std::cout << "Entrez le nom du joueur : " << std::endl;
-//                 players[i]->setName(getStrInput());
-//                 break;
-//             case 2:
-//                 players[i]->setAI(true);
-//                 players[i]->setAiLevel(AiLevel::EASY);
-//                 players[i]->setName("BOT"); // + AiLeveltoString(level));
-//                 break;
-//             }
-//         }
+        for (int i = 0; i < 2; i++) {
+            displayplayerChoice(i + 1);
+            choice = players[i]->getPlayerChoice(2);
+            switch (choice) {
+            case 1:
+                std::cout << "Entrez le nom du joueur : " << std::endl;
+                players[i]->setName(getStrInput());
+                break;
+            case 2:
+                players[i]->setAI(true);
+                players[i]->setAiLevel(AiLevel::EASY);
+                players[i]->setName("BOT"); // + AiLeveltoString(level));
+                break;
+            }
+        }
 
-//         if (players[0]->getName() == players[1]->getName()) {
-//             players[0]->setName(players[0]->getName() + " (1)");
-//             players[1]->setName(players[1]->getName() + " (2)");
-//         }
-//     } catch (const std::exception& e) {
-//         std::cerr << "Error in startMenu(): " << e.what() << std::endl;
-//         throw; // Re-throw the exception
-//     }
-// }
+        if (players[0]->getName() == players[1]->getName()) {
+            players[0]->setName(players[0]->getName() + " (1)");
+            players[1]->setName(players[1]->getName() + " (2)");
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error in startMenu(): " << e.what() << std::endl;
+        throw; // Re-throw the exception
+    }
+}
 
