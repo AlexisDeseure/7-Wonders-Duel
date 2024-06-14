@@ -36,7 +36,12 @@ protected:
 
 public slots:
     void cardClicked();
-    void removeCard();
+    void acheter();
+    void defausser();
+
+signals:
+    void sendAchat(DeckElement* card);
+    void sendDefausse(DeckElement *card);
 };
 
 #endif // CARDWIDGET_H

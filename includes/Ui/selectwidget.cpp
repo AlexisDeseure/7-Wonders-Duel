@@ -4,10 +4,10 @@ selectWidget::selectWidget(QWidget* parent) : QWidget(parent) {
     //Initialisation et affichage
     acheterButton = new QPushButton("Acheter",this);
     defausseButton = new QPushButton("Defausser",this);
-    hLayout = new QHBoxLayout(this);
-    buttonLayout = new QVBoxLayout(this);
-    hLayout->addWidget(new QLabel("Voulez vous acheter la carte ou la défausser pour de l'argent ?",this));
-    hLayout->addLayout(buttonLayout);
+    vLayout = new QVBoxLayout(this);
+    buttonLayout = new QHBoxLayout(this);
+    vLayout->addWidget(new QLabel("Voulez vous acheter la carte ou la défausser pour de l'argent ?",this));
+    vLayout->addLayout(buttonLayout);
     buttonLayout->addWidget(acheterButton);
     buttonLayout->addWidget(defausseButton);
 

@@ -15,8 +15,8 @@ public:
 
 private:
     //Layout
-    QHBoxLayout* hLayout;
-    QVBoxLayout* buttonLayout;
+    QVBoxLayout* vLayout;
+    QHBoxLayout* buttonLayout;
 
     //boutons
     QPushButton* acheterButton;
