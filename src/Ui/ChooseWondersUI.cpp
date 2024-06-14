@@ -19,14 +19,8 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonder
     columns = new QVBoxLayout(this);
     columns->setGeometry(ALL_size);
 
-    ready = new QPushButton("READY");
-    QUIT = new QPushButton("QUIT");
-    columns->addWidget(ready);
-    columns->addWidget(QUIT);
-     QVBoxLayout* cards = displayCurrentCards(wonders_vect);
+    QVBoxLayout* cards = displayCurrentCards(wonders_vect);
     columns->addLayout(cards);
-
-    connect(QUIT, &QPushButton::clicked, this, &QWidget::close);
 }
 
 //QHBoxLayout* ChooseWonderStart::displayCurrentCards(std::vector<Wonder*> wond_vect){
@@ -47,29 +41,39 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonder
 QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
         // Créer un layout vertical principal qui prend tout l'écran
         QVBoxLayout* mainLayout = new QVBoxLayout;
-        QVBoxLayout* upperLayout = new QVBoxLayout;
-        QHBoxLayout* lowerLayout = new QHBoxLayout;
-
-        QLabel* player1Label = new QLabel("Joueur 1");
-        QLabel* player2Label = new QLabel("Joueur 2");
-        upperLayout->addWidget(player1Label);
-        upperLayout->addWidget(player2Label);
+        QGridLayout* gridLayout = new QGridLayout;
+        QLabel* currentPlayerLabel = new QLabel("Joueur qui joue");
+        currentPlayerLabel->setStyleSheet("QLabel { font-size: 30px; font-weight: bold;}");
+        mainLayout->addWidget(currentPlayerLabel);
+        mainLayout->addLayout(gridLayout);
+        currentPlayerLabel->setAlignment(Qt::AlignCenter);
+        // QVBoxLayout* mainLayout = new QVBoxLayout;
+        // QVBoxLayout* upperLayout = new QVBoxLayout;
+        // QHBoxLayout* lowerLayout = new QHBoxLayout;
+        int row = 1; // Ligne courante pour les boutons d'image
+        int col = 0;
 
         for (Wonder* wonder : wond_vect) {
-            QPushButton* imageButton = new QPushButton;
-          ///  QPixmap pixmap(wonder->getImage());
+            QPushButton* imageButton = new QPushButton(this);
             imageButton->setIcon(QIcon(wonder->getImage()));
             imageButton->setIconSize(QSize(330, 500));
-
-            lowerLayout->addWidget(imageButton);
-
+            imageButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            gridLayout->addWidget(imageButton, row, col);
             connect(imageButton, &QPushButton::clicked, this, [this, wonder]() {
                 emit selectionDone(wonder);
             });
+
+            // Alterner entre les colonnes 0 et 1
+            col = (col + 1) % 2;
+
+            // Passer à la ligne suivante si nécessaire
+            if (col == 0) {
+                row++;
+            }
         }
 
-        mainLayout->addLayout(upperLayout);
-        mainLayout->addLayout(lowerLayout);
+        // mainLayout->addLayout(upperLayout);
+        // mainLayout->addLayout(lowerLayout);
 
         return mainLayout;
 }

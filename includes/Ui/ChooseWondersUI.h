@@ -27,7 +27,7 @@ signals:
 
 public:
     ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect);
-     QVBoxLayout* displayCurrentCards(std::vector<Wonder*> wond_vect);
+    QVBoxLayout* displayCurrentCards(std::vector<Wonder*> wond_vect);
 signals:
     void selectionDone();
 };
