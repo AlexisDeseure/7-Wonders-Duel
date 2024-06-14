@@ -146,7 +146,7 @@ void Game::startGameUI(QWidget* fenetre) {
         }
         endGameUI(fenetre);
     } catch (const std::exception& e) {
-        std::cerr << "Error in startGame(): " << e.what() << std::endl;
+        std::cerr << "Error in startGameUI(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
@@ -165,7 +165,7 @@ bool Game::playAgeUI() {
         while (!board->deckIsEmpty()) {
             playTurnUI();
 
-            if (endTurn()) {
+            if (endTurnUI()) {
                 return true;
             }
         }
@@ -183,7 +183,7 @@ void Game::playTurnUI() {
         isReplaying = false;
         getTurnPlayer().play(*this);
     } catch (const std::exception& e) {
-        std::cerr << "Error in playTurn(): " << e.what() << std::endl;
+        std::cerr << "Error in playTurnUI(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
@@ -202,7 +202,29 @@ void Game::endGameUI(QWidget* fenetre) {
         waiting_for_end.exec();
 
     } catch (const std::exception& e) {
-        std::cerr << "Error in endGame(): " << e.what() << std::endl;
+        std::cerr << "Error in endGameUI(): " << e.what() << std::endl;
+        throw; // Re-throw the exception
+    }
+}
+
+
+bool Game::endTurnUI() {
+    try {
+        if (updateConflictPawn()) {
+            if (board->getConflictPawn().getPosition() >= 0) {
+                winner = &getTurnPlayer();
+            } else {
+                winner = &getOtherPlayer();
+            }
+            return true;
+        }
+        if (checkScientificVictory()) {
+            winner = &getTurnPlayer();
+            return true;
+        }
+        return false;
+    } catch (const std::exception& e) {
+        std::cerr << "Error in endTurnUI(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
@@ -402,12 +424,12 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
         // std::cout << std::endl;
 
         ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
+        wonderUI->show();
         QEventLoop loopWonder;
 
         connect(wonderUI, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
         connect(wonderUI, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleWonderSelection(Wonder*, Player*, Player*, std::vector<Wonder*>&, QEventLoop&)));
 
-        wonderUI->show();
         loopWonder.exec();
     };
 

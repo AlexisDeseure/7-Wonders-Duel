@@ -78,11 +78,13 @@ Q_OBJECT
         void endGameUI(QWidget* fenetre);
         void advanceAgeUI();
         void playTurnUI();
+        bool endTurnUI();
     public slots:
         void quitting(){exit = true;}
         void quitGame() {
             qApp->quit();
         }
+        void handleWonderSelection() {return;};
 };
 
 int selectRandomInteger(int min = 0, int max = 1);
