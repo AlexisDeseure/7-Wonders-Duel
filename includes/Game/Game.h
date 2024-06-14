@@ -70,12 +70,12 @@ Q_OBJECT
         ~Game();
 
         // UI SPECIFIC
-        // void selectWonderPhaseUI(QWidget* fenetre);
-        // void startGameUI(QWidget* fenetre);
-        // bool playAgeUI();
-        // void endGameUI(QWidget* fenetre);
-        // void advanceAgeUI();
-        // void playTurnUI();
+        void selectWonderPhaseUI(QWidget* fenetre);
+        void startGameUI(QWidget* fenetre);
+        bool playAgeUI();
+        void endGameUI(QWidget* fenetre);
+        void advanceAgeUI();
+        void playTurnUI();
     public slots:
         void quitting(){exit = true;}
         void quitGame() {
