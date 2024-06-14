@@ -7,9 +7,10 @@
 - refresh clickables vector at each turn
 - initialisation test
 - catch the deckElement at playerWidget.cpp and marketdeckwidget.cpp
--send 2 dofferent signals (not necessary for MarketDeckWidget or Card, but player will treat differently
+-send 2 dofferent signals (not necessary for MarketDeckWidget or Card, but player will treat differently)
 PlayerWidget treatment: recieve DE, update player values, update widget to show
 Market Widget treatment: recieve DE, remove from clickables vector, remove from MD
+Add signal to build a wonder
 */
 
 CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(true) //for testing without cards, will be removed
@@ -93,7 +94,7 @@ void CardWidget::cardClicked()
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
-        connect(selectMenu,SIGNAL(selectMenu->acheterPressed()),this,SLOT(acheter())); //correct this signal
+        connect(selectMenu,SIGNAL(selectMenu->acheterPressed()),this,SLOT(acheter())); 
         connect(selectMenu,SIGNAL(selectMenu->defausserPressed()),this,SLOT(defausser()));
     }
 }

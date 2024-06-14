@@ -42,6 +42,8 @@ void MarketDeckWidget::generateAge(int age){
 
                 CardWidget* carteWidget = new CardWidget(this);
                 carteWidget->setFixedSize(width,height);
+                connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)), this, SLOT(updateMarketDeck()));
+                connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)), this, SLOT(updateMarketDeck()));
                 // building = layout[i][j];
                 // CardWidget* carteWidget = new CardWidget(building,this);
                 // carteWidget->setFixedSize(100,100);
@@ -97,4 +99,8 @@ void MarketDeckWidget::generateAge(int age){
     //     }
     //     return;
     // }
+}
+
+void MarketDeckWidget::updateMarketDeck(){
+    this->update();
 }

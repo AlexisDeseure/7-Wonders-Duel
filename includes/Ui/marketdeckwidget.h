@@ -24,6 +24,9 @@ private:
     //const MarketDeck* market_deck; //à rajouter dans le constructeur
     QVBoxLayout* Cardlines;
     MarketDeck* market;
+
+public slots:
+    void updateMarketDeck();
 };
 
 #endif // MARKETDECKWIDGET_H
