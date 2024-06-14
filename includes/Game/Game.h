@@ -84,7 +84,7 @@ Q_OBJECT
         void quitGame() {
             qApp->quit();
         }
-        void handleWonderSelceton();
+        void handleWonderSelection() {return;};
 };
 
 int selectRandomInteger(int min = 0, int max = 1);
