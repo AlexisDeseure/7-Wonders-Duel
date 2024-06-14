@@ -21,10 +21,6 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonder
 
     ready = new QPushButton("READY");
     QUIT = new QPushButton("QUIT");
-    p1 = new QLabel("Joueur 1, à toi de choisir!");
-    p2 = new QLabel("Joueur 2, à toi de choisir!");
-    columns->addWidget(p1);
-    columns->addWidget(p2);
     columns->addWidget(ready);
     columns->addWidget(QUIT);
      QVBoxLayout* cards = displayCurrentCards(wonders_vect);
@@ -63,7 +59,7 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
             QPushButton* imageButton = new QPushButton;
           ///  QPixmap pixmap(wonder->getImage());
             imageButton->setIcon(QIcon(wonder->getImage()));
-         //   imageButton->setIconSize(pixmap.size());
+            imageButton->setIconSize(QSize(330, 500));
 
             lowerLayout->addWidget(imageButton);
 
