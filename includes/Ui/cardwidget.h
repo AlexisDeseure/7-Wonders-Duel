@@ -17,6 +17,7 @@ public:
     CardWidget(QWidget *parent = nullptr);
     CardWidget(DeckElement* card, QWidget *parent = nullptr);
     bool getClickable() {return clickable;};
+    void makeClickable(){clickable = true;};
     DeckElement* getCard() const{return card;};
 
 // signals:

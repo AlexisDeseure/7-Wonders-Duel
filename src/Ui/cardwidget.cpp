@@ -2,7 +2,7 @@
 #include "Card.h"
 #include <QVBoxLayout>
 
-CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(true) //for testing without cards, will be removed
+CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(false) //for testing without cards, will be removed
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
 
@@ -27,29 +27,29 @@ CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(true) //fo
 }
 
 
-// CardWidget::CardWidget(DeckElement* carte,QWidget *parent) : card(carte), QWidget(parent),  clickable(true) //final initialiser
-// {
-//     QVBoxLayout *layout = new QVBoxLayout(this);
+CardWidget::CardWidget(DeckElement* carte,QWidget *parent) : card(carte), QWidget(parent),  clickable(true) //final initialiser
+{
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
-//     nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
-//     effectLabel = new QLabel("Effect", this);
-//     selectButton = new QPushButton(this);
-//     selectButton->setIcon(QIcon("../../../data/image/cards/academy.jpg"));
-//     selectButton->setIconSize(QSize(100, 159));
+    nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
+    effectLabel = new QLabel("Effect", this);
+    selectButton = new QPushButton(this);
+    selectButton->setIcon(QIcon("../../../data/image/cards/academy.jpg"));
+    selectButton->setIconSize(QSize(100, 159));
 
-//     selectLabel = new QLabel("Sélectionner", this);
-//     selectLabel->setAlignment(Qt::AlignCenter);
-//     opacityEffect = new QGraphicsOpacityEffect(this);
-//     selectLabel->setGraphicsEffect(opacityEffect);
-//     selectLabel->setVisible(false);
+    selectLabel = new QLabel("Sélectionner", this);
+    selectLabel->setAlignment(Qt::AlignCenter);
+    opacityEffect = new QGraphicsOpacityEffect(this);
+    selectLabel->setGraphicsEffect(opacityEffect);
+    selectLabel->setVisible(false);
 
-//     this->setStyleSheet("background-color: blue; color: white;");
+    this->setStyleSheet("background-color: blue; color: white;");
 
-//     layout->addWidget(selectButton);
-//     layout->addWidget(selectLabel);
+    layout->addWidget(selectButton);
+    layout->addWidget(selectLabel);
 
-//     connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
-// }
+    connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
+}
 
 void CardWidget::enterEvent(QEnterEvent *event)
 {

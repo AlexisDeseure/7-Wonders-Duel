@@ -77,7 +77,9 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             else{
                 fenetre->setFixedSize(600,400);
                 //selectWonderPhaseUI(fenetre);
-                GameWindow* fenetre = new GameWindow(this, &board->getMarketDeck()); //game,marketDeck, playerdata, starting_player
+                //GameWindow(Game* game, MarketDeck* marketDeck,std::vector<Building*>& age1,std::vector<Building*>& age2, std::vector<Building*>& age3,QWidget *parent = nullptr)
+
+                GameWindow* fenetre = new GameWindow(this, &board->getMarketDeck(),this->getDeck().getAllBuildings()[0],this->getDeck().getAllBuildings()[1],this->getDeck().getAllBuildings()[2]); //game,marketDeck, playerdata, starting_player
                 fenetre->show();
             }
 
