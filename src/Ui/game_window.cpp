@@ -23,7 +23,7 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     player2 = new PlayerWidget(new Player(100),centralWidget);
 
 
-    market = new MarketDeckWidget(marketDeck, centralWidget);
+    market = new MarketDeckWidget(marketDeck,player1,player2, centralWidget);
     military_deck = new MilitaryDeck(centralWidget);
 
     // //grid setup: maybe add a static value for grids and cols, so you can do fractions ?

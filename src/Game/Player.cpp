@@ -174,6 +174,7 @@ void Player::play(Game& game){
 //     }
 //     return false;
 // }
+
 void Player::addWonderToCity(Wonder* wonder) {
     city.addWonder(wonder);
 

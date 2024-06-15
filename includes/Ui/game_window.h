@@ -11,6 +11,7 @@
 #include "marketdeckwidget.h"
 #include "militarydeck.h"
 #include "Instanciator.h"
+#include "Game.h"
 
 
 
@@ -19,7 +20,7 @@ class GameWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    GameWindow( MarketDeck* marketDeck,QWidget *parent = nullptr);
+    GameWindow(Game* game, MarketDeck* marketDeck,QWidget *parent = nullptr);
     ~GameWindow();
 
     PlayerWidget& getplayer1()const{return *player1;};

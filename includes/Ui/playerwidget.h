@@ -6,15 +6,13 @@
 #include <QPushButton>
 #include <vector>
 #include "Player.h"
+#include "Game.h"
 
-/*
-Make fake widgets to show when selecting a card from another player ?
-Also considering switching player widgets between each turn
-*/
+
 
 class PlayerWidget : public QWidget{
 public:
-    PlayerWidget(Player* p, QWidget *parent = nullptr);
+    PlayerWidget(Game* g,MarketDeck* md,Player* p, QWidget *parent = nullptr);
     ~PlayerWidget() = default;
 
     Player* getplayer() const{return player;};
@@ -23,9 +21,19 @@ public:
 
 signals:
     void onRefreshButtonClicked();
+    void endTurn();
+
+public slots:
+    void recieveAchat(DeckElement* card);
+    void recieveDefausse(DeckElement* card);
+    void switchTurn();
+
 private:
     PlayerWidget(const PlayerWidget& widget) = delete;
     Player* player;
+    bool playing;
+    Game* g;
+    MarketDeck* md;
 
     QLabel* playerName;
     QLabel* playerAIStatus;

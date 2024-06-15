@@ -3,12 +3,30 @@
 #include "BuildingsLayout.h"
 #include "Card.h"
 #include "Instanciator.h"
+#include "PlayerWidget.h"
 #include <vector>
 #include <QGridLayout>
 
-MarketDeckWidget::MarketDeckWidget(MarketDeck* market,QWidget* parent) : QWidget(parent),market(market) {
+/* To DO
+- vector to check clickables
+- refresh clickables vector at each turn
+- initialisation test
+- catch the deckElement at playerWidget.cpp and marketdeckwidget.cpp (should be OK)
+- Add signal and slots to build a wonder
+- finish adding all connections, connect p1 and p2 completely
+- finish PlayerWidget::switchTurn() (see comments)
+- HASHMAP CARDWIDGETS AND DECKELEMENTS TO FIND CARDS FROM A DE
+*/
+
+MarketDeckWidget::MarketDeckWidget(MarketDeck* market,PlayerWidget* p1,PlayerWidget* p2,QWidget* parent) : p1(p1), p2(p2), QWidget(parent),market(market) {
     Cardlines = new QVBoxLayout(this);
-    generateAge(2);
+    generateAge(3);
+}
+
+void MarketDeckWidget::updateMarketDeck(){
+    this->update();
+    //récupérer le DE
+    //envoyer signal vers le gamewindow
 }
 
 bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
@@ -24,11 +42,10 @@ bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
 
 void MarketDeckWidget::generateAge(int age){
     delete this->Cardlines;
-    Cardlines = new QVBoxLayout(this);
 
     int width = 115;
     int height = 170;
-
+    QGridLayout* line = new QGridLayout(this);
     // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
     // DeckElement* building;
 
@@ -36,16 +53,20 @@ void MarketDeckWidget::generateAge(int age){
     int cardIndex; //index of the card in the market deck line
     DeckElement* building;
     for(int i = 0; i < 5; i++){
-        QGridLayout* line = new QGridLayout(this);
+
         for(int j = 0; j < 11; j++){
             if (checkCardPos(age,i,j)){
 
                 CardWidget* carteWidget = new CardWidget(this);
                 carteWidget->setFixedSize(width,height);
-                connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)), this, SLOT(this->updateMarketDeck()));
-                connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)), this, SLOT(this->updateMarketDeck()));
-                // connect(carteWidget, SIGNAL(carteWidget->sendAchat(DeckElement*)),this->parentWidget(),SLOT(/*slot to recieve data and send to players*/));
-                // connect(carteWidget, SIGNAL(carteWidget->sendDefausse(DeckElement*)),this->parentWidget(),SLOT(/*slot to recieve data and send to players*/));
+                connect(carteWidget, &CardWidget::sendDefausse, this, &MarketDeckWidget::updateMarketDeck);
+                connect(carteWidget, &CardWidget::sendAchat, this, &MarketDeckWidget::updateMarketDeck);
+
+                connect(carteWidget, &CardWidget::sendDefausse,p1,&PlayerWidget::recieveDefausse);
+                connect(carteWidget, &CardWidget::sendAchat,p1,&PlayerWidget::recieveAchat);
+                connect(carteWidget, &CardWidget::sendDefausse,p2,&PlayerWidget::recieveDefausse);
+                connect(carteWidget, &CardWidget::sendAchat,p2,&PlayerWidget::recieveAchat);
+
 
                 // building = layout[i][j];
                 // CardWidget* carteWidget = new CardWidget(building,this);
@@ -53,7 +74,6 @@ void MarketDeckWidget::generateAge(int age){
                 line->addWidget(carteWidget,i,j,1,1);
             }
         }
-        Cardlines->addLayout(line);
     }
     // switch(age){
     // case 1: //10 cases de long, 5 lignes
@@ -104,6 +124,4 @@ void MarketDeckWidget::generateAge(int age){
     // }
 }
 
-void MarketDeckWidget::updateMarketDeck(){
-    this->update();
-}
+
