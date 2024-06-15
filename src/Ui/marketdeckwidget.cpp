@@ -21,6 +21,8 @@
 MarketDeckWidget::MarketDeckWidget(MarketDeck* market,PlayerWidget* p1,PlayerWidget* p2,QWidget* parent) : p1(p1), p2(p2), QWidget(parent),market(market) {
     Cardlines = new QVBoxLayout(this);
     generateAge(3);
+
+
 }
 
 void MarketDeckWidget::updateMarketDeck(){
@@ -59,13 +61,17 @@ void MarketDeckWidget::generateAge(int age){
 
                 CardWidget* carteWidget = new CardWidget(this);
                 carteWidget->setFixedSize(width,height);
+
+                //Connections : MD and Card
                 connect(carteWidget, &CardWidget::sendDefausse, this, &MarketDeckWidget::updateMarketDeck);
                 connect(carteWidget, &CardWidget::sendAchat, this, &MarketDeckWidget::updateMarketDeck);
 
+                //Connections : players and cards
                 connect(carteWidget, &CardWidget::sendDefausse,p1,&PlayerWidget::recieveDefausse);
                 connect(carteWidget, &CardWidget::sendAchat,p1,&PlayerWidget::recieveAchat);
                 connect(carteWidget, &CardWidget::sendDefausse,p2,&PlayerWidget::recieveDefausse);
                 connect(carteWidget, &CardWidget::sendAchat,p2,&PlayerWidget::recieveAchat);
+                //add wonder building connection
 
 
                 // building = layout[i][j];

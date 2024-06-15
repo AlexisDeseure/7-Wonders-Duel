@@ -63,6 +63,8 @@ void PlayerWidget::recieveDefausse(DeckElement* card){
     if(playing&&!(player->isAIPlayer())){
         player->getCity().discardBuilding(card->getBuilding(),*g);
         updatePlayerInfo();
+        playing=false;
+        emit endTurn(); //fin du tour, signal reçu par l'autre joueur
     }
 }
 

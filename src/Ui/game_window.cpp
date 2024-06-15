@@ -22,6 +22,9 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     player1 = new PlayerWidget(new Player(100),centralWidget);
     player2 = new PlayerWidget(new Player(100),centralWidget);
 
+    //Connections between players
+    connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);
+    connect(player2,&PlayerWidget::endTurn,player1,&PlayerWidget::switchTurn);
 
     market = new MarketDeckWidget(marketDeck,player1,player2, centralWidget);
     military_deck = new MilitaryDeck(centralWidget);
