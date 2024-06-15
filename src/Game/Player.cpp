@@ -14,6 +14,14 @@
 #include <iostream>
 #include "Board.h"
 
+
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QDialog>
+#include <QPushButton>
+#include <QString>
+#include <sstream>
+
 using namespace std ;
 Player::Player(int treasury) : city(*new City(treasury)), isAI(false), aiLevel(AiLevel::NONE), name("Player"){
     // std::cout << "Player created" << std::endl;
@@ -142,6 +150,9 @@ void Player::play(Game& game){
         }
     }
 }
+
+
+
 
 // const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
 //     const DeckElement** building_list = marketDeck.getFirstBuildings();

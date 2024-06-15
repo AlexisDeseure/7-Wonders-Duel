@@ -23,6 +23,9 @@ bool MarketDeckWidget::checkCardPos(int age,int i,int j)const{
     }
 }
 
+
+
+
 void MarketDeckWidget::generateAge(int age){
     delete this->Cardlines;
     Cardlines = new QVBoxLayout(this);

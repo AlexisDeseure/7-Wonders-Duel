@@ -6,6 +6,14 @@
 #include "MarketDeck.h"
 #include "Wonder.h"
 #include "DeckElement.h"
+
+#include <QMainWindow>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QDialog>
+#include <QLabel>
+#include <City.h>
+
 class City;
 class Game;
 class Card;
@@ -25,6 +33,17 @@ class Player{
         AiLevel aiLevel;
         std::string name;
 
+        void showResources();
+        void showWonders();
+        void showProgressTokens();
+
+        QDialog* createDialog(const QString& title, const QString& content);
+
+        //City& city;
+        QPushButton* resourcesButton;
+        QPushButton* wondersButton;
+        QPushButton* progressTokensButton;
+
     public:
         Player(int treasury = 0);
         ~Player();
@@ -43,6 +62,7 @@ class Player{
         const DeckElement* selectCard(Game& game, MarketDeck& marketDeck); //permet au joueur de sélectionner une carte à jouer
         bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
+         void playUI(Game& game); //permet de permettre au joueur de jouer son tour au niveau UI
         void chooseWonder(std::vector<Wonder*>& availableWonders);
         void addWonderToCity(Wonder* wonder);
 

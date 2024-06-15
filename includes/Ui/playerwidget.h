@@ -12,30 +12,36 @@ Make fake widgets to show when selecting a card from another player ?
 Also considering switching player widgets between each turn
 */
 
-class PlayerWidget : public QWidget{
+class PlayerWidget : public QWidget {
+    Q_OBJECT
+
 public:
-    PlayerWidget(Player* p, QWidget *parent = nullptr);
-    ~PlayerWidget() = default;
+    explicit PlayerWidget(Player* player, QWidget* parent = nullptr);
 
-    Player* getplayer() const{return player;};
-
-    void updatePlayerInfo();
-
-signals:
+private slots:
+    void showResources();
+    void showWonders();
+    void showProgressTokens();
     void onRefreshButtonClicked();
+
 private:
-    PlayerWidget(const PlayerWidget& widget) = delete;
-    Player* player;
+    void setupUi();
+    void connectSignals();
+    void updatePlayerInfo();
+    QDialog* createDialog(const QString& title, const QString& content);
 
     QLabel* playerName;
     QLabel* playerAIStatus;
     QLabel* playerCityTreasury;
     QLabel* playerCityShields;
     QLabel* playerCityVictoryPoints;
-
-    QVBoxLayout* layout;
     QPushButton* refreshButton;
 
+    QPushButton* resourcesButton;
+    QPushButton* wondersButton;
+    QPushButton* progressTokensButton;
+
+    Player* player;
 };
 
 #endif // PLAYERWIDGET_H

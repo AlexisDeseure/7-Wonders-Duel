@@ -181,9 +181,9 @@ void Game::playTurnUI() {
         turn++;
         if (!isReplaying) invertTurnPlayer();
         isReplaying = false;
-        getTurnPlayer().play(*this);
+        getTurnPlayer().playUI(*this);
     } catch (const std::exception& e) {
-        std::cerr << "Error in playTurn(): " << e.what() << std::endl;
+       // std::cerr << "Error in playTurn(): " << e.what() << std::endl;
         throw; // Re-throw the exception
     }
 }
