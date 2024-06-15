@@ -16,6 +16,7 @@ class Board;
 class Player;
 enum class AiLevel;
 class Building;
+class GameWindow;
 
 class GameException : public std::exception{
 private:
@@ -73,8 +74,8 @@ Q_OBJECT
 
         // UI SPECIFIC
         void selectWonderPhaseUI(QWidget* fenetre);
-        void startGameUI(QWidget* fenetre);
-        bool playAgeUI();
+        void startGameUI(GameWindow* fenetre);
+        bool playAgeUI(GameWindow* fenetre);
         void endGameUI(QWidget* fenetre);
         void advanceAgeUI();
         void playTurnUI();

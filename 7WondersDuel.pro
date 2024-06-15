@@ -78,6 +78,7 @@ HEADERS = \
    includes/Ui/militarydeck.h \
    includes/Ui/playerwidget.h \
    includes/Ui/cardwidget.h\
+    includes/Ui/selectwidget.h
 
 SOURCES = \
    src/BoardManager/Board.cpp \
@@ -131,7 +132,8 @@ SOURCES = \
    src/Ui/marketdeckwidget.cpp \
    src/Ui/militarydeck.cpp \
    src/Ui/playerwidget.cpp \
-   src/Ui/cardwidget.cpp
+   src/Ui/cardwidget.cpp \
+   src/Ui/selectwidget.cpp
 
 INCLUDEPATH = \
     includes/BoardManager \

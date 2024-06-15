@@ -83,10 +83,10 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
                 fenetre->setFixedSize(1000,500);
                 selectWonderPhaseUI(fenetre);
                 fenetre->close();
-                MarketDeck* market = new MarketDeck();
-                GameWindow* mainWindow = new GameWindow(market);
+                GameWindow* mainWindow = new GameWindow(this);
                 mainWindow->show();
                 startGameUI(mainWindow);
+
             }
         }
     } catch (const std::exception& e) {
@@ -141,17 +141,18 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
 //
 
 
-void Game::startGameUI(QWidget* fenetre) {
+void Game::startGameUI(GameWindow* fenetre) {
     //AFFICHER ICI LA FENETRE PRINCIPALE DE JEU.
     qDebug() << "Lancement du jeu";
 
     // system("pause");
     try {
-        // while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
-        //     if (playAgeUI()) {
-        //         break;
-        //     }
-        // }
+        while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
+            if (playAgeUI(fenetre)) {
+                break;
+            }
+            break;
+        }
         endGameUI(fenetre);
     } catch (const std::exception& e) {
         std::cerr << "Error in startGameUI(): " << e.what() << std::endl;
@@ -160,23 +161,25 @@ void Game::startGameUI(QWidget* fenetre) {
 }
 
 
-bool Game::playAgeUI() {
+bool Game::playAgeUI(GameWindow* fenetre) {
     try {
         advanceAge();
-        if (board->getConflictPawn().getPosition() < 0) {
-            chooseWhoStartsAge(getTurnPlayer());
-        } else if (board->getConflictPawn().getPosition() > 0) {
-            chooseWhoStartsAge(getOtherPlayer());
-        } else {
-            randomPlayerStart();
-        }
-        while (!board->deckIsEmpty()) {
-            playTurnUI();
+        advanceAge();
+        fenetre->updateAge(age);
+        // if (board->getConflictPawn().getPosition() < 0) {
+        //     chooseWhoStartsAge(getTurnPlayer());
+        // } else if (board->getConflictPawn().getPosition() > 0) {
+        //     chooseWhoStartsAge(getOtherPlayer());
+        // } else {
+        //     randomPlayerStart();
+        // }
+        // while (!board->deckIsEmpty()) {
+        //     playTurnUI();
 
-            if (endTurnUI()) {
-                return true;
-            }
-        }
+        //     if (endTurnUI()) {
+        //         return true;
+        //     }
+        // }
         return false;
     } catch (const std::exception& e) {
         std::cerr << "Error in playAgeUI(): " << e.what() << std::endl;

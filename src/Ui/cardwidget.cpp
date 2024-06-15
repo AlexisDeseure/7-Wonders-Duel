@@ -2,14 +2,14 @@
 #include "Card.h"
 #include <QVBoxLayout>
 
-CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(false)
+CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  clickable(false)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     // nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
     // effectLabel = new QLabel("Effect", this);
     selectButton = new QPushButton(this);
-    selectButton->setIcon(QIcon("../../../data/image/cards/academy.jpg"));
+    selectButton->setIcon(QIcon(card->getBuilding()->getImage()));
     selectButton->setIconSize(QSize(100, 159));
 
     selectLabel = new QLabel("Sélectionner", this);
@@ -23,6 +23,7 @@ CardWidget::CardWidget(QWidget *parent) : QWidget(parent),  clickable(false)
     layout->addWidget(selectButton);
     layout->addWidget(selectLabel);
 
+    // connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
     connect(selectButton, &QPushButton::clicked, this, &CardWidget::cardClicked);
 }
 
@@ -41,7 +42,25 @@ void CardWidget::leaveEvent(QEvent *event)
 
 void CardWidget::cardClicked()
 {
-    qDebug() << "Button clicked!";
+    if (clickable){
+        //afficher un menu
+        selectWidget* selectMenu = new selectWidget();
+        selectMenu->show();
+        connect(selectMenu,SIGNAL(acheterPressed()),this,SLOT(acheter()));
+        connect(selectMenu,SIGNAL(defausserPressed()),this,SLOT(defausser()));
+    }
+}
+
+void CardWidget::acheter(){
+    this->close(); //retire le widget de la fenêtre
+    emit sendAchat(card); //envoie signal
+    delete this; //efface le widget
+}
+
+void CardWidget::defausser(){
+    this->close();
+    emit sendDefausse(card);
+    delete this;
 }
 
 

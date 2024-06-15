@@ -5,7 +5,7 @@
 #include <QHBoxLayout>
 
 
-GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
+GameWindow::GameWindow(Game* game, QWidget *parent)
     : QMainWindow(parent)
 {
 
@@ -19,12 +19,16 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     setCentralWidget(centralWidget);
     grid = new QGridLayout(centralWidget);
 
-    player1 = new PlayerWidget(new Player(100),centralWidget);
-    player2 = new PlayerWidget(new Player(100),centralWidget);
+    player1 = new PlayerWidget(game, &game->getTurnPlayer(),centralWidget);
+    player2 = new PlayerWidget(game, &game->getOtherPlayer(),centralWidget);
+    market = new MarketDeckWidget(game, centralWidget);
+
+    // connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);
+    // connect(player2,&PlayerWidget::endTurn,player1,&PlayerWidget::switchTurn);
 
 
-    market = new MarketDeckWidget(marketDeck, centralWidget);
-    military_deck = new MilitaryDeck(centralWidget);
+    // military_deck = new MilitaryDeck(centralWidget);
+
 
     // //grid setup: maybe add a static value for grids and cols, so you can do fractions ?
     // //4 rows, 5 columns
@@ -41,15 +45,15 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
 
     //Colors for testing at the moment
 
-    player1->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
-                           "color: white; "
-                           "border-radius: 10px; "
-                           "padding: 10px;");
+    // player1->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
+    //                        "color: white; "
+    //                        "border-radius: 10px; "
+    //                        "padding: 10px;");
 
-    player2->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
-                           "color: white; "
-                           "border-radius: 10px; "
-                           "padding: 10px;");
+    // player2->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
+    //                        "color: white; "
+    //                        "border-radius: 10px; "
+    //                        "padding: 10px;");
 
     // market->setStyleSheet("background-color: rgba(50, 50, 50, 0.5); "
     //                       "color: white; "
