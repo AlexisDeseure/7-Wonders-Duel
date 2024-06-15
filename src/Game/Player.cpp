@@ -213,11 +213,9 @@ void Player::chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonder
     if (!availableWonders.empty()) {
         int* choice = new int(1);
         fenetre->setCurrentPlayerLabel(QString::fromStdString(getName())+" choisis une merveille");
-
         if (isAI){
             *choice = selectRandomInteger(1,static_cast<int>(availableWonders.size()));
             Wonder* wonder = availableWonders[*choice - 1];
-            qDebug()<<"testttttttt";
             emit destroyWondersAi(wonder);
         }
         else {

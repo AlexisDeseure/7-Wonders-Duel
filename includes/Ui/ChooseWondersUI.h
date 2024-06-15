@@ -38,7 +38,6 @@ public:
 
 
 private slots:
-    void destroyButton(QPushButton* button);
     void handleAiChoice(Wonder* wonder);
 
 };

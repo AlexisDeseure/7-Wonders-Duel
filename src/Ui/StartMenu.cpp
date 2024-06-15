@@ -135,20 +135,23 @@ void StartMenu::quitButton(){
 void StartMenu::setGameParameters(){
     setp1typeIA(p1_IA->isChecked());
     setp2TypeIA(p2_IA->isChecked());
-    if(!(p1_HUMAIN->isChecked() && p2_HUMAIN->isChecked())) {
-        setp1TypeHuman(true);
-        setp2TypeHuman(true);
-    } else {
-        setp1TypeHuman(p1_HUMAIN->isChecked());
-        setp2TypeHuman(p2_HUMAIN->isChecked());
-    }
-    if (input_p1_name->textValue().isEmpty()&&input_p2_name->textValue().isEmpty()){
+    // if(!(p1_HUMAIN->isChecked() && p2_HUMAIN->isChecked())) {
+    //     setp1TypeHuman(true);
+    //     setp2TypeHuman(true);
+    // } else {
+    //     setp1TypeHuman(p1_HUMAIN->isChecked());
+    //     setp2TypeHuman(p2_HUMAIN->isChecked());
+    // }
+    //source de conflits
+    if (input_p1_name->textValue().isEmpty())
         setp1name("Joueur");
-        setp2name("Joueur");
-    } else {
+    else
         setp1name(input_p1_name->textValue());
+    if (input_p2_name->textValue().isEmpty())
+        setp2name("Joueur");
+    else
         setp2name(input_p2_name->textValue());
-    }
+
     if (!(p1_starter->isChecked()||p2_starter->isChecked()||random_starter->isChecked())){
         setp1starts(false);
         setp2starts(false);
@@ -159,12 +162,14 @@ void StartMenu::setGameParameters(){
         setrandomstart(random_starter->isChecked());
     }
     setterminal(terminal->isChecked());
+    if (p1_IA->isChecked() && p2_IA->isChecked())
+        setterminal(true); // si les 2 joueurs sont des IA l'interface graphique ne sert à rien
     qDebug() << "Starting Parameters set!";
 }
 
 void StartMenu::displayGameParameters(){
-    qDebug() << "P1IA: " <<getp1typeIA() << " | P1H: "<< getp1typeHuman() << " | P2IA: "<< getp2typeIA() << " | P2H:"
-              << getp2typeHuman() << " | P1Name: " <<getp1name().toStdString() <<" | P2Name: " << getp2name().toStdString()
+    qDebug() << "P1IA: " <<getp1typeIA() << /*" | P1H: "<< getp1typeHuman() <<*/ " | P2IA: "<< getp2typeIA() << /*" | P2H:"
+              << getp2typeHuman() <<*/ " | P1Name: " <<getp1name().toStdString() <<" | P2Name: " << getp2name().toStdString()
              <<" | P1Start: "<< getp1starts() <<" | P2Start: "<< getp2starts() << " | RandStart: "<< getrandomstart()
              << " | Terminal: "<<getterminal();
 }

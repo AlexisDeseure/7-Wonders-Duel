@@ -25,6 +25,7 @@ ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonder
 
     QVBoxLayout* cards = displayCurrentCards(wonders_vect);
     columns->addLayout(cards);
+
 }
 
 //QHBoxLayout* ChooseWonderStart::displayCurrentCards(std::vector<Wonder*> wond_vect){
@@ -66,7 +67,7 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
             dictionary[wonder] = imageButton;
             connect(imageButton, &QPushButton::clicked, this, [this, wonder, imageButton]() {
                 emit selectionDone(wonder);
-                destroyButton(imageButton);
+                delete imageButton;
                 // (*count)++;
                 // qDebug() <<"count: "<< *count;
                 // if (*count >=4){
@@ -86,7 +87,7 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
         }
 
         connect(&game->getTurnPlayer(), SIGNAL(destroyWondersAi(Wonder*)), this, SLOT(handleAiChoice(Wonder*)));
-
+        connect(&game->getOtherPlayer(), SIGNAL(destroyWondersAi(Wonder*)), this, SLOT(handleAiChoice(Wonder*)));
 
         // delete count;
         // mainLayout->addLayout(upperLayout);
@@ -95,14 +96,8 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
         return mainLayout;
 }
 
-void ChooseWonderStart::destroyButton(QPushButton* button)
-{
-    delete button;
-    button = nullptr;
-}
 
 void ChooseWonderStart::handleAiChoice(Wonder* wonder){
-    qDebug()<<"testttttttt";
     delete dictionary[wonder];
 }
 //void ChooseWonderStart::changeChooser(){

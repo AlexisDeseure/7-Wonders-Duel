@@ -61,18 +61,18 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             //Joueur 2
             players[1]->setAI(startmenu->getp2typeIA());
             players[1]->setName(startmenu->getp2name().toStdString());
-            if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
-            if (startmenu->getrandomstart()){
-                randomPlayerStart();
-            }
-            else if (startmenu->getp2starts()){
-                invertTurnPlayer();
-            }
-
             if (players[0]->getName() == players[1]->getName()) {
                 players[0]->setName(players[0]->getName() + " (1)");
                 players[1]->setName(players[1]->getName() + " (2)");
             }
+            if (startmenu->getp2typeIA()) players[1]->setAiLevel(AiLevel::EASY);
+            if (startmenu->getrandomstart()){
+                randomPlayerStart();
+            }
+            else if (startmenu->getp1starts()){
+                invertTurnPlayer();
+            }
+
 
             if (startmenu->getterminal()){
                 fenetre->close();
@@ -394,7 +394,6 @@ void Game::playTurn() {
 
 
 void Game::selectWonderPhaseUI(QWidget* fenetre){
-    randomPlayerStart();
     invertTurnPlayer();
 
     std::vector<Wonder*> allWonders = deck->getAllWonders();
@@ -415,10 +414,10 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
         //     std::cout << "\t- " << wonder->getName() << std::endl;
         // }
         // std::cout << std::endl;
+
         ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect, this);
         wonderUI->show();
-        qDebug()<<"ia : "<<firstPlayer->isAIPlayer();
-        qDebug()<<"ia : "<<secondPlayer->isAIPlayer();
+
         firstPlayer->chooseWonderUi(wondersToSelect, wonderUI);
         secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);
         secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);
@@ -429,7 +428,7 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
 
     selectionPhase(&getTurnPlayer(), &getOtherPlayer());
     selectionPhase(&getOtherPlayer(), &getTurnPlayer());
-
+    fenetre->close();
     std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
 }
 
