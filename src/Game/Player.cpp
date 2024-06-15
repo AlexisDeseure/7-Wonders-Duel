@@ -213,6 +213,7 @@ void Player::chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonder
     if (!availableWonders.empty()) {
         int* choice = new int(1);
         fenetre->setCurrentPlayerLabel(QString::fromStdString(getName())+" choisis une merveille");
+
         if (isAI){
             *choice = selectRandomInteger(1,static_cast<int>(availableWonders.size()));
             Wonder* wonder = availableWonders[*choice - 1];
@@ -221,7 +222,7 @@ void Player::chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonder
         }
         else {
             QEventLoop loopWonder;
-            ChooseWonderStart::connect(fenetre, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(&handleSelectionWonderDone));
+            ChooseWonderStart::connect(fenetre, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleSelectionWonderDone(Wonder*)));
             ChooseWonderStart::connect(fenetre, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
             loopWonder.exec();
             auto it = std::find(availableWonders.begin(), availableWonders.end(), intermediateWonder);

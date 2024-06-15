@@ -133,13 +133,8 @@ void StartMenu::quitButton(){
 }
 
 void StartMenu::setGameParameters(){
-    if (!(p1_IA->isChecked()&&p2_IA->isChecked())){
-        setp1typeIA(false);
-        setp2TypeIA(false);
-    } else {
-        setp1typeIA(p1_IA->isChecked());
-        setp2TypeIA(p2_IA->isChecked());
-    }
+    setp1typeIA(p1_IA->isChecked());
+    setp2TypeIA(p2_IA->isChecked());
     if(!(p1_HUMAIN->isChecked() && p2_HUMAIN->isChecked())) {
         setp1TypeHuman(true);
         setp2TypeHuman(true);

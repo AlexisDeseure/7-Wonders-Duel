@@ -1,6 +1,10 @@
 #include "ChooseWondersUI.h"
+#include "Game.h"
+#include "Player.h"
+
 using namespace std ;
-ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect) : QWidget(parent){
+
+ChooseWonderStart::ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect, Game* g) : QWidget(parent), game(g){
     //phase de selection de wonders
     // comment les wonders sont reparties
 // pour donner des nouveaux vecteurs
@@ -80,7 +84,8 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
                 row++;
             }
         }
-        connect(mainLayout, SIGNAL(destroyWondersAi(Wonder*)), this, SLOT(&handleAiChoice));
+
+        connect(&game->getTurnPlayer(), SIGNAL(destroyWondersAi(Wonder*)), this, SLOT(handleAiChoice(Wonder*)));
 
 
         // delete count;

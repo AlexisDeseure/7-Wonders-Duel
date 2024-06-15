@@ -415,9 +415,10 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
         //     std::cout << "\t- " << wonder->getName() << std::endl;
         // }
         // std::cout << std::endl;
-        ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
+        ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect, this);
         wonderUI->show();
-
+        qDebug()<<"ia : "<<firstPlayer->isAIPlayer();
+        qDebug()<<"ia : "<<secondPlayer->isAIPlayer();
         firstPlayer->chooseWonderUi(wondersToSelect, wonderUI);
         secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);
         secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);

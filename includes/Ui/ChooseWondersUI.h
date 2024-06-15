@@ -19,6 +19,7 @@ private:
     // Layout de cartes
     QVBoxLayout* columns;
     std::map<Wonder*, QPushButton*> dictionary;
+    Game* game;
 
 signals:
     void selectionDone(Wonder* selectedWonder);
@@ -28,16 +29,17 @@ signals:
   //  void handleSelection(Wonder* selectedWonder); // Slot to handle the selection
 
 public:
-    ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect);
+    ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect, Game* game);
     QVBoxLayout* displayCurrentCards(std::vector<Wonder*> wond_vect);
     void setCurrentPlayerLabel(QString new_label){
         currentPlayerLabel->setText(new_label);
     };
     void deleteLabel(){delete currentPlayerLabel;};
-    void handleAiChoice(Wonder* wonder);
+
 
 private slots:
     void destroyButton(QPushButton* button);
+    void handleAiChoice(Wonder* wonder);
 
 };
 

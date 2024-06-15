@@ -58,8 +58,10 @@ class Player: public QObject{
         void chooseWonder(std::vector<Wonder*>& availableWonders);
         void addWonderToCity(Wonder* wonder);
         void chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonderStart* fenetre);
-        void handleSelectionWonderDone(Wonder* wonder);
+
         int getPlayerChoice(int max); //permet de récupérer l'entrée utilisateur
+    private slots:
+        void handleSelectionWonderDone(Wonder* wonder);
 
 };
 #endif
