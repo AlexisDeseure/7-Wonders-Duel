@@ -29,7 +29,7 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         players[0] = new Player(inst->getGameParameters().getCoinsStart());
         players[1] = new Player(inst->getGameParameters().getCoinsStart());
         QPointer<QMainWindow> fenetre = new QMainWindow();
-        fenetre->setMinimumSize(400,225);
+        fenetre->setFixedSize(400,225);
         StartMenu* startmenu = new StartMenu(fenetre);
         fenetre->setWindowTitle("Seven Wonders Duel");
         startmenu->setGeometry(fenetre->geometry());
@@ -79,7 +79,7 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
                 startGame();
             }
             else{
-
+                fenetre->setFixedSize(1000,500);
                 selectWonderPhaseUI(fenetre);
                 startGameUI(fenetre);
             }
@@ -127,44 +127,6 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
 
 
 
-void Game::selectWonderPhaseUI(QWidget* fenetre){
-    randomPlayerStart();
-    invertTurnPlayer();
-
-    std::vector<Wonder*> allWonders = deck->getAllWonders();
-    std::shuffle(allWonders.begin(), allWonders.end(), std::mt19937(std::random_device()()));
-
-    auto selectionPhaseUI = [&](Player* firstPlayer, Player* secondPlayer) {
-        // Fonction pour la phase de sélection des wonders
-        std::vector<Wonder*> wondersToSelect;
-        wondersToSelect.reserve(4); // Réservation de la mémoire pour les 4 wonders pour éviter les réallocations
-
-        for (int i = 0; i < 4; i++) {
-            wondersToSelect.push_back(allWonders.back());
-            allWonders.pop_back();
-        }
-
-        // std::cout << "Merveilles disponibles : " << std::endl;
-        // for (const auto& wonder : wondersToSelect) {
-        //     std::cout << "\t- " << wonder->getName() << std::endl;
-        // }
-        // std::cout << std::endl;
-
-        ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
-        wonderUI->show();
-        QEventLoop loopWonder;
-
-        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
-        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleWonderSelection(Wonder*, Player*, Player*, std::vector<Wonder*>&, QEventLoop&)));
-
-        loopWonder.exec();
-    };
-
-    selectionPhaseUI(&getTurnPlayer(), &getOtherPlayer());
-    selectionPhaseUI(&getOtherPlayer(), &getTurnPlayer());
-
-    std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
-}
 
 void Game::startGameUI(QWidget* fenetre) {
     //AFFICHER ICI LA FENETRE PRINCIPALE DE JEU.
