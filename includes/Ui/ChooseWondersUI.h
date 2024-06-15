@@ -14,13 +14,15 @@ Q_OBJECT
 private:
 
     QPushButton* ready;
-    QLabel* p1;
-    QLabel* p2;
+    QLabel* currentPlayerLabel;
     QPushButton* QUIT;
     // Layout de cartes
     QVBoxLayout* columns;
+    std::map<Wonder*, QPushButton*> dictionary;
+
 signals:
-    void selectionDone(Wonder* selectedWonder); // Signal emitted when a wonder is selected
+    void selectionDone(Wonder* selectedWonder);
+    void exitBoucleSelection();
 
 //private slots:
   //  void handleSelection(Wonder* selectedWonder); // Slot to handle the selection
@@ -28,8 +30,15 @@ signals:
 public:
     ChooseWonderStart(QWidget *parent,std::vector<Wonder*> wonders_vect);
     QVBoxLayout* displayCurrentCards(std::vector<Wonder*> wond_vect);
-signals:
-    void selectionDone();
+    void setCurrentPlayerLabel(QString new_label){
+        currentPlayerLabel->setText(new_label);
+    };
+    void deleteLabel(){delete currentPlayerLabel;};
+    void handleAiChoice(Wonder* wonder);
+
+private slots:
+    void destroyButton(QPushButton* button);
+
 };
 
 #endif // CHOOSEWONDERSUI_H

@@ -8,12 +8,14 @@
 #include "City.h"
 #include "Effect.h"
 #include "AddVictoryPoint.h"
-#include <random>
-#include <iostream>
 #include <algorithm>
 #include "StartMenu.h"
 #include "ChooseWondersUI.h"
 #include "EndGamePopUp.h"
+
+#include <random>
+#include <iostream>
+
 
 Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
@@ -422,15 +424,15 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
         //     std::cout << "\t- " << wonder->getName() << std::endl;
         // }
         // std::cout << std::endl;
-
         ChooseWonderStart* wonderUI = new ChooseWonderStart(fenetre, wondersToSelect);
         wonderUI->show();
-        QEventLoop loopWonder;
 
-        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
-        connect(wonderUI, SIGNAL(selectionDone(Wonder*)), this, SLOT(handleWonderSelection(Wonder*, Player*, Player*, std::vector<Wonder*>&, QEventLoop&)));
+        firstPlayer->chooseWonderUi(wondersToSelect, wonderUI);
+        secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);
+        secondPlayer->chooseWonderUi(wondersToSelect, wonderUI);
+        firstPlayer->chooseWonderUi(wondersToSelect, wonderUI);
+        wonderUI->deleteLabel();
 
-        loopWonder.exec();
     };
 
     selectionPhase(&getTurnPlayer(), &getOtherPlayer());
@@ -439,24 +441,24 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
     std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
 }
 
-void Game::handleWonderSelection(Wonder* selectedWonder, Player* firstPlayer, Player* secondPlayer, std::vector<Wonder*>& wondersToSelect, QEventLoop& loopWonder) {
-    if (firstPlayer->getCity().getWonders().size() < 2) {
-        firstPlayer->getCity().addWonder(selectedWonder);
-      //  std::cout << firstPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
-    } else if (secondPlayer->getCity().getWonders().size() < 2) {
-        secondPlayer->getCity().addWonder(selectedWonder);
-       // std::cout << secondPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
-    }
+// void Game::handleWonderSelection(Wonder* selectedWonder, Player* firstPlayer, Player* secondPlayer, std::vector<Wonder*>& wondersToSelect, QEventLoop& loopWonder) {
+//     if (firstPlayer->getCity().getWonders().size() < 2) {
+//         firstPlayer->getCity().addWonder(selectedWonder);
+//       //  std::cout << firstPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+//     } else if (secondPlayer->getCity().getWonders().size() < 2) {
+//         secondPlayer->getCity().addWonder(selectedWonder);
+//        // std::cout << secondPlayer->getCity().getName() << " selected " << selectedWonder->getName() << std::endl;
+//     }
 
-    auto it = std::find(wondersToSelect.begin(), wondersToSelect.end(), selectedWonder);
-    if (it != wondersToSelect.end()) {
-        wondersToSelect.erase(it);
-    }
+//     auto it = std::find(wondersToSelect.begin(), wondersToSelect.end(), selectedWonder);
+//     if (it != wondersToSelect.end()) {
+//         wondersToSelect.erase(it);
+//     }
 
-    if (wondersToSelect.empty()) {
-        loopWonder.quit();
-    }
-}
+//     if (wondersToSelect.empty()) {
+//         loopWonder.quit();
+//     }
+// }
 
 void Game::selectWondersPhase() {
     try {

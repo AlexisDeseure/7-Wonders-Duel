@@ -3,9 +3,15 @@
 
 #include <string>
 #include <utility>
+#include <QtWidgets>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QtCore>
+#include <QWidget>
 #include "MarketDeck.h"
 #include "Wonder.h"
 #include "DeckElement.h"
+#include "ChooseWondersUI.h"
 class City;
 class Game;
 class Card;
@@ -18,12 +24,18 @@ enum class AiLevel{
 };
 std::string AiLeveltoString(AiLevel level);
 
-class Player{
+class Player: public QObject{
+    Q_OBJECT
     private:
         City& city;
         bool isAI;
         AiLevel aiLevel;
         std::string name;
+
+        Wonder* intermediateWonder; //sert à stocker une wonder intermédiaire pour l'ui pour le callback
+
+    signals:
+        void destroyWondersAi(Wonder* w);
 
     public:
         Player(int treasury = 0);
@@ -45,7 +57,9 @@ class Player{
         void play(Game& game); //permet de permettre au joueur de jouer son tour
         void chooseWonder(std::vector<Wonder*>& availableWonders);
         void addWonderToCity(Wonder* wonder);
-
+        void chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonderStart* fenetre);
+        void handleSelectionWonderDone(Wonder* wonder);
         int getPlayerChoice(int max); //permet de récupérer l'entrée utilisateur
+
 };
 #endif

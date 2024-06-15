@@ -42,7 +42,7 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
         // Créer un layout vertical principal qui prend tout l'écran
         QVBoxLayout* mainLayout = new QVBoxLayout;
         QGridLayout* gridLayout = new QGridLayout;
-        QLabel* currentPlayerLabel = new QLabel("Joueur qui joue");
+        currentPlayerLabel = new QLabel("");
         currentPlayerLabel->setStyleSheet("QLabel { font-size: 30px; font-weight: bold;}");
         mainLayout->addWidget(currentPlayerLabel);
         mainLayout->addLayout(gridLayout);
@@ -52,16 +52,25 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
         // QHBoxLayout* lowerLayout = new QHBoxLayout;
         int row = 1; // Ligne courante pour les boutons d'image
         int col = 0;
-
+        // int* count = new int(0);
         for (Wonder* wonder : wond_vect) {
             QPushButton* imageButton = new QPushButton(this);
             imageButton->setIcon(QIcon(wonder->getImage()));
             imageButton->setIconSize(QSize(330, 500));
             imageButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
             gridLayout->addWidget(imageButton, row, col);
-            connect(imageButton, &QPushButton::clicked, this, [this, wonder]() {
+            dictionary[wonder] = imageButton;
+            connect(imageButton, &QPushButton::clicked, this, [this, wonder, imageButton]() {
                 emit selectionDone(wonder);
+                destroyButton(imageButton);
+                // (*count)++;
+                // qDebug() <<"count: "<< *count;
+                // if (*count >=4){
+                //     emit exitBoucleSelection();
+                // }
             });
+
+
 
             // Alterner entre les colonnes 0 et 1
             col = (col + 1) % 2;
@@ -71,13 +80,26 @@ QVBoxLayout* ChooseWonderStart::displayCurrentCards(vector<Wonder*> wond_vect) {
                 row++;
             }
         }
+        connect(mainLayout, SIGNAL(destroyWondersAi(Wonder*)), this, SLOT(&handleAiChoice));
 
+
+        // delete count;
         // mainLayout->addLayout(upperLayout);
         // mainLayout->addLayout(lowerLayout);
 
         return mainLayout;
 }
 
+void ChooseWonderStart::destroyButton(QPushButton* button)
+{
+    delete button;
+    button = nullptr;
+}
+
+void ChooseWonderStart::handleAiChoice(Wonder* wonder){
+    qDebug()<<"testttttttt";
+    delete dictionary[wonder];
+}
 //void ChooseWonderStart::changeChooser(){
 
 //}

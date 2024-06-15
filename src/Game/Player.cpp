@@ -9,9 +9,13 @@
 #include "DeckPile.h"
 #include "Building.h"
 #include "ScientificSymbol.h"
+#include "ChooseWondersUI.h"
 
+#include <QtCore>
+#include <QObject>
 #include <utility>
 #include <iostream>
+#include <algorithm>
 #include "Board.h"
 
 using namespace std ;
@@ -197,6 +201,43 @@ void Player::chooseWonder(std::vector<Wonder*>& availableWonders) {
         availableWonders.erase(availableWonders.begin() + choice - 1);
 
         std::cout << getName() << " a choisi " << chosenWonder->getName() << std::endl;
+
+        addWonderToCity(chosenWonder);
+
+    }
+}
+void Player::handleSelectionWonderDone(Wonder* wonder){
+    intermediateWonder = wonder;
+}
+void Player::chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonderStart* fenetre) {
+    if (!availableWonders.empty()) {
+        int* choice = new int(1);
+        fenetre->setCurrentPlayerLabel(QString::fromStdString(getName())+" choisis une merveille");
+        if (isAI){
+            *choice = selectRandomInteger(1,static_cast<int>(availableWonders.size()));
+            Wonder* wonder = availableWonders[*choice - 1];
+            qDebug()<<"testttttttt";
+            emit destroyWondersAi(wonder);
+        }
+        else {
+            QEventLoop loopWonder;
+            ChooseWonderStart::connect(fenetre, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(&handleSelectionWonderDone));
+            ChooseWonderStart::connect(fenetre, SIGNAL(selectionDone(Wonder*)), &loopWonder, SLOT(quit()));
+            loopWonder.exec();
+            auto it = std::find(availableWonders.begin(), availableWonders.end(), intermediateWonder);
+            if (it != availableWonders.end()) {
+                // Calculer l'indice
+                *choice = std::distance(availableWonders.begin(), it)+1;
+                std::cout << "Indice de la wonder: " << *choice << std::endl;
+            } else {
+                std::cout << "Le pointeur de availableWonders n'a pas été trouvé dans le vecteur." << std::endl;
+            }
+        }
+        Wonder* chosenWonder = availableWonders[*choice - 1];
+        availableWonders.erase(availableWonders.begin() + *choice - 1);
+
+        delete choice;
+
 
         addWonderToCity(chosenWonder);
 
