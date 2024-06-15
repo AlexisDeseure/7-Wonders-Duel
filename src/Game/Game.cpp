@@ -173,7 +173,6 @@ bool Game::playAgeUI(GameWindow* fenetre) {
             randomPlayerStart();
         }
         while (!board->deckIsEmpty()) {
-            qDebug() << "BONJOUR";
             playTurnUI(fenetre);
 
             if (endTurnUI()) {

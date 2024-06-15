@@ -56,6 +56,7 @@ void MarketDeckWidget::generateAge(int age){
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(layout[4-i][compteur], this);
+                    qDebug() << "carte "<<carteWidget->getCard()->getBuilding()->getName();
                     carteWidget->setFixedSize(width,height);
                     line_cards.push_back(carteWidget);
                     // building = layout[i][j];

@@ -2,9 +2,10 @@
 #include "Card.h"
 #include <QVBoxLayout>
 
-CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  clickable(false)
+CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  clickable(false), card(card)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
+
 
     // nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
     // effectLabel = new QLabel("Effect", this);

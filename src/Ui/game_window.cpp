@@ -3,6 +3,9 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "Building.h"
+#include "DeckElement.h"
+#include "cardwidget.h"
 
 
 GameWindow::GameWindow(Game* game, QWidget *parent)
@@ -68,6 +71,22 @@ GameWindow::GameWindow(Game* game, QWidget *parent)
     // b4 = new QPushButton("market",market);
 
 }
+
+void GameWindow::refreshEverything(){
+    player1->updatePlayerInfo();
+    player2->updatePlayerInfo();
+
+    std::vector<DeckElement*> buildings = game->getBoard().getMarketDeck().getFirstBuildings();
+
+    for (auto& line : market->printed_cards){
+        for (auto& card : line){
+            auto it = std::find(buildings.begin(), buildings.end(), card->getCard());
+            if (it != buildings.end()){
+                card->makeClickable();
+            }
+        }
+    }
+};
 
 GameWindow::~GameWindow()
 {

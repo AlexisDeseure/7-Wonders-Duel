@@ -149,7 +149,7 @@ void Player::play(Game& game){
 }
 
 void Player::playUi(Game& game, GameWindow* fenetre){
-    fenetre->refreshAll();
+    fenetre->refreshEverything();
     MarketDeck& marketDeck = game.getBoard().getMarketDeck();
     City& city = getCity();
     std::vector<DeckElement*>& firstbuildings = marketDeck.getFirstBuildings();

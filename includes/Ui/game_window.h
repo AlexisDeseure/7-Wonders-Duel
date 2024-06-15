@@ -33,21 +33,7 @@ public:
     void updateAge(int age){
         market->generateAge(age);}
 
-    void refreshAll(){
-        player1->updatePlayerInfo();
-        player2->updatePlayerInfo();
-        // qDebug() << "refresh";
-        std::vector<DeckElement*> buildings = game->getBoard().getMarketDeck().getFirstBuildings();
-        for (auto& line : market->printed_cards){
-            for (auto& card : line){
-                auto it = std::find(buildings.begin(), buildings.end(), card->getCard());
-                if (it != buildings.end()){
-                    // qDebug() << "true";
-                    card->makeClickable();
-                }
-            }
-        }
-    };
+    void refreshEverything();
 
 private:
     //Grid
