@@ -29,6 +29,7 @@ public:
     PlayerWidget* p2;
     std::map<DeckElement*,CardWidget*>* cardFinder;
     std::vector<DeckElement*> clickables;
+    std::vector<std::vector<CardWidget*>> printed_cards;
     // std::vector<Building*>& a1Cards; //toutes les cartes de l'âge 1
     // std::vector<Building*>& a2Cards; //toutes les cartes de l'âge 2
     // std::vector<Building*>& a3Cards; //toutes les cartes de l'âge 3

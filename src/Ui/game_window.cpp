@@ -6,7 +6,7 @@
 
 
 GameWindow::GameWindow(Game* game, QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), game(game)
 {
 
     setWindowTitle("7 Wonders");
@@ -22,6 +22,7 @@ GameWindow::GameWindow(Game* game, QWidget *parent)
     player1 = new PlayerWidget(game, &game->getTurnPlayer(),centralWidget);
     player2 = new PlayerWidget(game, &game->getOtherPlayer(),centralWidget);
     market = new MarketDeckWidget(game, centralWidget);
+
 
     // connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);
     // connect(player2,&PlayerWidget::endTurn,player1,&PlayerWidget::switchTurn);

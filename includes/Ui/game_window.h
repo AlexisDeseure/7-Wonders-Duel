@@ -12,6 +12,9 @@
 #include "militarydeck.h"
 #include "Instanciator.h"
 #include "Game.h"
+#include "Board.h"
+#include "MarketDeck.h"
+
 
 
 
@@ -30,6 +33,22 @@ public:
     void updateAge(int age){
         market->generateAge(age);}
 
+    void refreshAll(){
+        player1->updatePlayerInfo();
+        player2->updatePlayerInfo();
+        // qDebug() << "refresh";
+        std::vector<DeckElement*> buildings = game->getBoard().getMarketDeck().getFirstBuildings();
+        for (auto& line : market->printed_cards){
+            for (auto& card : line){
+                auto it = std::find(buildings.begin(), buildings.end(), card->getCard());
+                if (it != buildings.end()){
+                    // qDebug() << "true";
+                    card->makeClickable();
+                }
+            }
+        }
+    };
+
 private:
     //Grid
     QGridLayout* grid;
@@ -39,13 +58,8 @@ private:
     PlayerWidget *player2;
     MilitaryDeck* military_deck;
     MarketDeckWidget* market;
+    Game* game;
 
-    //buttons for testing
-    QPushButton* b1;
-    QPushButton* b2;
-    QPushButton* b3;
-    QPushButton* b4;
-    QPushButton* b5;
-    QPushButton* b6;
+
 };
 #endif // GAME_WINDOW_H

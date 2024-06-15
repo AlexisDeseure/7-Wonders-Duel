@@ -23,8 +23,8 @@ CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  c
     layout->addWidget(selectButton);
     layout->addWidget(selectLabel);
 
-    // connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
-    connect(selectButton, &QPushButton::clicked, this, &CardWidget::cardClicked);
+    connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
+    // connect(selectButton, &QPushButton::clicked, this, &CardWidget::cardClicked);
 }
 
 void CardWidget::enterEvent(QEnterEvent *event)
@@ -42,12 +42,15 @@ void CardWidget::leaveEvent(QEvent *event)
 
 void CardWidget::cardClicked()
 {
+    qDebug() << "BONJOUR " <<clickable;
     if (clickable){
+        qDebug() << "BONJOUR";
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
         connect(selectMenu,SIGNAL(acheterPressed()),this,SLOT(acheter()));
         connect(selectMenu,SIGNAL(defausserPressed()),this,SLOT(defausser()));
+
     }
 }
 
