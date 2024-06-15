@@ -8,11 +8,13 @@
 #include "City.h"
 #include "Effect.h"
 #include "AddVictoryPoint.h"
-#include <algorithm>
 #include "StartMenu.h"
 #include "ChooseWondersUI.h"
+#include "MarketDeck.h"
 #include "EndGamePopUp.h"
+#include "game_window.h"
 
+#include <algorithm>
 #include <random>
 #include <iostream>
 
@@ -81,7 +83,11 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             else{
                 fenetre->setFixedSize(1000,500);
                 selectWonderPhaseUI(fenetre);
-                startGameUI(fenetre);
+                fenetre->close();
+                MarketDeck* market = new MarketDeck();
+                GameWindow* mainWindow = new GameWindow(market);
+                mainWindow->show();
+                startGameUI(mainWindow);
             }
         }
     } catch (const std::exception& e) {
@@ -131,12 +137,14 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
 void Game::startGameUI(QWidget* fenetre) {
     //AFFICHER ICI LA FENETRE PRINCIPALE DE JEU.
     qDebug() << "Lancement du jeu";
+
+    // system("pause");
     try {
-        while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
-            if (playAgeUI()) {
-                break;
-            }
-        }
+        // while (age < Instanciator::getInstanciator()->getGameParameters().getNumberAge()) {
+        //     if (playAgeUI()) {
+        //         break;
+        //     }
+        // }
         endGameUI(fenetre);
     } catch (const std::exception& e) {
         std::cerr << "Error in startGameUI(): " << e.what() << std::endl;
@@ -428,7 +436,7 @@ void Game::selectWonderPhaseUI(QWidget* fenetre){
 
     selectionPhase(&getTurnPlayer(), &getOtherPlayer());
     selectionPhase(&getOtherPlayer(), &getTurnPlayer());
-    fenetre->close();
+    // fenetre->close();
     std::cout << "Phase de sélection des Merveilles terminée" << std::endl;
 }
 

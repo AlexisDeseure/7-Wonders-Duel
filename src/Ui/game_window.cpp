@@ -8,8 +8,8 @@
 GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("7 Wonders");
 
+    setWindowTitle("7 Wonders");
     setStyleSheet("GameWindow{"
                   "border-image: url(../../../data/image/backgrounds/gameplayingbackground.jpg) 0 0 0 0 stretch stretch;"
                   "background-repeat: no-repeat;"
