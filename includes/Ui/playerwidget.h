@@ -32,6 +32,9 @@ public slots:
     // void recieveDefausse(DeckElement* card);
     // void switchTurn();
     void onRefreshButtonClicked();
+    void onDetailsButtonClicked();
+    void onBuildingsButtonClicked();  // New slot for buildings button
+
 
 
 private:
@@ -48,6 +51,8 @@ private:
 
     QVBoxLayout* layout;
     QPushButton* refreshButton;
+    QPushButton* detailsButton; // bouton qui montre les details
+    QPushButton* buildingsButton; // bouton qui montre les details
 
 };
 
