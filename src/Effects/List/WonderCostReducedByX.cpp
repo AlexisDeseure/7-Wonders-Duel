@@ -17,7 +17,6 @@ void WonderCostReducedByX::setParameters(std::vector<int> int_parameters, [[mayb
 }
 
 void WonderCostReducedByX::eachTurnEffect(Game& game, Card& card){
-    //gérer avec effet économie
     if (dynamic_cast<Wonder*>(&card)){
         City& city = game.getTurnPlayer().getCity();
         RessourceType max = RessourceType::LENGTH;

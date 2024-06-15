@@ -13,32 +13,7 @@ void MarketDeck::advanceAge(int age, std::vector<Building*>& buildings) {
 }
 
 
-/*
-void MarketDeck::removeBuilding(DeckElement* building) {
-    int index = -1;
-    for (int i = 0; i < nb_first_buildings; i++) {
-        if (first_buildings[i] == building) {
-            index = i;
-            break;
-        }
-    }
-    if (index != -1) {
-        for (int i = index; i < nb_first_buildings - 1; i++) {
-            first_buildings[i] = first_buildings[i + 1];
-        }
-        nb_first_buildings--;
-    }
-}
-*/
-//void MarketDeck::addFirstBuilding(const DeckElement* building) {
-//     const DeckElement** new_first_buildings = new const DeckElement*[nb_first_buildings + 1];
-//    for (int i = 0; i < nb_first_buildings; i++) {
-//        new_first_buildings[i] = first_buildings[i];
-//    }
-//    new_first_buildings[nb_first_buildings] = building;
-//    first_buildings = new_first_buildings;
-//    nb_first_buildings++;
-//}
+
 void MarketDeck::addFirstBuilding(DeckElement* building, unsigned int index) {
     if (index < selectable_elements.size()) {
         selectable_elements.insert(selectable_elements.begin() + index, building);

@@ -11,24 +11,6 @@ DeckPile::DeckPile(int nb_buildings, int nb_token, int nb_wonder) : nb_buildings
 }
 
 
-//Wonder* DeckPile::selectNextWonder(){
-//    Wonder* W = wonders.back();
-//    wonders.pop_back();
-//    return W;
-//}
-//
-//
-//Building* DeckPile::selectNextBuilding(){
-//    Building* B = buildings.first.back();
-//    buildings.first.pop_back();
-//    return B;
-//}
-//
-//ProgressToken* DeckPile::selectNextProgressToken(){
-//    ProgressToken* PT = progress_tokens.first.back();
-//    progress_tokens.first.pop_back();
-//    return PT;
-//}
 
 
 void DeckPile::advanceAge(int age){

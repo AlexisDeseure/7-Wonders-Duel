@@ -44,7 +44,6 @@ void CardWidget::leaveEvent(QEvent *event)
 void CardWidget::cardClicked()
 {
     if (clickable){
-        qDebug() << "BONJOUR " <<clickable;
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
@@ -72,11 +71,6 @@ void CardWidget::wonderer(){
     delete this;
 }
 
-// void CardWidget::cardClicked(){
-//     if (getClickable()){
-//         QMessageBox::information(this, "Card Clicked", "You clicked the Card!");
-//     }
-// }
 
 
 
