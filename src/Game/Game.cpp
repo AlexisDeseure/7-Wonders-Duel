@@ -164,22 +164,21 @@ void Game::startGameUI(GameWindow* fenetre) {
 bool Game::playAgeUI(GameWindow* fenetre) {
     try {
         advanceAge();
-        advanceAge();
         fenetre->updateAge(age);
-        // if (board->getConflictPawn().getPosition() < 0) {
-        //     chooseWhoStartsAge(getTurnPlayer());
-        // } else if (board->getConflictPawn().getPosition() > 0) {
-        //     chooseWhoStartsAge(getOtherPlayer());
-        // } else {
-        //     randomPlayerStart();
-        // }
-        // while (!board->deckIsEmpty()) {
-        //     playTurnUI();
+        if (board->getConflictPawn().getPosition() < 0) {
+            chooseWhoStartsAge(getTurnPlayer());
+        } else if (board->getConflictPawn().getPosition() > 0) {
+            chooseWhoStartsAge(getOtherPlayer());
+        } else {
+            randomPlayerStart();
+        }
+        while (!board->deckIsEmpty()) {
+            playTurnUI(fenetre);
 
-        //     if (endTurnUI()) {
-        //         return true;
-        //     }
-        // }
+            if (endTurnUI()) {
+                return true;
+            }
+        }
         return false;
     } catch (const std::exception& e) {
         std::cerr << "Error in playAgeUI(): " << e.what() << std::endl;
@@ -187,12 +186,12 @@ bool Game::playAgeUI(GameWindow* fenetre) {
     }
 }
 
-void Game::playTurnUI() {
+void Game::playTurnUI(GameWindow* fenetre) {
     try {
         turn++;
         if (!isReplaying) invertTurnPlayer();
         isReplaying = false;
-        getTurnPlayer().play(*this);
+        getTurnPlayer().playUi(*this, fenetre);
     } catch (const std::exception& e) {
         std::cerr << "Error in playTurnUI(): " << e.what() << std::endl;
         throw; // Re-throw the exception

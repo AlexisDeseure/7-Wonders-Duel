@@ -2,9 +2,10 @@
 #include "Card.h"
 #include <QVBoxLayout>
 
-CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  clickable(false)
+CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  clickable(false), card(card)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
+
 
     // nameLabel = new QLabel("Card", this); //QString::fromStdString(getCard()->getName())
     // effectLabel = new QLabel("Effect", this);
@@ -23,8 +24,8 @@ CardWidget::CardWidget(DeckElement* card, QWidget *parent) : QWidget(parent),  c
     layout->addWidget(selectButton);
     layout->addWidget(selectLabel);
 
-    // connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
-    connect(selectButton, &QPushButton::clicked, this, &CardWidget::cardClicked);
+    connect(selectButton, SIGNAL(clicked()), this, SLOT(cardClicked()));
+    // connect(selectButton, &QPushButton::clicked, this, &CardWidget::cardClicked);
 }
 
 void CardWidget::enterEvent(QEnterEvent *event)
@@ -43,11 +44,13 @@ void CardWidget::leaveEvent(QEvent *event)
 void CardWidget::cardClicked()
 {
     if (clickable){
+        qDebug() << "BONJOUR " <<clickable;
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
         connect(selectMenu,SIGNAL(acheterPressed()),this,SLOT(acheter()));
         connect(selectMenu,SIGNAL(defausserPressed()),this,SLOT(defausser()));
+        connect(selectMenu,SIGNAL(wonderPressed()),this,SLOT(wonderer()));
     }
 }
 
@@ -63,6 +66,11 @@ void CardWidget::defausser(){
     delete this;
 }
 
+void CardWidget::wonderer(){
+    this->close();
+    emit sendWonder(card);
+    delete this;
+}
 
 // void CardWidget::cardClicked(){
 //     if (getClickable()){

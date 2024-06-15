@@ -78,7 +78,7 @@ Q_OBJECT
         bool playAgeUI(GameWindow* fenetre);
         void endGameUI(QWidget* fenetre);
         void advanceAgeUI();
-        void playTurnUI();
+        void playTurnUI(GameWindow* fenetre);
         bool endTurnUI();
     public slots:
         void quitting(){exit = true;}

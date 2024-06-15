@@ -45,16 +45,20 @@ void MarketDeckWidget::generateAge(int age){
     // std::vector<std::vector<DeckElement*>>& layout = Instanciator::getInstanciator()->getBuildingsLayout().getAgeWithBuildings(age, buildings); //buildings à rajouter comme var statique
     // DeckElement* building;
     std::vector<std::vector<DeckElement*>>& layout = game->getBoard().getMarketDeck().getAllBuildings(); //buildings à rajouter comme var statique
+    printed_cards = std::vector<std::vector<CardWidget*>>();
 
     switch(age){
     case 1:
         for(int i = 0; i < 5; i++){
             QGridLayout* line = new QGridLayout(this);
             compteur = 0;
+            std::vector<CardWidget*> line_cards;
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(layout[4-i][compteur], this);
+                    qDebug() << "carte "<<carteWidget->getCard()->getBuilding()->getName();
                     carteWidget->setFixedSize(width,height);
+                    line_cards.push_back(carteWidget);
                     // building = layout[i][j];
                     // CardWidget* carteWidget = new CardWidget(building,this);
                     // carteWidget->setFixedSize(100,100);
@@ -62,6 +66,7 @@ void MarketDeckWidget::generateAge(int age){
                     compteur++;
                 }
             }
+            printed_cards.push_back(line_cards);
             Cardlines->addLayout(line);
         }
         return;
@@ -69,10 +74,12 @@ void MarketDeckWidget::generateAge(int age){
         for(int i = 0; i < 5; i++){
             QGridLayout* line = new QGridLayout(this);
             compteur = 0;
+            std::vector<CardWidget*> line_cards;
             for(int j = 0; j < 11; j++){
                 if (checkCardPos(age,i,j)){
                     CardWidget* carteWidget = new CardWidget(layout[i][compteur], this);
                     carteWidget->setFixedSize(width,height);
+                    line_cards.push_back(carteWidget);
                     // building = layout[i][j];
                     // CardWidget* carteWidget = new CardWidget(building,this);
                     // carteWidget->setFixedSize(100,100);
@@ -80,6 +87,7 @@ void MarketDeckWidget::generateAge(int age){
                     compteur++;
                 }
             }
+            printed_cards.push_back(line_cards);
             Cardlines->addLayout(line);
         }
         return;
@@ -87,17 +95,20 @@ void MarketDeckWidget::generateAge(int age){
         for(int i = 0; i < 7; i++){
             QGridLayout* line = new QGridLayout(this);
             compteur = 0;
+            std::vector<CardWidget*> line_cards;
             for(int j = 0; j < 7; j++){
                 if (checkCardPos(age,i,j)){
                     qDebug() << "game : " << layout[i].size();
                     CardWidget* carteWidget = new CardWidget(layout[i][compteur], this);
                     carteWidget->setFixedSize(width,height);
+                    line_cards.push_back(carteWidget);
                     // building = layout[i][j];
                     // CardWidget* carteWidget = new CardWidget(building,this);
                     // carteWidget->setFixedSize(100,100);
                     line->addWidget(carteWidget,i,j,1,1);
                 }
             }
+            printed_cards.push_back(line_cards);
             Cardlines->addLayout(line);
         }
         return;

@@ -39,10 +39,12 @@ public slots:
     void cardClicked();
     void acheter();
     void defausser();
+    void wonderer();
 
 signals:
     void sendAchat(DeckElement* card);
     void sendDefausse(DeckElement *card);
+    void sendWonder(DeckElement *card);
 };
 
 #endif // CARDWIDGET_H

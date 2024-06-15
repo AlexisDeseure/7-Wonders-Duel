@@ -12,6 +12,9 @@
 #include "militarydeck.h"
 #include "Instanciator.h"
 #include "Game.h"
+#include "Board.h"
+#include "MarketDeck.h"
+
 
 
 
@@ -27,8 +30,11 @@ public:
 
     PlayerWidget& getplayer1()const{return *player1;};
     PlayerWidget& getplayer2()const{return *player2;};
+    MarketDeckWidget* getMarket()const{return market;};
     void updateAge(int age){
         market->generateAge(age);}
+
+    void refreshEverything();
 
 private:
     //Grid
@@ -39,13 +45,8 @@ private:
     PlayerWidget *player2;
     MilitaryDeck* military_deck;
     MarketDeckWidget* market;
+    Game* game;
 
-    //buttons for testing
-    QPushButton* b1;
-    QPushButton* b2;
-    QPushButton* b3;
-    QPushButton* b4;
-    QPushButton* b5;
-    QPushButton* b6;
+
 };
 #endif // GAME_WINDOW_H

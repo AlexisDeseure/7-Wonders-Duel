@@ -3,10 +3,13 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "Building.h"
+#include "DeckElement.h"
+#include "cardwidget.h"
 
 
 GameWindow::GameWindow(Game* game, QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), game(game)
 {
 
     setWindowTitle("7 Wonders");
@@ -22,6 +25,7 @@ GameWindow::GameWindow(Game* game, QWidget *parent)
     player1 = new PlayerWidget(game, &game->getTurnPlayer(),centralWidget);
     player2 = new PlayerWidget(game, &game->getOtherPlayer(),centralWidget);
     market = new MarketDeckWidget(game, centralWidget);
+
 
     // connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);
     // connect(player2,&PlayerWidget::endTurn,player1,&PlayerWidget::switchTurn);
@@ -67,6 +71,22 @@ GameWindow::GameWindow(Game* game, QWidget *parent)
     // b4 = new QPushButton("market",market);
 
 }
+
+void GameWindow::refreshEverything(){
+    player1->updatePlayerInfo();
+    player2->updatePlayerInfo();
+
+    std::vector<DeckElement*> buildings = game->getBoard().getMarketDeck().getFirstBuildings();
+
+    for (auto& line : market->printed_cards){
+        for (auto& card : line){
+            auto it = std::find(buildings.begin(), buildings.end(), card->getCard());
+            if (it != buildings.end()){
+                card->makeClickable();
+            }
+        }
+    }
+};
 
 GameWindow::~GameWindow()
 {

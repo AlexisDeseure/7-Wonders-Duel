@@ -15,6 +15,7 @@
 class City;
 class Game;
 class Card;
+class GameWindow;
 
 enum class AiLevel{
     NONE,
@@ -55,6 +56,7 @@ class Player: public QObject{
         const DeckElement* selectCard(Game& game, MarketDeck& marketDeck); //permet au joueur de sélectionner une carte à jouer
         bool buyCard(Game& game, Card& card,MarketDeck& marketDeck); //acheter carte ou wonder après avoir appliquer les effets de chaque tours
         void play(Game& game); //permet de permettre au joueur de jouer son tour
+        void playUi(Game& game, GameWindow* fenetre);
         void chooseWonder(std::vector<Wonder*>& availableWonders);
         void addWonderToCity(Wonder* wonder);
         void chooseWonderUi(std::vector<Wonder*>& availableWonders, ChooseWonderStart* fenetre);

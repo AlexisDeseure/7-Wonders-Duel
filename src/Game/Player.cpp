@@ -10,6 +10,7 @@
 #include "Building.h"
 #include "ScientificSymbol.h"
 #include "ChooseWondersUI.h"
+#include "game_window.h"
 
 #include <QtCore>
 #include <QObject>
@@ -145,6 +146,76 @@ void Player::play(Game& game){
             }
         }
     }
+}
+
+void Player::playUi(Game& game, GameWindow* fenetre){
+    fenetre->refreshEverything();
+    MarketDeck& marketDeck = game.getBoard().getMarketDeck();
+    City& city = getCity();
+    std::vector<DeckElement*>& firstbuildings = marketDeck.getFirstBuildings();
+    std::cout << "Le joueur " << name << " joue ! Le joueur "<<game.getOtherPlayer().getName()<<" est en attente..."<<std::endl;
+    std::cout << "Money : "<<city.getTreasury()<<std::endl;
+
+    //int choice = getPlayerChoice(static_cast<int>(firstbuildings.size()));
+
+    QEventLoop loopWonder;
+
+    for (auto& line : fenetre->getMarket()->printed_cards){
+        for (auto& card : line){
+            connect(card, SIGNAL(sendAchat(DeckElement*)), &loopWonder, SLOT(quit()));
+            connect(card, SIGNAL(sendDefausse(DeckElement*)), &loopWonder, SLOT(quit()));
+            connect(card, SIGNAL(sendWonder(DeckElement*)), &loopWonder, SLOT(quit()));
+        }
+    }
+
+
+    loopWonder.exec();
+    // Building* building = firstbuildings[choice-1]->getBuilding();
+    qDebug()<<"fdssd";
+    // std::cout << "Vous avez choisi le bâtiment : " << building->getName() << std::endl;
+
+    // bool check_choice = false;
+    // while (!check_choice){
+    //     std::cout << "Veuillez choisir une action parmi : " << std::endl;
+    //     std::cout << "\t1 : Construire le bâtiment "<< std::endl;
+    //     std::cout << "\t2 : Echanger le bâtiment contre des pièces "<< std::endl;
+    //     std::cout << "\t3 : Construire une merveille en utilisant ce bâtiment"<< std::endl;
+    //     int action = getPlayerChoice(3);
+
+    //     if(action == 1) {
+    //         check_choice = city.constructBuilding(building,game);
+    //         if (check_choice){
+    //             city.applyEachTurnEffects(game, *building);
+    //             marketDeck.getBuilding(choice - 1);
+    //             cout<< "Bâtiment construit" << endl;
+    //         }
+    //     }
+    //     else if(action == 2) {
+    //         city.discardBuilding(building,game);
+    //         marketDeck.getBuilding(choice - 1) ;
+    //         cout << "Bâtiment détruit" << endl;
+    //         check_choice = true;
+    //     }
+    //     else{
+    //         std::cout << "Choisissez une merveille à construire : " << std::endl;
+    //         std::vector<Wonder*>& Wonders = getCity().getWonders();
+    //         int i = 1;
+    //         for (auto& wonder : Wonders){
+    //             std::cout << i << " : " << std::endl;
+    //             wonder->print();
+    //             i++;
+    //         }
+    //         int wonder_choice = getPlayerChoice(static_cast<int>(Wonders.size()));
+    //         std::cout << "Vous avez sélectionné : "<<Wonders[wonder_choice-1]->getName()<<std::endl;
+    //         check_choice = city.constructWonder(Wonders[wonder_choice-1],game);
+    //         if (check_choice){
+    //             city.applyEachTurnEffects(game, *Wonders[wonder_choice-1]);
+    //             marketDeck.getBuilding(choice - 1);
+    //             game.getDeck().addDiscardedBuilding(building);
+    //             cout<< "Merveille construite" << endl;
+    //         }
+    //     }
+    // }
 }
 
 // const DeckElement* Player::selectCard(Game& game, MarketDeck& marketDeck){ //permet au joueur de sélectionner une carte à jouer
