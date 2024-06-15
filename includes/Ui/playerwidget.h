@@ -11,6 +11,7 @@
 
 
 class PlayerWidget : public QWidget{
+    Q_OBJECT
 public:
     PlayerWidget(Game* g,MarketDeck* md,Player* p, QWidget *parent = nullptr);
     ~PlayerWidget() = default;
@@ -20,13 +21,14 @@ public:
     void updatePlayerInfo();
 
 signals:
-    void onRefreshButtonClicked();
     void endTurn();
+    void aiCard(DeckElement* card);
 
 public slots:
     void recieveAchat(DeckElement* card);
     void recieveDefausse(DeckElement* card);
     void switchTurn();
+    void onRefreshButtonClicked();
 
 private:
     PlayerWidget(const PlayerWidget& widget) = delete;

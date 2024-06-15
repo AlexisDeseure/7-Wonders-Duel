@@ -13,14 +13,16 @@
 - initialisation test
 - catch the deckElement at playerWidget.cpp and marketdeckwidget.cpp (should be OK)
 - Add signal and slots to build a wonder
-- finish adding all connections, connect p1 and p2 completely
 - finish PlayerWidget::switchTurn() (see comments)
-- HASHMAP CARDWIDGETS AND DECKELEMENTS TO FIND CARDS FROM A DE
 */
 
 MarketDeckWidget::MarketDeckWidget(MarketDeck* market,PlayerWidget* p1,PlayerWidget* p2,QWidget* parent) : p1(p1), p2(p2), QWidget(parent),market(market) {
-    Cardlines = new QVBoxLayout(this);
+    cardFinder = new std::map<DeckElement*,CardWidget*>;
     generateAge(3);
+
+    //Connections: AI actions towards MDW
+    connect(p1,&PlayerWidget::aiCard,this,&MarketDeckWidget::getCardFromAI);
+    connect(p2,&PlayerWidget::aiCard,this,&MarketDeckWidget::getCardFromAI);
 
 
 }
@@ -75,7 +77,8 @@ void MarketDeckWidget::generateAge(int age){
 
 
                 // building = layout[i][j];
-                // CardWidget* carteWidget = new CardWidget(building,this);
+                //CardWidget* carteWidget = new CardWidget(building,this);
+                cardFinder->insert({building,carteWidget});
                 // carteWidget->setFixedSize(100,100);
                 line->addWidget(carteWidget,i,j,1,1);
             }
@@ -91,6 +94,19 @@ void MarketDeckWidget::generateAge(int age){
     //                 building = layout[i][cardIndex++];
     //                 CardWidget* carteWidget = new CardWidget(building,this);
     //                 carteWidget->setFixedSize(100,100);
+
+    //                 //Connections : MD and Card
+    //                 connect(carteWidget, &CardWidget::sendDefausse, this, &MarketDeckWidget::updateMarketDeck);
+    //                 connect(carteWidget, &CardWidget::sendAchat, this, &MarketDeckWidget::updateMarketDeck);
+
+    //                 //Connections : players and cards
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p1,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p1,&PlayerWidget::recieveAchat);
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p2,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p2,&PlayerWidget::recieveAchat);
+    //                 //add wonder building connection
+
+    //                 cardFinder->insert({building,carteWidget});
     //                 line->addWidget(carteWidget,i,j,1,1);
     //             }
     //         }
@@ -106,7 +122,20 @@ void MarketDeckWidget::generateAge(int age){
     //                 building = layout[i][cardIndex++];
     //                 CardWidget* carteWidget = new CardWidget(building,this);
     //                 carteWidget->setFixedSize(100,100);
-    //                 line->addWidget(carteWidget,i,10-j,1,1);
+
+    //                 //Connections : MD and Card
+    //                 connect(carteWidget, &CardWidget::sendDefausse, this, &MarketDeckWidget::updateMarketDeck);
+    //                 connect(carteWidget, &CardWidget::sendAchat, this, &MarketDeckWidget::updateMarketDeck);
+
+    //                 //Connections : players and cards
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p1,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p1,&PlayerWidget::recieveAchat);
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p2,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p2,&PlayerWidget::recieveAchat);
+    //                 //add wonder building connection
+
+    //                 cardFinder->insert({building,carteWidget});
+    //                 line->addWidget(carteWidget,i,j,1,1);
     //             }
     //         }
     //         Cardlines->addLayout(line);
@@ -114,13 +143,26 @@ void MarketDeckWidget::generateAge(int age){
     //     return;
     // case 3: //7*7
     //     for(int i = 0; i < 7; i++){
-    //         cardIndex = 0;            
+    //         cardIndex = 0;
     //         QGridLayout* line = new QGridLayout(this);
     //         for(int j = 0; j < 7; j++){
     //             if (checkCardPos(age,i,j)){
     //                 building = layout[i][cardIndex++];
     //                 CardWidget* carteWidget = new CardWidget(building,this);
     //                 carteWidget->setFixedSize(100,100);
+
+    //                 //Connections : MD and Card
+    //                 connect(carteWidget, &CardWidget::sendDefausse, this, &MarketDeckWidget::updateMarketDeck);
+    //                 connect(carteWidget, &CardWidget::sendAchat, this, &MarketDeckWidget::updateMarketDeck);
+
+    //                 //Connections : players and cards
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p1,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p1,&PlayerWidget::recieveAchat);
+    //                 connect(carteWidget, &CardWidget::sendDefausse,p2,&PlayerWidget::recieveDefausse);
+    //                 connect(carteWidget, &CardWidget::sendAchat,p2,&PlayerWidget::recieveAchat);
+    //                 //add wonder building connection
+
+    //                 cardFinder->insert({building,carteWidget});
     //                 line->addWidget(carteWidget,i,j,1,1);
     //             }
     //         }
@@ -128,6 +170,12 @@ void MarketDeckWidget::generateAge(int age){
     //     }
     //     return;
     // }
+}
+
+void MarketDeckWidget::getCardFromAI(DeckElement* card){//deletes a cardwidget from a deckelement recieved by the AI
+    //remove from vector of cards
+    //CardWidget* widget = cardFinder[card];
+    //update
 }
 
 

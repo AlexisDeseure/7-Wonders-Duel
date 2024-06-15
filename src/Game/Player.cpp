@@ -167,8 +167,6 @@ void Player::play(Game& game){
 //                 discarded_card->DeckElement::deleteDeckFromMarket(); //suppression "manuelle" pour le moment, il faut remplacer le premier élément dans le deck
 //             }
 //         }
-
-
 //         city.addCard(card);
 //         return true;
 //     }

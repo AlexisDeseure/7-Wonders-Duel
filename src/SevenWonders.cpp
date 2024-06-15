@@ -36,10 +36,7 @@ int main(int argc, char* argv[]) {
 
     //=================Test de l'affichage du market deck ===========================
     // décommenter pour voir
-
-    MarketDeck* market = new MarketDeck();
-    GameWindow* fenetre = new GameWindow(market);
-    fenetre->show();
+    Game* game = new Game();
     //===============================================================================
 
     // QApplication app(argc, argv);

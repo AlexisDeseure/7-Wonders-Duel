@@ -5,7 +5,7 @@
 #include <QHBoxLayout>
 
 
-GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
+GameWindow::GameWindow(Game* game, MarketDeck* marketDeck,QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("7 Wonders");
@@ -19,8 +19,8 @@ GameWindow::GameWindow(MarketDeck* marketDeck, QWidget *parent)
     setCentralWidget(centralWidget);
     grid = new QGridLayout(centralWidget);
 
-    player1 = new PlayerWidget(new Player(100),centralWidget);
-    player2 = new PlayerWidget(new Player(100),centralWidget);
+    player1 = new PlayerWidget(game,marketDeck,new Player(100),centralWidget); //Game* g,MarketDeck* md,Player* p, QWidget *parent = nullptr
+    player2 = new PlayerWidget(game,marketDeck,new Player(100),centralWidget);
 
     //Connections between players
     connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);

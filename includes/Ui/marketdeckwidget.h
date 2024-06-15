@@ -8,7 +8,10 @@
 #include <QHBoxLayout>
 #include "Instanciator.h"
 #include "MarketDeck.h"
+#include "DeckElement.h"
+#include "cardwidget.h"
 #include "PlayerWidget.h"
+#include <map>
 
 class MarketDeckWidget : public QWidget
 {
@@ -27,9 +30,11 @@ private:
     MarketDeck* market;
     PlayerWidget* p1; //having both players in the marketwidget allows for streamlined communication between all objects, marketwidget is a station for all classes
     PlayerWidget* p2;
+    std::map<DeckElement*,CardWidget*>* cardFinder;
 
 public slots:
     void updateMarketDeck();
+    void getCardFromAI(DeckElement* card);
 
 };
 

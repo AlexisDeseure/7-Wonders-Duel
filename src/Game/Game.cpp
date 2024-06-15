@@ -13,6 +13,7 @@
 #include <algorithm>
 #include "StartMenu.h"
 #include "ChooseWondersUI.h"
+#include "game_window.h"
 
 Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
     try {
@@ -75,8 +76,16 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
             }
             else{
                 fenetre->setFixedSize(600,400);
-                selectWonderPhaseUI(fenetre);
+                //selectWonderPhaseUI(fenetre);
+                GameWindow* fenetre = new GameWindow(this, &board->getMarketDeck()); //game,marketDeck, playerdata, starting_player
+                fenetre->show();
             }
+
+            /*
+            input starting players into gamewindow, insert starting player into marketdeck
+            place the gamewindow at the correct place, start the loop
+            */
+
         }
     } catch (const std::exception& e) {
         std::cerr << "Error initializing game: " << e.what() << std::endl;

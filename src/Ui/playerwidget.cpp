@@ -53,7 +53,19 @@ void PlayerWidget::onRefreshButtonClicked() {
 //SLOTS
 void PlayerWidget::recieveAchat(DeckElement* card){ //signal reçu par playerinput
     if(playing&&!(player->isAIPlayer())){
-        player->buyCard(*g,*card->getBuilding(),*md);//bool buyCard(Game& game, Card& card,MarketDeck& marketDeck);
+        //player->Player::buyCard(*g,*card->getBuilding(),*md);//bool buyCard(Game& game, Card& card,MarketDeck& marketDeck);
+        if (player->getCity().canAfford(card->getBuilding()->getCost(&player->getCity()))){
+            player->getCity().applyEachTurnEffects(*g, *card->getBuilding());
+            card->getBuilding()->applyEffects(*g);
+            if (dynamic_cast<Wonder*>(card->getBuilding())){ //card is a wonder, il faut choisir un building à défausser pour construire le wonder
+                //MarketDeck::iterator it = begin() //tentative avec un itérateur mais ne marche pas :/
+                //marketDeck.getBuilding(marketDeck);
+                if(card->isVisible()){
+                    card->DeckElement::deleteDeckFromMarket(); //suppression "manuelle" pour le moment, il faut remplacer le premier élément dans le deck
+                }
+            }
+        }
+        player->getCity().addCard(*card->getBuilding());
         updatePlayerInfo();
         playing=false;
         emit endTurn(); //fin du tour, signal reçu par l'autre joueur
@@ -72,9 +84,25 @@ void PlayerWidget::switchTurn(){ //slot that makes it the player's turn, also pl
     playing = true;
     if (player->isAIPlayer()){
         //player->;//method to play the AI's turn ?
+        std::vector<DeckElement*>& firstbuildings = md->getFirstBuildings();
+        int max = static_cast<int>(firstbuildings.size());
+        int choice = selectRandomInteger(1, max);
+        DeckElement* card = firstbuildings[choice-1];
+        if (player->getCity().canAfford(card->getBuilding()->getCost(&player->getCity()))){
+            player->getCity().applyEachTurnEffects(*g, *card->getBuilding());
+            card->getBuilding()->applyEffects(*g);
+            if (dynamic_cast<Wonder*>(card->getBuilding())){ //card is a wonder, il faut choisir un building à défausser pour construire le wonder
+                //MarketDeck::iterator it = begin() //tentative avec un itérateur mais ne marche pas :/
+                //marketDeck.getBuilding(marketDeck);
+                if(card->isVisible()){
+                    card->DeckElement::deleteDeckFromMarket(); //suppression "manuelle" pour le moment, il faut remplacer le premier élément dans le deck
+                }
+            }
+        }
+        player->getCity().addCard(*card->getBuilding());
         updatePlayerInfo();
         playing=false;
-        //emit signal to remove a card from the screen
+        emit aiCard(card);
         emit endTurn();
     }
 }
