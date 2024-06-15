@@ -20,7 +20,7 @@ class GameWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    GameWindow(Game* game, MarketDeck* marketDeck,std::vector<Building*>& age1,std::vector<Building*>& age2, std::vector<Building*>& age3,QWidget *parent = nullptr);
+    GameWindow(Game* game, MarketDeck* marketDeck,int starting,std::vector<Building*>& age1,std::vector<Building*>& age2, std::vector<Building*>& age3,QWidget *parent = nullptr);
     ~GameWindow();
 
     PlayerWidget& getplayer1()const{return *player1;};

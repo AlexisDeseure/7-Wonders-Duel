@@ -5,7 +5,7 @@
 #include <QHBoxLayout>
 
 
-GameWindow::GameWindow(Game* game, MarketDeck* marketDeck,std::vector<Building*>& age1,std::vector<Building*>& age2,std::vector<Building*>& age3,QWidget *parent)
+GameWindow::GameWindow(Game* game, MarketDeck* marketDeck,int starting,std::vector<Building*>& age1,std::vector<Building*>& age2,std::vector<Building*>& age3,QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("7 Wonders");
@@ -21,12 +21,21 @@ GameWindow::GameWindow(Game* game, MarketDeck* marketDeck,std::vector<Building*>
 
     player1 = new PlayerWidget(game,marketDeck,new Player(100),centralWidget); //Game* g,MarketDeck* md,Player* p, QWidget *parent = nullptr
     player2 = new PlayerWidget(game,marketDeck,new Player(100),centralWidget);
+    market = new MarketDeckWidget(marketDeck,player1,player2,age1,age2,age3, centralWidget);
 
-    //Connections between players
     connect(player1,&PlayerWidget::endTurn,player2,&PlayerWidget::switchTurn);
     connect(player2,&PlayerWidget::endTurn,player1,&PlayerWidget::switchTurn);
 
-    market = new MarketDeckWidget(marketDeck,player1,player2,age1,age2,age3, centralWidget);
+    if (starting == 1){
+        emit player2->endTurn();
+    }
+    else if(starting == 2){
+        emit player1->endTurn();
+    }
+    //Connections between players
+
+
+
     military_deck = new MilitaryDeck(centralWidget);
 
     // //grid setup: maybe add a static value for grids and cols, so you can do fractions ?

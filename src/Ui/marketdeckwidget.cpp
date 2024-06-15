@@ -8,8 +8,6 @@
 #include <QGridLayout>
 
 /* To DO
-- vector to check clickables
-- refresh clickables vector at each turn
 - initialisation test
 - catch the deckElement at playerWidget.cpp and marketdeckwidget.cpp (should be OK)
 - Add signal and slots to build a wonder
