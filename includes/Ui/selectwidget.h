@@ -21,6 +21,7 @@ private:
     //boutons
     QPushButton* acheterButton;
     QPushButton* defausseButton;
+    QPushButton* wonderButton;
 
     //bools
     bool achete;
@@ -28,11 +29,13 @@ private:
 
 public slots:
     void acheter();
-    void defausser() ;
+    void defausser();
+    void wonderer();
 
 signals:
     void acheterPressed();
     void defausserPressed();
+    void wonderPressed();
 };
 
 #endif // SELECTWIDGET_H

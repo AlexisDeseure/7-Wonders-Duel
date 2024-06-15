@@ -30,6 +30,7 @@ public:
 
     PlayerWidget& getplayer1()const{return *player1;};
     PlayerWidget& getplayer2()const{return *player2;};
+    MarketDeckWidget* getMarket()const{return market;};
     void updateAge(int age){
         market->generateAge(age);}
 

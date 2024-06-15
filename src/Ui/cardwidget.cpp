@@ -43,15 +43,14 @@ void CardWidget::leaveEvent(QEvent *event)
 
 void CardWidget::cardClicked()
 {
-    qDebug() << "BONJOUR " <<clickable;
     if (clickable){
-        qDebug() << "BONJOUR";
+        qDebug() << "BONJOUR " <<clickable;
         //afficher un menu
         selectWidget* selectMenu = new selectWidget();
         selectMenu->show();
         connect(selectMenu,SIGNAL(acheterPressed()),this,SLOT(acheter()));
         connect(selectMenu,SIGNAL(defausserPressed()),this,SLOT(defausser()));
-
+        connect(selectMenu,SIGNAL(wonderPressed()),this,SLOT(wonderer()));
     }
 }
 
@@ -67,6 +66,11 @@ void CardWidget::defausser(){
     delete this;
 }
 
+void CardWidget::wonderer(){
+    this->close();
+    emit sendWonder(card);
+    delete this;
+}
 
 // void CardWidget::cardClicked(){
 //     if (getClickable()){

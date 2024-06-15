@@ -160,7 +160,14 @@ void Player::playUi(Game& game, GameWindow* fenetre){
 
     QEventLoop loopWonder;
 
-    // CardWidget::connect(fenetre, SIGNAL(acheterPressed()), &loopWonder, SLOT(quit()));
+    for (auto& line : fenetre->getMarket()->printed_cards){
+        for (auto& card : line){
+            connect(card, SIGNAL(sendAchat(DeckElement*)), &loopWonder, SLOT(quit()));
+            connect(card, SIGNAL(sendDefausse(DeckElement*)), &loopWonder, SLOT(quit()));
+            connect(card, SIGNAL(sendWonder(DeckElement*)), &loopWonder, SLOT(quit()));
+        }
+    }
+
 
     loopWonder.exec();
     // Building* building = firstbuildings[choice-1]->getBuilding();
