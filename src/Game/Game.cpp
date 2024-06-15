@@ -36,7 +36,6 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
         fenetre->setWindowTitle("Seven Wonders Duel");
         startmenu->setGeometry(fenetre->geometry());
 
-
         //Affichage de la fenêtre
         exit = false;
         fenetre->show();
@@ -132,6 +131,14 @@ Game::Game() : age(0), turn(0), isReplaying(false), winner(nullptr) {
 // -------------- UI METHODS --------------- //
 
 
+//A L'ATTENTION DE MATEO:
+//Les vecteurs des cartes pour chaque âge: bien cordialement.
+
+// std::vector<Building*> B_ageI = inst->getCardFromXAge(1);
+// std::vector<Building*> B_ageII = inst->getCardFromXAge(2);
+// std::vector<Building*> B_ageIII = inst->getCardFromXAge(3);
+
+//
 
 
 void Game::startGameUI(QWidget* fenetre) {
