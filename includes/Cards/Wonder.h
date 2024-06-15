@@ -7,8 +7,7 @@
 
 class Wonder : public Card{
     private:
-        bool active; //Montre si la merveille est sur le plateau
-
+        bool active;
     public:
         Wonder(std::string name, const QString img,const std::vector<RessourceCost>& cost, const std::vector<Effect*>& effects, unsigned int direct_cost)
         : Card(std::move(name), cost, effects, direct_cost,img), active(false) {}; //Constructeur
